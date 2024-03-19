@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -8,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
+  constructor(private meta: Meta) { 
+    this.meta.addTag({ name: 'title', content: 'Home page' });
+  }
 
 }
