@@ -2227,9 +2227,11 @@ header.style-2.sticky {
 }
 header.style-2 .company-logo .logo-dark {
   display: block;
+  width: 152px;
 }
 header.style-2 .company-logo .logo-light {
   display: none;
+  width: 152px;
 }
 header.style-2 .nav-right {
   gap: 50px;
