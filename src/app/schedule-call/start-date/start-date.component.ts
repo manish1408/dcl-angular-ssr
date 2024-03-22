@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './start-date.component.scss'
 })
 export class StartDateComponent {
+  showMonths: boolean = false
 
+  specifyDate(){
+    this.showMonths = !this.showMonths
+  }
 }
