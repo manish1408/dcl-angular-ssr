@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-basic-details',
@@ -8,5 +9,11 @@ import { Component } from '@angular/core';
   styleUrl: './basic-details.component.scss'
 })
 export class BasicDetailsComponent {
+
+  constructor(private route: ActivatedRoute){}
+
+  contactDetails(){
+
+  }
 
 }
