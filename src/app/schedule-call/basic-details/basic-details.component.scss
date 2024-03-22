@@ -1,11 +1,29 @@
 .site-paragraph-l {
     font-size: 1.125rem;
-    line-height: 1.75rem;
+    line-height: 1.5rem;
     font-weight: 300;
+    font-family: Outfit, sans-serif;
+    font-weight: 400
 }
-.site-paragraph-m{
+.site-paragraph-m {
     font-size: 1rem;
     line-height: 1.5rem;
     font-weight: 400;
+    font-family: Outfit, sans-serif;
+    font-weight: 400
 }
-    
+.text-site-neutrals-500 {
+    --tw-text-opacity: 1;
+    color: rgb(82 96 109 / var(--tw-text-opacity));
+}
+.text-site-neutrals-600{
+    --tw-text-opacity: 1;
+    color: rgb(61 71 81 / var(--tw-text-opacity));
+}
+input[type=radio] {
+    cursor: pointer;
+    align-items: center;
+}
+.form-check-input[type=radio]:checked {
+    background-color: #198754;
+}
