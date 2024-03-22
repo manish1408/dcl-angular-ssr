@@ -27,11 +27,11 @@ export class AppComponent {
           event["url"] == "/schedule-call/technologies"
         ) {
           this.showHead = false;
-          console.log(this.showHead);
+     
         } else {
-          // console.log("NU")
+     
           this.showHead = true;
-          console.log(this.showHead);
+     
         }
       }
     });
