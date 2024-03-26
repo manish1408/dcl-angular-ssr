@@ -11,19 +11,6 @@ export class BlogService {
 
   private blogApiUrl = environment.squidexApiUrl + 'posts';
 
-  async fetchPosts(): Promise<any> {
-    const token = await this.generateAccessToken();
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-    myHeaders.append("Authorization", 'Bearer ' + token)
-
-    const jsonResp =  await fetch(this.blogApiUrl, {
-      headers: myHeaders
-    })
-    const posts = jsonResp.json();
-    return posts
-  }
-
   async generateAccessToken() {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
@@ -50,4 +37,42 @@ export class BlogService {
     return data.access_token;
   };
 
+
+  async fetchPosts(): Promise<any> {
+    const token = await this.generateAccessToken();
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    myHeaders.append("Authorization", 'Bearer ' + token)
+
+    const jsonResp =  await fetch(this.blogApiUrl, {
+      headers: myHeaders
+    })
+    const posts = jsonResp.json();
+    return posts
+  }
+  async getBlogBySlug(slug:string): Promise<any> {
+    const resp = await this.generateAccessToken();
+    var myHeaders = new Headers();
+    myHeaders.append('Authorization', 'Bearer ' + resp);
+    const requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow',
+    };
+    const jsonResp = await fetch(
+     environment.squidexApiUrl +
+        "?$filter=data/slug/iv eq '" +
+        slug +
+        "'",
+        {
+          method: 'GET',
+          headers: myHeaders,
+          redirect: 'follow',
+        }
+    );
+    const post = await jsonResp.json();
+    return post;
+    
+  }
+  
 }

@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-case-studies',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule,],
   templateUrl: './case-studies.component.html',
   styleUrl: './case-studies.component.scss'
 })
@@ -27,8 +27,8 @@ export class CaseStudiesComponent implements OnInit{
     })
   }
 
-  transformUrl(url: string): string {
-    return url.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
-  }
+  // transformUrl(url: string): string {
+  //   return url.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
+  // }
 
 }
