@@ -62,6 +62,7 @@
             />
           </div>
           <div class="card-content">
+          
             <h4>
               <a href="case-study-details.html"
                 >{{ post.data?.projectName?.iv }}
@@ -70,7 +71,7 @@
             <h5>
               {{ post.data?.ProjectDomain?.iv }}
             </h5>
-
+            <div class="slick-loading">Loader</div>
             <!-- <div class="number">
                                <span>+</span>
                                <h5 class="counter">40</h5>
@@ -81,8 +82,11 @@
                                <li><a href="case-study.html">Paid Social</a></li>
                                <li><a href="case-study.html">SEO</a></li>
                            </ul> -->
-            <a href="case-study-details.html" class="read-more-btn"
+                           <!-- <a [routerLink]="['/case-study-details', post.data?.ProjectDomain?.iv?.toLowerCase().replace(/\s+/g, '-')]"> -->
+
+            <a [routerLink]="['/case-study/', transformUrl(post.data?.projectName?.iv)]" class="read-more-btn"
               >Read The Success Stories
+             
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="10"
