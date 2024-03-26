@@ -70,7 +70,7 @@ role="status"
           <div class="card-content">
           
             <h4>
-              <a href="case-study-details.html"
+              <a [routerLink]="['/case-study/', post.data?.slug?.iv]"
                 >{{ post.data?.projectName?.iv }}
               </a>
             </h4>

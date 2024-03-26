@@ -37,7 +37,7 @@
         ">
         <div class="blog-card style-2">
           <div class="blog-card-img-wrap">
-            <a href="blog-details.html" class="card-img">
+            <a [routerLink]="['/blog/', post.data?.slug?.iv]" class="card-img">
               <img [src]="'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' + post?.data?.thumbnail?.iv[0]"
                 alt="" />
             </a>
@@ -55,7 +55,7 @@
               </div>
             </div>
             <h4>
-              <a href="blog-details.html">{{post.data?.title?.iv}}</a>
+              <a [routerLink]="['/blog/', post.data?.slug?.iv]">{{post.data?.title?.iv}}</a>
             </h4>
             <a [routerLink]="['/blog/', post.data?.slug?.iv]" class="read-more-btn">Read More
               <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">

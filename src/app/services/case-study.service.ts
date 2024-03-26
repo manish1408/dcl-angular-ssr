@@ -21,7 +21,7 @@ export class CaseStudyService {
     return posts;
   }
 
-  async getCaseStudyBySlug(slug:string): Promise<any> {
+  async getCaseStudyBySlug(slug: string): Promise<any> {
     const resp = await this.generateAccessToken();
     var myHeaders = new Headers();
     myHeaders.append('Authorization', 'Bearer ' + resp);
@@ -31,19 +31,15 @@ export class CaseStudyService {
       redirect: 'follow',
     };
     const jsonResp = await fetch(
-     environment.squidexApiUrl +
-        "?$filter=data/slug/iv eq '" +
-        slug +
-        "'",
-        {
-          method: 'GET',
-          headers: myHeaders,
-          redirect: 'follow',
-        }
+      this.caseStudyApiUrl + "?$filter=data/slug/iv eq '" + slug + "'",
+      {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow',
+      }
     );
     const post = await jsonResp.json();
     return post;
-    
   }
   async generateAccessToken() {
     var myHeaders = new Headers();

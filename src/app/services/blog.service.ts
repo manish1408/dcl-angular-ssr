@@ -60,7 +60,7 @@ export class BlogService {
       redirect: 'follow',
     };
     const jsonResp = await fetch(
-     environment.squidexApiUrl +
+     this.blogApiUrl +
         "?$filter=data/slug/iv eq '" +
         slug +
         "'",
