@@ -13,7 +13,7 @@ export class BlogComponent implements OnInit {
 
   async ngOnInit() {
     this.blogService.fetchPosts().then((resp:any) => {
-      debugger
+    
       console.log(resp);
       this.posts = resp?.items;
 
