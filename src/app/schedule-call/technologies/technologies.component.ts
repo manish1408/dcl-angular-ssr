@@ -23,29 +23,26 @@ export class TechnologiesComponent implements OnInit{
   })
   ngOnInit() {
     this.dropdownList = [
-      { item_id: 1, item_text: 'Mumbai' },
-      { item_id: 2, item_text: 'Bangaluru' },
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' },
-      { item_id: 5, item_text: 'New Delhi' }
-      // { item_id: 6, item_text: 'Amazon EC2' },
-      // { item_id: 7, item_text: 'Amazon ECS' },
-      // { item_id: 8, item_text: 'Angular 2' },
-      // { item_id: 9, item_text: 'Angular JS' },
-      // { item_id: 10, item_text: 'Ansible' }
+      { item_id: 1, item_text: '.NET' },
+      { item_id: 2, item_text: '.NET Core' },
+      { item_id: 3, item_text: 'ABAP' },
+      { item_id: 4, item_text: 'ActionScript' },
+      { item_id: 5, item_text: 'Active Directory' },
+      { item_id: 6, item_text: 'Amazon EC2' },
+      { item_id: 7, item_text: 'Amazon ECS' },
+      { item_id: 8, item_text: 'Angular 2' },
+      { item_id: 9, item_text: 'Angular JS' },
+      { item_id: 10, item_text: 'Ansible' }
     ];
-    this.selectedItems = [
-      { item_id: 3, item_text: 'Pune' },
-      { item_id: 4, item_text: 'Navsari' }
-    ];
-    this.dropdownSettings.IDropdownSettings= {
+    this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
       textField: 'item_text',
-      selectAllText: 'Select All',
-      unSelectAllText: 'UnSelect All',
+      selectAllText: '',
+      unSelectAllText: '',
       itemsShowLimit: 4,
-      allowSearchFilter: true
+      allowSearchFilter: true,
+      enableCheckAll: false,
     };
   }
   onItemSelect(item: any) {
