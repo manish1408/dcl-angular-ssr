@@ -11,13 +11,10 @@ import {  NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Rou
 })
 export class BasicDetailsComponent {
 
-  constructor(private router: Router){
+  constructor(){
   
   }
 
-  nextPage(){
-    this.router.navigate(['schedule-call/contact-information']);
-
-  }
+  
 
 }

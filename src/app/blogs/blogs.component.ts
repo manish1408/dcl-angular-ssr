@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { BlogService } from '../services/blog.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-blogs',
   standalone: true,
-  imports: [],
+  imports:[RouterModule, CommonModule],
   templateUrl: './blogs.component.html',
   styleUrl: './blogs.component.scss'
 })
