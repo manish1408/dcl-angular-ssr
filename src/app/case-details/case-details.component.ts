@@ -39,6 +39,11 @@ export class CaseDetailsComponent implements OnInit {
         .catch((err: any) => {
           console.log(err);
         });
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
     });
   }
 
