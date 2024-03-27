@@ -85,7 +85,7 @@
                 </div>
                 <div class="content">
                   <span>Industry:</span>
-                  <h5>IT</h5>
+                  <h5>{{ post?.ProjectDomain?.iv }}</h5>
                 </div>
               </li>
 
@@ -322,24 +322,32 @@
       </div>
     </div>
     <div class="row g-4">
+      @for (post of posts; track post) {
       <div class="col-xl-4 col-md-6">
         <div class="case-study-card style-2">
           <div class="card-img">
-            <img src="assets/img/innerpage/case-study-img1.jpg" alt="" />
+            <img
+              [src]="
+                'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
+                post?.data?.thumbnail?.iv[0]
+              "
+            />
           </div>
           <div class="card-content">
-            <a href="case-study.html">Startup Company</a>
+            <a [routerLink]="['/case-study/', post.data?.slug?.iv]"
+              >{{ post.data?.projectName?.iv }}
+            </a>
             <h4>
-              <a href="case-study-details.html"
-                >Navigating Growth A Startup Agency Success Story.</a
-              >
+              <a [routerLink]="['/case-study/', post.data?.slug?.iv]">{{
+                post.data?.projectName?.iv
+              }}</a>
             </h4>
             <p>
-              In this case study, we dissect the challenges faci the strategies
-              employed, and the remarkable oun achieved through our
-              collaborative efforts.
+              {{ post?.data?.description?.iv }}
             </p>
-            <a href="case-study-details.html" class="learn-more-btn"
+            <a
+              [routerLink]="['/case-study/', post.data?.slug?.iv]"
+              class="learn-more-btn"
               >Learn MORE
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -358,77 +366,7 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-4 col-md-6">
-        <div class="case-study-card style-2">
-          <div class="card-img">
-            <img src="assets/img/innerpage/case-study-img2.jpg" alt="" />
-          </div>
-          <div class="card-content">
-            <a href="case-study.html">Design Agency</a>
-            <h4>
-              <a href="case-study-details.html"
-                >Customer Centric Strategies Acquiring Retaining.</a
-              >
-            </h4>
-            <p>
-              This case study unveils the strategic roadmap, the technology
-              stack deployed, and the tangible benefits reaped by Egenslab.
-            </p>
-            <a href="case-study-details.html" class="learn-more-btn"
-              >Learn MORE
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="9"
-                viewBox="0 0 17 9"
-              >
-                <path
-                  d="M12.1691 4.97333L0.234337 4.95394C0.172187 4.95394 0.112583 4.9041 0.0686358 4.81538C0.024689 4.72666 0 4.60634 0 4.48087C0 4.35541 0.024689 4.23509 0.0686358 4.14637C0.112583 4.05765 0.172187 4.00781 0.234337 4.00781L12.1694 4.02721C12.2315 4.02721 12.2911 4.07705 12.3351 4.16576C12.379 4.25448 12.4037 4.37481 12.4037 4.50027C12.4037 4.62573 12.379 4.74606 12.3351 4.83478C12.2911 4.92349 12.2313 4.97333 12.1691 4.97333Z"
-                />
-                <path
-                  d="M16.9998 4.50591C14.3171 5.49934 10.9879 7.19858 8.9248 9L10.5521 4.50024L8.93094 0C10.9922 1.80378 14.3185 3.50681 16.9998 4.50591Z"
-                />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="col-xl-4 col-md-6">
-        <div class="case-study-card style-2">
-          <div class="card-img">
-            <img src="assets/img/innerpage/case-study-img3.jpg" alt="" />
-          </div>
-          <div class="card-content">
-            <a href="case-study.html">Digital Transformation</a>
-            <h4>
-              <a href="case-study-details.html"
-                >Tech Breakthroughs Solution Pioneering Digital Age.</a
-              >
-            </h4>
-            <p>
-              In this case study, we dissect the challenges faci the strategies
-              employed, and the remarkable oun achieved through our
-              collaborative efforts.
-            </p>
-            <a href="case-study-details.html" class="learn-more-btn"
-              >Learn MORE
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="17"
-                height="9"
-                viewBox="0 0 17 9"
-              >
-                <path
-                  d="M12.1691 4.97333L0.234337 4.95394C0.172187 4.95394 0.112583 4.9041 0.0686358 4.81538C0.024689 4.72666 0 4.60634 0 4.48087C0 4.35541 0.024689 4.23509 0.0686358 4.14637C0.112583 4.05765 0.172187 4.00781 0.234337 4.00781L12.1694 4.02721C12.2315 4.02721 12.2911 4.07705 12.3351 4.16576C12.379 4.25448 12.4037 4.37481 12.4037 4.50027C12.4037 4.62573 12.379 4.74606 12.3351 4.83478C12.2911 4.92349 12.2313 4.97333 12.1691 4.97333Z"
-                />
-                <path
-                  d="M16.9998 4.50591C14.3171 5.49934 10.9879 7.19858 8.9248 9L10.5521 4.50024L8.93094 0C10.9922 1.80378 14.3185 3.50681 16.9998 4.50591Z"
-                />
-              </svg>
-            </a>
-          </div>
-        </div>
-      </div>
+      }
     </div>
   </div>
 </div>
