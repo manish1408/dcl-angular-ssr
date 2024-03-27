@@ -25,6 +25,7 @@ export class BlogDetailsComponent implements OnInit {
 
   async ngOnInit() {
     this.route.params.subscribe((param) => {
+      this.isLoading = true;
       this.slugName = param['type'];
       console.log(this.slugName);
     });
@@ -33,7 +34,7 @@ export class BlogDetailsComponent implements OnInit {
       .then((resp: any) => {
         console.log(resp);
         this.post = resp?.items[0].data;
-
+        this.isLoading = false;
         console.log('Blog details:', this.post);
         this.getAllBlogs();
       })

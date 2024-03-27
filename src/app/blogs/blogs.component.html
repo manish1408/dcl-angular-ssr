@@ -1,22 +1,32 @@
-<div class="breadcrumb-section" style="
+<div
+  class="breadcrumb-section"
+  style="
     background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
       linear-gradient(180deg, #121212 0%, #121212 100%);
-  ">
+  "
+>
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
         <div class="banner-wrapper">
           <div class="banner-content">
             <ul class="breadcrumb-list">
-              <li><a href="index.html">Home</a></li>
+              <li><a>Home</a></li>
               <li>Blog</li>
             </ul>
             <h1>Latest News Blog &amp; Article.</h1>
           </div>
           <div class="scroll-down-btn">
             <a href="#blog-grid">
-              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="29" viewBox="0 0 19 29">
-                <path d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5"></path>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="19"
+                height="29"
+                viewBox="0 0 19 29"
+              >
+                <path
+                  d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5"
+                ></path>
               </svg>
             </a>
           </div>
@@ -25,51 +35,78 @@
     </div>
   </div>
 </div>
+<div class="d-flex justify-content-center">
+  <span
+    *ngIf="isLoading"
+    class="spinner-border spinner-border-sm mt-5"
+    role="status"
+  ></span>
+</div>
 
 <div class="blog-grid-section scroll-margin pt-120 mb-120" id="blog-grid">
   <div class="container">
     <div class="row g-4 mb-50">
       @for (post of posts; track post) {
-      <div class="col-lg-4 col-md-6 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms" style="
+      <div
+        class="col-lg-4 col-md-6 wow animate fadeInDown"
+        data-wow-delay="200ms"
+        data-wow-duration="1500ms"
+        style="
           visibility: visible;
           animation-duration: 1500ms;
           animation-delay: 200ms;
-        ">
+        "
+      >
         <div class="blog-card style-2">
           <div class="blog-card-img-wrap">
             <a [routerLink]="['/blog/', post.data?.slug?.iv]" class="card-img">
-              <img [src]="'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' + post?.data?.thumbnail?.iv[0]"
-                alt="" />
+              <img
+                [src]="
+                  'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
+                  post?.data?.thumbnail?.iv[0]
+                "
+                alt=""
+              />
             </a>
-            <a href="blog-grid.html" class="date">
+            <a class="date">
               <span><strong>15</strong> January</span>
             </a>
           </div>
           <div class="card-content">
             <div class="blog-meta">
               <ul class="category">
-                <li><a href="blog-grid.html">Development</a></li>
+                <li><a>Development</a></li>
               </ul>
               <div class="blog-comment">
                 <span>Comment (20)</span>
               </div>
             </div>
             <h4>
-              <a [routerLink]="['/blog/', post.data?.slug?.iv]">{{post.data?.title?.iv}}</a>
+              <a [routerLink]="['/blog/', post.data?.slug?.iv]">{{
+                post.data?.title?.iv
+              }}</a>
             </h4>
-            <a [routerLink]="['/blog/', post.data?.slug?.iv]" class="read-more-btn">Read More
-              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M8.48878 0.885308L0 9.37364L0.626356 10L9.11469 1.51122V7.38037H10V0H2.61963V0.885308H8.48878Z">
-                </path>
+            <a
+              [routerLink]="['/blog/', post.data?.slug?.iv]"
+              class="read-more-btn"
+              >Read More
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.48878 0.885308L0 9.37364L0.626356 10L9.11469 1.51122V7.38037H10V0H2.61963V0.885308H8.48878Z"
+                ></path>
               </svg>
             </a>
           </div>
         </div>
       </div>
       }
-
-
     </div>
   </div>
 </div>

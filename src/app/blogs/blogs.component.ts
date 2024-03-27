@@ -12,16 +12,18 @@ import { RouterModule } from '@angular/router';
 })
 export class BlogsComponent {
   posts: any[] = [];
+  isLoading: boolean = false;
 
   constructor(private blogService: BlogService) {}
 
   async ngOnInit() {
+    this.isLoading = true;
     this.blogService
       .fetchPosts()
       .then((resp: any) => {
         console.log(resp);
         this.posts = resp?.items;
-
+        this.isLoading = false;
         console.log('All Blogs', this.posts);
       })
       .catch((err: any) => {

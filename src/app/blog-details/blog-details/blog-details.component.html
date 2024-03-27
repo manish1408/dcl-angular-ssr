@@ -37,6 +37,13 @@
   </div>
 </div>
 <!-- End Breadcrumb section -->
+<div class="d-flex justify-content-center">
+  <span
+    *ngIf="isLoading"
+    class="spinner-border spinner-border-sm mt-5"
+    role="status"
+  ></span>
+</div>
 
 <!-- Start Blog Details Section -->
 <div class="blog-details scroll-margin pt-120 mb-120 style-6" id="blog-details">
