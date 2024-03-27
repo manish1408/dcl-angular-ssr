@@ -87,6 +87,7 @@ Version: 1.0
      01.COMMON CSS 
 ===========================*/
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import '~ngx-toastr/toastr.css';
 
 * {
   margin: 0;
