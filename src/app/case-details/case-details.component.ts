@@ -20,10 +20,11 @@ export class CaseDetailsComponent implements OnInit {
   posts: any = [];
   slugName: string = '';
   imgCDN: string = environment.squidexAssets;
-  isLoading: boolean = true;
+  isLoading: boolean = false;
 
   async ngOnInit() {
     this.route.params.subscribe((param) => {
+      this.isLoading = true;
       this.slugName = param['type'];
       console.log(this.slugName);
 
@@ -32,6 +33,7 @@ export class CaseDetailsComponent implements OnInit {
         .then((resp: any) => {
           console.log(resp);
           this.post = resp?.items[0].data;
+          this.isLoading = false;
 
           console.log('************', this.post);
           this.getAllCaseStudies();
@@ -48,6 +50,7 @@ export class CaseDetailsComponent implements OnInit {
   }
 
   getAllCaseStudies() {
+    this.isLoading = true;
     this.caseStudyService
       .fetchPosts()
       .then((resp: any) => {
@@ -57,6 +60,7 @@ export class CaseDetailsComponent implements OnInit {
           return item.data.slug.iv !== this.slugName;
         });
 
+        this.isLoading = false;
         console.log('All case studies:', this.posts);
       })
       .catch((err: any) => {

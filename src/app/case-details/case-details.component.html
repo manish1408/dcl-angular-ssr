@@ -40,6 +40,13 @@
 </div>
 <!-- End Breadcrumb section -->
 
+<div class="d-flex justify-content-center">
+  <span
+    *ngIf="isLoading"
+    class="spinner-border spinner-border-sm mt-5"
+    role="status"
+  ></span>
+</div>
 <!-- Start Case Study Details Section -->
 <div class="case-study-details-page pt-120 mb-120" id="case-details-section">
   <div class="container">
@@ -248,7 +255,7 @@
           </div>
           <div class="single-navigation two text-end" *ngIf="i == 1">
             <div class="content">
-              <p>Challenges creating structure multiple brand system.</p>
+              <p>{{ post.data?.description?.iv }}</p>
             </div>
             <div class="star-btn">
               <a href="#">
