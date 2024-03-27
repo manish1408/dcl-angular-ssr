@@ -300,42 +300,42 @@
         <div class="contact-form-wrap">
           <div class="contact-form-area">
             <h3>Your Success Starts Here!</h3>
-            <form>
+            <form [formGroup]="contactForm">
               <div class="row">
                 <div class="col-lg-6 mb-20">
                   <div class="form-inner">
                     <label>Full Name</label>
-                    <input type="text" />
+                    <input type="text" formControlName="fullName" />
                   </div>
                 </div>
                 <div class="col-lg-6 mb-20">
                   <div class="form-inner">
                     <label>Company / Organization *</label>
-                    <input type="text" />
+                    <input type="text" formControlName="company" />
                   </div>
                 </div>
                 <div class="col-lg-6 mb-20">
                   <div class="form-inner">
                     <label>Phone *</label>
-                    <input type="text" />
+                    <input type="text" formControlName="phone" />
                   </div>
                 </div>
                 <div class="col-lg-6 mb-20">
                   <div class="form-inner">
                     <label>Company email *</label>
-                    <input type="email" />
+                    <input type="email" formControlName="email" />
                   </div>
                 </div>
                 <div class="col-lg-12 mb-20">
                   <div class="form-inner">
                     <label>Your Subject *</label>
-                    <input type="text" />
+                    <input type="text" formControlName="subject" />
                   </div>
                 </div>
                 <div class="col-lg-12 mb-30">
                   <div class="form-inner">
                     <label>Message *</label>
-                    <textarea></textarea>
+                    <textarea formControlName="message"></textarea>
                   </div>
                 </div>
                 <div class="col-lg-12">
@@ -344,6 +344,7 @@
                       class="primary-btn2"
                       type="submit"
                       data-text="Submit Now"
+                      (click)="onSubmit()"
                     >
                       <span>Submit Now</span>
                     </button>

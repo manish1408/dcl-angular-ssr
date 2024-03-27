@@ -3,11 +3,19 @@ import { CommonModule } from '@angular/common';
 import { NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    HeaderComponent,
+    FooterComponent,
+    ToastrModule,
+  ],
+
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
