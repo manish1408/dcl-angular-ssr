@@ -8,14 +8,12 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, ToastrModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
@@ -37,9 +35,14 @@ export class ContactComponent implements OnInit {
     console.log('form value:', this.contactForm);
     if (this.contactForm.status == 'INVALID') {
       console.log('invlid');
+      this.toastr.error('everything is broken', 'Major Error', {
+        timeOut: 3000,
+      });
       this.toastr.error('Please provide all the details');
-    } else {
-      console.log(this.contactForm.value);
+    } else if (this.contactForm.status == 'VALID') {
+      {
+        this.toastr.success('Thanks for submitting');
+      }
     }
   }
 }
