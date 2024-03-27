@@ -2,19 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from '../../services/blog.service';
 import { environment } from '../../environments/environment';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-blog-details',
   standalone: true,
   imports: [CommonModule],
+  providers: [DatePipe],
   templateUrl: './blog-details.component.html',
   styleUrl: './blog-details.component.scss',
 })
 export class BlogDetailsComponent implements OnInit {
   constructor(
     private blogService: BlogService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private datePipe: DatePipe
   ) {}
 
   imgCDN: string = environment.squidexAssets;
@@ -22,6 +24,8 @@ export class BlogDetailsComponent implements OnInit {
   slugName: string = '';
   isLoading: boolean = false;
   posts: any = [];
+  date: any;
+  formattedDate: any;
 
   async ngOnInit() {
     this.route.params.subscribe((param) => {
@@ -32,10 +36,12 @@ export class BlogDetailsComponent implements OnInit {
     this.blogService
       .getBlogBySlug(this.slugName)
       .then((resp: any) => {
-        console.log(resp);
         this.post = resp?.items[0].data;
         this.isLoading = false;
-        console.log('Blog details:', this.post);
+
+        this.date = resp.items[0].created;
+
+        this.formatDate(this.date);
         this.getAllBlogs();
       })
       .catch((err: any) => {
@@ -60,5 +66,10 @@ export class BlogDetailsComponent implements OnInit {
       .catch((err: any) => {
         console.log(err);
       });
+  }
+
+  formatDate(date: any) {
+    let receivedDate: Date = new Date(date);
+    this.formattedDate = this.datePipe.transform(receivedDate, 'd MMM, yyyy');
   }
 }
