@@ -1,17 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
+  FormBuilder,
   FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
+  Validators,
 } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 import {
   IDropdownSettings,
   NgMultiSelectDropDownModule,
 } from 'ng-multiselect-dropdown';
+import { FormDataService } from '../../services/form-data.service';
 
 @Component({
   selector: 'app-technologies',
@@ -30,10 +33,22 @@ export class TechnologiesComponent implements OnInit {
   dropdownList: any = [];
   selectedItems: any = [];
   dropdownSettings: any = {};
-  requirementForm: FormGroup = new FormGroup({
-    selectedItems: new FormControl(''),
-  });
+  technologiesForm!: FormGroup;
+
+  savedFormData: any;
+  itForm!: FormGroup;
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private formDataService: FormDataService
+  ) {
+    this.technologiesForm = this.fb.group({
+      technologyNeeded: ['', Validators.required],
+    });
+  }
   ngOnInit() {
+    this.savedFormData = this.formDataService.getFormData();
+    console.log('retrieve form:', this.savedFormData);
     this.dropdownList = [
       { item_id: 1, item_text: '.NET' },
       { item_id: 2, item_text: '.NET Core' },
@@ -57,10 +72,13 @@ export class TechnologiesComponent implements OnInit {
       enableCheckAll: false,
     };
   }
-  onItemSelect(item: any) {
-    console.log(item);
-  }
-  onSelectAll(items: any) {
-    console.log(items);
+
+  onSubmit() {
+    this.technologiesForm.markAllAsTouched();
+    if (this.technologiesForm.valid) {
+      console.log(this.technologiesForm.value);
+      this.formDataService.setFormData(this.technologiesForm.value);
+      // this.router.navigate(['/home']);
+    }
   }
 }

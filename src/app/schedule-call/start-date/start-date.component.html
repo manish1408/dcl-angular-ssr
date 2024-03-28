@@ -11,7 +11,7 @@
         /></a>
 
         <div class="row">
-          <form class="col-lg-5">
+          <form class="col-lg-5" [formGroup]="startDateForm">
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -26,26 +26,28 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault3"
+                      id="flexRadioDefault1"
+                      formControlName="startDate"
+                      value="I'm already late"
                     />
                     <label
                       class="form-check-label m-2"
-                      for="flexRadioDefault3 "
+                      for="flexRadioDefault1 "
                     >
-                      I"m already late
+                      I'm already late
                     </label>
                   </div>
                   <div class="d-flex align-items-center">
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault3"
+                      id="flexRadioDefault2"
+                      formControlName="startDate"
+                      value="Immediately"
                     />
                     <label
                       class="form-check-label m-2"
-                      for="flexRadioDefault3 "
+                      for="flexRadioDefault2 "
                     >
                       Immediately
                     </label>
@@ -55,8 +57,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
                       id="flexRadioDefault3"
+                      formControlName="startDate"
+                      value="When I get internal funding/approval"
                     />
                     <label
                       class="form-check-label m-2"
@@ -69,13 +72,12 @@
                     <input
                       class="form-check-input specifyDate"
                       type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault3"
+                      id="flexRadioDefault4"
                       (click)="specifyDate()"
                     />
                     <label
                       class="form-check-label specifyDate m-2"
-                      for="flexRadioDefault3 "
+                      for="flexRadioDefault4"
                     >
                       Specify a date
                     </label>
@@ -89,12 +91,13 @@
                           <input
                             class="form-check-input mx-2"
                             type="radio"
-                            name="flexRadioDefault"
-                            id="flexRadioDefault3"
+                            id="flexRadioDefault5"
+                            formControlName="startDate"
+                            value="1 month"
                           />
                           <label
                             class="form-check-label"
-                            for="flexRadioDefault3 "
+                            for="flexRadioDefault5 "
                           >
                             1 month
                           </label>
@@ -103,12 +106,13 @@
                           <input
                             class="form-check-input mx-2"
                             type="radio"
-                            name="flexRadioDefault"
-                            id="flexRadioDefault3"
+                            id="flexRadioDefault6"
+                            formControlName="startDate"
+                            value="2 months"
                           />
                           <label
                             class="form-check-label"
-                            for="flexRadioDefault3 "
+                            for="flexRadioDefault6"
                           >
                             2 months
                           </label>
@@ -117,12 +121,13 @@
                           <input
                             class="form-check-input mx-2"
                             type="radio"
-                            name="flexRadioDefault"
-                            id="flexRadioDefault3"
+                            id="flexRadioDefault7"
+                            formControlName="startDate"
+                            value="3 months"
                           />
                           <label
                             class="form-check-label"
-                            for="flexRadioDefault3 "
+                            for="flexRadioDefault7"
                           >
                             3 months
                           </label>
@@ -131,14 +136,11 @@
                           <input
                             class="form-check-input mx-2"
                             type="radio"
-                            name="flexRadioDefault"
-                            id="flexRadioDefault3"
+                            id="flexRadioDefault8"
+                            formControlName="startDate"
+                            value="6 months"
                           />
-                          <label
-                            for="flexRadioDefault3 "
-                          >
-                            6 months
-                          </label>
+                          <label for="flexRadioDefault8"> 6 months </label>
                         </div>
                       </div>
                     </div>
@@ -148,13 +150,11 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault3"
+                      id="flexRadioDefault9"
+                      formControlName="startDate"
+                      value="I don't know"
                     />
-                    <label
-                      class="form-check-label m-2"
-                      for="flexRadioDefault3 "
-                    >
+                    <label class="form-check-label m-2" for="flexRadioDefault9">
                       I don't know
                     </label>
                   </div>
@@ -162,11 +162,9 @@
               </div>
             </div>
             <div class="d-flex justify-content-end my-5">
-              <a
-              [routerLink]="['/schedule-call/technologies']"
-              class="btn btn-success px-3"
-              >Next<i class="bi bi-arrow-right px-2"></i>
-            </a>
+              <a (click)="onSubmit()" class="btn btn-success px-3"
+                >Next<i class="bi bi-arrow-right px-2"></i>
+              </a>
             </div>
           </form>
         </div>
@@ -174,7 +172,7 @@
     </div>
     <div class="col-lg-2 vh-100" style="background-color: #3d4751">
       <div class="" style="margin-top: 150px">
-        <p class="text-white text-center mb-4 ">Amazing clients who trust us</p>
+        <p class="text-white text-center mb-4">Amazing clients who trust us</p>
         <div class="text-center">
           <a href="/" class="logo-dark"
             ><img

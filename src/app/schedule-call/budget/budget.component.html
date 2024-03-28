@@ -11,7 +11,7 @@
         /></a>
 
         <div class="row">
-          <form class="col-lg-5">
+          <form class="col-lg-5" formGroup]="budgetForm">
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -26,12 +26,13 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault3"
+                      id="flexRadioDefault1"
+                      formControlName="projectDuration"
+                      value="Under $10k"
                     />
                     <label
                       class="form-check-label m-2"
-                      for="flexRadioDefault3 "
+                      for="flexRadioDefault1 "
                     >
                       Under $10k
                     </label>
@@ -40,12 +41,13 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault3"
+                      id="flexRadioDefault2"
+                      formControlName="projectDuration"
+                      value="$10k - $50k"
                     />
                     <label
                       class="form-check-label m-2"
-                      for="flexRadioDefault3 "
+                      for="flexRadioDefault2 "
                     >
                       $10k - $50k
                     </label>
@@ -55,8 +57,9 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
                       id="flexRadioDefault3"
+                      formControlName="projectDuration"
+                      value="$50k - $200k"
                     />
                     <label
                       class="form-check-label m-2"
@@ -69,12 +72,13 @@
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault3"
+                      id="flexRadioDefault4"
+                      formControlName="projectDuration"
+                      value="More than $200k"
                     />
                     <label
                       class="form-check-label m-2"
-                      for="flexRadioDefault3 "
+                      for="flexRadioDefault4 "
                     >
                       More than $200k
                     </label>
@@ -83,9 +87,7 @@
               </div>
             </div>
             <div class="d-flex justify-content-end my-5">
-              <a
-                [routerLink]="['/schedule-call/start-date']"
-                class="btn btn-success px-3"
+              <a (click)="onSubmit()" class="btn btn-success px-3"
                 >Next<i class="bi bi-arrow-right px-2"></i>
               </a>
             </div>
@@ -99,25 +101,16 @@
         <div class="my-5">
           <div class="d-flex text-white text-center my-3">
             <i class="bi bi-check px-2 fs-4"></i>
-            <span>
-              Top 1% IT Talent
-            </span>
+            <span> Top 1% IT Talent </span>
           </div>
-          <div class="d-flex text-white text-center ">
-            <i class="bi bi-check px-2 fs-4 "></i>
-            <span>
-              Time Zone aligned
-            </span>
-           
+          <div class="d-flex text-white text-center">
+            <i class="bi bi-check px-2 fs-4"></i>
+            <span> Time Zone aligned </span>
           </div>
           <div class="d-flex text-white text-center my-3">
             <i class="bi bi-check px-2 fs-4"></i>
-            <span>
-              100% Bilingual Teams
-            </span>
-        
+            <span> 100% Bilingual Teams </span>
           </div>
-
         </div>
       </div>
     </div>
