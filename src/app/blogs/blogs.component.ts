@@ -24,10 +24,8 @@ export class BlogsComponent {
     this.blogService
       .fetchPosts()
       .then((resp: any) => {
-        console.log(resp);
         this.posts = resp?.items;
         this.isLoading = false;
-        console.log('All Blogs', this.posts);
 
         this.formatDates();
       })

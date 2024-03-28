@@ -9,20 +9,27 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ContactService } from '../services/contact.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
 export class ContactComponent implements OnInit {
   contactForm!: FormGroup;
-  constructor(private fb: FormBuilder, private toastr: ToastrService) {}
+  isLoading: boolean = false;
+  constructor(
+    private fb: FormBuilder,
+    private toastr: ToastrService,
+    private contactService: ContactService
+  ) {}
   ngOnInit(): void {
     this.contactForm = this.fb.group({
-      fullName: ['', Validators.required],
+      name: ['', Validators.required],
       company: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -32,13 +39,26 @@ export class ContactComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('form value:', this.contactForm);
-    if (this.contactForm.status == 'INVALID') {
+    this.isLoading = true;
+
+    this.contactForm.markAllAsTouched();
+    if (this.contactForm.invalid) {
+      this.isLoading = false;
       this.toastr.error('Please provide all the details');
-    } else if (this.contactForm.status == 'VALID') {
-      {
-        this.toastr.success('Thanks for submitting');
-      }
+      return;
     }
+
+    this.contactService.postContact(this.contactForm.value).subscribe(
+      (res: any) => {
+        this.isLoading = false;
+        if (res.msg == 'SUCCESS') this.toastr.success('Thanks for submitting');
+        else this.toastr.error('An error occurred while submitting');
+      },
+      (error) => {
+        this.isLoading = false;
+        console.error('Error occurred:', error);
+        this.toastr.error('An error occurred while submitting');
+      }
+    );
   }
 }

@@ -31,7 +31,6 @@ export class BlogDetailsComponent implements OnInit {
     this.route.params.subscribe((param) => {
       this.isLoading = true;
       this.slugName = param['type'];
-      console.log(this.slugName);
     });
     this.blogService
       .getBlogBySlug(this.slugName)

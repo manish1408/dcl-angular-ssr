@@ -112,7 +112,7 @@
             </div>
             <div class="content">
               <span>Working Hours</span>
-              <h6>Mon to Fri : 8am- 9pm</h6>
+              <h6>Mon to Fri : 9am- 7pm</h6>
               <!-- <h6>Sat : <span>Closed</span></h6> -->
             </div>
           </div>
@@ -305,7 +305,7 @@
                 <div class="col-lg-6 mb-20">
                   <div class="form-inner">
                     <label>Full Name</label>
-                    <input type="text" formControlName="fullName" />
+                    <input type="text" formControlName="name" />
                   </div>
                 </div>
                 <div class="col-lg-6 mb-20">
@@ -347,6 +347,11 @@
                       (click)="onSubmit()"
                     >
                       <span>Submit Now</span>
+                      <span
+                        *ngIf="isLoading"
+                        class="spinner-border spinner-border-sm mx-2"
+                        role="status"
+                      ></span>
                     </button>
                   </div>
                 </div>
