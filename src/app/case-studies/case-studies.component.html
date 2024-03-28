@@ -1,1 +1,132 @@
-<p>case-studies works!</p>
+<!-- Start Breadcrumb section -->
+<div
+  class="breadcrumb-section"
+  style="
+    background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
+      linear-gradient(180deg, #121212 0%, #121212 100%);
+  "
+>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="banner-wrapper">
+          <div class="banner-content">
+            <ul class="breadcrumb-list">
+              <li><a href="index.html">Home</a></li>
+              <li>Case Study</li>
+            </ul>
+            <h1>Success In The Field.</h1>
+          </div>
+          <div class="scroll-down-btn">
+            <a href="#case-study-card-section">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="19"
+                height="29"
+                viewBox="0 0 19 29"
+              >
+                <path
+                  d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Breadcrumb section -->
+<!-- <div
+                
+class="spinner-border spinner-border-sm ms-3 text-center"
+role="status"
+>
+<span class="visually-hidden">Loading...</span>
+</div> -->
+<!-- Start Team Section -->
+<div
+  class="case-study-card-section scroll-margin pt-120 mb-120"
+  id="case-study-card-section"
+>
+  <div class="container">
+    <div class="row g-4 mb-50">
+      @for (post of posts; track post) {
+      <div
+        class="col-xl-4 col-md-6 wow animate fadeInDown"
+        data-wow-delay="200ms"
+        data-wow-duration="1500ms"
+      >
+        <div class="case-study-card2">
+          <div class="card-img">
+            <img
+              [src]="
+                'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
+                post?.data?.thumbnail?.iv[0]
+              "
+              alt=""
+            />
+          </div>
+          <div class="card-content">
+          
+            <h4>
+              <a [routerLink]="['/case-study/', post.data?.slug?.iv]"
+                >{{ post.data?.projectName?.iv }}
+              </a>
+            </h4>
+            <h5>
+              {{ post.data?.ProjectDomain?.iv }}
+            </h5>
+           
+
+     
+            <!-- <div class="number">
+                               <span>+</span>
+                               <h5 class="counter">40</h5>
+                               <span>%</span>
+                           </div> -->
+            <!-- <ul class="tag-list">
+                               <li><a href="case-study.html">Paid Search</a></li>
+                               <li><a href="case-study.html">Paid Social</a></li>
+                               <li><a href="case-study.html">SEO</a></li>
+                           </ul> -->
+                           <!-- <a [routerLink]="['/case-study-details', post.data?.ProjectDomain?.iv?.toLowerCase().replace(/\s+/g, '-')]"> -->
+
+            <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="read-more-btn"
+              >Read The Success Stories
+             
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="10"
+                height="10"
+                viewBox="0 0 10 10"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M8.48878 0.885308L0 9.37364L0.626356 10L9.11469 1.51122V7.38037H10V0H2.61963V0.885308H8.48878Z"
+                ></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+    <!-- <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center wow animate fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
+                    <a href="package-grid.html" class="load-btn">
+                        <span>
+                            Load More
+                            <svg viewBox="0 0 13 20">
+                                <polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div> -->
+  </div>
+</div>
+<!-- End Team Section -->
+
+

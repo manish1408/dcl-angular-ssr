@@ -1,26 +1,38 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import {  IDropdownSettings, NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import {
+  IDropdownSettings,
+  NgMultiSelectDropDownModule,
+} from 'ng-multiselect-dropdown';
 
 @Component({
   selector: 'app-technologies',
   standalone: true,
-  imports: [RouterModule, CommonModule, NgMultiSelectDropDownModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    RouterModule,
+    CommonModule,
+    NgMultiSelectDropDownModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './technologies.component.html',
-  styleUrl: './technologies.component.scss'
+  styleUrl: './technologies.component.scss',
 })
-export class TechnologiesComponent implements OnInit{
-  dropdownList:any = [];
-  selectedItems:any = [];
-  dropdownSettings:any = {};
-  requirementForm :FormGroup = new FormGroup({
-  
-      selectedItems: new FormControl('')
-  
-  })
+export class TechnologiesComponent implements OnInit {
+  dropdownList: any = [];
+  selectedItems: any = [];
+  dropdownSettings: any = {};
+  requirementForm: FormGroup = new FormGroup({
+    selectedItems: new FormControl(''),
+  });
   ngOnInit() {
     this.dropdownList = [
       { item_id: 1, item_text: '.NET' },
@@ -32,12 +44,8 @@ export class TechnologiesComponent implements OnInit{
       { item_id: 7, item_text: 'Amazon ECS' },
       { item_id: 8, item_text: 'Angular 2' },
       { item_id: 9, item_text: 'Angular JS' },
-      { item_id: 10, item_text: 'Ansible' }
+      { item_id: 10, item_text: 'Ansible' },
     ];
-    // this.selectedItems = [
-    //   { item_id: 3, item_text: 'Pune' },
-    //   { item_id: 4, item_text: 'Navsari' }
-    // ];
     this.dropdownSettings = {
       singleSelection: false,
       idField: 'item_id',
@@ -55,5 +63,4 @@ export class TechnologiesComponent implements OnInit{
   onSelectAll(items: any) {
     console.log(items);
   }
-
 }
