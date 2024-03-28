@@ -34,10 +34,6 @@ export class ContactComponent implements OnInit {
   onSubmit() {
     console.log('form value:', this.contactForm);
     if (this.contactForm.status == 'INVALID') {
-      console.log('invlid');
-      this.toastr.error('everything is broken', 'Major Error', {
-        timeOut: 3000,
-      });
       this.toastr.error('Please provide all the details');
     } else if (this.contactForm.status == 'VALID') {
       {
