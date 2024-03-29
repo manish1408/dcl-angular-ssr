@@ -14,7 +14,7 @@
         </h3>
 
         <div class="row">
-          <form class="col-lg-5">
+          <form class="col-lg-5" [formGroup]="contactInfoForm">
             <div class="form-group">
               <label for="name">Company Name</label>
               <input
@@ -22,6 +22,7 @@
                 class="form-control"
                 id="name"
                 aria-describedby="name"
+                formControlName="company"
               />
             </div>
             <div class="form-group my-3">
@@ -31,16 +32,14 @@
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
+                formControlName="phone"
               />
             </div>
 
             <div class="d-flex justify-content-end my-5">
-              <a
-                [routerLink]="['/schedule-call/it-professionals']"
-                class="btn btn-success px-3"
+              <a class="btn btn-success px-3" (click)="onSubmit()"
                 >Next<i class="bi bi-arrow-right px-2"></i>
               </a>
-              
             </div>
           </form>
         </div>
@@ -48,7 +47,7 @@
     </div>
     <div class="col-lg-2 vh-100" style="background-color: #3d4751">
       <div class="" style="margin-top: 150px">
-        <p class="text-white text-center mb-4 ">Amazing clients who trust us</p>
+        <p class="text-white text-center mb-4">Amazing clients who trust us</p>
         <div class="text-center">
           <a href="/" class="logo-dark"
             ><img

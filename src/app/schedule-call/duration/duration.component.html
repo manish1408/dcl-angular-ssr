@@ -11,7 +11,7 @@
         /></a>
 
         <div class="row">
-          <form class="col-lg-5">
+          <form class="col-lg-5" [formGroup]="durationForm">
             <div class="card">
               <div class="card-body">
                 <div class="row">
@@ -22,82 +22,98 @@
                   </div>
                 </div>
                 <div class="form-group col-lg-4">
-                    <div class="d-flex align-items-center">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault3"
-                        />
-                        <label class="form-check-label m-2" for="flexRadioDefault3 ">
-                          3 months or less
-                        </label>
-                      </div>
-                      <div class="d-flex align-items-center">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault3"
-                        />
-                        <label class="form-check-label m-2" for="flexRadioDefault3 ">
-                          3 - 6 months
-                        </label>
-                      </div>
-        
-                      <div class="d-flex align-items-center">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault3"
-                        />
-                        <label class="form-check-label m-2" for="flexRadioDefault3 ">
-                          6 - 12 months
-                        </label>
-                      </div>
-                      <div class="d-flex align-items-center">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault3"
-                        />
-                        <label class="form-check-label m-2" for="flexRadioDefault3 ">
-                          Ongoing
-                        </label>
-                      </div>
-                     
-                      <div class="d-flex align-items-center">
-                        <input
-                          class="form-check-input"
-                          type="radio"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault3"
-                        />
-                        <label class="form-check-label m-2" for="flexRadioDefault3 ">
-                          I don't know
-                        </label>
-                      </div>
+                  <div class="d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      id="flexRadioDefault1"
+                      formControlName="projectDuration"
+                      value="3 months or less"
+                    />
+                    <label
+                      class="form-check-label m-2"
+                      for="flexRadioDefault1 "
+                    >
+                      3 months or less
+                    </label>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      formControlName="projectDuration"
+                      value="3 - 6 months"
+                      id="flexRadioDefault2"
+                    />
+                    <label
+                      class="form-check-label m-2"
+                      for="flexRadioDefault2 "
+                    >
+                      3 - 6 months
+                    </label>
+                  </div>
+
+                  <div class="d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      id="flexRadioDefault3"
+                      formControlName="projectDuration"
+                      value="6 - 12 months"
+                    />
+                    <label
+                      class="form-check-label m-2"
+                      for="flexRadioDefault3 "
+                    >
+                      6 - 12 months
+                    </label>
+                  </div>
+                  <div class="d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      formControlName="projectDuration"
+                      value="Ongoing"
+                      id="flexRadioDefault4"
+                    />
+                    <label
+                      class="form-check-label m-2"
+                      for="flexRadioDefault4 "
+                    >
+                      Ongoing
+                    </label>
+                  </div>
+
+                  <div class="d-flex align-items-center">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      formControlName="projectDuration"
+                      value="I don't know"
+                      id="flexRadioDefault5"
+                    />
+                    <label
+                      class="form-check-label m-2"
+                      for="flexRadioDefault5 "
+                    >
+                      I don't know
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
             <div class="d-flex justify-content-end my-5">
-              <a
-              [routerLink]="['/schedule-call/budget']"
-              class="btn btn-success px-3"
-              >Next<i class="bi bi-arrow-right px-2"></i>
-            </a>
-             
+              <a class="btn btn-success px-3" (click)="onSubmit()"
+                >Next<i class="bi bi-arrow-right px-2"></i>
+              </a>
             </div>
-         
           </form>
         </div>
       </div>
     </div>
     <div class="col-lg-2 vh-100" style="background-color: #3d4751">
       <div class="" style="margin-top: 150px">
-        <p class="text-white text-center mb-4 ">Amazing clients who trust us</p>
+        <p class="text-white text-center mb-4">Amazing clients who trust us</p>
         <div class="text-center">
           <a href="/" class="logo-dark"
             ><img

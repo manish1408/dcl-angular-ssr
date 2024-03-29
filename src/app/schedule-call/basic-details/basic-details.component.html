@@ -16,7 +16,7 @@
         </h3>
 
         <div class="row">
-          <form class="col-lg-5">
+          <form class="col-lg-5" [formGroup]="basicDetailsForm">
             <div class="form-group">
               <label for="name">Your name</label>
               <input
@@ -25,16 +25,18 @@
                 id="name"
                 aria-describedby="name"
                 placeholder="Your name"
+                formControlName="name"
               />
             </div>
             <div class="form-group my-2">
-              <label for="exampleInputEmail1">Your work email</label>
+              <label for="email">Your work email</label>
               <input
                 type="email"
                 class="form-control"
-                id="exampleInputEmail1"
+                id="email"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                formControlName="email"
               />
             </div>
 
@@ -45,8 +47,9 @@
                   <input
                     class="form-check-input"
                     type="radio"
-                    name="flexRadioDefault"
                     id="flexRadioDefault1"
+                    formControlName="serviceRequested"
+                    value="Staff Augmentation"
                   />
                   <label class="form-check-label" for="flexRadioDefault1">
                     Staff Augmentation
@@ -57,8 +60,9 @@
                   <input
                     class="form-check-input mx-lg-2"
                     type="radio"
-                    name="flexRadioDefault"
+                    formControlName="serviceRequested"
                     id="flexRadioDefault2"
+                    value="Dedicated Teams"
                   />
                   <label class="form-check-label" for="flexRadioDefault2">
                     Dedicated Teams
@@ -68,8 +72,9 @@
                   <input
                     class="form-check-input mx-lg-3"
                     type="radio"
-                    name="flexRadioDefault"
+                    formControlName="serviceRequested"
                     id="flexRadioDefault3"
+                    value="Software Outsourcing"
                   />
                   <label class="form-check-label" for="flexRadioDefault3">
                     Software Outsourcing
@@ -79,21 +84,22 @@
             </div>
 
             <div>
-              <label class="site-paragraph-m .text-site-neutrals-600" for="help"
+              <label
+                class="site-paragraph-m .text-site-neutrals-600"
+                for="serviceMessage"
                 >How can we help?</label
               >
               <textarea
                 class="form-control"
                 aria-label="With textarea"
                 style="height: 100px"
-                id="help"
+                id="serviceMessage"
                 placeholder="Tell us how we can help."
+                formControlName="serviceMessage"
               ></textarea>
             </div>
             <div class="d-flex justify-content-end my-5">
-              <a
-                [routerLink]="['/schedule-call/contact-information']"
-                class="btn btn-success px-3"
+              <a class="btn btn-success px-3" (click)="onSubmit()"
                 >Get Started<i class="bi bi-arrow-right px-2"></i>
               </a>
             </div>
@@ -103,7 +109,9 @@
     </div>
     <div class="col-lg-2 vh-100" style="background-color: #3d4751">
       <div class="" style="margin-top: 150px">
-        <p class="text-white text-center mb-4 fs-5">Amazing clients who trust us</p>
+        <p class="text-white text-center mb-4 fs-5">
+          Amazing clients who trust us
+        </p>
         <div class="text-center">
           <a href="/" class="logo-dark"
             ><img
