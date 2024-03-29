@@ -33,6 +33,10 @@ export class ItProfessionalsComponent implements OnInit {
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
   }
+  hasError(controlName: keyof typeof this.itForm.controls) {
+    const control = this.itForm.controls[controlName];
+    return control.invalid && control.touched;
+  }
 
   onSubmit() {
     this.itForm.markAllAsTouched();

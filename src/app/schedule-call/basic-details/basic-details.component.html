@@ -54,43 +54,9 @@
               </div>
             </div>
 
-            <!-- <div class="my-3">
-              <h2 class="site-paragraph-m">Select your service</h2>
-              <div class="d-flex flex-lg-row flex-column">
-                <div
-                  class="form-check"
-                  *ngFor="
-                    let service of [
-                      'Staff Augmentation',
-                      'Dedicated Teams',
-                      'Software Outsourcing'
-                    ]
-                  "
-                >
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    [id]="service"
-                    formControlName="serviceRequested"
-                    [value]="service"
-                    [ngClass]="{ 'is-invalid': hasError('serviceRequested') }"
-                  />
-                  <label class="form-check-label" [for]="service">{{
-                    service
-                  }}</label>
-                </div>
-                <div
-                  *ngIf="hasError('serviceRequested')"
-                  class="invalid-feedback"
-                >
-                  Service is required
-                </div>
-              </div>
-            </div> -->
-
             <div class="my-3">
               <h2 class="site-paragraph-m">Select your service</h2>
-              <div class="d-flex flex-lg-row flex-column">
+              <div class="d-flex flex-lg-row flex-column form-group">
                 <div class="form-check">
                   <input
                     class="form-check-input"
@@ -98,7 +64,6 @@
                     id="flexRadioDefault1"
                     formControlName="serviceRequested"
                     value="Staff Augmentation"
-                    [ngClass]="{ 'is-invalid': hasError('serviceRequested') }"
                   />
                   <label class="form-check-label" for="flexRadioDefault1">
                     Staff Augmentation
@@ -112,7 +77,6 @@
                     formControlName="serviceRequested"
                     id="flexRadioDefault2"
                     value="Dedicated Teams"
-                    [ngClass]="{ 'is-invalid': hasError('serviceRequested') }"
                   />
                   <label class="form-check-label" for="flexRadioDefault2">
                     Dedicated Teams
@@ -125,18 +89,17 @@
                     formControlName="serviceRequested"
                     id="flexRadioDefault3"
                     value="Software Outsourcing"
-                    [ngClass]="{ 'is-invalid': hasError('serviceRequested') }"
                   />
                   <label class="form-check-label" for="flexRadioDefault3">
                     Software Outsourcing
                   </label>
                 </div>
-                <div
-                  *ngIf="hasError('serviceRequested')"
-                  class="invalid-feedback"
-                >
-                  Service is required
-                </div>
+              </div>
+              <div
+                *ngIf="hasError('serviceRequested')"
+                class="custom-invalid-feedback my-0"
+              >
+                Service is required
               </div>
             </div>
 

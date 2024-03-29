@@ -100,6 +100,12 @@
                     </label>
                   </div>
                 </div>
+                <div
+                  *ngIf="hasError('projectDuration')"
+                  class="custom-invalid-feedback my-0"
+                >
+                  Duration is required
+                </div>
               </div>
             </div>
             <div class="d-flex justify-content-end my-5">

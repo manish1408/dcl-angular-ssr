@@ -75,6 +75,10 @@ export class TechnologiesComponent implements OnInit {
       enableCheckAll: false,
     };
   }
+  hasError(controlName: keyof typeof this.technologiesForm.controls) {
+    const control = this.technologiesForm.controls[controlName];
+    return control.invalid && control.touched;
+  }
 
   onSubmit() {
     this.technologiesForm.markAllAsTouched();
