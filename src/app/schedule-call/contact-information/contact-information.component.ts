@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contact-information',
@@ -22,7 +23,8 @@ export class ContactInformationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private formDataService: FormDataService
+    private formDataService: FormDataService,
+    private toastr: ToastrService
   ) {
     this.contactInfoForm = this.fb.group({
       company: ['', Validators.required],
@@ -39,6 +41,8 @@ export class ContactInformationComponent implements OnInit {
     if (this.contactInfoForm.valid) {
       this.formDataService.setFormData(this.contactInfoForm.value);
       this.router.navigate(['/schedule-call/it-professionals']);
+    } else {
+      this.toastr.error('Please provide all details');
     }
   }
 }

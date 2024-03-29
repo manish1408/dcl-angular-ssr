@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { FormDataService } from '../../services/form-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-duration',
@@ -22,7 +23,8 @@ export class DurationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private formDataService: FormDataService
+    private formDataService: FormDataService,
+    private toastr: ToastrService
   ) {
     this.durationForm = this.fb.group({
       projectDuration: ['', Validators.required],
@@ -37,6 +39,8 @@ export class DurationComponent implements OnInit {
     if (this.durationForm.valid) {
       this.formDataService.setFormData(this.durationForm.value);
       this.router.navigate(['/schedule-call/budget']);
+    } else {
+      this.toastr.error('Please select duration');
     }
   }
 }

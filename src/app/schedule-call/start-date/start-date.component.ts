@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { FormDataService } from '../../services/form-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-start-date',
@@ -23,7 +24,8 @@ export class StartDateComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private formDataService: FormDataService
+    private formDataService: FormDataService,
+    private toastr: ToastrService
   ) {
     this.startDateForm = this.fb.group({
       startDate: ['', Validators.required],
@@ -38,6 +40,8 @@ export class StartDateComponent implements OnInit {
     if (this.startDateForm.valid) {
       this.formDataService.setFormData(this.startDateForm.value);
       this.router.navigate(['/schedule-call/technologies']);
+    } else {
+      this.toastr.error('Please select start date');
     }
   }
 

@@ -15,6 +15,7 @@ import {
   NgMultiSelectDropDownModule,
 } from 'ng-multiselect-dropdown';
 import { FormDataService } from '../../services/form-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-technologies',
@@ -41,7 +42,8 @@ export class TechnologiesComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private formDataService: FormDataService
+    private formDataService: FormDataService,
+    private toastr: ToastrService
   ) {
     this.technologiesForm = this.fb.group({
       technologyNeeded: ['', Validators.required],
@@ -95,6 +97,8 @@ export class TechnologiesComponent implements OnInit {
         });
 
       this.router.navigate(['/thank-you']);
+    } else {
+      this.toastr.error('Please select technologies required');
     }
   }
 }

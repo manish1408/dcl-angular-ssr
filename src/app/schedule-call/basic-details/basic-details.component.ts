@@ -37,13 +37,17 @@ export class BasicDetailsComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
+    console.log(this.basicDetailsForm);
     this.basicDetailsForm.markAllAsTouched();
     if (this.basicDetailsForm.valid) {
       this.formDataService.setFormData(this.basicDetailsForm.value);
       this.router.navigate(['/schedule-call/contact-information']);
     } else if (this.basicDetailsForm.invalid) {
-      console.log('error', this.basicDetailsForm.invalid);
-      this.toastr.error('Please provide all the details');
+      if (this.basicDetailsForm.controls['email'].errors?.['email']) {
+        this.toastr.error('Invalid email format');
+      } else {
+        this.toastr.error('Please provide all the details');
+      }
     }
   }
 }

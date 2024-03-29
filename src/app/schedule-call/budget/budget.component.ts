@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { FormDataService } from '../../services/form-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-budget',
@@ -22,7 +23,8 @@ export class BudgetComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private formDataService: FormDataService
+    private formDataService: FormDataService,
+    private toastr: ToastrService
   ) {
     this.budgetForm = this.fb.group({
       budget: ['', Validators.required],
@@ -37,6 +39,8 @@ export class BudgetComponent implements OnInit {
     if (this.budgetForm.valid) {
       this.formDataService.setFormData(this.budgetForm.value);
       this.router.navigate(['/schedule-call/start-date']);
+    } else {
+      this.toastr.error('Please select budget');
     }
   }
 }

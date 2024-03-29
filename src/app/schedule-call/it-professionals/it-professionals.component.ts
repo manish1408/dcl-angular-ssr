@@ -8,6 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-it-professionals',
@@ -22,7 +23,8 @@ export class ItProfessionalsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private formDataService: FormDataService
+    private formDataService: FormDataService,
+    private toastr: ToastrService
   ) {
     this.itForm = this.fb.group({
       noOfPersonsNeeded: ['', Validators.required],
@@ -37,6 +39,8 @@ export class ItProfessionalsComponent implements OnInit {
     if (this.itForm.valid) {
       this.formDataService.setFormData(this.itForm.value);
       this.router.navigate(['/schedule-call/duration']);
+    } else {
+      this.toastr.error('Please select requirement');
     }
   }
 }
