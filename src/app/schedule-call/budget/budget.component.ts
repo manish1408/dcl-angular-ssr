@@ -30,13 +30,11 @@ export class BudgetComponent implements OnInit {
   }
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
-    console.log('retrieve form:', this.savedFormData);
   }
 
   onSubmit() {
     this.budgetForm.markAllAsTouched();
     if (this.budgetForm.valid) {
-      console.log(this.budgetForm.value);
       this.formDataService.setFormData(this.budgetForm.value);
       this.router.navigate(['/schedule-call/start-date']);
     }

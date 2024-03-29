@@ -37,7 +37,6 @@ export class BasicDetailsComponent implements OnInit {
   onSubmit() {
     this.basicDetailsForm.markAllAsTouched();
     if (this.basicDetailsForm.valid) {
-      console.log(this.basicDetailsForm.value);
       this.formDataService.setFormData(this.basicDetailsForm.value);
       this.router.navigate(['/schedule-call/contact-information']);
     }

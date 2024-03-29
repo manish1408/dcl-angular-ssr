@@ -32,13 +32,11 @@ export class ContactInformationComponent implements OnInit {
 
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
-    console.log('retrieve form:', this.savedFormData);
   }
 
   onSubmit() {
     this.contactInfoForm.markAllAsTouched();
     if (this.contactInfoForm.valid) {
-      console.log(this.contactInfoForm.value);
       this.formDataService.setFormData(this.contactInfoForm.value);
       this.router.navigate(['/schedule-call/it-professionals']);
     }

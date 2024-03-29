@@ -30,13 +30,11 @@ export class DurationComponent implements OnInit {
   }
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
-    console.log('retrieve form:', this.savedFormData);
   }
 
   onSubmit() {
     this.durationForm.markAllAsTouched();
     if (this.durationForm.valid) {
-      console.log(this.durationForm.value);
       this.formDataService.setFormData(this.durationForm.value);
       this.router.navigate(['/schedule-call/budget']);
     }

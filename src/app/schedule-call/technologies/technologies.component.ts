@@ -34,6 +34,7 @@ export class TechnologiesComponent implements OnInit {
   selectedItems: any = [];
   dropdownSettings: any = {};
   technologiesForm!: FormGroup;
+  technologyArray: any = [];
 
   savedFormData: any;
   itForm!: FormGroup;
@@ -48,23 +49,23 @@ export class TechnologiesComponent implements OnInit {
   }
   ngOnInit() {
     this.savedFormData = this.formDataService.getFormData();
-    console.log('retrieve form:', this.savedFormData);
+
     this.dropdownList = [
-      { item_id: 1, item_text: '.NET' },
-      { item_id: 2, item_text: '.NET Core' },
-      { item_id: 3, item_text: 'ABAP' },
-      { item_id: 4, item_text: 'ActionScript' },
-      { item_id: 5, item_text: 'Active Directory' },
-      { item_id: 6, item_text: 'Amazon EC2' },
-      { item_id: 7, item_text: 'Amazon ECS' },
-      { item_id: 8, item_text: 'Angular 2' },
-      { item_id: 9, item_text: 'Angular JS' },
-      { item_id: 10, item_text: 'Ansible' },
+      { id: 1, value: '.NET' },
+      { id: 2, value: '.NET Core' },
+      { id: 3, value: 'ABAP' },
+      { id: 4, value: 'ActionScript' },
+      { id: 5, value: 'Active Directory' },
+      { id: 6, value: 'Amazon EC2' },
+      { id: 7, value: 'Amazon ECS' },
+      { id: 8, value: 'Angular 2' },
+      { id: 9, value: 'Angular JS' },
+      { id: 10, value: 'Ansible' },
     ];
     this.dropdownSettings = {
       singleSelection: false,
-      idField: 'item_id',
-      textField: 'item_text',
+      idField: 'id',
+      textField: 'value',
       selectAllText: '',
       unSelectAllText: '',
       itemsShowLimit: 4,
@@ -76,9 +77,24 @@ export class TechnologiesComponent implements OnInit {
   onSubmit() {
     this.technologiesForm.markAllAsTouched();
     if (this.technologiesForm.valid) {
-      console.log(this.technologiesForm.value);
-      this.formDataService.setFormData(this.technologiesForm.value);
-      // this.router.navigate(['/home']);
+      this.technologyArray = this.technologiesForm.value.technologyNeeded;
+      const convertedValues = {
+        technologyNeeded: this.technologyArray.map((item: any) => item.value),
+      };
+
+      this.formDataService.setFormData(convertedValues);
+
+      const formData = (this.savedFormData =
+        this.formDataService.getFormData());
+      // console.log('Final form to send:', this.savedFormData);
+
+      this.formDataService
+        .saveScheduleCall(this.savedFormData)
+        .subscribe((res) => {
+          console.log(res);
+        });
+
+      this.router.navigate(['/home']);
     }
   }
 }

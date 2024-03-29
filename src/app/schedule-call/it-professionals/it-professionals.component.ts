@@ -30,13 +30,11 @@ export class ItProfessionalsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
-    console.log('retrieve form:', this.savedFormData);
   }
 
   onSubmit() {
     this.itForm.markAllAsTouched();
     if (this.itForm.valid) {
-      console.log(this.itForm.value);
       this.formDataService.setFormData(this.itForm.value);
       this.router.navigate(['/schedule-call/duration']);
     }

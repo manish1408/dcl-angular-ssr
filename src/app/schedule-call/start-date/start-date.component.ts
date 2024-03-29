@@ -31,13 +31,11 @@ export class StartDateComponent implements OnInit {
   }
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
-    console.log('retrieve form:', this.savedFormData);
   }
 
   onSubmit() {
     this.startDateForm.markAllAsTouched();
     if (this.startDateForm.valid) {
-      console.log(this.startDateForm.value);
       this.formDataService.setFormData(this.startDateForm.value);
       this.router.navigate(['/schedule-call/technologies']);
     }
