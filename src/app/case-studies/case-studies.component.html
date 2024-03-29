@@ -37,14 +37,16 @@
   </div>
 </div>
 <!-- End Breadcrumb section -->
-<!-- <div
-                
-class="spinner-border spinner-border-sm ms-3 text-center"
-role="status"
->
-<span class="visually-hidden">Loading...</span>
-</div> -->
+
 <!-- Start Team Section -->
+<div class="d-flex justify-content-center">
+  <span
+    *ngIf="isLoading"
+    class="spinner-border spinner-border-sm mt-5"
+    role="status"
+  ></span>
+</div>
+
 <div
   class="case-study-card-section scroll-margin pt-120 mb-120"
   id="case-study-card-section"
@@ -68,7 +70,6 @@ role="status"
             />
           </div>
           <div class="card-content">
-          
             <h4>
               <a [routerLink]="['/case-study/', post.data?.slug?.iv]"
                 >{{ post.data?.projectName?.iv }}
@@ -77,9 +78,7 @@ role="status"
             <h5>
               {{ post.data?.ProjectDomain?.iv }}
             </h5>
-           
 
-     
             <!-- <div class="number">
                                <span>+</span>
                                <h5 class="counter">40</h5>
@@ -90,11 +89,13 @@ role="status"
                                <li><a href="case-study.html">Paid Social</a></li>
                                <li><a href="case-study.html">SEO</a></li>
                            </ul> -->
-                           <!-- <a [routerLink]="['/case-study-details', post.data?.ProjectDomain?.iv?.toLowerCase().replace(/\s+/g, '-')]"> -->
+            <!-- <a [routerLink]="['/case-study-details', post.data?.ProjectDomain?.iv?.toLowerCase().replace(/\s+/g, '-')]"> -->
 
-            <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="read-more-btn"
-              >Read The Success Stories
-             
+            <a
+              [routerLink]="['/case-study/', post.data?.slug?.iv]"
+              class="read-more-btn"
+              >Read More
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="10"
@@ -128,5 +129,3 @@ role="status"
   </div>
 </div>
 <!-- End Team Section -->
-
-
