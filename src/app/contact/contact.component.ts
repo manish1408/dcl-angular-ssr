@@ -10,12 +10,10 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ContactService } from '../services/contact.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
@@ -61,8 +59,10 @@ export class ContactComponent implements OnInit {
     this.contactService.postContact(this.contactForm.value).subscribe(
       (res: any) => {
         this.isLoading = false;
-        if (res.msg == 'SUCCESS') this.toastr.success('Thanks for submitting');
-        else this.toastr.error('An error occurred while submitting');
+        if (res.msg == 'SUCCESS') {
+          this.toastr.success('Thanks for submitting');
+          this.contactForm.reset();
+        } else this.toastr.error('An error occurred while submitting');
       },
       (error) => {
         this.isLoading = false;
