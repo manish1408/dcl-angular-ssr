@@ -32,7 +32,8 @@ export class AppComponent {
           event['url'] == '/schedule-call/duration' ||
           event['url'] == '/schedule-call/budget' ||
           event['url'] == '/schedule-call/start-date' ||
-          event['url'] == '/schedule-call/technologies'
+          event['url'] == '/schedule-call/technologies' ||
+          event['url'] == '/thank-you'
         ) {
           this.showHead = false;
         } else {

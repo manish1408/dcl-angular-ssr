@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormDataService } from '../../services/form-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-basic-details',
@@ -22,7 +23,8 @@ export class BasicDetailsComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private formDataService: FormDataService
+    private formDataService: FormDataService,
+    private toastr: ToastrService
   ) {
     this.basicDetailsForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -39,6 +41,9 @@ export class BasicDetailsComponent implements OnInit {
     if (this.basicDetailsForm.valid) {
       this.formDataService.setFormData(this.basicDetailsForm.value);
       this.router.navigate(['/schedule-call/contact-information']);
+    } else if (this.basicDetailsForm.invalid) {
+      console.log('error', this.basicDetailsForm.invalid);
+      this.toastr.error('Please provide all the details');
     }
   }
 }

@@ -94,7 +94,7 @@ export class TechnologiesComponent implements OnInit {
           console.log(res);
         });
 
-      this.router.navigate(['/home']);
+      this.router.navigate(['/thank-you']);
     }
   }
 }
