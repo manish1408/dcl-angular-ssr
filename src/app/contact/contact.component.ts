@@ -37,6 +37,16 @@ export class ContactComponent implements OnInit {
       message: ['', Validators.required],
     });
   }
+  hasError(controlName: keyof typeof this.contactForm.controls) {
+    const control = this.contactForm.controls[controlName];
+    return control.invalid && control.touched;
+  }
+  hasEmailFormatError() {
+    return (
+      this.contactForm.controls['email'].hasError('email') &&
+      this.contactForm.controls['email'].touched
+    );
+  }
 
   onSubmit() {
     this.isLoading = true;
