@@ -26,7 +26,9 @@
                 aria-describedby="name"
                 placeholder="Your name"
                 formControlName="name"
+                [ngClass]="{ 'is-invalid': hasError('name') }"
               />
+              <div class="invalid-feedback">Name is required</div>
             </div>
             <div class="form-group my-2">
               <label for="email">Your work email</label>
@@ -37,8 +39,54 @@
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
                 formControlName="email"
+                [ngClass]="{
+                  'is-invalid': hasError('email') || hasEmailFormatError()
+                }"
               />
+              <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
+                Invalid email format
+              </div>
+              <div
+                *ngIf="hasError('email') && !hasEmailFormatError()"
+                class="invalid-feedback"
+              >
+                Email is required
+              </div>
             </div>
+
+            <!-- <div class="my-3">
+              <h2 class="site-paragraph-m">Select your service</h2>
+              <div class="d-flex flex-lg-row flex-column">
+                <div
+                  class="form-check"
+                  *ngFor="
+                    let service of [
+                      'Staff Augmentation',
+                      'Dedicated Teams',
+                      'Software Outsourcing'
+                    ]
+                  "
+                >
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    [id]="service"
+                    formControlName="serviceRequested"
+                    [value]="service"
+                    [ngClass]="{ 'is-invalid': hasError('serviceRequested') }"
+                  />
+                  <label class="form-check-label" [for]="service">{{
+                    service
+                  }}</label>
+                </div>
+                <div
+                  *ngIf="hasError('serviceRequested')"
+                  class="invalid-feedback"
+                >
+                  Service is required
+                </div>
+              </div>
+            </div> -->
 
             <div class="my-3">
               <h2 class="site-paragraph-m">Select your service</h2>
@@ -50,6 +98,7 @@
                     id="flexRadioDefault1"
                     formControlName="serviceRequested"
                     value="Staff Augmentation"
+                    [ngClass]="{ 'is-invalid': hasError('serviceRequested') }"
                   />
                   <label class="form-check-label" for="flexRadioDefault1">
                     Staff Augmentation
@@ -63,6 +112,7 @@
                     formControlName="serviceRequested"
                     id="flexRadioDefault2"
                     value="Dedicated Teams"
+                    [ngClass]="{ 'is-invalid': hasError('serviceRequested') }"
                   />
                   <label class="form-check-label" for="flexRadioDefault2">
                     Dedicated Teams
@@ -75,10 +125,17 @@
                     formControlName="serviceRequested"
                     id="flexRadioDefault3"
                     value="Software Outsourcing"
+                    [ngClass]="{ 'is-invalid': hasError('serviceRequested') }"
                   />
                   <label class="form-check-label" for="flexRadioDefault3">
                     Software Outsourcing
                   </label>
+                </div>
+                <div
+                  *ngIf="hasError('serviceRequested')"
+                  class="invalid-feedback"
+                >
+                  Service is required
                 </div>
               </div>
             </div>
@@ -96,7 +153,9 @@
                 id="serviceMessage"
                 placeholder="Tell us how we can help."
                 formControlName="serviceMessage"
+                [ngClass]="{ 'is-invalid': hasError('name') }"
               ></textarea>
+              <div class="invalid-feedback">Service Message is required</div>
             </div>
             <div class="d-flex justify-content-end my-5">
               <a class="btn btn-success px-3" (click)="onSubmit()"
