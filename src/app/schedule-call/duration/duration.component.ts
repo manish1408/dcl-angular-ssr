@@ -33,6 +33,10 @@ export class DurationComponent implements OnInit {
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
   }
+  hasError(controlName: keyof typeof this.durationForm.controls) {
+    const control = this.durationForm.controls[controlName];
+    return control.invalid && control.touched;
+  }
 
   onSubmit() {
     this.durationForm.markAllAsTouched();

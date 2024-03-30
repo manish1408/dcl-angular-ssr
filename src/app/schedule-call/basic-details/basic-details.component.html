@@ -26,7 +26,9 @@
                 aria-describedby="name"
                 placeholder="Your name"
                 formControlName="name"
+                [ngClass]="{ 'is-invalid': hasError('name') }"
               />
+              <div class="invalid-feedback">Name is required</div>
             </div>
             <div class="form-group my-2">
               <label for="email">Your work email</label>
@@ -37,12 +39,24 @@
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
                 formControlName="email"
+                [ngClass]="{
+                  'is-invalid': hasError('email') || hasEmailFormatError()
+                }"
               />
+              <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
+                Invalid email format
+              </div>
+              <div
+                *ngIf="hasError('email') && !hasEmailFormatError()"
+                class="invalid-feedback"
+              >
+                Email is required
+              </div>
             </div>
 
             <div class="my-3">
               <h2 class="site-paragraph-m">Select your service</h2>
-              <div class="d-flex flex-lg-row flex-column">
+              <div class="d-flex flex-lg-row flex-column form-group">
                 <div class="form-check">
                   <input
                     class="form-check-input"
@@ -81,6 +95,12 @@
                   </label>
                 </div>
               </div>
+              <div
+                *ngIf="hasError('serviceRequested')"
+                class="custom-invalid-feedback my-0"
+              >
+                Service is required
+              </div>
             </div>
 
             <div>
@@ -96,7 +116,9 @@
                 id="serviceMessage"
                 placeholder="Tell us how we can help."
                 formControlName="serviceMessage"
+                [ngClass]="{ 'is-invalid': hasError('name') }"
               ></textarea>
+              <div class="invalid-feedback">Service Message is required</div>
             </div>
             <div class="d-flex justify-content-end my-5">
               <a class="btn btn-success px-3" (click)="onSubmit()"

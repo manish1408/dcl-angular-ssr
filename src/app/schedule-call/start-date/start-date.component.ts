@@ -34,6 +34,10 @@ export class StartDateComponent implements OnInit {
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
   }
+  hasError(controlName: keyof typeof this.startDateForm.controls) {
+    const control = this.startDateForm.controls[controlName];
+    return control.invalid && control.touched;
+  }
 
   onSubmit() {
     this.startDateForm.markAllAsTouched();

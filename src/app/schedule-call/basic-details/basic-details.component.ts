@@ -35,6 +35,16 @@ export class BasicDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  hasError(controlName: keyof typeof this.basicDetailsForm.controls) {
+    const control = this.basicDetailsForm.controls[controlName];
+    return control.invalid && control.touched;
+  }
+  hasEmailFormatError() {
+    return (
+      this.basicDetailsForm.controls['email'].hasError('email') &&
+      this.basicDetailsForm.controls['email'].touched
+    );
+  }
 
   onSubmit() {
     console.log(this.basicDetailsForm);
