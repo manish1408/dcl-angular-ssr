@@ -51,12 +51,15 @@
           <div class="swiper home3-testimonial-slider">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                <!-- @for (item of testimonials; track item;let i=$index) { -->
                 <div class="testimonial-card3">
                   <div class="author-area">
                     <div class="author-img">
                       <img
-                        [src]="currentTestimonial?.data.profileImage.iv"
+                        [src]="
+                          currentTestimonial?.data.profileImage.iv
+                            ? currentTestimonial?.data.profileImage.iv
+                            : 'assets/img/person-circle.svg'
+                        "
                         alt=""
                       />
                     </div>
@@ -84,9 +87,19 @@
                   <div class="logo-and-rating">
                     <div class="logo">
                       <img
-                        src="assets/img/goodfirms-logo.png"
+                        [src]="
+                          currentTestimonial?.data.reviewPlatform.iv ===
+                          'goodfirms'
+                            ? 'assets/img/goodfirms-logo.png'
+                            : 'assets/img/clutch-logo.png'
+                        "
                         alt=""
-                        style="height: 100px"
+                        [style.height.px]="
+                          currentTestimonial?.data.reviewPlatform.iv ===
+                          'goodfirms'
+                            ? 100
+                            : 25
+                        "
                       />
                     </div>
                     <ul
@@ -105,7 +118,6 @@
                     </ul>
                   </div>
                 </div>
-                <!-- } -->
               </div>
             </div>
           </div>

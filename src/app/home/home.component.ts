@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
       this.testimonials = res.items;
+
       this.currentTestimonial = this.testimonials[this.currentIndex];
     });
   }
