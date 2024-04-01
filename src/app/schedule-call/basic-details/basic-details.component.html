@@ -24,9 +24,10 @@
                 class="form-control"
                 id="name"
                 aria-describedby="name"
-                placeholder="Your name"
+                [placeholder]="isLoading ? '' : 'Your name'"
                 formControlName="name"
                 [ngClass]="{ 'is-invalid': hasError('name') }"
+                [disabled]="isLoading"
               />
               <div class="invalid-feedback">Name is required</div>
             </div>

@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormDataService } from '../../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -20,18 +20,34 @@ import { ToastrService } from 'ngx-toastr';
 export class DurationComponent implements OnInit {
   savedFormData: any;
   durationForm!: FormGroup;
+  id!: string;
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private formDataService: FormDataService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) {
     this.durationForm = this.fb.group({
       projectDuration: ['', Validators.required],
+      id: [],
     });
   }
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      console.log(this.id);
+    });
+
+    // get api
+    this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
+      console.log('get data in CI:', res);
+      this.durationForm.patchValue({
+        projectDuration: res.data.projectDuration,
+        id: res.data._id,
+      });
+    });
   }
   hasError(controlName: keyof typeof this.durationForm.controls) {
     const control = this.durationForm.controls[controlName];
@@ -42,9 +58,25 @@ export class DurationComponent implements OnInit {
     this.durationForm.markAllAsTouched();
     if (this.durationForm.valid) {
       this.formDataService.setFormData(this.durationForm.value);
-      this.router.navigate(['/schedule-call/budget']);
+
+      this.formDataService
+        .updateScheduleCall(this.durationForm.value)
+        .subscribe((res) => {
+          console.log(res);
+          if (res.result === 1) {
+            this.id = res.data._id;
+            this.router.navigate(['/schedule-call/budget', this.id]);
+          }
+        }),
+        (error: any) => {
+          console.error('Error occurred:', error);
+          this.toastr.error('Something went wrong. Please try again.');
+        };
     } else {
       this.toastr.error('Please select duration');
     }
+  }
+  back() {
+    this.router.navigate(['/schedule-call/it-professionals', this.id]);
   }
 }

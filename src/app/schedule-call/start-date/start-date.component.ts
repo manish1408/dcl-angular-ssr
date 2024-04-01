@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormDataService } from '../../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -21,18 +21,34 @@ export class StartDateComponent implements OnInit {
   showMonths: boolean = false;
   savedFormData: any;
   startDateForm!: FormGroup;
+  id!: string;
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private formDataService: FormDataService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) {
     this.startDateForm = this.fb.group({
       startDate: ['', Validators.required],
+      id: [],
     });
   }
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      console.log(this.id);
+    });
+
+    // get api
+    this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
+      console.log('get data in CI:', res);
+      this.startDateForm.patchValue({
+        startDate: res.data.startDate,
+        id: res.data._id,
+      });
+    });
   }
   hasError(controlName: keyof typeof this.startDateForm.controls) {
     const control = this.startDateForm.controls[controlName];
@@ -43,6 +59,7 @@ export class StartDateComponent implements OnInit {
     this.startDateForm.markAllAsTouched();
     if (this.startDateForm.valid) {
       this.formDataService.setFormData(this.startDateForm.value);
+
       this.router.navigate(['/schedule-call/technologies']);
     } else {
       this.toastr.error('Please select start date');

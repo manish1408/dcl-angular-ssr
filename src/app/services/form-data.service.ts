@@ -22,4 +22,15 @@ export class FormDataService {
       data
     );
   }
+  updateScheduleCall(data: any): Observable<any> {
+    return this.http.put(
+      'http://api.distinctcloud.io/api/v1/save/scheduleCall',
+      data
+    );
+  }
+  getScheduleCallById(id: any): Observable<any> {
+    return this.http.get(
+      `http://api.distinctcloud.io/api/v1/save/scheduleCall/${id}`
+    );
+  }
 }

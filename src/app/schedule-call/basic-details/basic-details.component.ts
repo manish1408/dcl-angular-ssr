@@ -20,11 +20,14 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class BasicDetailsComponent implements OnInit {
   basicDetailsForm!: FormGroup;
+  id!: string;
+  isLoading: boolean = false;
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private formDataService: FormDataService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) {
     this.basicDetailsForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -34,7 +37,26 @@ export class BasicDetailsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      console.log(this.id);
+    });
+    // get api
+    if (this.id) {
+      this.isLoading = true;
+      this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
+        console.log('get data in BD:', res);
+        this.isLoading = false;
+        this.basicDetailsForm.patchValue({
+          name: res.data.name,
+          email: res.data.email,
+          serviceRequested: res.data.serviceRequested,
+          serviceMessage: res.data.serviceMessage,
+        });
+      });
+    }
+  }
   hasError(controlName: keyof typeof this.basicDetailsForm.controls) {
     const control = this.basicDetailsForm.controls[controlName];
     return control.invalid && control.touched;
@@ -50,8 +72,24 @@ export class BasicDetailsComponent implements OnInit {
     console.log(this.basicDetailsForm);
     this.basicDetailsForm.markAllAsTouched();
     if (this.basicDetailsForm.valid) {
+      this.formDataService
+        .saveScheduleCall(this.basicDetailsForm.value)
+        .subscribe((res) => {
+          console.log(res);
+          if (res.result === 1) {
+            this.id = res.data._id;
+            this.router.navigate([
+              '/schedule-call/contact-information',
+              this.id,
+            ]);
+          }
+        }),
+        (error: any) => {
+          console.error('Error occurred:', error);
+          this.toastr.error('Something went wrong. Please try again.');
+        };
+
       this.formDataService.setFormData(this.basicDetailsForm.value);
-      this.router.navigate(['/schedule-call/contact-information']);
     } else if (this.basicDetailsForm.invalid) {
       if (this.basicDetailsForm.controls['email'].errors?.['email']) {
         this.toastr.error('Invalid email format');
