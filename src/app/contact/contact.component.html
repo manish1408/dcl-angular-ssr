@@ -304,38 +304,89 @@
               <div class="row">
                 <div class="col-lg-6 mb-20">
                   <div class="form-inner">
-                    <label>Full Name</label>
-                    <input type="text" formControlName="name" />
+                    <label for="name">Full Name</label>
+                    <input
+                      type="text"
+                      formControlName="name"
+                      id="name"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': hasError('name') }"
+                    />
+                    <div class="invalid-feedback">Name is required</div>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-20">
                   <div class="form-inner">
-                    <label>Company / Organization *</label>
-                    <input type="text" formControlName="company" />
+                    <label for="company">Company / Organization *</label>
+                    <input
+                      type="text"
+                      formControlName="company"
+                      id="company"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': hasError('company') }"
+                    />
+                    <div class="invalid-feedback">Company is required</div>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-20">
                   <div class="form-inner">
-                    <label>Phone *</label>
-                    <input type="text" formControlName="phone" />
+                    <label for="phone">Phone *</label>
+                    <input
+                      type="text"
+                      formControlName="phone"
+                      id="phone"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': hasError('phone') }"
+                    />
+                    <div class="invalid-feedback">Phone is required</div>
                   </div>
                 </div>
                 <div class="col-lg-6 mb-20">
                   <div class="form-inner">
-                    <label>Company email *</label>
-                    <input type="email" formControlName="email" />
+                    <label for="email">Company email *</label>
+                    <input
+                      type="email"
+                      formControlName="email"
+                      id="email"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid': hasError('email') || hasEmailFormatError()
+                      }"
+                    />
+                    <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
+                      Invalid email format
+                    </div>
+                    <div
+                      *ngIf="hasError('email') && !hasEmailFormatError()"
+                      class="invalid-feedback"
+                    >
+                      Email is required
+                    </div>
                   </div>
                 </div>
                 <div class="col-lg-12 mb-20">
                   <div class="form-inner">
-                    <label>Your Subject *</label>
-                    <input type="text" formControlName="subject" />
+                    <label for="subject">Your Subject *</label>
+                    <input
+                      type="text"
+                      formControlName="subject"
+                      id="subject"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': hasError('subject') }"
+                    />
+                    <div class="invalid-feedback">Subject is required</div>
                   </div>
                 </div>
                 <div class="col-lg-12 mb-30">
                   <div class="form-inner">
-                    <label>Message *</label>
-                    <textarea formControlName="message"></textarea>
+                    <label for="message">Message *</label>
+                    <textarea
+                      formControlName="message"
+                      id="message"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': hasError('message') }"
+                    ></textarea>
+                    <div class="invalid-feedback">Message is required</div>
                   </div>
                 </div>
                 <div class="col-lg-12">

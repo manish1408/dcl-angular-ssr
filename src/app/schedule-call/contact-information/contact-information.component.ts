@@ -35,6 +35,10 @@ export class ContactInformationComponent implements OnInit {
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
   }
+  hasError(controlName: keyof typeof this.contactInfoForm.controls) {
+    const control = this.contactInfoForm.controls[controlName];
+    return control.invalid && control.touched;
+  }
 
   onSubmit() {
     this.contactInfoForm.markAllAsTouched();

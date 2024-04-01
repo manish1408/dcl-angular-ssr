@@ -114,6 +114,12 @@
                     </label>
                   </div>
                 </div>
+                <div
+                  *ngIf="hasError('noOfPersonsNeeded')"
+                  class="custom-invalid-feedback my-0"
+                >
+                  Number of persons is required
+                </div>
               </div>
             </div>
             <div class="d-flex justify-content-end my-5">

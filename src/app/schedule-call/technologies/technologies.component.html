@@ -25,6 +25,12 @@
                       id="technologies"
                     >
                     </ng-multiselect-dropdown>
+                    <div
+                      *ngIf="hasError('technologyNeeded')"
+                      class="custom-invalid-feedback my-0"
+                    >
+                      Technology is required
+                    </div>
                   </div>
                 </div>
               </div>

@@ -1,1 +1,49 @@
-<p>thank-you works!</p>
+<div class="container-fluid overflow-x-hidden">
+  <div class="row justify-content-end overflow-hidden">
+    <div class="col-lg-9">
+      <div class="col-lg-12 offset-lg-3" style="margin-top: 10%">
+        <a href="/" class="logo-dark"
+          ><img
+            alt="image"
+            class="img-fluid mb-5"
+            style="height: 50px"
+            src="assets/img/logo_dark.svg"
+        /></a>
+        <p class="fs-6">Thank you! We'll be in contact soon.</p>
+        <p class="fs-6 w-50">
+          In the meantime, you can visit the
+          <a [routerLink]="['/blog']" class="text-decoration-underline"
+            >Distinct Cloud Labs Blog</a
+          >
+          to read about the software development outsourcing, tech innovation,
+          industry trends and more.
+        </p>
+        <p class="fs-6">
+          You'll be automatically redirected to our blog in
+          <span>{{ countdownText }}</span
+          >.
+        </p>
+        <div class="row"></div>
+      </div>
+    </div>
+    <div class="col-lg-2 vh-100" style="background-color: #3d4751">
+      <div class="" style="margin-top: 150px">
+        <p class="text-white text-center mb-4 fs-5">Why partner with us</p>
+        <div class="my-5">
+          <div class="d-flex text-white text-center my-3">
+            <i class="bi bi-check px-2 fs-4"></i>
+            <span> Top 1% IT Talent </span>
+          </div>
+          <div class="d-flex text-white text-center">
+            <i class="bi bi-check px-2 fs-4"></i>
+            <span> Time Zone aligned </span>
+          </div>
+          <div class="d-flex text-white text-center my-3">
+            <i class="bi bi-check px-2 fs-4"></i>
+            <span> 100% Bilingual Teams </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
