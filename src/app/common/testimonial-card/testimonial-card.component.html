@@ -114,7 +114,10 @@
         <div class="slider-btn-and-pagination-wrap">
           <div class="franctional-pagi2"></div>
           <div class="slider-btn-group">
-            <div class="slider-btn home3-testimonial-prev">
+            <div
+              class="slider-btn home3-testimonial-prev"
+              (click)="onPrevClick()"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="15"
@@ -138,7 +141,10 @@
                 />
               </svg>
             </div>
-            <div class="slider-btn home3-testimonial-next">
+            <div
+              class="slider-btn home3-testimonial-next"
+              (click)="onNextClick()"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="15"

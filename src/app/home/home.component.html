@@ -1365,7 +1365,12 @@
 
 <!-- Start Testimonial section -->
 
-<app-testimonial-card [testimonials]="testimonials"></app-testimonial-card>
+<app-testimonial-card
+  [testimonials]="testimonials"
+  [currentIndex]="currentIndex"
+  (nextClick)="onNextClick()"
+  (prevClick)="onPrevClick()"
+></app-testimonial-card>
 
 <!-- End Testimonial section -->
 
