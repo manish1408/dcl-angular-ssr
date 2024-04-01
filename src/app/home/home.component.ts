@@ -3,13 +3,14 @@ import { Meta } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../common/testimonial-card/testimonial-card.component';
 import { TestimonialService } from '../services/testimonial.service';
 import { environment } from '../environments/environment';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [TestimonialCardComponent],
+  imports: [TestimonialCardComponent, RouterModule],
 })
 export class HomeComponent implements OnInit {
   constructor(
