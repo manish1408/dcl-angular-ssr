@@ -51,26 +51,31 @@
           <div class="swiper home3-testimonial-slider">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
-                @for (item of testimonials; track item;let i=$index) {
-                <div class="testimonial-card3" *ngIf="i == 0">
+                <!-- @for (item of testimonials; track item;let i=$index) { -->
+                <div class="testimonial-card3">
                   <div class="author-area">
                     <div class="author-img">
-                      <img [src]="item?.data.profileImage.iv" alt="" />
+                      <img
+                        [src]="currentTestimonial?.data.profileImage.iv"
+                        alt=""
+                      />
                     </div>
                     <div class="content">
-                      <h6>{{ item.data?.customerName?.iv }}</h6>
-                      <span>{{ item.data?.customerTitle?.iv }}</span>
+                      <h6>{{ currentTestimonial?.data?.customerName?.iv }}</h6>
+                      <span>{{
+                        currentTestimonial?.data?.customerTitle?.iv
+                      }}</span>
                     </div>
                   </div>
                   <p>
-                    {{ item.data?.testimonialHeading?.iv }}
+                    {{ currentTestimonial?.data?.testimonialHeading?.iv }}
                   </p>
                   <p class="fs-6 testimonial-text">
-                    {{ item.data?.testimonialText?.iv }}
+                    {{ currentTestimonial?.data?.testimonialText?.iv }}
                   </p>
 
                   <a
-                    [href]="item.data.ctaLink.iv"
+                    [href]="currentTestimonial?.data.ctaLink.iv"
                     class="read-more-btn"
                     target="_blank"
                     ><span>View More </span></a
@@ -84,19 +89,23 @@
                         style="height: 100px"
                       />
                     </div>
-                    <ul class="rating" *ngIf="item.data.rating.iv">
+                    <ul
+                      class="rating"
+                      *ngIf="currentTestimonial?.data.rating.iv"
+                    >
                       <li *ngFor="let starIndex of [1, 2, 3, 4, 5]">
                         <i
                           class="bi bi-star-fill"
                           [ngClass]="{
-                            filled: starIndex <= item.data.rating.iv
+                            filled:
+                              starIndex <= currentTestimonial?.data.rating.iv
                           }"
                         ></i>
                       </li>
                     </ul>
                   </div>
                 </div>
-                }
+                <!-- } -->
               </div>
             </div>
           </div>

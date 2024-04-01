@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './testimonial-card.component.scss',
 })
 export class TestimonialCardComponent implements OnInit {
-  @Input() testimonials: any = [];
+  @Input() currentTestimonial: any;
   @Input() currentIndex!: number;
   @Output() nextClick: EventEmitter<void> = new EventEmitter<void>();
   @Output() prevClick: EventEmitter<void> = new EventEmitter<void>();
@@ -28,14 +28,10 @@ export class TestimonialCardComponent implements OnInit {
 
   ngOnInit(): void {}
   onNextClick(): void {
-    console.log('next');
-
     this.nextClick.emit();
   }
 
   onPrevClick(): void {
-    console.log('prev');
-
     this.prevClick.emit();
   }
 }

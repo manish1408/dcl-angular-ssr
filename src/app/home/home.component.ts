@@ -21,24 +21,25 @@ export class HomeComponent implements OnInit {
 
   testimonials: any = [];
   currentIndex: number = 0;
+  currentTestimonial: any;
 
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
-      console.log('testimonials:', res.items);
       this.testimonials = res.items;
+      this.currentTestimonial = this.testimonials[this.currentIndex];
     });
   }
   onNextClick(): void {
     if (this.currentIndex < this.testimonials.length - 1) {
       this.currentIndex++;
-      console.log(this.currentIndex);
+      this.currentTestimonial = this.testimonials[this.currentIndex];
     }
   }
 
   onPrevClick(): void {
     if (this.currentIndex > 0) {
       this.currentIndex--;
-      console.log(this.currentIndex);
+      this.currentTestimonial = this.testimonials[this.currentIndex];
     }
   }
 }
