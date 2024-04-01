@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { TestimonialService } from '../../services/testimonial.service';
+import { environment } from '../../environments/environment';
+import { Router, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-testimonial-card',
   standalone: true,
-  imports: [],
+  imports: [RouterModule, CommonModule],
   templateUrl: './testimonial-card.component.html',
   styleUrl: './testimonial-card.component.scss',
 })
 export class TestimonialCardComponent implements OnInit {
-  constructor(private testimonialService: TestimonialService) {}
+  @Input() testimonials: any = [];
 
-  ngOnInit(): void {
-    this.testimonialService.fetchTestimonials().then((res) => {
-      console.log('testimonials:', res.items);
-    });
-  }
+  constructor() {}
+
+  ngOnInit(): void {}
 }
