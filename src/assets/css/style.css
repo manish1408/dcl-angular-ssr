@@ -3761,7 +3761,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   width: 100%;
 }
 .home1-banner-section .banner-content > span {
-  color: var(--text-color);
+  color: rgba(255, 255, 255, 0.6);
   font-family: var(--font-inter);
   font-size: 12px;
   font-weight: 500;
@@ -3865,7 +3865,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   gap: 10px;
 }
 .home1-banner-section .banner-content .banner-content-bottom .rating-area .review span {
-  color: var(--text-color);
+  color: rgba(255, 255, 255, 0.6);
   font-family: var(--font-inter);
   font-size: 14px;
   font-weight: 500;
@@ -3891,7 +3891,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   color: #E62415;
 }
 .home1-banner-section .banner-content .banner-content-bottom .rating-area .rating span {
-  color: var(--text-color);
+  color: rgba(255, 255, 255, 0.6);
   font-family: var(--font-inter);
   font-size: 14px;
   font-weight: 400;
