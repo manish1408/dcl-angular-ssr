@@ -27,9 +27,8 @@ export class EngageComponent {
   testimonials: any = [];
   posts: any = [];
   currentIndex: number = 0;
-  currentIndexCaseStudy: number = 0;
+
   currentTestimonial: any;
-  currentCaseStudy: any;
 
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
@@ -42,8 +41,7 @@ export class EngageComponent {
       .then((resp: any) => {
         console.log(resp);
         this.posts = resp?.items;
-        this.currentCaseStudy = this.posts[this.currentIndexCaseStudy];
-        console.log('Case studies:', this.posts);
+
         this.swiperinit();
       })
       .catch((err: any) => {
@@ -63,7 +61,7 @@ export class EngageComponent {
       this.currentTestimonial = this.testimonials[this.currentIndex];
     }
   }
-  
+
   swiperinit() {
     window.setTimeout(() => {
       var swiper = new Swiper('.case-study-slider', {
@@ -108,6 +106,6 @@ export class EngageComponent {
           },
         },
       });
-    }, 500);
+    }, 100);
   }
 }

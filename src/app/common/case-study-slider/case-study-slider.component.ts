@@ -18,8 +18,6 @@ declare var Swiper: any;
 })
 export class CaseStudySliderComponent {
   @Input() currentCaseStudy: any;
-  @Input() currentIndexCaseStudy!: number;
 
-  constructor(private elementRef: ElementRef) {}
-  currentIndex: number = 0;
+  constructor() {}
 }
