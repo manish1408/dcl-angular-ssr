@@ -15,7 +15,7 @@ declare var Swiper: any;
   templateUrl: './engage.component.html',
   styleUrl: './engage.component.scss',
 })
-export class EngageComponent implements AfterViewInit {
+export class EngageComponent {
   constructor(
     private meta: Meta,
     private testimonialService: TestimonialService,
@@ -44,6 +44,7 @@ export class EngageComponent implements AfterViewInit {
         this.posts = resp?.items;
         this.currentCaseStudy = this.posts[this.currentIndexCaseStudy];
         console.log('Case studies:', this.posts);
+        this.swiperinit();
       })
       .catch((err: any) => {
         console.log(err);
@@ -62,9 +63,8 @@ export class EngageComponent implements AfterViewInit {
       this.currentTestimonial = this.testimonials[this.currentIndex];
     }
   }
-  swiperNext(): void {}
-  swiperPrev(): void {}
-  ngAfterViewInit() {
+  
+  swiperinit() {
     window.setTimeout(() => {
       var swiper = new Swiper('.case-study-slider', {
         slidesPerView: 1,

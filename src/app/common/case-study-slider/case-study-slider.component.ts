@@ -12,16 +12,7 @@ import { RouterModule } from '@angular/router';
 export class CaseStudySliderComponent {
   @Input() currentCaseStudy: any;
   @Input() currentIndexCaseStudy!: number;
-  @Output() nextClick: EventEmitter<void> = new EventEmitter<void>();
-  @Output() prevClick: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {}
 
-  swiperNext(): void {
-    this.nextClick.emit();
-  }
-
-  swiperPrev(): void {
-    this.prevClick.emit();
-  }
 }
