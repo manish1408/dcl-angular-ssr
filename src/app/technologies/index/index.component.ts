@@ -6,12 +6,13 @@ import { RouterModule } from '@angular/router';
 import { CaseStudySliderComponent } from '../../common/case-study-slider/case-study-slider.component';
 import { CaseStudyService } from '../../services/case-study.service';
 import { SolutionsCardComponent } from '../../common/solutions-card/solutions-card.component';
+import { EngagementModelsComponent } from '../../common/engagement-models/engagement-models.component';
 
 declare var Swiper: any;
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [CaseStudySliderComponent, TestimonialCardComponent, RouterModule, SolutionsCardComponent],
+  imports: [CaseStudySliderComponent, TestimonialCardComponent, RouterModule, SolutionsCardComponent, EngagementModelsComponent],
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss'
 })
