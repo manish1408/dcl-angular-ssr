@@ -4,6 +4,7 @@ import { TestimonialCardComponent } from '../common/testimonial-card/testimonial
 import { TestimonialService } from '../services/testimonial.service';
 import { RouterModule } from '@angular/router';
 import { CaseStudySliderComponent } from '../common/case-study-slider/case-study-slider.component';
+import { CaseStudyService } from '../services/case-study.service';
 
 declare var Swiper: any;
 
@@ -17,14 +18,16 @@ declare var Swiper: any;
 export class EngageComponent implements AfterViewInit {
   constructor(
     private meta: Meta,
-    private testimonialService: TestimonialService
+    private testimonialService: TestimonialService,
+    private caseStudyService: CaseStudyService
   ) {
     this.meta.addTag({ name: 'title', content: 'Home page' });
   }
 
   testimonials: any = [];
-  caseStudies: any = [];
+  posts: any = [];
   currentIndex: number = 0;
+  currentIndexCaseStudy: number = 0;
   currentTestimonial: any;
   currentCaseStudy: any;
 
@@ -34,6 +37,17 @@ export class EngageComponent implements AfterViewInit {
 
       this.currentTestimonial = this.testimonials[this.currentIndex];
     });
+    this.caseStudyService
+      .fetchPosts()
+      .then((resp: any) => {
+        console.log(resp);
+        this.posts = resp?.items;
+        this.currentCaseStudy = this.posts[this.currentIndexCaseStudy];
+        console.log('Case studies:', this.posts);
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
   }
   onNextClick(): void {
     if (this.currentIndex < this.testimonials.length - 1) {
@@ -48,6 +62,8 @@ export class EngageComponent implements AfterViewInit {
       this.currentTestimonial = this.testimonials[this.currentIndex];
     }
   }
+  swiperNext(): void {}
+  swiperPrev(): void {}
   ngAfterViewInit() {
     window.setTimeout(() => {
       var swiper = new Swiper('.case-study-slider', {

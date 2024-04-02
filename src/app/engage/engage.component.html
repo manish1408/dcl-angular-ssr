@@ -1450,9 +1450,9 @@
 
 <!-- Start Banner With Case Study Slider section -->
 <app-case-study-slider
-  [currentCaseStudy]="currentCaseStudy"
-  (nextClick)="onNextClick()"
-  (prevClick)="onPrevClick()"
+  [currentCaseStudy]="posts"
+  (nextClick)="swiperNext()"
+  (prevClick)="swiperPrev()"
 ></app-case-study-slider>
 
 <!-- End Banner With Case Study Slider section -->

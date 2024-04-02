@@ -44,9 +44,9 @@
             data-wow-duration="1500ms"
           >
             <p>
-              Dive into the success story of [Client/Project Name] and witness
-              firsthand the transformative journey that exemplifies the impact
-              of Zenfy solutions.
+              Dive into the success story and witness firsthand the
+              transformative journey that exemplifies the impact of Distinct
+              Cloud Labs.
             </p>
             <a
               href="case-study.html"
@@ -95,7 +95,7 @@
               <h2>Success in the Field</h2>
             </div>
             <a
-              href="#"
+              [routerLink]="['/case-study/']"
               class="primary-btn1 hover-white"
               data-text="View All Stories"
               ><span>View All Stories</span></a
@@ -106,171 +106,35 @@
           class="swiper case-study-slider wow animate fadeInRight"
           data-wow-delay="200ms"
           data-wow-duration="1500ms"
+          *ngFor="let item of currentCaseStudy; let i = index"
         >
           <div class="swiper-wrapper">
-            <div class="swiper-slide">
+            <div class="swiper-slide" *ngIf="i < 2">
               <div class="case-study-card">
                 <div class="card-img">
-                  <img src="assets/img/home1/case-study-img1.jpg" alt="" />
+                  <img
+                    [src]="
+                      'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
+                      item?.data?.thumbnail?.iv[0]
+                    "
+                    alt=""
+                  />
                 </div>
                 <div class="card-content">
-                  <a href="case-study.html">Startup Company</a>
+                  <a [routerLink]="['/case-study/', item.data?.slug?.iv]">{{
+                    item?.data?.ProjectDomain?.iv
+                  }}</a>
                   <h4>
-                    <a href="case-study-details.html"
-                      >Navigating Growth A Startup Agency Success Story.</a
-                    >
+                    <a [routerLink]="['/case-study/', item.data?.slug?.iv]">{{
+                      item?.data?.projectName?.iv
+                    }}</a>
                   </h4>
                   <p>
-                    In this case study, we dissect the challenges faced and the
-                    remarkable outcomes achieved through our collaborative
-                    efforts.
+                    {{ item?.data?.description?.iv }}
                   </p>
-                  <a href="case-study-details.html" class="learn-more-btn"
-                    >Learn MORE
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="9"
-                      viewBox="0 0 17 9"
-                    >
-                      <path
-                        d="M12.1691 4.97333L0.234337 4.95394C0.172187 4.95394 0.112583 4.9041 0.0686358 4.81538C0.024689 4.72666 0 4.60634 0 4.48087C0 4.35541 0.024689 4.23509 0.0686358 4.14637C0.112583 4.05765 0.172187 4.00781 0.234337 4.00781L12.1694 4.02721C12.2315 4.02721 12.2911 4.07705 12.3351 4.16576C12.379 4.25448 12.4037 4.37481 12.4037 4.50027C12.4037 4.62573 12.379 4.74606 12.3351 4.83478C12.2911 4.92349 12.2313 4.97333 12.1691 4.97333Z"
-                      />
-                      <path
-                        d="M16.9998 4.50591C14.3171 5.49934 10.9879 7.19858 8.9248 9L10.5521 4.50024L8.93094 0C10.9922 1.80378 14.3185 3.50681 16.9998 4.50591Z"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="case-study-card">
-                <div class="card-img">
-                  <img src="assets/img/home1/case-study-img2.jpg" alt="" />
-                </div>
-                <div class="card-content">
-                  <a href="case-study.html">It Agency</a>
-                  <h4>
-                    <a href="case-study-details.html"
-                      >Digital Transformation Unveiled The IT Farm
-                      Experience.</a
-                    >
-                  </h4>
-                  <p>
-                    This case study unveils the strategic roadmap, the
-                    technology stack deployed, and the tangible benefits reaped
-                    by Egenslab.
-                  </p>
-                  <a href="case-study-details.html" class="learn-more-btn"
-                    >Learn MORE
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="9"
-                      viewBox="0 0 17 9"
-                    >
-                      <path
-                        d="M12.1691 4.97333L0.234337 4.95394C0.172187 4.95394 0.112583 4.9041 0.0686358 4.81538C0.024689 4.72666 0 4.60634 0 4.48087C0 4.35541 0.024689 4.23509 0.0686358 4.14637C0.112583 4.05765 0.172187 4.00781 0.234337 4.00781L12.1694 4.02721C12.2315 4.02721 12.2911 4.07705 12.3351 4.16576C12.379 4.25448 12.4037 4.37481 12.4037 4.50027C12.4037 4.62573 12.379 4.74606 12.3351 4.83478C12.2911 4.92349 12.2313 4.97333 12.1691 4.97333Z"
-                      />
-                      <path
-                        d="M16.9998 4.50591C14.3171 5.49934 10.9879 7.19858 8.9248 9L10.5521 4.50024L8.93094 0C10.9922 1.80378 14.3185 3.50681 16.9998 4.50591Z"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="case-study-card">
-                <div class="card-img">
-                  <img src="assets/img/home1/case-study-img3.jpg" alt="" />
-                </div>
-                <div class="card-content">
-                  <a href="case-study.html">Creative Agency</a>
-                  <h4>
-                    <a href="case-study-details.html"
-                      >Overcoming Expansion An Initial Agency's Triumph</a
-                    >
-                  </h4>
-                  <p>
-                    In this case study, we dissect the challenges faced, the
-                    strategies employed, and the remarkable outcomes achieved
-                    through our collaborative efforts.
-                  </p>
-                  <a href="case-study-details.html" class="learn-more-btn"
-                    >Learn MORE
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="9"
-                      viewBox="0 0 17 9"
-                    >
-                      <path
-                        d="M12.1691 4.97333L0.234337 4.95394C0.172187 4.95394 0.112583 4.9041 0.0686358 4.81538C0.024689 4.72666 0 4.60634 0 4.48087C0 4.35541 0.024689 4.23509 0.0686358 4.14637C0.112583 4.05765 0.172187 4.00781 0.234337 4.00781L12.1694 4.02721C12.2315 4.02721 12.2911 4.07705 12.3351 4.16576C12.379 4.25448 12.4037 4.37481 12.4037 4.50027C12.4037 4.62573 12.379 4.74606 12.3351 4.83478C12.2911 4.92349 12.2313 4.97333 12.1691 4.97333Z"
-                      />
-                      <path
-                        d="M16.9998 4.50591C14.3171 5.49934 10.9879 7.19858 8.9248 9L10.5521 4.50024L8.93094 0C10.9922 1.80378 14.3185 3.50681 16.9998 4.50591Z"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="case-study-card">
-                <div class="card-img">
-                  <img src="assets/img/home1/case-study-img4.jpg" alt="" />
-                </div>
-                <div class="card-content">
-                  <a href="case-study.html">Marketing</a>
-                  <h4>
-                    <a href="case-study-details.html"
-                      >A Business Consulting to Increase Marketing Analaytic</a
-                    >
-                  </h4>
-                  <p>
-                    This case study unveils the strategic roadmap, the
-                    technology stack deployed, and the tangible benefits reaped
-                    by Egenslab.
-                  </p>
-                  <a href="case-study-details.html" class="learn-more-btn"
-                    >Learn MORE
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="17"
-                      height="9"
-                      viewBox="0 0 17 9"
-                    >
-                      <path
-                        d="M12.1691 4.97333L0.234337 4.95394C0.172187 4.95394 0.112583 4.9041 0.0686358 4.81538C0.024689 4.72666 0 4.60634 0 4.48087C0 4.35541 0.024689 4.23509 0.0686358 4.14637C0.112583 4.05765 0.172187 4.00781 0.234337 4.00781L12.1694 4.02721C12.2315 4.02721 12.2911 4.07705 12.3351 4.16576C12.379 4.25448 12.4037 4.37481 12.4037 4.50027C12.4037 4.62573 12.379 4.74606 12.3351 4.83478C12.2911 4.92349 12.2313 4.97333 12.1691 4.97333Z"
-                      />
-                      <path
-                        d="M16.9998 4.50591C14.3171 5.49934 10.9879 7.19858 8.9248 9L10.5521 4.50024L8.93094 0C10.9922 1.80378 14.3185 3.50681 16.9998 4.50591Z"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="swiper-slide">
-              <div class="case-study-card">
-                <div class="card-img">
-                  <img src="assets/img/home1/case-study-img5.jpg" alt="" />
-                </div>
-                <div class="card-content">
-                  <a href="case-study.html">Creative Agency</a>
-                  <h4>
-                    <a href="case-study-details.html"
-                      >Overcoming Expansion An Initial Agency's Triumph</a
-                    >
-                  </h4>
-                  <p>
-                    In this case study, we dissect the challenges faced, the
-                    strategies employed, and the remarkable outcomes achieved
-                    through our collaborative efforts.
-                  </p>
-                  <a href="case-study-details.html" class="learn-more-btn"
+                  <a
+                    [routerLink]="['/case-study/', item.data?.slug?.iv]"
+                    class="learn-more-btn"
                     >Learn MORE
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -297,10 +161,16 @@
           data-wow-duration="1500ms"
         >
           <div class="slider-btn-grp">
-            <div class="slider-btn case-study-slider-prev">
+            <div
+              class="slider-btn case-study-slider-prev"
+              (click)="swiperPrev()"
+            >
               <i class="bi bi-arrow-left"></i>
             </div>
-            <div class="slider-btn case-study-slider-next">
+            <div
+              class="slider-btn case-study-slider-next"
+              (click)="swiperNext()"
+            >
               <i class="bi bi-arrow-right"></i>
             </div>
           </div>
@@ -309,3 +179,17 @@
     </div>
   </div>
 </div>
+<script>
+  var swiper = new Swiper(".swiper", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".case-study-slider-next",
+      prevEl: ".case-study-slider-prev",
+    },
+  });
+</script>
