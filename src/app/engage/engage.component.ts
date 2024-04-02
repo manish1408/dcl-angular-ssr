@@ -1,17 +1,29 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../common/testimonial-card/testimonial-card.component';
 import { TestimonialService } from '../services/testimonial.service';
 import { RouterModule } from '@angular/router';
 import { CaseStudySliderComponent } from '../common/case-study-slider/case-study-slider.component';
 import { CaseStudyService } from '../services/case-study.service';
+import { ServiceBannerComponent } from '../common/service-banner/service-banner.component';
 
 declare var Swiper: any;
 
 @Component({
   selector: 'app-engage',
   standalone: true,
-  imports: [CaseStudySliderComponent, TestimonialCardComponent, RouterModule],
+  imports: [
+    CaseStudySliderComponent,
+    TestimonialCardComponent,
+    RouterModule,
+    ServiceBannerComponent,
+  ],
   templateUrl: './engage.component.html',
   styleUrl: './engage.component.scss',
 })
@@ -39,7 +51,6 @@ export class EngageComponent {
     this.caseStudyService
       .fetchPosts()
       .then((resp: any) => {
-        console.log(resp);
         this.posts = resp?.items;
 
         this.swiperinit();
@@ -107,5 +118,8 @@ export class EngageComponent {
         },
       });
     }, 100);
+  }
+  onSubmit(formValues: any) {
+    console.log('Form Values:', formValues);
   }
 }
