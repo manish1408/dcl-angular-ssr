@@ -3,15 +3,16 @@ import { Meta } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../common/testimonial-card/testimonial-card.component';
 import { TestimonialService } from '../services/testimonial.service';
 import { RouterModule } from '@angular/router';
+import { CaseStudySliderComponent } from '../common/case-study-slider/case-study-slider.component';
 
-declare var Swiper:any;
+declare var Swiper: any;
 
 @Component({
   selector: 'app-engage',
   standalone: true,
-  imports: [TestimonialCardComponent, RouterModule],
+  imports: [CaseStudySliderComponent, TestimonialCardComponent, RouterModule],
   templateUrl: './engage.component.html',
-  styleUrl: './engage.component.scss'
+  styleUrl: './engage.component.scss',
 })
 export class EngageComponent implements AfterViewInit {
   constructor(
@@ -22,8 +23,10 @@ export class EngageComponent implements AfterViewInit {
   }
 
   testimonials: any = [];
+  caseStudies: any = [];
   currentIndex: number = 0;
   currentTestimonial: any;
+  currentCaseStudy: any;
 
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
@@ -46,8 +49,8 @@ export class EngageComponent implements AfterViewInit {
     }
   }
   ngAfterViewInit() {
-    window.setTimeout(()=> {
-      var swiper = new Swiper(".case-study-slider", {
+    window.setTimeout(() => {
+      var swiper = new Swiper('.case-study-slider', {
         slidesPerView: 1,
         speed: 1500,
         spaceBetween: 30,
@@ -57,10 +60,10 @@ export class EngageComponent implements AfterViewInit {
         // 	disableOnInteraction: false,
         // },
         navigation: {
-          nextEl: ".case-study-slider-next",
-          prevEl: ".case-study-slider-prev",
+          nextEl: '.case-study-slider-next',
+          prevEl: '.case-study-slider-prev',
         },
-    
+
         breakpoints: {
           280: {
             slidesPerView: 1,
@@ -87,9 +90,8 @@ export class EngageComponent implements AfterViewInit {
           1400: {
             slidesPerView: 2,
           },
-        }
+        },
       });
-    },500)
-  
+    }, 500);
   }
 }
