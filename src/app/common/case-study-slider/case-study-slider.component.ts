@@ -1,6 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { RouterModule } from '@angular/router';
+declare var Swiper: any;
 
 @Component({
   selector: 'app-case-study-slider',
@@ -13,6 +20,6 @@ export class CaseStudySliderComponent {
   @Input() currentCaseStudy: any;
   @Input() currentIndexCaseStudy!: number;
 
-  constructor() {}
-
+  constructor(private elementRef: ElementRef) {}
+  currentIndex: number = 0;
 }
