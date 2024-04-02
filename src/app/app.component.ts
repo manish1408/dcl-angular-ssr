@@ -26,19 +26,27 @@ export class AppComponent {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if (
-          event['url'] == '/schedule-call/basic-details' ||
-          event['url'] == '/schedule-call/contact-information' ||
-          event['url'] == '/schedule-call/it-professionals' ||
-          event['url'] == '/schedule-call/duration' ||
-          event['url'] == '/schedule-call/budget' ||
-          event['url'] == '/schedule-call/start-date' ||
-          event['url'] == '/schedule-call/technologies' ||
-          event['url'] == '/thank-you'
+          event['url'].startsWith('/schedule-call') ||
+          event['url'] === '/thank-you'
         ) {
           this.showHead = false;
         } else {
           this.showHead = true;
         }
+        // if (
+        //   event['url'] == '/schedule-call/basic-details' ||
+        //   event['url'] == '/schedule-call/contact-information' ||
+        //   event['url'] == '/schedule-call/it-professionals' ||
+        //   event['url'] == '/schedule-call/duration' ||
+        //   event['url'] == '/schedule-call/budget' ||
+        //   event['url'] == '/schedule-call/start-date' ||
+        //   event['url'] == '/schedule-call/technologies' ||
+        //   event['url'] == '/thank-you'
+        // ) {
+        //   this.showHead = false;
+        // } else {
+        //   this.showHead = true;
+        // }
       }
     });
   }

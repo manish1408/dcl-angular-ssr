@@ -6,7 +6,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormDataService } from '../../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -20,18 +20,34 @@ import { ToastrService } from 'ngx-toastr';
 export class BudgetComponent implements OnInit {
   savedFormData: any;
   budgetForm!: FormGroup;
+  id!: string;
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private formDataService: FormDataService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) {
     this.budgetForm = this.fb.group({
       budget: ['', Validators.required],
+      id: [],
     });
   }
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+      console.log(this.id);
+    });
+
+    // get api
+    this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
+      console.log('get data in CI:', res);
+      this.budgetForm.patchValue({
+        budget: res.data.budget,
+        id: res.data._id,
+      });
+    });
   }
   hasError(controlName: keyof typeof this.budgetForm.controls) {
     const control = this.budgetForm.controls[controlName];
@@ -42,9 +58,25 @@ export class BudgetComponent implements OnInit {
     this.budgetForm.markAllAsTouched();
     if (this.budgetForm.valid) {
       this.formDataService.setFormData(this.budgetForm.value);
-      this.router.navigate(['/schedule-call/start-date']);
+
+      this.formDataService
+        .updateScheduleCall(this.budgetForm.value)
+        .subscribe((res) => {
+          console.log(res);
+          if (res.result === 1) {
+            this.id = res.data._id;
+            this.router.navigate(['/schedule-call/start-date', this.id]);
+          }
+        }),
+        (error: any) => {
+          console.error('Error occurred:', error);
+          this.toastr.error('Something went wrong. Please try again.');
+        };
     } else {
       this.toastr.error('Please select budget');
     }
+  }
+  back() {
+    this.router.navigate(['/schedule-call/duration', this.id]);
   }
 }
