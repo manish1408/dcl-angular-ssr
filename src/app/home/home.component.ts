@@ -1,8 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../common/testimonial-card/testimonial-card.component';
 import { TestimonialService } from '../services/testimonial.service';
-import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 
 @Component({

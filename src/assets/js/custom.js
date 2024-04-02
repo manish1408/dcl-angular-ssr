@@ -839,21 +839,21 @@
 	}
 	})
 
-	// Dark Light
-	const dayNight = document.querySelector(".tt-style-switch");
+	// // Dark Light
+	// const dayNight = document.querySelector(".tt-style-switch");
 
-	const toggleDarkMode = () => {
-	const body = document.body;
-	const icon = dayNight.querySelector("i");
-	body.classList.toggle("dark");
+	// const toggleDarkMode = () => {
+	// const body = document.body;
+	// const icon = dayNight.querySelector("i");
+	// body.classList.toggle("dark");
 	
-	icon.classList.toggle("bi-brightness-low-fill", body.classList.contains("dark"));
-	icon.classList.toggle("bi-moon", !body.classList.contains("dark"));
+	// icon.classList.toggle("bi-brightness-low-fill", body.classList.contains("dark"));
+	// icon.classList.toggle("bi-moon", !body.classList.contains("dark"));
 
-	localStorage.setItem("zenfy_theme", body.classList.contains("dark") ? "dark" : "");
-	};
+	// localStorage.setItem("zenfy_theme", body.classList.contains("dark") ? "dark" : "");
+	// };
 
-	dayNight.addEventListener("click", toggleDarkMode);
+	// dayNight.addEventListener("click", toggleDarkMode);
 
 	window.addEventListener("load", () => {
 	const savedTheme = localStorage.getItem("zenfy_theme");
@@ -940,3 +940,6 @@
 }(jQuery));
 
 
+window.setTimeout(function() {
+
+},1000)

@@ -1,8 +1,5 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { DedicatedTeamsComponent } from './services/dedicated-teams/dedicated-teams.component';
-import { SoftwareOutsourcingComponent } from './services/software-outsourcing/software-outsourcing.component';
-import { StaffAugmentationComponent } from './services/staff-augmentation/staff-augmentation.component';
 import { IndexComponent } from './technologies/index/index.component';
 import { SolutionComponent } from './solutions/solution/solution.component';
 import { CaseStudiesComponent } from './case-studies/case-studies.component';
@@ -19,17 +16,18 @@ import { TechnologiesComponent } from './schedule-call/technologies/technologies
 import { BlogDetailsComponent } from './blog-details/blog-details/blog-details.component';
 import { BlogsComponent } from './blogs/blogs.component';
 import { ThankYouComponent } from './schedule-call/thank-you/thank-you.component';
+import { EngageComponent } from './engage/engage.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'services/dedicated-teams', component: DedicatedTeamsComponent },
+  { path: 'services/dedicated-teams', component: EngageComponent },
   {
     path: 'services/software-outsourcing',
-    component: SoftwareOutsourcingComponent,
+    component: EngageComponent,
   },
   {
     path: 'services/staff-augmentation',
-    component: StaffAugmentationComponent,
+    component: EngageComponent,
   },
   { path: 'technologies/:type', component: IndexComponent },
   { path: 'solutions/:type', component: SolutionComponent },
