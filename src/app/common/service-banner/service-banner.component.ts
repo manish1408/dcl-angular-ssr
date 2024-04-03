@@ -43,6 +43,7 @@ export class ServiceBannerComponent implements OnInit {
     );
   }
   onSubmit() {
+    this.detailsForm.markAllAsTouched();
     if (this.detailsForm.valid) {
       this.submit.emit(this.detailsForm);
     } else if (this.detailsForm.invalid) {
