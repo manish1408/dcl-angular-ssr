@@ -3761,7 +3761,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   width: 100%;
 }
 .home1-banner-section .banner-content > span {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-color);
   font-family: var(--font-inter);
   font-size: 12px;
   font-weight: 500;
@@ -3824,7 +3824,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   }
 }
 .home1-banner-section .banner-content p {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--white-color);
   font-family: var(--font-inter);
   font-size: 18px;
   font-weight: 400;
@@ -4418,9 +4418,9 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   }
 }
 .service-card .content {
-  padding-bottom: 15px;
+  /* padding-bottom: 15px;
   border-bottom: 1px solid rgba(11, 12, 12, 0.1);
-  margin-bottom: 20px;
+  margin-bottom: 20px; */
 }
 .service-card .content h4 {
   margin-bottom: 15px;
