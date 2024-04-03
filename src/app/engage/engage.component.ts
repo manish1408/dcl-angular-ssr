@@ -126,19 +126,20 @@ export class EngageComponent {
     }, 100);
   }
   onSubmit(formValues: any) {
-    if (formValues) {
+    if (formValues.valid) {
       this.isLoading = true;
-      this.formDataService.saveScheduleCall(formValues).subscribe((res) => {
-        console.log(res);
-        this.isLoading = false;
-        if (res.result === 1) {
-          this.id = res.data._id;
-          this.router.navigate(
-            ['/schedule-call/contact-information', this.id],
-            { queryParams: { services: 'true' } }
-          );
-        }
-      }),
+      this.formDataService
+        .saveScheduleCall(formValues.value)
+        .subscribe((res) => {
+          this.isLoading = false;
+          if (res.result === 1) {
+            this.id = res.data._id;
+            this.router.navigate(
+              ['/schedule-call/contact-information', this.id],
+              { queryParams: { services: 'true' } }
+            );
+          }
+        }),
         (error: any) => {
           this.isLoading = false;
           console.error('Error occurred:', error);

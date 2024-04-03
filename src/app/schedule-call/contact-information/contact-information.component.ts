@@ -38,7 +38,6 @@ export class ContactInformationComponent implements OnInit {
     });
 
     this.route.queryParams.subscribe((params) => {
-      console.log(params);
       if (params['services']) {
         this.hideBack = true;
       } else {
@@ -50,9 +49,7 @@ export class ContactInformationComponent implements OnInit {
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
     this.route.params.subscribe((params) => {
-      console.log(params);
       this.id = params['id'];
-      console.log(this.id);
     });
 
     // get api
@@ -71,7 +68,6 @@ export class ContactInformationComponent implements OnInit {
 
   onSubmit() {
     this.contactInfoForm.markAllAsTouched();
-    console.log(this.contactInfoForm.value);
 
     if (this.contactInfoForm.valid) {
       this.formDataService.setFormData(this.contactInfoForm.value);
@@ -79,7 +75,6 @@ export class ContactInformationComponent implements OnInit {
       this.formDataService
         .updateScheduleCall(this.contactInfoForm.value)
         .subscribe((res) => {
-          console.log(res);
           if (res.result === 1) {
             this.id = res.data._id;
             this.router.navigate(['/schedule-call/it-professionals', this.id]);
