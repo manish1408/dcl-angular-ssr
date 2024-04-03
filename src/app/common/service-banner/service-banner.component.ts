@@ -43,9 +43,8 @@ export class ServiceBannerComponent implements OnInit {
     );
   }
   onSubmit() {
-    this.submit.emit(this.detailsForm.value);
     if (this.detailsForm.valid) {
-      this.submit.emit(this.detailsForm.value);
+      this.submit.emit(this.detailsForm);
     } else if (this.detailsForm.invalid) {
       if (this.detailsForm.controls['email'].errors?.['email']) {
         this.toastr.error('Invalid email format');
