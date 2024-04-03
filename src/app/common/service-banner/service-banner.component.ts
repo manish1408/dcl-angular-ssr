@@ -22,12 +22,7 @@ export class ServiceBannerComponent implements OnInit {
   isLoading: boolean = false;
   detailsForm!: FormGroup;
   id!: string;
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private formDataService: FormDataService,
-    private toastr: ToastrService
-  ) {
+  constructor(private fb: FormBuilder, private toastr: ToastrService) {
     this.detailsForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -48,25 +43,14 @@ export class ServiceBannerComponent implements OnInit {
   }
   onSubmit() {
     this.submit.emit(this.detailsForm.value);
-    //   if (this.detailsForm.valid) {
-    //     this.submit.emit(this.detailsForm.value);
-    //     this.formDataService
-    //       .saveScheduleCall(this.detailsForm.value)
-    //       .subscribe((res) => {
-    //         console.log(res);
-    //         if (res.result === 1) {
-    //           this.id = res.data._id;
-    //           this.router.navigate([
-    //             '/schedule-call/contact-information',
-    //             this.id,
-    //           ]);
-    //         }
-    //       }),
-    //       (error: any) => {
-    //         console.error('Error occurred:', error);
-    //         this.toastr.error('Something went wrong. Please try again.');
-    //       };
-    //   }
-    // }
+    if (this.detailsForm.valid) {
+      this.submit.emit(this.detailsForm.value);
+    } else if (this.detailsForm.invalid) {
+      if (this.detailsForm.controls['email'].errors?.['email']) {
+        this.toastr.error('Invalid email format');
+      } else {
+        this.toastr.error('Please provide all the details');
+      }
+    }
   }
 }
