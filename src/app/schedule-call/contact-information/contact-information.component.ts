@@ -21,10 +21,12 @@ export class ContactInformationComponent implements OnInit {
   savedFormData: any;
   contactInfoForm!: FormGroup;
   id!: string;
+  hideBack: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
+
     private formDataService: FormDataService,
     private toastr: ToastrService,
     private route: ActivatedRoute
@@ -34,18 +36,27 @@ export class ContactInformationComponent implements OnInit {
       phone: ['', Validators.required],
       id: [],
     });
+
+    this.route.queryParams.subscribe((params) => {
+      console.log(params);
+      if (params['services']) {
+        this.hideBack = true;
+      } else {
+        this.hideBack = false;
+      }
+    });
   }
 
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
     this.route.params.subscribe((params) => {
+      console.log(params);
       this.id = params['id'];
       console.log(this.id);
     });
 
     // get api
     this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
-      console.log('get data in CI:', res);
       this.contactInfoForm.patchValue({
         company: res.data.company,
         phone: res.data.phone,

@@ -8,10 +8,12 @@ import {
 import { Meta } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../common/testimonial-card/testimonial-card.component';
 import { TestimonialService } from '../services/testimonial.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CaseStudySliderComponent } from '../common/case-study-slider/case-study-slider.component';
 import { CaseStudyService } from '../services/case-study.service';
 import { ServiceBannerComponent } from '../common/service-banner/service-banner.component';
+import { FormDataService } from '../services/form-data.service';
+import { ToastrService } from 'ngx-toastr';
 
 declare var Swiper: any;
 
@@ -31,7 +33,10 @@ export class EngageComponent {
   constructor(
     private meta: Meta,
     private testimonialService: TestimonialService,
-    private caseStudyService: CaseStudyService
+    private caseStudyService: CaseStudyService,
+    private formDataService: FormDataService,
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.meta.addTag({ name: 'title', content: 'Home page' });
   }
@@ -39,7 +44,7 @@ export class EngageComponent {
   testimonials: any = [];
   posts: any = [];
   currentIndex: number = 0;
-
+  id!: string;
   currentTestimonial: any;
 
   ngOnInit(): void {
@@ -120,6 +125,21 @@ export class EngageComponent {
     }, 100);
   }
   onSubmit(formValues: any) {
-    console.log('Form Values:', formValues);
+    if (formValues) {
+      this.formDataService.saveScheduleCall(formValues).subscribe((res) => {
+        console.log(res);
+        if (res.result === 1) {
+          this.id = res.data._id;
+          this.router.navigate(
+            ['/schedule-call/contact-information', this.id],
+            { queryParams: { services: 'true' } }
+          );
+        }
+      }),
+        (error: any) => {
+          console.error('Error occurred:', error);
+          this.toastr.error('Something went wrong. Please try again.');
+        };
+    }
   }
 }

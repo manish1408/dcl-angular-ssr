@@ -18,7 +18,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './service-banner.component.scss',
 })
 export class ServiceBannerComponent implements OnInit {
-  @Output() submit: EventEmitter<void> = new EventEmitter<void>();
+  @Output() submit: EventEmitter<any> = new EventEmitter<any>();
   isLoading: boolean = false;
   detailsForm!: FormGroup;
   id!: string;
@@ -47,24 +47,26 @@ export class ServiceBannerComponent implements OnInit {
     );
   }
   onSubmit() {
-    if (this.detailsForm.valid) {
-      this.submit.emit(this.detailsForm.value);
-      this.formDataService
-        .saveScheduleCall(this.detailsForm.value)
-        .subscribe((res) => {
-          console.log(res);
-          if (res.result === 1) {
-            this.id = res.data._id;
-            this.router.navigate([
-              '/schedule-call/contact-information',
-              this.id,
-            ]);
-          }
-        }),
-        (error: any) => {
-          console.error('Error occurred:', error);
-          this.toastr.error('Something went wrong. Please try again.');
-        };
-    }
+    this.submit.emit(this.detailsForm.value);
+    //   if (this.detailsForm.valid) {
+    //     this.submit.emit(this.detailsForm.value);
+    //     this.formDataService
+    //       .saveScheduleCall(this.detailsForm.value)
+    //       .subscribe((res) => {
+    //         console.log(res);
+    //         if (res.result === 1) {
+    //           this.id = res.data._id;
+    //           this.router.navigate([
+    //             '/schedule-call/contact-information',
+    //             this.id,
+    //           ]);
+    //         }
+    //       }),
+    //       (error: any) => {
+    //         console.error('Error occurred:', error);
+    //         this.toastr.error('Something went wrong. Please try again.');
+    //       };
+    //   }
+    // }
   }
 }
