@@ -47,6 +47,10 @@ export class EngageComponent {
   id!: string;
   currentTestimonial: any;
   isLoading: boolean = false;
+  initialHeader: string = 'TOP RATED ANGULAR DEVELOPMENT SERVICES';
+  mainHeader: string = 'Deliver your Angular Projects, Effortlessly.';
+  description: string =
+    'Outsource your Angular development to our nearshore talent. We can accommodate engagements of all sizes and complexities.';
 
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
