@@ -138,6 +138,11 @@
               <div class="text-center my-5">
                 <a class="btn btn-success px-3" (click)="onSubmit()"
                   >Jump-start Your Projects
+                  <span
+                    *ngIf="isLoading"
+                    class="spinner-border spinner-border-sm mt-5"
+                    role="status"
+                  ></span>
                 </a>
               </div>
             </form>

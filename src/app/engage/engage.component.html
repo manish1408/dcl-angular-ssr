@@ -1,5 +1,8 @@
 <!-- Start Banner section -->
-<app-service-banner (submit)="onSubmit($event)"></app-service-banner>
+<app-service-banner
+  (submit)="onSubmit($event)"
+  [isLoading]="isLoading"
+></app-service-banner>
 
 <!-- End Banner section -->
 

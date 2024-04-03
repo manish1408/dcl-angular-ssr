@@ -46,6 +46,7 @@ export class EngageComponent {
   currentIndex: number = 0;
   id!: string;
   currentTestimonial: any;
+  isLoading: boolean = false;
 
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
@@ -126,8 +127,10 @@ export class EngageComponent {
   }
   onSubmit(formValues: any) {
     if (formValues) {
+      this.isLoading = true;
       this.formDataService.saveScheduleCall(formValues).subscribe((res) => {
         console.log(res);
+        this.isLoading = false;
         if (res.result === 1) {
           this.id = res.data._id;
           this.router.navigate(
@@ -137,6 +140,7 @@ export class EngageComponent {
         }
       }),
         (error: any) => {
+          this.isLoading = false;
           console.error('Error occurred:', error);
           this.toastr.error('Something went wrong. Please try again.');
         };

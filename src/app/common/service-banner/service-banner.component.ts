@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -19,7 +19,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ServiceBannerComponent implements OnInit {
   @Output() submit: EventEmitter<any> = new EventEmitter<any>();
-  isLoading: boolean = false;
+  @Input() isLoading: boolean = false;
+
   detailsForm!: FormGroup;
   id!: string;
   constructor(private fb: FormBuilder, private toastr: ToastrService) {
