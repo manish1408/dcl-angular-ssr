@@ -8,7 +8,7 @@ import {
 import { Meta } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../common/testimonial-card/testimonial-card.component';
 import { TestimonialService } from '../services/testimonial.service';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CaseStudySliderComponent } from '../common/case-study-slider/case-study-slider.component';
 import { CaseStudyService } from '../services/case-study.service';
 import { ServiceBannerComponent } from '../common/service-banner/service-banner.component';
@@ -33,6 +33,7 @@ export class EngageComponent {
   constructor(
     private meta: Meta,
     private testimonialService: TestimonialService,
+    private route: ActivatedRoute,
     private caseStudyService: CaseStudyService,
     private formDataService: FormDataService,
     private router: Router,
@@ -47,12 +48,39 @@ export class EngageComponent {
   id!: string;
   currentTestimonial: any;
   isLoading: boolean = false;
-  initialHeader: string = 'TOP RATED ANGULAR DEVELOPMENT SERVICES';
-  mainHeader: string = 'Deliver your Angular Projects, Effortlessly.';
-  description: string =
-    'Outsource your Angular development to our nearshore talent. We can accommodate engagements of all sizes and complexities.';
+  pageType: any;
+  initialHeader: string = '';
+  mainHeader: string = '';
+  description: string = '';
+    buttonCta: string = '';
 
   ngOnInit(): void {
+
+    this.route.params.subscribe((params) => {
+      console.log(params);
+      console.log(this.route.snapshot.data);
+      this.pageType = params?.['type'];
+    if(this.pageType === 'staff-augmentation') {
+      this.initialHeader = 'STAFF AUGMENTATION';
+      this.mainHeader = 'Your developers and ours. Integrated.';
+      this.description = 'Augment your tech teams with our developers, adding the expertise you need.';
+      this.buttonCta = 'Expand Your Lineup';
+    } else if (this.pageType === 'dedicated-teams'){
+      this.initialHeader = 'DEDICATED SOFTWARE DEVELOPMENT TEAMS';
+      this.mainHeader = 'Software Teams. Seamlessly Integrated.';
+      this.description = 'Deliver end-to-end projects efficiently and reliably with our embedded software development teams.';
+      this.buttonCta = 'Assemble my Ideal Team';
+    } else if (this.pageType === 'software-outsourcing'){
+      this.initialHeader = 'SOFTWARE DEVELOPMENT OUTSOURCING';
+      this.mainHeader = 'Software Development. Project Management.Off Your Plate.';
+      this.description = 'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
+      this.buttonCta = 'Assemble my Ideal Team';
+    }
+
+    });
+
+
+    
     this.testimonialService.fetchTestimonials().then((res) => {
       this.testimonials = res.items;
 
