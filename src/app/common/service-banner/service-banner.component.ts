@@ -20,6 +20,9 @@ import { ToastrService } from 'ngx-toastr';
 export class ServiceBannerComponent implements OnInit {
   @Output() submit: EventEmitter<any> = new EventEmitter<any>();
   @Input() isLoading: boolean = false;
+  @Input() initialHeader!: string;
+  @Input() mainHeader!: string;
+  @Input() description!: string;
 
   detailsForm!: FormGroup;
   id!: string;
