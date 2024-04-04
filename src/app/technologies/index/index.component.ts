@@ -12,9 +12,15 @@ declare var Swiper: any;
 @Component({
   selector: 'app-index',
   standalone: true,
-  imports: [CaseStudySliderComponent, TestimonialCardComponent, RouterModule, SolutionsCardComponent, EngagementModelsComponent],
+  imports: [
+    CaseStudySliderComponent,
+    TestimonialCardComponent,
+    RouterModule,
+    SolutionsCardComponent,
+    EngagementModelsComponent,
+  ],
   templateUrl: './index.component.html',
-  styleUrl: './index.component.scss'
+  styleUrl: './index.component.scss',
 })
 export class IndexComponent {
   constructor(
@@ -34,13 +40,11 @@ export class IndexComponent {
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
       this.testimonials = res.items;
-
-      this.currentTestimonial = this.testimonials[this.currentIndex];
+      this.swiperinitTestimonial();
     });
     this.caseStudyService
       .fetchPosts()
       .then((resp: any) => {
-        console.log(resp);
         this.posts = resp?.items;
 
         this.swiperinit();
@@ -48,19 +52,6 @@ export class IndexComponent {
       .catch((err: any) => {
         console.log(err);
       });
-  }
-  onNextClick(): void {
-    if (this.currentIndex < this.testimonials.length - 1) {
-      this.currentIndex++;
-      this.currentTestimonial = this.testimonials[this.currentIndex];
-    }
-  }
-
-  onPrevClick(): void {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-      this.currentTestimonial = this.testimonials[this.currentIndex];
-    }
   }
 
   swiperinit() {
@@ -105,6 +96,20 @@ export class IndexComponent {
           1400: {
             slidesPerView: 2,
           },
+        },
+      });
+    }, 100);
+  }
+
+  swiperinitTestimonial() {
+    window.setTimeout(() => {
+      var swiper = new Swiper('.home3-testimonial-slider', {
+        slidesPerView: 1,
+        speed: 1500,
+        spaceBetween: 30,
+        navigation: {
+          nextEl: '.home3-testimonial-next',
+          prevEl: '.home3-testimonial-prev',
         },
       });
     }, 100);

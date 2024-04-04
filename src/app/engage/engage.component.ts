@@ -54,9 +54,8 @@ export class EngageComponent {
 
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
-      this.testimonials = res.items;
-
-      this.currentTestimonial = this.testimonials[this.currentIndex];
+      this.testimonials = res?.items;
+      this.swiperinitTestimonial();
     });
     this.caseStudyService
       .fetchPosts()
@@ -69,19 +68,6 @@ export class EngageComponent {
         console.log(err);
       });
   }
-  onNextClick(): void {
-    if (this.currentIndex < this.testimonials.length - 1) {
-      this.currentIndex++;
-      this.currentTestimonial = this.testimonials[this.currentIndex];
-    }
-  }
-
-  onPrevClick(): void {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-      this.currentTestimonial = this.testimonials[this.currentIndex];
-    }
-  }
 
   swiperinit() {
     window.setTimeout(() => {
@@ -90,10 +76,7 @@ export class EngageComponent {
         speed: 1500,
         spaceBetween: 30,
         loop: true,
-        // autoplay: {
-        // 	delay: 2500, // Autoplay duration in milliseconds
-        // 	disableOnInteraction: false,
-        // },
+
         navigation: {
           nextEl: '.case-study-slider-next',
           prevEl: '.case-study-slider-prev',
@@ -108,7 +91,6 @@ export class EngageComponent {
           },
           576: {
             slidesPerView: 1,
-            spaceBetween: 15,
           },
           768: {
             slidesPerView: 2,
@@ -129,6 +111,20 @@ export class EngageComponent {
       });
     }, 100);
   }
+  swiperinitTestimonial() {
+    window.setTimeout(() => {
+      var swiper = new Swiper('.home3-testimonial-slider', {
+        slidesPerView: 1,
+        speed: 1500,
+        spaceBetween: 30,
+        navigation: {
+          nextEl: '.home3-testimonial-next',
+          prevEl: '.home3-testimonial-prev',
+        },
+      });
+    }, 100);
+  }
+
   onSubmit(formValues: any) {
     if (formValues.valid) {
       this.isLoading = true;

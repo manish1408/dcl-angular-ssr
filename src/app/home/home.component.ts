@@ -4,7 +4,7 @@ import { TestimonialCardComponent } from '../common/testimonial-card/testimonial
 import { TestimonialService } from '../services/testimonial.service';
 import { RouterModule } from '@angular/router';
 import { EngagementModelsComponent } from '../common/engagement-models/engagement-models.component';
-
+declare var Swiper: any;
 @Component({
   selector: 'app-home',
   standalone: true,
@@ -27,21 +27,20 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
       this.testimonials = res.items;
-
-      this.currentTestimonial = this.testimonials[this.currentIndex];
+      this.swiperinitTestimonial();
     });
   }
-  onNextClick(): void {
-    if (this.currentIndex < this.testimonials.length - 1) {
-      this.currentIndex++;
-      this.currentTestimonial = this.testimonials[this.currentIndex];
-    }
-  }
-
-  onPrevClick(): void {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-      this.currentTestimonial = this.testimonials[this.currentIndex];
-    }
+  swiperinitTestimonial() {
+    window.setTimeout(() => {
+      var swiper = new Swiper('.home3-testimonial-slider', {
+        slidesPerView: 1,
+        speed: 1500,
+        spaceBetween: 30,
+        navigation: {
+          nextEl: '.home3-testimonial-next',
+          prevEl: '.home3-testimonial-prev',
+        },
+      });
+    }, 100);
   }
 }
