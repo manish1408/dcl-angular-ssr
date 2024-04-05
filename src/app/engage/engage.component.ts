@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../common/testimonial-card/testimonial-card.component';
 import { TestimonialService } from '../services/testimonial.service';
@@ -26,7 +20,7 @@ declare var Swiper: any;
     TestimonialCardComponent,
     RouterModule,
     ServiceBannerComponent,
-    ScheduleCallCTAComponent
+    ScheduleCallCTAComponent,
   ],
   templateUrl: './engage.component.html',
   styleUrl: './engage.component.scss',
@@ -54,35 +48,35 @@ export class EngageComponent {
   initialHeader: string = '';
   mainHeader: string = '';
   description: string = '';
-    buttonCta: string = '';
+  buttonCta: string = '';
 
   ngOnInit(): void {
-
     this.route.params.subscribe((params) => {
       console.log(params);
       console.log(this.route.snapshot.data);
       this.pageType = params?.['type'];
-    if(this.pageType === 'staff-augmentation') {
-      this.initialHeader = 'STAFF AUGMENTATION';
-      this.mainHeader = 'Your developers and ours. Integrated.';
-      this.description = 'Augment your tech teams with our developers, adding the expertise you need.';
-      this.buttonCta = 'Expand Your Lineup';
-    } else if (this.pageType === 'dedicated-teams'){
-      this.initialHeader = 'DEDICATED SOFTWARE DEVELOPMENT TEAMS';
-      this.mainHeader = 'Software Teams. Seamlessly Integrated.';
-      this.description = 'Deliver end-to-end projects efficiently and reliably with our embedded software development teams.';
-      this.buttonCta = 'Assemble my Ideal Team';
-    } else if (this.pageType === 'software-outsourcing'){
-      this.initialHeader = 'SOFTWARE DEVELOPMENT OUTSOURCING';
-      this.mainHeader = 'Software Development. Project Management.Off Your Plate.';
-      this.description = 'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
-      this.buttonCta = 'Assemble my Ideal Team';
-    }
-
+      if (this.pageType === 'staff-augmentation') {
+        this.initialHeader = 'STAFF AUGMENTATION';
+        this.mainHeader = 'Your developers and ours. Integrated.';
+        this.description =
+          'Augment your tech teams with our developers, adding the expertise you need.';
+        this.buttonCta = 'Expand Your Lineup';
+      } else if (this.pageType === 'dedicated-teams') {
+        this.initialHeader = 'DEDICATED SOFTWARE DEVELOPMENT TEAMS';
+        this.mainHeader = 'Software Teams. Seamlessly Integrated.';
+        this.description =
+          'Deliver end-to-end projects efficiently and reliably with our embedded software development teams.';
+        this.buttonCta = 'Assemble my Ideal Team';
+      } else if (this.pageType === 'software-outsourcing') {
+        this.initialHeader = 'SOFTWARE DEVELOPMENT OUTSOURCING';
+        this.mainHeader =
+          'Software Development. Project Management.Off Your Plate.';
+        this.description =
+          'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
+        this.buttonCta = 'Assemble my Ideal Team';
+      }
     });
 
-
-    
     this.testimonialService.fetchTestimonials().then((res) => {
       this.testimonials = res?.items;
       this.swiperinitTestimonial();

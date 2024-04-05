@@ -1,14 +1,17 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../../common/testimonial-card/testimonial-card.component';
 import { TestimonialService } from '../../services/testimonial.service';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CaseStudySliderComponent } from '../../common/case-study-slider/case-study-slider.component';
 import { CaseStudyService } from '../../services/case-study.service';
-import { SolutionsCardComponent } from '../../common/solutions-card/solutions-card.component';
-import { EngagementModelsComponent } from '../../common/engagement-models/engagement-models.component';
+import { ServiceBannerComponent } from '../../common/service-banner/service-banner.component';
+import { FormDataService } from '../../services/form-data.service';
+import { ToastrService } from 'ngx-toastr';
+import { ScheduleCallCTAComponent } from '../../common/schedule-call-cta/schedule-call-cta.component';
 
 declare var Swiper: any;
+
 @Component({
   selector: 'app-index',
   standalone: true,
@@ -16,8 +19,8 @@ declare var Swiper: any;
     CaseStudySliderComponent,
     TestimonialCardComponent,
     RouterModule,
-    SolutionsCardComponent,
-    EngagementModelsComponent,
+    ServiceBannerComponent,
+    ScheduleCallCTAComponent,
   ],
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss',
@@ -26,7 +29,11 @@ export class IndexComponent {
   constructor(
     private meta: Meta,
     private testimonialService: TestimonialService,
-    private caseStudyService: CaseStudyService
+    private route: ActivatedRoute,
+    private caseStudyService: CaseStudyService,
+    private formDataService: FormDataService,
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.meta.addTag({ name: 'title', content: 'Home page' });
   }
@@ -34,12 +41,44 @@ export class IndexComponent {
   testimonials: any = [];
   posts: any = [];
   currentIndex: number = 0;
-
+  id!: string;
   currentTestimonial: any;
+  isLoading: boolean = false;
+  pageType: any;
+  initialHeader: string = '';
+  mainHeader: string = '';
+  description: string = '';
+  buttonCta: string = '';
 
   ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      console.log(params);
+      console.log(this.route.snapshot.data);
+      this.pageType = params?.['type'];
+      if (this.pageType === 'react') {
+        this.initialHeader = 'STAFF AUGMENTATION';
+        this.mainHeader = 'Your developers and ours. Integrated.';
+        this.description =
+          'Augment your tech teams with our developers, adding the expertise you need.';
+        this.buttonCta = 'Expand Your Lineup';
+      } else if (this.pageType === 'dedicated-teams') {
+        this.initialHeader = 'DEDICATED SOFTWARE DEVELOPMENT TEAMS';
+        this.mainHeader = 'Software Teams. Seamlessly Integrated.';
+        this.description =
+          'Deliver end-to-end projects efficiently and reliably with our embedded software development teams.';
+        this.buttonCta = 'Assemble my Ideal Team';
+      } else if (this.pageType === 'software-outsourcing') {
+        this.initialHeader = 'SOFTWARE DEVELOPMENT OUTSOURCING';
+        this.mainHeader =
+          'Software Development. Project Management.Off Your Plate.';
+        this.description =
+          'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
+        this.buttonCta = 'Assemble my Ideal Team';
+      }
+    });
+
     this.testimonialService.fetchTestimonials().then((res) => {
-      this.testimonials = res.items;
+      this.testimonials = res?.items;
       this.swiperinitTestimonial();
     });
     this.caseStudyService
@@ -61,10 +100,7 @@ export class IndexComponent {
         speed: 1500,
         spaceBetween: 30,
         loop: true,
-        // autoplay: {
-        // 	delay: 2500, // Autoplay duration in milliseconds
-        // 	disableOnInteraction: false,
-        // },
+
         navigation: {
           nextEl: '.case-study-slider-next',
           prevEl: '.case-study-slider-prev',
@@ -79,7 +115,6 @@ export class IndexComponent {
           },
           576: {
             slidesPerView: 1,
-            spaceBetween: 15,
           },
           768: {
             slidesPerView: 2,
@@ -100,7 +135,6 @@ export class IndexComponent {
       });
     }, 100);
   }
-
   swiperinitTestimonial() {
     window.setTimeout(() => {
       var swiper = new Swiper('.home3-testimonial-slider', {
@@ -113,5 +147,28 @@ export class IndexComponent {
         },
       });
     }, 100);
+  }
+
+  onSubmit(formValues: any) {
+    if (formValues.valid) {
+      this.isLoading = true;
+      this.formDataService
+        .saveScheduleCall(formValues.value)
+        .subscribe((res) => {
+          this.isLoading = false;
+          if (res.result === 1) {
+            this.id = res.data._id;
+            this.router.navigate(
+              ['/schedule-call/contact-information', this.id],
+              { queryParams: { services: 'true' } }
+            );
+          }
+        }),
+        (error: any) => {
+          this.isLoading = false;
+          console.error('Error occurred:', error);
+          this.toastr.error('Something went wrong. Please try again.');
+        };
+    }
   }
 }
