@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './testimonial-card.component.scss',
 })
 export class TestimonialCardComponent implements OnInit {
-  @Input() currentTestimonial: any;
+  @Input() testimonials: any = [];
   @Input() currentIndex!: number;
   @Output() nextClick: EventEmitter<void> = new EventEmitter<void>();
   @Output() prevClick: EventEmitter<void> = new EventEmitter<void>();
