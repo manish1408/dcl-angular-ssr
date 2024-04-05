@@ -14,6 +14,7 @@ import { CaseStudyService } from '../services/case-study.service';
 import { ServiceBannerComponent } from '../common/service-banner/service-banner.component';
 import { FormDataService } from '../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
+import { ScheduleCallCTAComponent } from '../common/schedule-call-cta/schedule-call-cta.component';
 
 declare var Swiper: any;
 
@@ -25,6 +26,7 @@ declare var Swiper: any;
     TestimonialCardComponent,
     RouterModule,
     ServiceBannerComponent,
+    ScheduleCallCTAComponent
   ],
   templateUrl: './engage.component.html',
   styleUrl: './engage.component.scss',

@@ -14633,9 +14633,10 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   overflow: hidden;
   position: relative;
   border-radius: 10px 10px 0px 0px;
+  border: 1px solid rgba(var(--title-color-opc), 0.2);
+  border-bottom: 0px;
 }
 .industry-card .industry-img img {
-  border-radius: 10px 10px 0px 0px;
   transition: all 0.5s ease-out;
 }
 @media (max-width: 991px) {
