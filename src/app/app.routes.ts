@@ -20,13 +20,13 @@ import { EngageComponent } from './engage/engage.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'services/dedicated-teams', component: EngageComponent },
+  { path: 'services/:type', component: EngageComponent },
   {
-    path: 'services/software-outsourcing',
+    path: 'services/:type',
     component: EngageComponent,
   },
   {
-    path: 'services/staff-augmentation',
+    path: 'services/:type',
     component: EngageComponent,
   },
   { path: 'technologies/:type', component: IndexComponent },

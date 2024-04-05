@@ -6,8 +6,6 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
-import { FormDataService } from '../../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -23,6 +21,7 @@ export class ServiceBannerComponent implements OnInit {
   @Input() initialHeader!: string;
   @Input() mainHeader!: string;
   @Input() description!: string;
+  @Input() buttonCta!: string;
 
   detailsForm!: FormGroup;
   id!: string;
