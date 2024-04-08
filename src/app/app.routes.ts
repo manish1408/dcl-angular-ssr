@@ -21,14 +21,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'services/:type', component: EngageComponent },
-  {
-    path: 'services/:type',
-    component: EngageComponent,
-  },
-  {
-    path: 'services/:type',
-    component: EngageComponent,
-  },
+
   { path: 'technologies/:type', component: IndexComponent },
   { path: 'solutions/:type', component: SolutionComponent },
   { path: 'case-studies', component: CaseStudiesComponent },
