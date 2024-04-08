@@ -5,13 +5,14 @@ import { TestimonialService } from '../services/testimonial.service';
 import { RouterModule } from '@angular/router';
 import { EngagementModelsComponent } from '../common/engagement-models/engagement-models.component';
 import { ScheduleCallCTAComponent } from '../common/schedule-call-cta/schedule-call-cta.component';
+import { HiringProcessComponent } from '../common/hiring-process/hiring-process.component';
 declare var Swiper: any;
 @Component({
   selector: 'app-home',
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [TestimonialCardComponent, RouterModule, EngagementModelsComponent, ScheduleCallCTAComponent],
+  imports: [TestimonialCardComponent, RouterModule, EngagementModelsComponent, ScheduleCallCTAComponent,HiringProcessComponent],
 })
 export class HomeComponent implements OnInit {
   constructor(

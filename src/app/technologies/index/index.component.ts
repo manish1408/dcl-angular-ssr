@@ -56,11 +56,11 @@ export class IndexComponent {
       console.log(this.route.snapshot.data);
       this.pageType = params?.['type'];
       if (this.pageType === 'react') {
-        this.initialHeader = 'STAFF AUGMENTATION';
-        this.mainHeader = 'Your developers and ours. Integrated.';
+        this.initialHeader = 'TOP RATED ANGULAR DEVELOPMENT SERVICES';
+        this.mainHeader = 'Hire Angular Developers for Cutting-Edge Web Solutions';
         this.description =
-          'Augment your tech teams with our developers, adding the expertise you need.';
-        this.buttonCta = 'Expand Your Lineup';
+          'Hire AngularJS developers and save up to 40% on hiring costs with the top 3.5% of AI-vetted Indian professionals. We strive to offer unparalleled expertise and innovation with a 1M+ talent network.';
+        this.buttonCta = 'Hire Angular Developer';
       } else if (this.pageType === 'dedicated-teams') {
         this.initialHeader = 'DEDICATED SOFTWARE DEVELOPMENT TEAMS';
         this.mainHeader = 'Software Teams. Seamlessly Integrated.';
