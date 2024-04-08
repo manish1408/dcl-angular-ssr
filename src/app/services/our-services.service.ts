@@ -29,7 +29,6 @@ export class OurServicesService {
       }
     );
     const data = await jsonRsp.json();
-    //   localStorage.setItem("squidex-token", data.access_token);
     return data.access_token;
   }
   async getServices(): Promise<any> {
@@ -44,8 +43,4 @@ export class OurServicesService {
     const posts = jsonResp.json();
     return posts;
   }
-
-  // getServices(): Observable<any> {
-  //   return this.http.get(this.servicesApiURL);
-  // }
 }
