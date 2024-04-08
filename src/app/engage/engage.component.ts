@@ -9,6 +9,7 @@ import { ServiceBannerComponent } from '../common/service-banner/service-banner.
 import { FormDataService } from '../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
 import { ScheduleCallCTAComponent } from '../common/schedule-call-cta/schedule-call-cta.component';
+import { OurServicesService } from '../services/our-services.service';
 
 declare var Swiper: any;
 
@@ -33,7 +34,8 @@ export class EngageComponent {
     private caseStudyService: CaseStudyService,
     private formDataService: FormDataService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private ourServices: OurServicesService
   ) {
     this.meta.addTag({ name: 'title', content: 'Home page' });
   }
@@ -76,6 +78,8 @@ export class EngageComponent {
         this.buttonCta = 'Assemble my Ideal Team';
       }
     });
+    // fetch services
+    this.getServices();
 
     this.testimonialService.fetchTestimonials().then((res) => {
       this.testimonials = res?.items;
@@ -93,6 +97,11 @@ export class EngageComponent {
       });
   }
 
+  getServices() {
+    this.ourServices.getServices().then((res) => {
+      // console.log('services:', res);
+    });
+  }
   swiperinit() {
     window.setTimeout(() => {
       var swiper = new Swiper('.case-study-slider', {
