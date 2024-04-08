@@ -1,6 +1,8 @@
 <div class="home3-testimonial-section mb-110">
   <div class="container">
     <div class="row justify-content-center mb-60">
+      @for(ele of services; track ele){
+
       <div class="col-lg-8">
         <div
           class="section-title text-center wow animate fadeInDown"
@@ -30,16 +32,14 @@
               </g>
             </svg>
           </span>
-          <h2>Hear What Our Clients Say</h2>
+          <h2>{{ ele.data?.testimonialHeader?.iv }}</h2>
 
           <p>
-            Welcome to Distinct Cloud Labs, where digital innovation meets
-            strategic excellence. As a dynamic force in the realm of digital
-            marketing, we are dedicated to propelling businesses into the
-            spotlight of online success.
+            {{ ele.data?.testimonialDescription?.iv }}
           </p>
         </div>
       </div>
+      }
     </div>
     <div
       class="testimonial-wrap wow animate fadeInUp"

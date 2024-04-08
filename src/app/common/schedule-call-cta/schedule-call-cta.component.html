@@ -1,35 +1,37 @@
-
 <!-- Start Home3 Newsletter section -->
 <div class="home3-newsletter-section mb-110">
-    <div class="container">
-      <div class="newsletter-wrapper">
-        <div class="row g-lg-4 gy-5 align-items-center">
-          <div
-            class="col-lg-7 col-md-6 wow animate fadeInLeft"
-            data-wow-delay="200ms"
-            data-wow-duration="1500ms"
-          >
-            <div class="section-title white">
-              <h2>Want to accelerate software development at your company?</h2>
-            </div>
-          </div>
-          <div
-            class="col-lg-5 col-md-6 wow animate fadeInRight"
-            data-wow-delay="200ms"
-            data-wow-duration="1500ms"
-          >
-            <div class="newsletter-form-area">
-              <h6>See how we can help.</h6>
-              <button
-                [routerLink]="['/schedule-call/basic-details']"
-                class="primary-btn1 hover-white"
-              >
-                Schedule a call<i class="bi bi-arrow-right"></i>
-              </button>
-            </div>
+  <div class="container">
+    <div class="newsletter-wrapper">
+      <div class="row g-lg-4 gy-5 align-items-center">
+        @for(ele of services; track ele){
+        <div
+          class="col-lg-7 col-md-6 wow animate fadeInLeft"
+          data-wow-delay="200ms"
+          data-wow-duration="1500ms"
+        >
+          <div class="section-title white">
+            <h2>{{ ele.data?.footerCtaTitle?.iv }}</h2>
           </div>
         </div>
+        <div
+          class="col-lg-5 col-md-6 wow animate fadeInRight"
+          data-wow-delay="200ms"
+          data-wow-duration="1500ms"
+        >
+          <div class="newsletter-form-area">
+            <h6>{{ ele.data?.footerCtaDescription?.iv }}</h6>
+            <button
+              [routerLink]="['/schedule-call/basic-details']"
+              class="primary-btn1 hover-white"
+            >
+              {{ ele.data?.footerCtaButton?.iv
+              }}<i class="bi bi-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        }
       </div>
     </div>
   </div>
-  <!-- End Home3 Newsletter section -->
+</div>
+<!-- End Home3 Newsletter section -->

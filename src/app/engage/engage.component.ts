@@ -10,6 +10,7 @@ import { FormDataService } from '../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
 import { ScheduleCallCTAComponent } from '../common/schedule-call-cta/schedule-call-cta.component';
 import { OurServicesService } from '../services/our-services.service';
+import { CommonModule } from '@angular/common';
 
 declare var Swiper: any;
 
@@ -22,6 +23,7 @@ declare var Swiper: any;
     RouterModule,
     ServiceBannerComponent,
     ScheduleCallCTAComponent,
+    CommonModule,
   ],
   templateUrl: './engage.component.html',
   styleUrl: './engage.component.scss',
@@ -51,11 +53,10 @@ export class EngageComponent {
   mainHeader: string = '';
   description: string = '';
   buttonCta: string = '';
+  services: any = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      console.log(params);
-      console.log(this.route.snapshot.data);
       this.pageType = params?.['type'];
       if (this.pageType === 'staff-augmentation') {
         this.initialHeader = 'STAFF AUGMENTATION';
@@ -77,9 +78,9 @@ export class EngageComponent {
           'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
         this.buttonCta = 'Assemble my Ideal Team';
       }
+      // fetch services
+      this.getServices();
     });
-    // fetch services
-    this.getServices();
 
     this.testimonialService.fetchTestimonials().then((res) => {
       this.testimonials = res?.items;
@@ -98,9 +99,17 @@ export class EngageComponent {
   }
 
   getServices() {
-    this.ourServices.getServices().then((res) => {
-      // console.log('services:', res);
-    });
+    this.ourServices
+      .getServices()
+      .then((res) => {
+        this.services = res?.items.filter((item: any) => {
+          return item.data['identifier-slug'].iv === this.pageType;
+        });
+        // console.log('services:', this.services);
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
   }
   swiperinit() {
     window.setTimeout(() => {

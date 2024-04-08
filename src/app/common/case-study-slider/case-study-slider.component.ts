@@ -18,6 +18,7 @@ declare var Swiper: any;
 })
 export class CaseStudySliderComponent {
   @Input() currentCaseStudy: any;
+  @Input() services: any = [];
 
   constructor() {}
 }

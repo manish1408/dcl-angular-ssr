@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
@@ -6,8 +6,9 @@ import { Router, RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './schedule-call-cta.component.html',
-  styleUrl: './schedule-call-cta.component.scss'
+  styleUrl: './schedule-call-cta.component.scss',
 })
 export class ScheduleCallCTAComponent {
-
+  @Input() services: any = [];
+  constructor() {}
 }
