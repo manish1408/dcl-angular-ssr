@@ -57,8 +57,6 @@ export class EngageComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      console.log(params);
-      console.log(this.route.snapshot.data);
       this.pageType = params?.['type'];
       if (this.pageType === 'staff-augmentation') {
         this.initialHeader = 'STAFF AUGMENTATION';
@@ -101,12 +99,17 @@ export class EngageComponent {
   }
 
   getServices() {
-    this.ourServices.getServices().then((res) => {
-      this.services = res?.items.filter((item: any) => {
-        return item.data['identifier-slug'].iv === this.pageType;
+    this.ourServices
+      .getServices()
+      .then((res) => {
+        this.services = res?.items.filter((item: any) => {
+          return item.data['identifier-slug'].iv === this.pageType;
+        });
+        // console.log('services:', this.services);
+      })
+      .catch((err: any) => {
+        console.log(err);
       });
-      console.log('services:', this.services);
-    });
   }
   swiperinit() {
     window.setTimeout(() => {

@@ -22,6 +22,7 @@ export class ServiceBannerComponent implements OnInit {
   @Input() mainHeader!: string;
   @Input() description!: string;
   @Input() buttonCta!: string;
+  @Input() services: any = [];
 
   detailsForm!: FormGroup;
   id!: string;

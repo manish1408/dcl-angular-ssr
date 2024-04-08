@@ -7,6 +7,7 @@
   [mainHeader]="mainHeader"
   [description]="description"
   [buttonCta]="buttonCta"
+  [services]="services"
 ></app-service-banner>
 
 <!-- End Banner section -->
@@ -237,10 +238,13 @@
 </div>
 <!-- End Home1 Solution section -->
 
-<app-schedule-call-cta></app-schedule-call-cta>
+<app-schedule-call-cta [services]="services"></app-schedule-call-cta>
 
 <!-- Start Testimonial section -->
-<app-testimonial-card [testimonials]="testimonials"></app-testimonial-card>
+<app-testimonial-card
+  [testimonials]="testimonials"
+  [services]="services"
+></app-testimonial-card>
 <!-- End Testimonial section -->
 
 <!-- Start Industry Card Section -->
@@ -339,7 +343,10 @@
 <!-- End Industry Card Section -->
 
 <!-- Start Banner With Case Study Slider section -->
-<app-case-study-slider [currentCaseStudy]="posts"></app-case-study-slider>
+<app-case-study-slider
+  [currentCaseStudy]="posts"
+  [services]="services"
+></app-case-study-slider>
 
 <!-- End Banner With Case Study Slider section -->
 
@@ -468,4 +475,4 @@
 </div>
 <!-- End Approach section -->
 
-<app-schedule-call-cta></app-schedule-call-cta>
+<app-schedule-call-cta [services]="services"></app-schedule-call-cta>
