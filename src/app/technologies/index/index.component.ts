@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ScheduleCallCTAComponent } from '../../common/schedule-call-cta/schedule-call-cta.component';
 import { TechnologiesService } from '../../services/technologies.service';
 import { CommonModule } from '@angular/common';
+import { EngagementModelsComponent } from '../../common/engagement-models/engagement-models.component';
 
 declare var Swiper: any;
 
@@ -22,6 +23,7 @@ declare var Swiper: any;
     TestimonialCardComponent,
     RouterModule,
     ServiceBannerComponent,
+    EngagementModelsComponent,
     ScheduleCallCTAComponent,
     CommonModule,
   ],
