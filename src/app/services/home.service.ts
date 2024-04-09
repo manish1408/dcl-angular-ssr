@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 export class HomeService {
   constructor() {}
   private cta_api_url = environment.squidexApiUrl + 'footer-cta';
+  private engagement_api_url = environment.squidexApiUrl + 'engagement-models';
 
   async generateAccessToken() {
     var myHeaders = new Headers();
@@ -36,6 +37,19 @@ export class HomeService {
     myHeaders.append('Authorization', 'Bearer ' + token);
 
     const jsonResp = await fetch(this.cta_api_url, {
+      headers: myHeaders,
+    });
+    const posts = jsonResp.json();
+    return posts;
+  }
+
+  async getEngagementModels(): Promise<any> {
+    const token = await this.generateAccessToken();
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
+    myHeaders.append('Authorization', 'Bearer ' + token);
+
+    const jsonResp = await fetch(this.engagement_api_url, {
       headers: myHeaders,
     });
     const posts = jsonResp.json();
