@@ -10,6 +10,7 @@ import { TestimonialService } from '../../services/testimonial.service';
 import { environment } from '../../environments/environment';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+declare var Swiper: any;
 
 @Component({
   selector: 'app-testimonial-card',

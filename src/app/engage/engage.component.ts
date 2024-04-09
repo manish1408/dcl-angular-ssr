@@ -82,10 +82,10 @@ export class EngageComponent {
       this.getServices();
     });
 
-    this.testimonialService.fetchTestimonials().then((res) => {
-      this.testimonials = res?.items;
-      this.swiperinitTestimonial();
-    });
+    // this.testimonialService.fetchTestimonials().then((res) => {
+    //   this.testimonials = res?.items;
+    //   this.swiperinitTestimonial();
+    // });
     this.caseStudyService
       .fetchPosts()
       .then((resp: any) => {
@@ -102,10 +102,10 @@ export class EngageComponent {
     this.ourServices
       .getServices()
       .then((res) => {
+        this.swiperinitTestimonial();
         this.services = res?.items.filter((item: any) => {
           return item.data['identifier-slug'].iv === this.pageType;
         });
-        console.log('services:', this.services);
       })
       .catch((err: any) => {
         console.log(err);
