@@ -84,10 +84,10 @@ export class IndexComponent {
       this.getTechnologies();
     });
 
-    this.testimonialService.fetchTestimonials().then((res) => {
-      this.testimonials = res?.items;
-      this.swiperinitTestimonial();
-    });
+    // this.testimonialService.fetchTestimonials().then((res) => {
+    //   this.testimonials = res?.items;
+    //   this.swiperinitTestimonial();
+    // });
     this.caseStudyService
       .fetchPosts()
       .then((resp: any) => {
@@ -102,6 +102,7 @@ export class IndexComponent {
 
   getTechnologies() {
     this.technologyService.getTechnologies().then((res) => {
+      this.swiperinitTestimonial();
       this.technologies = res?.items.filter((item: any) => {
         return item.data['identifier-slug'].iv === this.pageType;
       });
