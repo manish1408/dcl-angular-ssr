@@ -9,6 +9,8 @@ import { ServiceBannerComponent } from '../../common/service-banner/service-bann
 import { FormDataService } from '../../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
 import { ScheduleCallCTAComponent } from '../../common/schedule-call-cta/schedule-call-cta.component';
+import { TechnologiesService } from '../../services/technologies.service';
+import { CommonModule } from '@angular/common';
 
 declare var Swiper: any;
 
@@ -21,6 +23,7 @@ declare var Swiper: any;
     RouterModule,
     ServiceBannerComponent,
     ScheduleCallCTAComponent,
+    CommonModule,
   ],
   templateUrl: './index.component.html',
   styleUrl: './index.component.scss',
@@ -33,7 +36,8 @@ export class IndexComponent {
     private caseStudyService: CaseStudyService,
     private formDataService: FormDataService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private technologyService: TechnologiesService
   ) {
     this.meta.addTag({ name: 'title', content: 'Home page' });
   }
@@ -49,15 +53,15 @@ export class IndexComponent {
   mainHeader: string = '';
   description: string = '';
   buttonCta: string = '';
+  technologies: any = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      console.log(params);
-      console.log(this.route.snapshot.data);
       this.pageType = params?.['type'];
       if (this.pageType === 'react') {
         this.initialHeader = 'TOP RATED ANGULAR DEVELOPMENT SERVICES';
-        this.mainHeader = 'Hire Angular Developers for Cutting-Edge Web Solutions';
+        this.mainHeader =
+          'Hire Angular Developers for Cutting-Edge Web Solutions';
         this.description =
           'Hire AngularJS developers and save up to 40% on hiring costs with the top 3.5% of AI-vetted Indian professionals. We strive to offer unparalleled expertise and innovation with a 1M+ talent network.';
         this.buttonCta = 'Hire Angular Developer';
@@ -75,6 +79,7 @@ export class IndexComponent {
           'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
         this.buttonCta = 'Assemble my Ideal Team';
       }
+      this.getTechnologies();
     });
 
     this.testimonialService.fetchTestimonials().then((res) => {
@@ -91,6 +96,15 @@ export class IndexComponent {
       .catch((err: any) => {
         console.log(err);
       });
+  }
+
+  getTechnologies() {
+    this.technologyService.getTechnologies().then((res) => {
+      this.technologies = res?.items.filter((item: any) => {
+        return item.data['identifier-slug'].iv === this.pageType;
+      });
+      // console.log('technology:', this.technologies);
+    });
   }
 
   swiperinit() {
