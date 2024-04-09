@@ -8,6 +8,7 @@ import { ScheduleCallCTAComponent } from '../common/schedule-call-cta/schedule-c
 import { HiringProcessComponent } from '../common/hiring-process/hiring-process.component';
 import { ContactService } from '../services/contact.service';
 import { HomeService } from '../services/home.service';
+import { HomeTestimonialsComponent } from '../common/home-testimonials/home-testimonials.component';
 declare var Swiper: any;
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ declare var Swiper: any;
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   imports: [
-    TestimonialCardComponent,
+    HomeTestimonialsComponent,
     RouterModule,
     EngagementModelsComponent,
     ScheduleCallCTAComponent,
@@ -39,6 +40,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
       this.testimonials = res.items;
+      console.log('testimonials:', this.testimonials);
+
       this.swiperinitTestimonial();
     });
     this.getCTA();
@@ -60,7 +63,7 @@ export class HomeComponent implements OnInit {
   getCTA() {
     this.homeService.getCTA().then((res) => {
       this.ctaDetails = res.items;
-      console.log(res, this.ctaDetails);
+      // console.log(res, this.ctaDetails);
     });
   }
 }
