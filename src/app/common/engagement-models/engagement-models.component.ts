@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-engagement-models',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './engagement-models.component.html',
-  styleUrl: './engagement-models.component.scss'
+  styleUrl: './engagement-models.component.scss',
 })
 export class EngagementModelsComponent {
-
+  constructor() {}
+  @Input() services: any = [];
 }
