@@ -58,8 +58,6 @@ export class SolutionComponent {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      console.log(params);
-      console.log(this.route.snapshot.data);
       this.pageType = params?.['type'];
       if (this.pageType === 'mobile-app-development') {
         this.initialHeader = 'APP DEVELOPMENT';
@@ -164,7 +162,7 @@ export class SolutionComponent {
         this.solutions = res?.items.filter((item: any) => {
           return item.data['identifier-slug'].iv === this.pageType;
         });
-        console.log(this.solutions);
+        // console.log(this.solutions);
       })
       .catch((err: any) => {
         console.log(err);
