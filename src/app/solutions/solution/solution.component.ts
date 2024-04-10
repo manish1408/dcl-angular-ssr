@@ -12,6 +12,7 @@ import { ScheduleCallCTAComponent } from '../../common/schedule-call-cta/schedul
 import { EngagementModelsComponent } from '../../common/engagement-models/engagement-models.component';
 import { HiringProcessComponent } from '../../common/hiring-process/hiring-process.component';
 import { SolutionsService } from '../../services/solutions.service';
+import { CommonModule } from '@angular/common';
 
 declare var Swiper: any;
 
@@ -26,6 +27,7 @@ declare var Swiper: any;
     EngagementModelsComponent,
     ScheduleCallCTAComponent,
     HiringProcessComponent,
+    CommonModule,
   ],
   templateUrl: './solution.component.html',
   styleUrl: './solution.component.scss',

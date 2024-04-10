@@ -28,18 +28,13 @@
               <h2>
                 {{ items.data?.section1Header?.iv }}
               </h2>
-              <p>
-                {{
-                  items.data?.section1Description?.iv?.content[0]?.content[0]
-                    ?.text
-                }}
+              @for(ele of items.data?.section1Description?.iv?.content; track
+              ele){
+
+              <p *ngIf="ele?.content">
+                {{ ele.content[0].text }}
               </p>
-              <p>
-                {{
-                  items.data?.section1Description?.iv?.content[1]?.content[0]
-                    ?.text
-                }}
-              </p>
+              }
             </div>
           </div>
         </div>
