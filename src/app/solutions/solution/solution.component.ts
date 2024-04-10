@@ -12,6 +12,7 @@ import { ScheduleCallCTAComponent } from '../../common/schedule-call-cta/schedul
 import { EngagementModelsComponent } from '../../common/engagement-models/engagement-models.component';
 import { HiringProcessComponent } from '../../common/hiring-process/hiring-process.component';
 import { SolutionsService } from '../../services/solutions.service';
+import { CommonModule } from '@angular/common';
 
 declare var Swiper: any;
 
@@ -26,6 +27,7 @@ declare var Swiper: any;
     EngagementModelsComponent,
     ScheduleCallCTAComponent,
     HiringProcessComponent,
+    CommonModule,
   ],
   templateUrl: './solution.component.html',
   styleUrl: './solution.component.scss',
@@ -79,23 +81,15 @@ export class SolutionComponent {
           'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
         this.buttonCta = 'Assemble my Ideal Team';
       }
+
       this.getSolutions();
-    });
-
-    // this.testimonialService.fetchTestimonials().then((res) => {
-    //   this.testimonials = res?.items;
-    //   this.swiperinitTestimonial();
-    // });
-    this.caseStudyService
-      .fetchPosts()
-      .then((resp: any) => {
-        this.posts = resp?.items;
-
-        this.swiperinit();
-      })
-      .catch((err: any) => {
-        console.log(err);
+      // this.getCaseStudies();
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
       });
+    });
   }
 
   swiperinit() {
@@ -154,15 +148,28 @@ export class SolutionComponent {
     }, 100);
   }
 
+  // getCaseStudies() {
+  //   this.caseStudyService
+  //     .fetchPosts()
+  //     .then((resp: any) => {
+  //       this.posts = resp?.items;
+
+  //       this.swiperinit();
+  //     })
+  //     .catch((err: any) => {
+  //       console.log(err);
+  //     });
+  // }
   getSolutions() {
     this.solutionsService
       .getSolutions()
       .then((res) => {
         this.swiperinitTestimonial();
+        this.swiperinit();
         this.solutions = res?.items.filter((item: any) => {
           return item.data['identifier-slug'].iv === this.pageType;
         });
-        // console.log(this.solutions);
+        console.log(this.solutions);
       })
       .catch((err: any) => {
         console.log(err);

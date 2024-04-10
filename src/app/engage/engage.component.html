@@ -28,18 +28,13 @@
               <h2>
                 {{ items.data.section1Title.iv }}
               </h2>
-              <p>
-                {{
-                  items.data?.section1Description?.iv?.content[0]?.content[0]
-                    ?.text
-                }}
+              @for(ele of items.data?.section1Description?.iv?.content; track
+              ele){
+
+              <p *ngIf="ele?.content">
+                {{ ele.content[0].text }}
               </p>
-              <p>
-                {{
-                  items.data?.section1Description?.iv?.content[1]?.content[0]
-                    ?.text
-                }}
-              </p>
+              }
             </div>
           </div>
         </div>
@@ -340,10 +335,7 @@
 <!-- End Industry Card Section -->
 
 <!-- Start Banner With Case Study Slider section -->
-<app-case-study-slider
-  [currentCaseStudy]="posts"
-  [services]="services"
-></app-case-study-slider>
+<app-case-study-slider [services]="services"></app-case-study-slider>
 
 <!-- End Banner With Case Study Slider section -->
 
