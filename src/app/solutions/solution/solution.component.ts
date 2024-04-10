@@ -79,28 +79,15 @@ export class SolutionComponent {
           'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
         this.buttonCta = 'Assemble my Ideal Team';
       }
+      this.swiperinit();
       this.getSolutions();
+      this.getCaseStudies();
       window.scroll({
         top: 0,
         left: 0,
         behavior: 'smooth',
       });
     });
-
-    // this.testimonialService.fetchTestimonials().then((res) => {
-    //   this.testimonials = res?.items;
-    //   this.swiperinitTestimonial();
-    // });
-    this.caseStudyService
-      .fetchPosts()
-      .then((resp: any) => {
-        this.posts = resp?.items;
-
-        this.swiperinit();
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
   }
 
   swiperinit() {
@@ -159,6 +146,18 @@ export class SolutionComponent {
     }, 100);
   }
 
+  getCaseStudies() {
+    this.caseStudyService
+      .fetchPosts()
+      .then((resp: any) => {
+        this.posts = resp?.items;
+
+        this.swiperinit();
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
+  }
   getSolutions() {
     this.solutionsService
       .getSolutions()
