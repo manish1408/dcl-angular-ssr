@@ -36,15 +36,17 @@ export class HomeComponent implements OnInit {
   currentIndex: number = 0;
   currentTestimonial: any;
   ctaDetails: any = [];
+  engagementModels: any = [];
 
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
       this.testimonials = res.items;
-      console.log('testimonials:', this.testimonials);
+      // console.log('testimonials:', this.testimonials);
 
       this.swiperinitTestimonial();
     });
     this.getCTA();
+    this.getEngagementModels();
   }
   swiperinitTestimonial() {
     window.setTimeout(() => {
@@ -64,6 +66,13 @@ export class HomeComponent implements OnInit {
     this.homeService.getCTA().then((res) => {
       this.ctaDetails = res.items;
       // console.log(res, this.ctaDetails);
+    });
+  }
+
+  getEngagementModels() {
+    this.homeService.getEngagementModels().then((res) => {
+      this.engagementModels = res.items;
+      console.log(res, this.engagementModels);
     });
   }
 }
