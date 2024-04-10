@@ -108,7 +108,7 @@ export class EngageComponent {
           return item.data['identifier-slug'].iv === this.pageType;
         });
 
-        // console.log(this.services);
+        console.log(this.services);
       })
       .catch((err: any) => {
         console.log(err);
