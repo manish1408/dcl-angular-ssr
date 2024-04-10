@@ -30,7 +30,6 @@
               </h2>
               @for(ele of items.data?.section1Description?.iv?.content; track
               ele){
-
               <p *ngIf="ele?.content">
                 {{ ele.content[0].text }}
               </p>
@@ -152,10 +151,16 @@
           >
             <div class="feature-card">
               <div class="icon">
+                @for(image of ele?.icon;track image){
+                {{ image }}
                 <img
-                  src="assets/img/home1/icon/about-feature-card-icon1.svg"
+                  [src]="
+                    'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
+                    image
+                  "
                   alt=""
                 />
+                }
               </div>
               <div class="content">
                 <h4>{{ ele?.title }}</h4>
