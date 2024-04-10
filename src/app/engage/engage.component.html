@@ -30,8 +30,9 @@
               </h2>
               @for(ele of items.data?.section1Description?.iv?.content; track
               ele){
-              <p>
-                {{ ele?.content[0]?.text }}
+
+              <p *ngIf="ele?.content">
+                {{ ele.content[0].text }}
               </p>
               }
             </div>

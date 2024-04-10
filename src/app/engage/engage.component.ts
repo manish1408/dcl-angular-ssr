@@ -54,7 +54,6 @@ export class EngageComponent {
   description: string = '';
   buttonCta: string = '';
   services: any = [];
-  sec1Description = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -108,8 +107,8 @@ export class EngageComponent {
         this.services = res?.items.filter((item: any) => {
           return item.data['identifier-slug'].iv === this.pageType;
         });
-        // this.sec1Description = this.services?.section1Description?.iv;
-        // console.log(this.services, this.sec1Description);
+
+        // console.log(this.services);
       })
       .catch((err: any) => {
         console.log(err);
