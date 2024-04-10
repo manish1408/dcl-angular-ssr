@@ -80,6 +80,11 @@ export class SolutionComponent {
         this.buttonCta = 'Assemble my Ideal Team';
       }
       this.getSolutions();
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
     });
 
     // this.testimonialService.fetchTestimonials().then((res) => {

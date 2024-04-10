@@ -47,6 +47,12 @@ export class HomeComponent implements OnInit {
     });
     this.getCTA();
     this.getEngagementModels();
+
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   }
   swiperinitTestimonial() {
     window.setTimeout(() => {

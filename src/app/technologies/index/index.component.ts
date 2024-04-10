@@ -82,6 +82,11 @@ export class IndexComponent {
         this.buttonCta = 'Assemble my Ideal Team';
       }
       this.getTechnologies();
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
     });
 
     // this.testimonialService.fetchTestimonials().then((res) => {
