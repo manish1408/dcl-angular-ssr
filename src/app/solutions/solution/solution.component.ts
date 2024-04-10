@@ -81,7 +81,7 @@ export class SolutionComponent {
       }
     });
 
-    this.testimonialService.fetchTestimonials().then((res) => {
+    this.testimonialService.fetchTestimonials().subscribe((res: any) => {
       this.testimonials = res?.items;
       this.swiperinitTestimonial();
     });

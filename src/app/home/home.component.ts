@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
   currentTestimonial: any;
 
   ngOnInit(): void {
-    this.testimonialService.fetchTestimonials().then((res) => {
+    this.testimonialService.fetchTestimonials().subscribe((res: any) => {
       this.testimonials = res.items;
       console.log(
         '🚀 ~ file: home.component.ts ~ line 56 ~ HomeComponent ~ ngOnInit ~ this.testimonials',

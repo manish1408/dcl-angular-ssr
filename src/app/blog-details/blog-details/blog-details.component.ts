@@ -32,39 +32,29 @@ export class BlogDetailsComponent implements OnInit {
       this.isLoading = true;
       this.slugName = param['type'];
     });
-    this.blogService
-      .getBlogBySlug(this.slugName)
-      .then((resp: any) => {
-        this.post = resp?.items[0].data;
-        this.isLoading = false;
+    this.blogService.getBlogBySlug(this.slugName).subscribe((resp: any) => {
+      this.post = resp?.items[0].data;
+      this.isLoading = false;
 
-        this.date = resp.items[0].created;
+      this.date = resp.items[0].created;
 
-        this.formatDate(this.date);
-        this.getAllBlogs();
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
+      this.formatDate(this.date);
+      this.getAllBlogs();
+    });
   }
 
   getAllBlogs() {
     this.isLoading = true;
-    this.blogService
-      .fetchPosts()
-      .then((resp: any) => {
-        console.log(resp);
+    this.blogService.fetchPosts().subscribe((resp: any) => {
+      console.log(resp);
 
-        this.posts = resp?.items.filter((item: any) => {
-          return item.data.slug.iv !== this.slugName;
-        });
-
-        this.isLoading = false;
-        console.log('All blog details:', this.posts);
-      })
-      .catch((err: any) => {
-        console.log(err);
+      this.posts = resp?.items.filter((item: any) => {
+        return item.data.slug.iv !== this.slugName;
       });
+
+      this.isLoading = false;
+      console.log('All blog details:', this.posts);
+    });
   }
 
   formatDate(date: any) {

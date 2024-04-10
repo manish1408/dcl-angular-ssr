@@ -29,15 +29,13 @@ export class CaseDetailsComponent implements OnInit {
 
       this.caseStudyService
         .getCaseStudyBySlug(this.slugName)
-        .then((resp: any) => {
+        .subscribe((resp: any) => {
           this.post = resp?.items[0].data;
           this.isLoading = false;
 
           this.getAllCaseStudies();
-        })
-        .catch((err: any) => {
-          console.log(err);
         });
+
       window.scroll({
         top: 0,
         left: 0,

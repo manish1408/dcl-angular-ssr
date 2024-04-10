@@ -82,7 +82,7 @@ export class EngageComponent {
       this.getServices();
     });
 
-    // this.testimonialService.fetchTestimonials().then((res) => {
+    // this.testimonialService.fetchTestimonials().subscribe((res) => {
     //   this.testimonials = res?.items;
     //   this.swiperinitTestimonial();
     // });
@@ -90,23 +90,18 @@ export class EngageComponent {
       this.posts = resp?.items;
       console.log('Case study posts fetched successfully: ', this.posts.length);
 
-      // this.swiperinit();
+      this.swiperinit();
     });
   }
 
   getServices() {
-    this.ourServices
-      .getServices()
-      .then((res) => {
-        // this.swiperinitTestimonial();
-        // console.log(res);
-        this.services = res?.items.filter((item: any) => {
-          return item.data['identifier-slug'].iv === this.pageType;
-        });
-      })
-      .catch((err: any) => {
-        console.log(err);
+    this.ourServices.getServices().subscribe((res: any) => {
+      this.swiperinitTestimonial();
+      // console.log(res);
+      this.services = res?.items.filter((item: any) => {
+        return item.data['identifier-slug'].iv === this.pageType;
       });
+    });
   }
   swiperinit() {
     window.setTimeout(() => {

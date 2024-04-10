@@ -19,19 +19,14 @@ export class BlogsComponent {
 
   constructor(private blogService: BlogService, private datePipe: DatePipe) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.isLoading = true;
-    this.blogService
-      .fetchPosts()
-      .then((resp: any) => {
-        this.posts = resp?.items;
-        this.isLoading = false;
+    this.blogService.fetchPosts().subscribe((resp: any) => {
+      this.posts = resp?.items;
+      this.isLoading = false;
 
-        this.formatDates();
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
+      this.formatDates();
+    });
   }
 
   formatDates() {

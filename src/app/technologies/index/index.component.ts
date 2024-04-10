@@ -96,7 +96,7 @@ export class IndexComponent {
   }
 
   getTechnologies() {
-    this.technologyService.getTechnologies().then((res) => {
+    this.technologyService.getTechnologies().subscribe((res: any) => {
       this.swiperinitTestimonial();
       this.technologies = res?.items.filter((item: any) => {
         return item.data['identifier-slug'].iv === this.pageType;

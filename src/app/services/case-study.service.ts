@@ -13,7 +13,7 @@ export class CaseStudyService {
 
   fetchPosts() {
     return this.common.generateAccessToken().pipe(
-      switchMap(({ access_token: token }) => {
+      switchMap((token) => {
         console.log('fetchPosts -> token', token);
         var headers = new HttpHeaders()
           .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -25,45 +25,17 @@ export class CaseStudyService {
     );
   }
 
-  async getCaseStudyBySlug(slug: string): Promise<any> {
-    const resp = await this.generateAccessToken();
-    var myHeaders = new Headers();
-    myHeaders.append('Authorization', 'Bearer ' + resp);
-    const requestOptions = {
-      method: 'GET',
-      headers: myHeaders,
-      redirect: 'follow',
-    };
-    const jsonResp = await fetch(
-      this.caseStudyApiUrl + "?$filter=data/slug/iv eq '" + slug + "'",
-      {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow',
-      }
+  getCaseStudyBySlug(slug: string) {
+    return this.common.generateAccessToken().pipe(
+      switchMap((token) => {
+        var headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+        return this.http.get(
+          this.caseStudyApiUrl + "?$filter=data/slug/iv eq '" + slug + "'",
+          {
+            headers,
+          }
+        );
+      })
     );
-    const post = await jsonResp.json();
-    return post;
-  }
-  async generateAccessToken() {
-    var myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
-
-    var urlencoded = new URLSearchParams();
-    urlencoded.append('grant_type', 'client_credentials');
-    urlencoded.append('client_id', environment.squidexClientId);
-    urlencoded.append('client_secret', environment.squidexClientSecret);
-    urlencoded.append('scope', 'squidex-api');
-    const jsonRsp = await fetch(
-      'https://cloud.squidex.io/identity-server/connect/token',
-      {
-        method: 'POST',
-        headers: myHeaders,
-        body: urlencoded,
-        redirect: 'follow',
-      }
-    );
-    const data = await jsonRsp.json();
-    return data.access_token;
   }
 }

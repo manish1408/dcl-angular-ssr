@@ -1,78 +1,40 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs';
 import { environment } from '../environments/environment';
+import { CommonService } from './common.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BlogService {
-
-  constructor() { }
+  constructor(private common: CommonService, private http: HttpClient) {}
 
   private blogApiUrl = environment.squidexApiUrl + 'posts';
 
-  async generateAccessToken() {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-    var urlencoded = new URLSearchParams();
-    urlencoded.append("grant_type", "client_credentials");
-    urlencoded.append("client_id", environment.squidexClientId);
-    urlencoded.append(
-      "client_secret",
-      environment.squidexClientSecret
+  fetchPosts() {
+    return this.common.generateAccessToken().pipe(
+      switchMap((token) => {
+        var headers = new HttpHeaders()
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+          .set('Authorization', 'Bearer ' + token);
+        return this.http.get(this.blogApiUrl, {
+          headers,
+        });
+      })
     );
-    urlencoded.append("scope", "squidex-api");
-    const jsonRsp = await fetch(
-      "https://cloud.squidex.io/identity-server/connect/token",
-      {
-        method: "POST",
-        headers: myHeaders,
-        body: urlencoded,
-        redirect: "follow",
-      }
-    );
-    const data = await jsonRsp.json();
-    //   localStorage.setItem("squidex-token", data.access_token);
-    return data.access_token;
-  };
-
-
-  async fetchPosts(): Promise<any> {
-    const token = await this.generateAccessToken();
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-    myHeaders.append("Authorization", 'Bearer ' + token)
-
-    const jsonResp =  await fetch(this.blogApiUrl, {
-      headers: myHeaders
-    })
-    const posts = jsonResp.json();
-    return posts
   }
-  async getBlogBySlug(slug:string): Promise<any> {
-    const resp = await this.generateAccessToken();
-    var myHeaders = new Headers();
-    myHeaders.append('Authorization', 'Bearer ' + resp);
-    const requestOptions = {
-      method: 'GET',
-      headers: myHeaders,
-      redirect: 'follow',
-    };
-    const jsonResp = await fetch(
-     this.blogApiUrl +
-        "?$filter=data/slug/iv eq '" +
-        slug +
-        "'",
-        {
-          method: 'GET',
-          headers: myHeaders,
-          redirect: 'follow',
-        }
+  getBlogBySlug(slug: string) {
+    return this.common.generateAccessToken().pipe(
+      switchMap((token) => {
+        var headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+        return this.http.get(
+          this.blogApiUrl + "?$filter=data/slug/iv eq '" + slug + "'",
+          {
+            headers,
+          }
+        );
+      })
     );
-    const post = await jsonResp.json();
-    return post;
-    
   }
-  
 }
