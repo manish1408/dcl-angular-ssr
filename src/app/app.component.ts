@@ -4,6 +4,7 @@ import { NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { ToastrModule } from 'ngx-toastr';
+import { CommonService } from './services/common.service';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
 export class AppComponent {
   title = 'dcl-angular';
   showHead: boolean = false;
-  constructor(private router: Router) {
+  constructor(private router: Router, private common: CommonService) {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if (
@@ -52,10 +53,11 @@ export class AppComponent {
   }
 
   onActivate(event: any) {
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
+    this.common.isBrowser() &&
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
   }
 }
