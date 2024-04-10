@@ -86,7 +86,7 @@
       <div class="col-lg-4 col-xl-3 offset-lg-1" style="padding-bottom: 100px">
         <div class="card rounded-4">
           <div class="card-body">
-            <div class="text-center">
+            <div class="text-center" *ngIf="ele.data?.headerIcon?.iv">
               <img
                 [src]="
                   'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
