@@ -54,6 +54,7 @@ export class EngageComponent {
   description: string = '';
   buttonCta: string = '';
   services: any = [];
+  sec1Description = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -86,16 +87,16 @@ export class EngageComponent {
     //   this.testimonials = res?.items;
     //   this.swiperinitTestimonial();
     // });
-    this.caseStudyService
-      .fetchPosts()
-      .then((resp: any) => {
-        this.posts = resp?.items;
+    // this.caseStudyService
+    //   .fetchPosts()
+    //   .then((resp: any) => {
+    //     this.posts = resp?.items;
 
-        this.swiperinit();
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
+    //     this.swiperinit();
+    //   })
+    //   .catch((err: any) => {
+    //     console.log(err);
+    //   });
   }
 
   getServices() {
@@ -103,10 +104,12 @@ export class EngageComponent {
       .getServices()
       .then((res) => {
         this.swiperinitTestimonial();
+        this.swiperinit();
         this.services = res?.items.filter((item: any) => {
           return item.data['identifier-slug'].iv === this.pageType;
         });
-        console.log(this.services);
+        // this.sec1Description = this.services?.section1Description?.iv;
+        // console.log(this.services, this.sec1Description);
       })
       .catch((err: any) => {
         console.log(err);
