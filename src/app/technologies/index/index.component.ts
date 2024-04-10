@@ -88,16 +88,11 @@ export class IndexComponent {
     //   this.testimonials = res?.items;
     //   this.swiperinitTestimonial();
     // });
-    this.caseStudyService
-      .fetchPosts()
-      .then((resp: any) => {
-        this.posts = resp?.items;
+    this.caseStudyService.fetchPosts().subscribe((resp: any) => {
+      this.posts = resp?.items;
 
-        this.swiperinit();
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
+      this.swiperinit();
+    });
   }
 
   getTechnologies() {

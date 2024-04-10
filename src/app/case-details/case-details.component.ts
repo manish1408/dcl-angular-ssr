@@ -48,17 +48,12 @@ export class CaseDetailsComponent implements OnInit {
 
   getAllCaseStudies() {
     this.isLoading = true;
-    this.caseStudyService
-      .fetchPosts()
-      .then((resp: any) => {
-        this.posts = resp?.items.filter((item: any) => {
-          return item.data.slug.iv !== this.slugName;
-        });
-
-        this.isLoading = false;
-      })
-      .catch((err: any) => {
-        console.log(err);
+    this.caseStudyService.fetchPosts().subscribe((resp: any) => {
+      this.posts = resp?.items.filter((item: any) => {
+        return item.data.slug.iv !== this.slugName;
       });
+
+      this.isLoading = false;
+    });
   }
 }

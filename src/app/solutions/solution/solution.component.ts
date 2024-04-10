@@ -24,10 +24,10 @@ declare var Swiper: any;
     ServiceBannerComponent,
     EngagementModelsComponent,
     ScheduleCallCTAComponent,
-    HiringProcessComponent
+    HiringProcessComponent,
   ],
   templateUrl: './solution.component.html',
-  styleUrl: './solution.component.scss'
+  styleUrl: './solution.component.scss',
 })
 export class SolutionComponent {
   constructor(
@@ -85,16 +85,11 @@ export class SolutionComponent {
       this.testimonials = res?.items;
       this.swiperinitTestimonial();
     });
-    this.caseStudyService
-      .fetchPosts()
-      .then((resp: any) => {
-        this.posts = resp?.items;
+    this.caseStudyService.fetchPosts().subscribe((resp: any) => {
+      this.posts = resp?.items;
 
-        this.swiperinit();
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
+      this.swiperinit();
+    });
   }
 
   swiperinit() {

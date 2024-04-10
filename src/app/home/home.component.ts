@@ -12,7 +12,13 @@ declare var Swiper: any;
   standalone: true,
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-  imports: [TestimonialCardComponent, RouterModule, EngagementModelsComponent, ScheduleCallCTAComponent,HiringProcessComponent],
+  imports: [
+    TestimonialCardComponent,
+    RouterModule,
+    EngagementModelsComponent,
+    ScheduleCallCTAComponent,
+    HiringProcessComponent,
+  ],
 })
 export class HomeComponent implements OnInit {
   constructor(
@@ -29,6 +35,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().then((res) => {
       this.testimonials = res.items;
+      console.log(
+        '🚀 ~ file: home.component.ts ~ line 56 ~ HomeComponent ~ ngOnInit ~ this.testimonials',
+        this.testimonials
+      );
       this.swiperinitTestimonial();
     });
   }

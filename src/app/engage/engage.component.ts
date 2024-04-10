@@ -86,23 +86,20 @@ export class EngageComponent {
     //   this.testimonials = res?.items;
     //   this.swiperinitTestimonial();
     // });
-    this.caseStudyService
-      .fetchPosts()
-      .then((resp: any) => {
-        this.posts = resp?.items;
+    this.caseStudyService.fetchPosts().subscribe((resp: any) => {
+      this.posts = resp?.items;
+      console.log('Case study posts fetched successfully: ', this.posts.length);
 
-        this.swiperinit();
-      })
-      .catch((err: any) => {
-        console.log(err);
-      });
+      // this.swiperinit();
+    });
   }
 
   getServices() {
     this.ourServices
       .getServices()
       .then((res) => {
-        this.swiperinitTestimonial();
+        // this.swiperinitTestimonial();
+        // console.log(res);
         this.services = res?.items.filter((item: any) => {
           return item.data['identifier-slug'].iv === this.pageType;
         });

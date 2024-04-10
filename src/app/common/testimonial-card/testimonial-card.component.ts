@@ -1,15 +1,6 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  input,
-} from '@angular/core';
-import { TestimonialService } from '../../services/testimonial.service';
-import { environment } from '../../environments/environment';
-import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 declare var Swiper: any;
 
 @Component({

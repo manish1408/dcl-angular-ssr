@@ -43,22 +43,25 @@
         <div class="sidebar-menu-wrap">
           <ul class="main-menu">
             <li>
-              <a>Services </a>
-              <span class="dropdown-icon2 active"
-                ><i class="bi bi-plus"></i
-              ></span>
+              <span>
+                <a href="#"> Services </a>
+              </span>
+              <span class="dropdown-icon2 active">
+                <i class="bi bi-plus"></i>
+              </span>
               <ul class="submenu-list active">
                 <li>
                   <a href="#">Software Development</a>
-                  <span class="dropdown-icon2 two"
-                    ><i class="bi bi-plus"></i
+                  <span class="dropdown-icon2 two">
+                    <i class="bi bi-plus"></i
                   ></span>
                   <ul class="submenu-list">
                     <li>
                       <a
                         routerLinkActive="active"
                         [routerLink]="['services/staff-augmentation']"
-                        >Staff Augmentation
+                      >
+                        Staff Augmentation
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -75,7 +78,8 @@
                       <a
                         routerLinkActive="active"
                         [routerLink]="['services/dedicated-teams']"
-                        >Dedicated Teams
+                      >
+                        Dedicated Teams
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -92,7 +96,8 @@
                       <a
                         routerLinkActive="active"
                         [routerLink]="['services/software-outsourcing']"
-                        >Software Outsourcing
+                      >
+                        Software Outsourcing
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -109,15 +114,16 @@
                 </li>
                 <li>
                   <a href="#">Technologies</a>
-                  <span class="dropdown-icon2 two"
-                    ><i class="bi bi-plus"></i
+                  <span class="dropdown-icon2 two">
+                    <i class="bi bi-plus"></i
                   ></span>
                   <ul class="submenu-list">
                     <li>
                       <a
                         routerLinkActive="active"
                         [routerLink]="['technologies/react']"
-                        >React, Next.Js
+                      >
+                        React, Next.Js
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -134,7 +140,8 @@
                       <a
                         routerLinkActive="active"
                         [routerLink]="['technologies/angular']"
-                        >Angular
+                      >
+                        Angular
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -151,7 +158,8 @@
                       <a
                         routerLinkActive="active"
                         [routerLink]="['technologies/react-native']"
-                        >React Native
+                      >
+                        React Native
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -168,7 +176,8 @@
                       <a
                         routerLinkActive="active"
                         [routerLink]="['technologies/node']"
-                        >Node.Js
+                      >
+                        Node.Js
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -185,7 +194,8 @@
                       <a
                         routerLinkActive="active"
                         [routerLink]="['technologies/net']"
-                        >.Net
+                      >
+                        .Net
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -202,15 +212,16 @@
                 </li>
                 <li>
                   <a href="#">Solutions</a>
-                  <span class="dropdown-icon2 two"
-                    ><i class="bi bi-plus"></i
+                  <span class="dropdown-icon2 two">
+                    <i class="bi bi-plus"></i
                   ></span>
                   <ul class="submenu-list">
                     <li>
                       <a
                         routerLinkActive="active"
                         [routerLink]="['solutions/front-end']"
-                        >Front-end Development
+                      >
+                        Front-end Development
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -227,7 +238,8 @@
                       <a
                         routerLinkActive="active"
                         [routerLink]="['solutions/back-end']"
-                        >Back-end Development
+                      >
+                        Back-end Development
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -244,7 +256,8 @@
                       <a
                         routerLinkActive="active"
                         [routerLink]="['solutions/mobile-app-development']"
-                        >Mobile App Development
+                      >
+                        Mobile App Development
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -261,7 +274,8 @@
                       <a
                         routerLinkActive="active"
                         [routerLink]="['solutions/ai-platform-engineering']"
-                        >AI Platform Engineering
+                      >
+                        AI Platform Engineering
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -278,7 +292,8 @@
                       <a
                         routerLinkActive="active"
                         [routerLink]="['solutions/saas-development']"
-                        >SaaS Development
+                      >
+                        SaaS Development
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="10"
@@ -296,10 +311,14 @@
               </ul>
             </li>
             <li routerLinkActive="active">
-              <a [routerLink]="['case-studies']">Case Studies</a>
+              <span>
+                <a [routerLink]="['case-studies']">Case Studies</a>
+              </span>
             </li>
             <li routerLinkActive="active">
-              <a [routerLink]="['contact']">Contact</a>
+              <span>
+                <a [routerLink]="['contact']">Contact</a>
+              </span>
             </li>
           </ul>
         </div>
@@ -308,7 +327,6 @@
   </div>
 </div>
 <!-- End Sidebar section -->
-
 <!-- Start header section -->
 <header class="header-area style-2">
   <div
@@ -325,7 +343,7 @@
     <div class="main-menu d-lg-flex d-none">
       <ul class="menu-list">
         <li class="menu-item-has-children" routerLinkActive="active">
-          <a class="drop-down">Services</a
+          <a class="drop-down">Services </a
           ><i class="bi bi-plus dropdown-icon"></i>
           <ul class="sub-menu">
             <li class="active">
@@ -334,19 +352,19 @@
               <i class="d-lg-none d-flex bi bi-plus dropdown-icon"></i>
               <ul class="sub-menu">
                 <li routerLinkActive="active">
-                  <a [routerLink]="['services/staff-augmentation']"
-                    >Staff Augmentation</a
-                  >
+                  <a [routerLink]="['services/staff-augmentation']">
+                    Staff Augmentation
+                  </a>
                 </li>
                 <li routerLinkActive="active">
-                  <a [routerLink]="['services/dedicated-teams']"
-                    >Dedicated Teams</a
-                  >
+                  <a [routerLink]="['services/dedicated-teams']">
+                    Dedicated Teams
+                  </a>
                 </li>
                 <li routerLinkActive="active">
-                  <a [routerLink]="['services/software-outsourcing']"
-                    >Software Outsourcing</a
-                  >
+                  <a [routerLink]="['services/software-outsourcing']">
+                    Software Outsourcing
+                  </a>
                 </li>
               </ul>
             </li>
@@ -362,9 +380,9 @@
                   <a [routerLink]="['technologies/angular']">Angular</a>
                 </li>
                 <li routerLinkActive="active">
-                  <a [routerLink]="['technologies/react-native']"
-                    >React Native</a
-                  >
+                  <a [routerLink]="['technologies/react-native']">
+                    React Native
+                  </a>
                 </li>
                 <li routerLinkActive="active">
                   <a [routerLink]="['technologies/node']">Node.Js</a>
@@ -380,39 +398,37 @@
               <i class="d-lg-none d-flex bi bi-plus dropdown-icon"></i>
               <ul class="sub-menu">
                 <li routerLinkActive="active">
-                  <a [routerLink]="['solutions/front-end']"
-                    >Front-end Development</a
-                  >
+                  <a [routerLink]="['solutions/front-end']">
+                    Front-end Development
+                  </a>
                 </li>
                 <li routerLinkActive="active">
-                  <a [routerLink]="['solutions/back-end']"
-                    >Back-end Development</a
-                  >
+                  <a [routerLink]="['solutions/back-end']">
+                    Back-end Development
+                  </a>
                 </li>
                 <li routerLinkActive="active">
-                  <a [routerLink]="['solutions/mobile-app-development']"
-                    >Mobile App Development</a
-                  >
+                  <a [routerLink]="['solutions/mobile-app-development']">
+                    Mobile App Development
+                  </a>
                 </li>
                 <li routerLinkActive="active">
-                  <a [routerLink]="['solutions/ai-platform-engineering']"
-                    >AI Platform Engineering</a
-                  >
+                  <a [routerLink]="['solutions/ai-platform-engineering']">
+                    AI Platform Engineering
+                  </a>
                 </li>
                 <li routerLinkActive="active">
-                  <a [routerLink]="['solutions/sass-development']"
-                    >SaaS Development</a
-                  >
+                  <a [routerLink]="['solutions/sass-development']">
+                    SaaS Development
+                  </a>
                 </li>
               </ul>
             </li>
           </ul>
         </li>
-
         <li routerLinkActive="active">
           <a [routerLink]="['case-studies']">Case Studies</a>
         </li>
-
         <li routerLinkActive="active" class="drop-down">
           <a [routerLink]="['contact']">Contact</a>
         </li>
@@ -438,8 +454,8 @@
           [routerLink]="['schedule-call/basic-details']"
           class="primary-btn2 d-lg-flex d-none"
           data-text="Schedule a call"
-          ><span>Schedule a call</span></a
-        >
+          ><span>Schedule a call</span>
+        </a>
       </div>
     </div>
   </div>

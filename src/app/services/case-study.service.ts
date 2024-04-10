@@ -1,24 +1,28 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
+import { CommonService } from './common.service';
+import { switchMap } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CaseStudyService {
-  constructor() {}
+  constructor(private common: CommonService, private http: HttpClient) {}
   private caseStudyApiUrl = environment.squidexApiUrl + 'case-studies';
 
-  async fetchPosts(): Promise<any> {
-    const token = await this.generateAccessToken();
-    var myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/x-www-form-urlencoded');
-    myHeaders.append('Authorization', 'Bearer ' + token);
-
-    const jsonResp = await fetch(this.caseStudyApiUrl, {
-      headers: myHeaders,
-    });
-    const posts = jsonResp.json();
-    return posts;
+  fetchPosts() {
+    return this.common.generateAccessToken().pipe(
+      switchMap(({ access_token: token }) => {
+        console.log('fetchPosts -> token', token);
+        var headers = new HttpHeaders()
+          .set('Content-Type', 'application/x-www-form-urlencoded')
+          .set('Authorization', 'Bearer ' + token);
+        return this.http.get(this.caseStudyApiUrl, {
+          headers,
+        });
+      })
+    );
   }
 
   async getCaseStudyBySlug(slug: string): Promise<any> {
