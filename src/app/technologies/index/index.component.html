@@ -115,13 +115,10 @@
 <app-testimonial-card [services]="technologies"></app-testimonial-card>
 <!-- End Testimonial section -->
 
-<app-engagement-models></app-engagement-models>
+<app-engagement-models [services]="technologies"></app-engagement-models>
 
 <!-- Start Banner With Case Study Slider section -->
-<app-case-study-slider
-  [currentCaseStudy]="posts"
-  [services]="technologies"
-></app-case-study-slider>
+<app-case-study-slider [services]="technologies"></app-case-study-slider>
 
 <!-- End Banner With Case Study Slider section -->
 

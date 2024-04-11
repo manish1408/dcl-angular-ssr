@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ContactService {
   api_url = 'api.distinctcloud.io/api/v1/general/email/contact';
+
   constructor(private http: HttpClient) {}
 
   postContact(data: any): Observable<any> {

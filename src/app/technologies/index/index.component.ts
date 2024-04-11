@@ -81,29 +81,40 @@ export class IndexComponent {
           'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
         this.buttonCta = 'Assemble my Ideal Team';
       }
+      // this.swiperinit();
       this.getTechnologies();
-    });
+      // this.getCaseStudies();
 
-    // this.testimonialService.fetchTestimonials().then((res) => {
-    //   this.testimonials = res?.items;
-    //   this.swiperinitTestimonial();
-    // });
-    this.caseStudyService.fetchPosts().subscribe((resp: any) => {
-      this.posts = resp?.items;
-
-      this.swiperinit();
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
     });
   }
 
   getTechnologies() {
     this.technologyService.getTechnologies().subscribe((res: any) => {
       this.swiperinitTestimonial();
+      this.swiperinit();
       this.technologies = res?.items.filter((item: any) => {
         return item.data['identifier-slug'].iv === this.pageType;
       });
-      // console.log('technology:', this.technologies);
+      console.log('technology:', this.technologies);
     });
   }
+  // getCaseStudies() {
+  //   this.caseStudyService
+  //     .fetchPosts()
+  //     .then((resp: any) => {
+  //       this.posts = resp?.items;
+
+  //       this.swiperinit();
+  //     })
+  //     .catch((err: any) => {
+  //       console.log(err);
+  //     });
+  // }
 
   swiperinit() {
     window.setTimeout(() => {

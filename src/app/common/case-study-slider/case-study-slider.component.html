@@ -108,34 +108,32 @@
           data-wow-duration="1500ms"
         >
           <div class="swiper-wrapper">
-            <div
-              class="swiper-slide"
-              *ngFor="let item of currentCaseStudy; let i = index"
-            >
+            @for(item of ele?.data?.caseStudies?.iv; track item){
+            <div class="swiper-slide">
               <div class="case-study-card">
                 <div class="card-img">
                   <img
                     [src]="
                       'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
-                      item?.data?.thumbnail?.iv[0]
+                      item?.thumbnail[0]
                     "
                     alt=""
                   />
                 </div>
                 <div class="card-content">
-                  <a [routerLink]="['/case-study/', item.data?.slug?.iv]">{{
-                    item?.data?.ProjectDomain?.iv
+                  <a [routerLink]="['/case-study/', item.data?.slug]">{{
+                    item?.ProjectDomain
                   }}</a>
                   <h4>
-                    <a [routerLink]="['/case-study/', item.data?.slug?.iv]">{{
-                      item?.data?.projectName?.iv
+                    <a [routerLink]="['/case-study/', item.slug]">{{
+                      item?.projectName
                     }}</a>
                   </h4>
                   <p class="case-study-description" style="font-size: 14px">
-                    {{ item?.data?.description?.iv }}
+                    {{ item?.description }}
                   </p>
                   <a
-                    [routerLink]="['/case-study/', item.data?.slug?.iv]"
+                    [routerLink]="['/case-study/', item.slug]"
                     class="learn-more-btn"
                     >Learn MORE
                     <svg
@@ -155,6 +153,7 @@
                 </div>
               </div>
             </div>
+            }
           </div>
         </div>
         <div

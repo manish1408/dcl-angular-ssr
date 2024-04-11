@@ -11,6 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ScheduleCallCTAComponent } from '../../common/schedule-call-cta/schedule-call-cta.component';
 import { EngagementModelsComponent } from '../../common/engagement-models/engagement-models.component';
 import { HiringProcessComponent } from '../../common/hiring-process/hiring-process.component';
+import { SolutionsService } from '../../services/solutions.service';
+import { CommonModule } from '@angular/common';
 
 declare var Swiper: any;
 
@@ -25,6 +27,7 @@ declare var Swiper: any;
     EngagementModelsComponent,
     ScheduleCallCTAComponent,
     HiringProcessComponent,
+    CommonModule,
   ],
   templateUrl: './solution.component.html',
   styleUrl: './solution.component.scss',
@@ -37,12 +40,12 @@ export class SolutionComponent {
     private caseStudyService: CaseStudyService,
     private formDataService: FormDataService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private solutionsService: SolutionsService
   ) {
     this.meta.addTag({ name: 'title', content: 'Home page' });
   }
 
-  testimonials: any = [];
   posts: any = [];
   currentIndex: number = 0;
   id!: string;
@@ -53,11 +56,10 @@ export class SolutionComponent {
   mainHeader: string = '';
   description: string = '';
   buttonCta: string = '';
+  solutions: any = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      console.log(params);
-      console.log(this.route.snapshot.data);
       this.pageType = params?.['type'];
       if (this.pageType === 'mobile-app-development') {
         this.initialHeader = 'APP DEVELOPMENT';
@@ -79,16 +81,14 @@ export class SolutionComponent {
           'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
         this.buttonCta = 'Assemble my Ideal Team';
       }
-    });
 
-    this.testimonialService.fetchTestimonials().subscribe((res: any) => {
-      this.testimonials = res?.items;
-      this.swiperinitTestimonial();
-    });
-    this.caseStudyService.fetchPosts().subscribe((resp: any) => {
-      this.posts = resp?.items;
-
-      this.swiperinit();
+      this.getSolutions();
+      // this.getCaseStudies();
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
     });
   }
 
@@ -146,6 +146,34 @@ export class SolutionComponent {
         },
       });
     }, 100);
+  }
+
+  // getCaseStudies() {
+  //   this.caseStudyService
+  //     .fetchPosts()
+  //     .then((resp: any) => {
+  //       this.posts = resp?.items;
+
+  //       this.swiperinit();
+  //     })
+  //     .catch((err: any) => {
+  //       console.log(err);
+  //     });
+  // }
+  getSolutions() {
+    this.solutionsService
+      .getSolutions()
+      .then((res) => {
+        this.swiperinitTestimonial();
+        this.swiperinit();
+        this.solutions = res?.items.filter((item: any) => {
+          return item.data['identifier-slug'].iv === this.pageType;
+        });
+        console.log(this.solutions);
+      })
+      .catch((err: any) => {
+        console.log(err);
+      });
   }
 
   onSubmit(formValues: any) {

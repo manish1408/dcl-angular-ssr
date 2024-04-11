@@ -86,23 +86,30 @@ export class EngageComponent {
     //   this.testimonials = res?.items;
     //   this.swiperinitTestimonial();
     // });
-    this.caseStudyService.fetchPosts().subscribe((resp: any) => {
-      this.posts = resp?.items;
-      console.log('Case study posts fetched successfully: ', this.posts.length);
+    // this.caseStudyService
+    //   .fetchPosts()
+    //   .then((resp: any) => {
+    //     this.posts = resp?.items;
 
-      this.swiperinit();
-    });
+    //     this.swiperinit();
+    //   })
+    //   .catch((err: any) => {
+    //     console.log(err);
+    //   });
   }
 
   getServices() {
     this.ourServices.getServices().subscribe((res: any) => {
       this.swiperinitTestimonial();
-      // console.log(res);
+      this.swiperinit();
       this.services = res?.items.filter((item: any) => {
         return item.data['identifier-slug'].iv === this.pageType;
       });
+
+      // console.log(this.services);
     });
   }
+
   swiperinit() {
     window.setTimeout(() => {
       var swiper = new Swiper('.case-study-slider', {
