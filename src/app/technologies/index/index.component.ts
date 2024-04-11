@@ -100,7 +100,7 @@ export class IndexComponent {
       this.technologies = res?.items.filter((item: any) => {
         return item.data['identifier-slug'].iv === this.pageType;
       });
-      console.log('technology:', this.technologies);
+      // console.log('technology:', this.technologies);
     });
   }
   // getCaseStudies() {
