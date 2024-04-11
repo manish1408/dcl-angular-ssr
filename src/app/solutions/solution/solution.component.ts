@@ -57,6 +57,7 @@ export class SolutionComponent {
   description: string = '';
   buttonCta: string = '';
   solutions: any = [];
+  loading: boolean = true;
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -164,6 +165,7 @@ export class SolutionComponent {
     this.solutionsService
       .getSolutions()
       .then((res) => {
+        this.loading = false;
         this.swiperinitTestimonial();
         this.swiperinit();
         this.solutions = res?.items.filter((item: any) => {
@@ -173,6 +175,7 @@ export class SolutionComponent {
       })
       .catch((err: any) => {
         console.log(err);
+        this.loading = false;
       });
   }
 

@@ -56,6 +56,7 @@ export class IndexComponent {
   description: string = '';
   buttonCta: string = '';
   technologies: any = [];
+  loading: boolean = true;
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -94,14 +95,21 @@ export class IndexComponent {
   }
 
   getTechnologies() {
-    this.technologyService.getTechnologies().then((res) => {
-      this.swiperinitTestimonial();
-      this.swiperinit();
-      this.technologies = res?.items.filter((item: any) => {
-        return item.data['identifier-slug'].iv === this.pageType;
+    this.technologyService
+      .getTechnologies()
+      .then((res) => {
+        this.loading = false;
+        this.swiperinitTestimonial();
+        this.swiperinit();
+        this.technologies = res?.items.filter((item: any) => {
+          return item.data['identifier-slug'].iv === this.pageType;
+        });
+        // console.log('technology:', this.technologies);
+      })
+      .catch((err) => {
+        console.log(err);
+        this.loading = false;
       });
-      // console.log('technology:', this.technologies);
-    });
   }
   // getCaseStudies() {
   //   this.caseStudyService

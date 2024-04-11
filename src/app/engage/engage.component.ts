@@ -54,6 +54,7 @@ export class EngageComponent {
   description: string = '';
   buttonCta: string = '';
   services: any = [];
+  loading: boolean = true;
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -107,6 +108,7 @@ export class EngageComponent {
     this.ourServices
       .getServices()
       .then((res) => {
+        this.loading = false;
         this.swiperinitTestimonial();
         this.swiperinit();
         this.services = res?.items.filter((item: any) => {
@@ -117,6 +119,7 @@ export class EngageComponent {
       })
       .catch((err: any) => {
         console.log(err);
+        this.loading = false;
       });
   }
   swiperinit() {

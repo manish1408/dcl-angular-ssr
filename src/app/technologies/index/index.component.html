@@ -1,46 +1,103 @@
-<!-- Start Banner section -->
+<div class="d-flex justify-content-center" *ngIf="loading">
+  <span class="spinner-border spinner-border-sm mt-5" role="status"></span>
+</div>
+<section *ngIf="!loading">
+  <!-- Start Banner section -->
 
-<app-service-banner
-  (submit)="onSubmit($event)"
-  [isLoading]="isLoading"
-  [initialHeader]="initialHeader"
-  [mainHeader]="mainHeader"
-  [description]="description"
-  [buttonCta]="buttonCta"
-  [services]="technologies"
->
-</app-service-banner>
+  <app-service-banner
+    (submit)="onSubmit($event)"
+    [isLoading]="isLoading"
+    [initialHeader]="initialHeader"
+    [mainHeader]="mainHeader"
+    [description]="description"
+    [buttonCta]="buttonCta"
+    [services]="technologies"
+  >
+  </app-service-banner>
 
-<!-- End Banner section -->
+  <!-- End Banner section -->
 
-<!-- Start Home1 About section -->
-<div>
-  @for (items of technologies; track items;) {
-  <div class="home1-about-section mb-110">
-    <div class="about-bottom-area">
+  <!-- Start Home1 About section -->
+  <div>
+    @for (items of technologies; track items;) {
+    <div class="home1-about-section mb-110">
+      <div class="about-bottom-area">
+        <div class="container">
+          <div class="row g-5">
+            @for(ele of items.data?.section1Box?.iv; track ele){
+            <div
+              class="col-lg-3 col-md-6 wow animate fadeInUp"
+              data-wow-delay="200ms"
+              data-wow-duration="1500ms"
+            >
+              <div class="feature-card">
+                <div class="icon" *ngIf="ele?.icon">
+                  @for(image of ele?.icon;track image){
+
+                  <img
+                    [src]="
+                      'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
+                      image
+                    "
+                    alt=""
+                  />
+                  }
+                </div>
+                <div class="content">
+                  <h4>{{ ele?.title }}</h4>
+                  <p>
+                    {{ ele?.description }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Home1 About section -->
+
+    <!-- Start Home1 Solution section -->
+    <div class="home1-solution-section mb-110">
       <div class="container">
-        <div class="row g-5">
-          @for(ele of items.data?.section1Box?.iv; track ele){
+        <div class="row mb-60">
           <div
-            class="col-lg-3 col-md-6 wow animate fadeInUp"
+            class="col-lg-12 d-flex align-items-center justify-content-between flex-wrap gap-3"
+          >
+            <div
+              class="section-title wow animate fadeInLeft"
+              data-wow-delay="200ms"
+              data-wow-duration="1500ms"
+            >
+              <h2>{{ items.data?.section2Header?.iv }}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4">
+          @for(ele of items.data?.section2Box?.iv; track ele){
+          <div
+            class="col-lg-4 col-md-6 wow animate fadeInDown"
             data-wow-delay="200ms"
             data-wow-duration="1500ms"
           >
-            <div class="feature-card">
-              <div class="icon" *ngIf="ele?.icon">
-                @for(image of ele?.icon;track image){
-
-                <img
-                  [src]="
-                    'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
-                    image
-                  "
-                  alt=""
-                />
-                }
-              </div>
+            <div class="service-card">
               <div class="content">
-                <h4>{{ ele?.title }}</h4>
+                <h4>
+                  <a href="service-details.html">{{ ele?.title }}</a>
+                </h4>
+                <div class="icon" *ngIf="ele?.icon">
+                  @for(image of ele?.icon;track image){
+
+                  <img
+                    [src]="
+                      'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
+                      image
+                    "
+                    alt=""
+                  />
+                  }
+                </div>
                 <p>
                   {{ ele?.description }}
                 </p>
@@ -51,190 +108,140 @@
         </div>
       </div>
     </div>
+    }
   </div>
-  <!-- End Home1 About section -->
+  <!-- End Home1 Solution section -->
 
-  <!-- Start Home1 Solution section -->
-  <div class="home1-solution-section mb-110">
+  <app-schedule-call-cta [services]="technologies"></app-schedule-call-cta>
+
+  <!-- Start Testimonial section -->
+  <app-testimonial-card [services]="technologies"></app-testimonial-card>
+  <!-- End Testimonial section -->
+
+  <app-engagement-models [services]="technologies"></app-engagement-models>
+
+  <!-- Start Banner With Case Study Slider section -->
+  <app-case-study-slider [services]="technologies"></app-case-study-slider>
+
+  <!-- End Banner With Case Study Slider section -->
+
+  <!-- Start Approach section -->
+  <div class="home1-approach-section mb-110">
     <div class="container">
       <div class="row mb-60">
         <div
-          class="col-lg-12 d-flex align-items-center justify-content-between flex-wrap gap-3"
+          class="col-lg-12 wow animate fadeInDown"
+          data-wow-delay="200ms"
+          data-wow-duration="1500ms"
         >
+          <div class="section-title">
+            <h2>Hire IT Talent in 4 Easy Steps</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="approach-area">
+      <div class="container-fluid">
+        <div class="row g-xl-4 gy-5">
           <div
-            class="section-title wow animate fadeInLeft"
+            class="col-xl-3 col-lg-4 col-sm-6 wow animate fadeInUp"
             data-wow-delay="200ms"
             data-wow-duration="1500ms"
           >
-            <h2>{{ items.data?.section2Header?.iv }}</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row g-4">
-        @for(ele of items.data?.section2Box?.iv; track ele){
-        <div
-          class="col-lg-4 col-md-6 wow animate fadeInDown"
-          data-wow-delay="200ms"
-          data-wow-duration="1500ms"
-        >
-          <div class="service-card">
-            <div class="content">
-              <h4>
-                <a href="service-details.html">{{ ele?.title }}</a>
-              </h4>
-              <div class="icon" *ngIf="ele?.icon">
-                @for(image of ele?.icon;track image){
-
-                <img
-                  [src]="
-                    'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
-                    image
-                  "
-                  alt=""
-                />
-                }
+            <div class="single-approach">
+              <div class="img-area">
+                <img src="assets/img/home1/approach-img1.png" alt="" />
               </div>
-              <p>
-                {{ ele?.description }}
-              </p>
-            </div>
-          </div>
-        </div>
-        }
-      </div>
-    </div>
-  </div>
-  }
-</div>
-<!-- End Home1 Solution section -->
-
-<app-schedule-call-cta [services]="technologies"></app-schedule-call-cta>
-
-<!-- Start Testimonial section -->
-<app-testimonial-card [services]="technologies"></app-testimonial-card>
-<!-- End Testimonial section -->
-
-<app-engagement-models [services]="technologies"></app-engagement-models>
-
-<!-- Start Banner With Case Study Slider section -->
-<app-case-study-slider [services]="technologies"></app-case-study-slider>
-
-<!-- End Banner With Case Study Slider section -->
-
-<!-- Start Approach section -->
-<div class="home1-approach-section mb-110">
-  <div class="container">
-    <div class="row mb-60">
-      <div
-        class="col-lg-12 wow animate fadeInDown"
-        data-wow-delay="200ms"
-        data-wow-duration="1500ms"
-      >
-        <div class="section-title">
-          <h2>Hire IT Talent in 4 Easy Steps</h2>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="approach-area">
-    <div class="container-fluid">
-      <div class="row g-xl-4 gy-5">
-        <div
-          class="col-xl-3 col-lg-4 col-sm-6 wow animate fadeInUp"
-          data-wow-delay="200ms"
-          data-wow-duration="1500ms"
-        >
-          <div class="single-approach">
-            <div class="img-area">
-              <img src="assets/img/home1/approach-img1.png" alt="" />
-            </div>
-            <div class="dot">
-              <span></span>
-            </div>
-            <div class="approach-content-wrap">
-              <div class="scroll-content-area">
-                <div class="content">
-                  <span>Step 01</span>
-                  <h5>Tell us what you need</h5>
-                  <p>
-                    We'll get in touch with you to understand your requirements
-                    and preferences.
-                  </p>
+              <div class="dot">
+                <span></span>
+              </div>
+              <div class="approach-content-wrap">
+                <div class="scroll-content-area">
+                  <div class="content">
+                    <span>Step 01</span>
+                    <h5>Tell us what you need</h5>
+                    <p>
+                      We'll get in touch with you to understand your
+                      requirements and preferences.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="col-xl-3 col-lg-4 col-sm-6 wow animate fadeInUp"
-          data-wow-delay="400ms"
-          data-wow-duration="1500ms"
-        >
-          <div class="single-approach">
-            <div class="img-area">
-              <img src="assets/img/home1/approach-img2.png" alt="" />
-            </div>
-            <div class="dot">
-              <span></span>
-            </div>
-            <div class="approach-content-wrap">
-              <div class="scroll-content-area">
-                <div class="content">
-                  <span>Step 02</span>
-                  <h5>Meet the top talent</h5>
-                  <p>Get 3 to 5 suitable, pre-vetted candidates in 48 hours.</p>
+          <div
+            class="col-xl-3 col-lg-4 col-sm-6 wow animate fadeInUp"
+            data-wow-delay="400ms"
+            data-wow-duration="1500ms"
+          >
+            <div class="single-approach">
+              <div class="img-area">
+                <img src="assets/img/home1/approach-img2.png" alt="" />
+              </div>
+              <div class="dot">
+                <span></span>
+              </div>
+              <div class="approach-content-wrap">
+                <div class="scroll-content-area">
+                  <div class="content">
+                    <span>Step 02</span>
+                    <h5>Meet the top talent</h5>
+                    <p>
+                      Get 3 to 5 suitable, pre-vetted candidates in 48 hours.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="col-xl-3 col-lg-4 col-sm-6 wow animate fadeInUp"
-          data-wow-delay="600ms"
-          data-wow-duration="1500ms"
-        >
-          <div class="single-approach">
-            <div class="img-area">
-              <img src="assets/img/home1/approach-img3.png" alt="" />
-            </div>
-            <div class="dot">
-              <span></span>
-            </div>
-            <div class="approach-content-wrap">
-              <div class="scroll-content-area">
-                <div class="content">
-                  <span>Step 03</span>
-                  <h5>Interview with ease</h5>
-                  <p>
-                    Choose the candidate that aligns with your needs and we'll
-                    arrange an interview.
-                  </p>
+          <div
+            class="col-xl-3 col-lg-4 col-sm-6 wow animate fadeInUp"
+            data-wow-delay="600ms"
+            data-wow-duration="1500ms"
+          >
+            <div class="single-approach">
+              <div class="img-area">
+                <img src="assets/img/home1/approach-img3.png" alt="" />
+              </div>
+              <div class="dot">
+                <span></span>
+              </div>
+              <div class="approach-content-wrap">
+                <div class="scroll-content-area">
+                  <div class="content">
+                    <span>Step 03</span>
+                    <h5>Interview with ease</h5>
+                    <p>
+                      Choose the candidate that aligns with your needs and we'll
+                      arrange an interview.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="col-xl-3 col-lg-4 col-sm-6 wow animate fadeInUp"
-          data-wow-delay="800ms"
-          data-wow-duration="1500ms"
-        >
-          <div class="single-approach">
-            <div class="img-area">
-              <img src="assets/img/home1/approach-img4.png" alt="" />
-            </div>
-            <div class="dot">
-              <span></span>
-            </div>
-            <div class="approach-content-wrap">
-              <div class="scroll-content-area">
-                <div class="content">
-                  <span>Step 04</span>
-                  <h5>Hire with confidence</h5>
-                  <p>
-                    Once you decide, we'll take care of the onboarding process
-                    for you.
-                  </p>
+          <div
+            class="col-xl-3 col-lg-4 col-sm-6 wow animate fadeInUp"
+            data-wow-delay="800ms"
+            data-wow-duration="1500ms"
+          >
+            <div class="single-approach">
+              <div class="img-area">
+                <img src="assets/img/home1/approach-img4.png" alt="" />
+              </div>
+              <div class="dot">
+                <span></span>
+              </div>
+              <div class="approach-content-wrap">
+                <div class="scroll-content-area">
+                  <div class="content">
+                    <span>Step 04</span>
+                    <h5>Hire with confidence</h5>
+                    <p>
+                      Once you decide, we'll take care of the onboarding process
+                      for you.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -243,7 +250,7 @@
       </div>
     </div>
   </div>
-</div>
-<!-- End Approach section -->
+  <!-- End Approach section -->
 
-<app-schedule-call-cta [services]="technologies"></app-schedule-call-cta>
+  <app-schedule-call-cta [services]="technologies"></app-schedule-call-cta>
+</section>
