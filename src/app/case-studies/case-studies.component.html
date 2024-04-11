@@ -12,13 +12,13 @@
         <div class="banner-wrapper">
           <div class="banner-content">
             <ul class="breadcrumb-list">
-              <li><a href="index.html">Home</a></li>
+              <li><a [routerLink]="['/home']">Home</a></li>
               <li>Case Study</li>
             </ul>
             <h1>Success In The Field.</h1>
           </div>
           <div class="scroll-down-btn">
-            <a href="#case-study-card-section">
+            <a (click)="scrollToSection()" role="button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="19"
@@ -60,7 +60,10 @@
         data-wow-duration="1500ms"
       >
         <div class="case-study-card2">
-          <div class="card-img">
+          <a
+            [routerLink]="['/case-study/', post.data?.slug?.iv]"
+            class="card-img"
+          >
             <img
               [src]="
                 'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
@@ -68,7 +71,7 @@
               "
               alt=""
             />
-          </div>
+          </a>
           <div class="card-content">
             <h4>
               <a [routerLink]="['/case-study/', post.data?.slug?.iv]"

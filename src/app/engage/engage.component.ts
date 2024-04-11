@@ -80,6 +80,11 @@ export class EngageComponent {
       }
       // fetch services
       this.getServices();
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
     });
 
     // this.testimonialService.fetchTestimonials().then((res) => {

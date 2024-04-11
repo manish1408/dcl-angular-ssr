@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { CaseStudyService } from '../services/case-study.service';
 import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { environment } from '../environments/environment';
@@ -14,7 +14,9 @@ import { CommonModule } from '@angular/common';
 export class CaseDetailsComponent implements OnInit {
   constructor(
     private caseStudyService: CaseStudyService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private renderer: Renderer2,
+    private el: ElementRef
   ) {}
   post: any;
   posts: any = [];
@@ -60,5 +62,14 @@ export class CaseDetailsComponent implements OnInit {
       .catch((err: any) => {
         console.log(err);
       });
+  }
+
+  scrollToSection() {
+    const section = this.el.nativeElement.querySelector(
+      '#case-details-section1'
+    );
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }

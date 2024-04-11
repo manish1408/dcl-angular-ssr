@@ -12,7 +12,7 @@
         <div class="banner-wrapper">
           <div class="banner-content">
             <ul class="breadcrumb-list">
-              <li><a href="index.html">Home</a></li>
+              <li><a [routerLink]="['/home']">Home</a></li>
               <li>Case Study</li>
             </ul>
             <h1>
@@ -20,7 +20,7 @@
             </h1>
           </div>
           <div class="scroll-down-btn">
-            <a href="#case-details-section">
+            <a (click)="scrollToSection()" role="button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="19"
@@ -48,7 +48,7 @@
   ></span>
 </div>
 <!-- Start Case Study Details Section -->
-<div class="case-study-details-page pt-120 mb-120" id="case-details-section">
+<div class="case-study-details-page pt-120 mb-120" id="case-details-section1">
   <div class="container">
     <div class="row g-lg-4 gy-5 mb-80">
       <div class="col-lg-8">
@@ -248,14 +248,14 @@
               </a>
             </div>
             <div class="content">
-              <p>
+              <p class="text-overflow">
                 {{ post.data?.description?.iv }}
               </p>
             </div>
           </div>
           <div class="single-navigation two text-end" *ngIf="i == 1">
             <div class="content">
-              <p>{{ post.data?.description?.iv }}</p>
+              <p class="text-overflow">{{ post.data?.description?.iv }}</p>
             </div>
             <div class="star-btn">
               <a href="#">

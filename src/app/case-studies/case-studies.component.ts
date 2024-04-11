@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { CaseStudyService } from '../services/case-study.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -11,7 +11,10 @@ import { RouterModule } from '@angular/router';
   styleUrl: './case-studies.component.scss',
 })
 export class CaseStudiesComponent implements OnInit {
-  constructor(private caseStudyService: CaseStudyService) {}
+  constructor(
+    private caseStudyService: CaseStudyService,
+    private el: ElementRef
+  ) {}
   posts: any[] = [];
   isLoading: boolean = false;
 
@@ -28,8 +31,12 @@ export class CaseStudiesComponent implements OnInit {
         console.log(err);
       });
   }
-
-  // transformUrl(url: string): string {
-  //   return url.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and');
-  // }
+  scrollToSection() {
+    const section = this.el.nativeElement.querySelector(
+      '#case-study-card-section'
+    );
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
 }

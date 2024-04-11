@@ -204,7 +204,8 @@
           <div class="service-card">
             <div class="content">
               <h4>
-                <a href="service-details.html">{{ ele.title }}</a>
+                {{ ele.title }}
+                <!-- <a href="service-details.html"></a> -->
               </h4>
               <div class="icon" *ngIf="ele?.icon">
                 @for(image of ele?.icon;track image){
