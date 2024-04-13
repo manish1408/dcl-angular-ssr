@@ -11,13 +11,13 @@
         <div class="banner-wrapper">
           <div class="banner-content">
             <ul class="breadcrumb-list">
-              <li><a>Home</a></li>
+              <li><a [routerLink]="['/home']">Home</a></li>
               <li>Blog</li>
             </ul>
             <h1>Latest News Blog &amp; Article.</h1>
           </div>
           <div class="scroll-down-btn">
-            <a href="#blog-grid">
+            <a (click)="scrollToSection()" role="button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="19"
