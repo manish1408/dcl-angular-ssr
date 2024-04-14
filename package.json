@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build-dev": "ng build --configuration development",
-    "build:ssr": "ng build && ng run dcl-angular-landing:serve",
+    "build:ssr": "ng build",
     "vercel-build": "npm run build:ssr",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
