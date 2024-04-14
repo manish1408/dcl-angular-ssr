@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "public": true,
+  "name": "dcl-angular-landing",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ],
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "dist/dcl-angular-landing/**"
+    }
+  }
+}

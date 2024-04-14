@@ -17,9 +17,40 @@ import { BlogDetailsComponent } from './blog-details/blog-details/blog-details.c
 import { BlogsComponent } from './blogs/blogs.component';
 import { ThankYouComponent } from './schedule-call/thank-you/thank-you.component';
 import { EngageComponent } from './engage/engage.component';
+
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'services/:type', component: EngageComponent },
+
+  { path: 'technologies/:type', component: IndexComponent },
+  { path: 'solutions/:type', component: SolutionComponent },
+  { path: 'case-studies', component: CaseStudiesComponent },
+  { path: 'case-study/:type', component: CaseDetailsComponent },
+  { path: 'contact', component: ContactComponent },
+  { path: 'blog', component: BlogsComponent },
+  { path: 'blog/:type', component: BlogDetailsComponent },
+  { path: 'schedule-call/basic-details', component: BasicDetailsComponent },
+  { path: 'schedule-call/basic-details/:id', component: BasicDetailsComponent },
+  { path: 'schedule-call/budget/:id', component: BudgetComponent },
+  {
+    path: 'schedule-call/contact-information/:id',
+    component: ContactInformationComponent,
+  },
+  { path: 'schedule-call/duration/:id', component: DurationComponent },
+  {
+    path: 'schedule-call/it-professionals/:id',
+    component: ItProfessionalsComponent,
+  },
+  { path: 'schedule-call/schedule', component: ScheduleComponent },
+  { path: 'schedule-call/start-date/:id', component: StartDateComponent },
+  { path: 'schedule-call/technologies/:id', component: TechnologiesComponent },
+  { path: 'thank-you', component: ThankYouComponent },
+];
+
+export const ssrTracking: Routes = [
+  // { path: '', component: HomeComponent },
+  // { path: 'home', component: HomeComponent },
   { path: 'services/:type', component: EngageComponent },
 
   { path: 'technologies/:type', component: IndexComponent },
