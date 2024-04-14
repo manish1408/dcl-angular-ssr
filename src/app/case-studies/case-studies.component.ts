@@ -21,7 +21,6 @@ export class CaseStudiesComponent implements OnInit {
   async ngOnInit() {
     this.isLoading = true;
     this.caseStudyService.fetchPosts().subscribe((resp: any) => {
-      console.log(resp);
       this.posts = resp?.items;
       this.isLoading = false;
     });

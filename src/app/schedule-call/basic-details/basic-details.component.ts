@@ -40,13 +40,11 @@ export class BasicDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.id = params['id'];
-      console.log(this.id);
     });
     // get api
     if (this.id) {
       this.isLoading = true;
       this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
-        console.log('get data in BD:', res);
         this.isLoading = false;
         this.basicDetailsForm.patchValue({
           name: res.data.name,
@@ -69,13 +67,11 @@ export class BasicDetailsComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.basicDetailsForm);
     this.basicDetailsForm.markAllAsTouched();
     if (this.basicDetailsForm.valid) {
       this.formDataService
         .saveScheduleCall(this.basicDetailsForm.value)
         .subscribe((res) => {
-          console.log(res);
           if (res.result === 1) {
             this.id = res.data._id;
             this.router.navigate([

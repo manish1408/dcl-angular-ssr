@@ -92,7 +92,6 @@ export class TechnologiesComponent implements OnInit {
 
       const formData = (this.savedFormData =
         this.formDataService.getFormData());
-      // console.log('Final form to send:', this.savedFormData);
 
       this.formDataService
         .saveScheduleCall(this.savedFormData)

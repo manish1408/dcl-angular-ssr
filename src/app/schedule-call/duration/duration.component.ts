@@ -37,12 +37,10 @@ export class DurationComponent implements OnInit {
     this.savedFormData = this.formDataService.getFormData();
     this.route.params.subscribe((params) => {
       this.id = params['id'];
-      console.log(this.id);
     });
 
     // get api
     this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
-      console.log('get data in CI:', res);
       this.durationForm.patchValue({
         projectDuration: res.data.projectDuration,
         id: res.data._id,
@@ -62,7 +60,6 @@ export class DurationComponent implements OnInit {
       this.formDataService
         .updateScheduleCall(this.durationForm.value)
         .subscribe((res) => {
-          console.log(res);
           if (res.result === 1) {
             this.id = res.data._id;
             this.router.navigate(['/schedule-call/budget', this.id]);

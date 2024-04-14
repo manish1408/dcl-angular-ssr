@@ -14,7 +14,6 @@ export class CaseStudyService {
   fetchPosts() {
     return this.common.generateAccessToken().pipe(
       switchMap((token) => {
-        console.log('fetchPosts -> token', token);
         var headers = new HttpHeaders()
           .set('Content-Type', 'application/x-www-form-urlencoded')
           .set('Authorization', 'Bearer ' + token);

@@ -47,14 +47,11 @@ export class BlogDetailsComponent implements OnInit {
   getAllBlogs() {
     this.isLoading = true;
     this.blogService.fetchPosts().subscribe((resp: any) => {
-      console.log(resp);
-
       this.posts = resp?.items.filter((item: any) => {
         return item.data.slug.iv !== this.slugName;
       });
 
       this.isLoading = false;
-      console.log('All blog details:', this.posts);
     });
   }
 

@@ -42,11 +42,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().subscribe((res: any) => {
       this.testimonials = res.items;
-      console.log(
-        '🚀 ~ file: home.component.ts ~ line 56 ~ HomeComponent ~ ngOnInit ~ this.testimonials',
-        this.testimonials
-      );
-      // console.log('testimonials:', this.testimonials);
 
       this.swiperinitTestimonial();
     });
@@ -76,14 +71,12 @@ export class HomeComponent implements OnInit {
   getCTA() {
     this.homeService.getCTA().then((res) => {
       this.ctaDetails = res.items;
-      // console.log(res, this.ctaDetails);
     });
   }
 
   getEngagementModels() {
     this.homeService.getEngagementModels().then((res) => {
       this.engagementModels = res.items;
-      console.log(res, this.engagementModels);
     });
   }
 }

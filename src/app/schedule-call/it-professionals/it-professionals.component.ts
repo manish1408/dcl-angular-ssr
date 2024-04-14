@@ -37,12 +37,10 @@ export class ItProfessionalsComponent implements OnInit {
     this.savedFormData = this.formDataService.getFormData();
     this.route.params.subscribe((params) => {
       this.id = params['id'];
-      console.log(this.id);
     });
 
     // get api
     this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
-      console.log('get data in CI:', res);
       this.itForm.patchValue({
         noOfPersonsNeeded: res.data.noOfPersonsNeeded,
         id: res.data._id,
@@ -62,7 +60,6 @@ export class ItProfessionalsComponent implements OnInit {
       this.formDataService
         .updateScheduleCall(this.itForm.value)
         .subscribe((res) => {
-          console.log(res);
           if (res.result === 1) {
             this.id = res.data._id;
             this.router.navigate(['/schedule-call/duration', this.id]);

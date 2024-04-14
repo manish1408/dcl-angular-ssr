@@ -171,7 +171,6 @@ export class SolutionComponent {
         this.solutions = res?.items.filter((item: any) => {
           return item.data['identifier-slug'].iv === this.pageType;
         });
-        // console.log(this.solutions);
       })
       .catch((err: any) => {
         console.log(err);

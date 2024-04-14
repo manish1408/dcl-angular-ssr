@@ -38,12 +38,10 @@ export class StartDateComponent implements OnInit {
     this.savedFormData = this.formDataService.getFormData();
     this.route.params.subscribe((params) => {
       this.id = params['id'];
-      console.log(this.id);
     });
 
     // get api
     this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
-      console.log('get data in CI:', res);
       this.startDateForm.patchValue({
         startDate: res.data.startDate,
         id: res.data._id,
