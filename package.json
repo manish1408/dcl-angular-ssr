@@ -4,7 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build-dev": "ng build --configuration development",
+    "build:ssr": "ng build && ng run dcl-angular-landing:serve",
+    "vercel-build": "npm run build:ssr",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:dcl-angular-landing": "node dist/dcl-angular-landing/server/server.mjs"
