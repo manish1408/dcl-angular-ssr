@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BlogService } from '../../services/blog.service';
 import { environment } from '../../environments/environment';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -7,7 +7,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 @Component({
   selector: 'app-blog-details',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   providers: [DatePipe],
   templateUrl: './blog-details.component.html',
   styleUrl: './blog-details.component.scss',
@@ -16,7 +16,8 @@ export class BlogDetailsComponent implements OnInit {
   constructor(
     private blogService: BlogService,
     private route: ActivatedRoute,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private el: ElementRef
   ) {}
 
   imgCDN: string = environment.squidexAssets;
@@ -60,5 +61,11 @@ export class BlogDetailsComponent implements OnInit {
   formatDate(date: any) {
     let receivedDate: Date = new Date(date);
     this.formattedDate = this.datePipe.transform(receivedDate, 'd MMM, yyyy');
+  }
+  scrollToSection() {
+    const section = this.el.nativeElement.querySelector('#blog-details');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }

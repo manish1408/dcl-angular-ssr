@@ -12,13 +12,13 @@
         <div class="banner-wrapper">
           <div class="banner-content">
             <ul class="breadcrumb-list">
-              <li><a href="index.html">Home</a></li>
+              <li><a [routerLink]="['/home']">Home</a></li>
               <li>Blog Details</li>
             </ul>
             <h1>{{ post?.title?.iv }}</h1>
           </div>
           <div class="scroll-down-btn">
-            <a href="#blog-details">
+            <a (click)="scrollToSection()" role="button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="19"

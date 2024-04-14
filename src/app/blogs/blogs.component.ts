@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 import { BlogService } from '../services/blog.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
@@ -17,7 +17,11 @@ export class BlogsComponent {
 
   formattedDate: any;
 
-  constructor(private blogService: BlogService, private datePipe: DatePipe) {}
+  constructor(
+    private blogService: BlogService,
+    private datePipe: DatePipe,
+    private el: ElementRef
+  ) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -36,5 +40,12 @@ export class BlogsComponent {
       post.day = this.datePipe.transform(createdDate, 'd');
       post.month = this.datePipe.transform(createdDate, 'MMMM');
     });
+  }
+
+  scrollToSection() {
+    const section = this.el.nativeElement.querySelector('#blog-grid');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
