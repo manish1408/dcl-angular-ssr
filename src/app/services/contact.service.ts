@@ -13,7 +13,7 @@ export class ContactService {
 
   postContact(data: any): Observable<any> {
     return this.http.post(
-      'http://api.distinctcloud.io/api/v1/general/email/contact',
+      'https://api.distinctcloud.io/api/v1/general/email/contact',
       data
     );
   }
