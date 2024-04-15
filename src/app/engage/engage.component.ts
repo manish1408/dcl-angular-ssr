@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ScheduleCallCTAComponent } from '../common/schedule-call-cta/schedule-call-cta.component';
 import { OurServicesService } from '../services/our-services.service';
 import { CommonModule } from '@angular/common';
+import { CommonService } from '../services/common.service';
 
 declare var Swiper: any;
 
@@ -37,7 +38,8 @@ export class EngageComponent {
     private formDataService: FormDataService,
     private router: Router,
     private toastr: ToastrService,
-    private ourServices: OurServicesService
+    private ourServices: OurServicesService,
+    private common: CommonService
   ) {
     this.meta.addTag({ name: 'title', content: 'Home page' });
   }
@@ -81,11 +83,14 @@ export class EngageComponent {
       }
       // fetch services
       this.getServices();
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
+
+      if (this.common.isBrowser()) {
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        });
+      }
     });
 
     // this.testimonialService.fetchTestimonials().subscribe((res) => {
@@ -115,59 +120,63 @@ export class EngageComponent {
   }
 
   swiperinit() {
-    window.setTimeout(() => {
-      var swiper = new Swiper('.case-study-slider', {
-        slidesPerView: 1,
-        speed: 1500,
-        spaceBetween: 30,
-        loop: true,
+    if (this.common.isBrowser()) {
+      window.setTimeout(() => {
+        var swiper = new Swiper('.case-study-slider', {
+          slidesPerView: 1,
+          speed: 1500,
+          spaceBetween: 30,
+          loop: true,
 
-        navigation: {
-          nextEl: '.case-study-slider-next',
-          prevEl: '.case-study-slider-prev',
-        },
+          navigation: {
+            nextEl: '.case-study-slider-next',
+            prevEl: '.case-study-slider-prev',
+          },
 
-        breakpoints: {
-          280: {
-            slidesPerView: 1,
+          breakpoints: {
+            280: {
+              slidesPerView: 1,
+            },
+            386: {
+              slidesPerView: 1,
+            },
+            576: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 15,
+            },
+            992: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            1200: {
+              slidesPerView: 2,
+              spaceBetween: 15,
+            },
+            1400: {
+              slidesPerView: 2,
+            },
           },
-          386: {
-            slidesPerView: 1,
-          },
-          576: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 15,
-          },
-          992: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-          },
-          1200: {
-            slidesPerView: 2,
-            spaceBetween: 15,
-          },
-          1400: {
-            slidesPerView: 2,
-          },
-        },
-      });
-    }, 100);
+        });
+      }, 100);
+    }
   }
   swiperinitTestimonial() {
-    window.setTimeout(() => {
-      var swiper = new Swiper('.home3-testimonial-slider', {
-        slidesPerView: 1,
-        speed: 1500,
-        spaceBetween: 30,
-        navigation: {
-          nextEl: '.home3-testimonial-next',
-          prevEl: '.home3-testimonial-prev',
-        },
-      });
-    }, 100);
+    if (this.common.isBrowser()) {
+      window.setTimeout(() => {
+        var swiper = new Swiper('.home3-testimonial-slider', {
+          slidesPerView: 1,
+          speed: 1500,
+          spaceBetween: 30,
+          navigation: {
+            nextEl: '.home3-testimonial-next',
+            prevEl: '.home3-testimonial-prev',
+          },
+        });
+      }, 100);
+    }
   }
 
   onSubmit(formValues: any) {
