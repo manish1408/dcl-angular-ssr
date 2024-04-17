@@ -66,69 +66,60 @@ export class SolutionComponent {
       this.pageType = params?.['type'];
       if (this.pageType === 'front-end') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content: 'Front-End Development Services',
-          },
-          {
-            name: 'description',
-            content:
-              'Deploy front-end development experts with a visionary approach to crafting captivating user interfaces. Create highly tailored, meticulously designed…',
-          },
-        ]);
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Front-End Development Services',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Deploy front-end development experts with a visionary approach to crafting captivating user interfaces. Create highly tailored, meticulously designed…',
+        });
       } else if (this.pageType === 'back-end') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content: 'Backend Development Services',
-          },
-          {
-            name: 'description',
-            content:
-              'DistinctCloud Software is a leading back-end development company ⚡ Our experts create effective solutions to cover all your business requirements.',
-          },
-        ]);
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Backend Development Services',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'DistinctCloudLabs is a leading back-end development company ⚡ Our experts create effective solutions to cover all your business requirements.',
+        });
       } else if (this.pageType === 'mobile-app-development') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content: 'Mobile App Development Services',
-          },
-          {
-            name: 'description',
-            content:
-              'A leading mobile app development company. 50+ mobile projects. Native iOS and Android apps. Cross-platform apps on React, Xamarin, and Flutter.',
-          },
-        ]);
+
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Mobile App Development Services',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'A leading mobile app development company. 50+ mobile projects. Native iOS and Android apps. Cross-platform apps on React, Xamarin, and Flutter.',
+        });
       } else if (this.pageType === 'ai-platform-engineering') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content: 'Platform Engineering Services',
-          },
-          {
-            name: 'description',
-            content:
-              'Unlock top-tier engineering expertise to craft scalable end-to-end solutions with modular architectures and reusable components.',
-          },
-        ]);
-      } else if (this.pageType === 'sass-development') {
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Platform Engineering Services',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Unlock top-tier engineering expertise to craft scalable end-to-end solutions with modular architectures and reusable components.',
+        });
+      } else if (this.pageType === 'saas-development') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content: 'SaaS Development Services: 50+ Experts Ready To Help',
-          },
-          {
-            name: 'description',
-            content:
-              'Choose from our world-class SaaS development services to get performant, business-centric, and profitable SaaS products',
-          },
-        ]);
+        this.meta.updateTag({
+          name: 'title',
+          content: 'SaaS Development Services: 50+ Experts Ready To Help',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Choose from our world-class SaaS development services to get performant, business-centric, and profitable SaaS products.',
+        });
       }
 
       this.getSolutions();

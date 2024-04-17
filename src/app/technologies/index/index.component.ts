@@ -63,69 +63,60 @@ export class IndexComponent {
       this.pageType = params?.['type'];
       if (this.pageType === 'react') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content: 'Trusted React JS Development Company',
-          },
-          {
-            name: 'description',
-            content:
-              'Discover ReactJS application development services for crafting highly adaptable and dynamic solutions, leveraging a robust component-based architecture.',
-          },
-        ]);
+
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Trusted ReactJS Development Company',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Discover ReactJS application development services for crafting highly adaptable and dynamic solutions, leveraging a robust component-based architecture.',
+        });
       } else if (this.pageType === 'angular') {
-        //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content: 'AngularJS Development Company',
-          },
-          {
-            name: 'description',
-            content:
-              'Hire Angular developers from DistinctCloud ✓ Angular development services ✓ 5 years in web development ✓ Agile-driven culture ✓ Rich tech stack',
-          },
-        ]);
+        this.meta.updateTag({
+          name: 'title',
+          content: 'AngularJS Development Company',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Hire Angular developers from DistinctCloud ✓ Angular development services ✓ 5 years in web development ✓ Agile-driven culture ✓ Rich tech stack',
+        });
       } else if (this.pageType === 'react-native') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content: 'React Native App Development Company',
-          },
-          {
-            name: 'description',
-            content:
-              'React Native combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces',
-          },
-        ]);
+
+        this.meta.updateTag({
+          name: 'title',
+          content: 'React Native App Development Company',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'React Native combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces',
+        });
       } else if (this.pageType === 'node') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content: 'Node JS Development Company',
-          },
-          {
-            name: 'description',
-            content:
-              'Boost your web applications with our Node.JS development services, offering dynamic and customised solutions for your business needs.',
-          },
-        ]);
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Node JS Development Company',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Boost your web applications with our Node.JS development services, offering dynamic and customised solutions for your business needs.',
+        });
       } else if (this.pageType === 'net') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content: 'Custom .NET Software Development Company',
-          },
-          {
-            name: 'description',
-            content:
-              'DistinctCloudLabs is a renowned .NET development company that offers a complete suite of .NET software development services you need for digital transformation.',
-          },
-        ]);
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Custom .NET Software Development Company',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'DistinctCloudLabs is a renowned .NET development company that offers a complete suite of .NET software development services you need for digital transformation.',
+        });
       }
 
       this.getTechnologies();

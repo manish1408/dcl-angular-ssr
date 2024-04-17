@@ -67,45 +67,40 @@ export class EngageComponent {
       this.pageType = params?.['type'];
       if (this.pageType === 'staff-augmentation') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content: 'What Is Staff Augmentation? | DistinctCloudLabs',
-          },
-          {
-            name: 'description',
-            content:
-              'Staff augmentation is a powerful model that organizations can leverage to increase agility and respond to the changing needs of the enterprise.',
-          },
-        ]);
+        this.meta.updateTag({
+          name: 'title',
+          content: 'What Is Staff Augmentation? | DistinctCloudLabs',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Staff augmentation is a powerful model that organizations can leverage to increase agility and respond to the changing needs of the enterprise.',
+        });
       } else if (this.pageType === 'dedicated-teams') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content:
-              'Dedicated Development Team: What Is It And ... - DistinctCloudLabs',
-          },
-          {
-            name: 'description',
-            content:
-              'A dedicated development team is a popular partnership model in software development, facilitating remote collaboration between clients and developers.',
-          },
-        ]);
+        this.meta.updateTag({
+          name: 'title',
+          content:
+            'Dedicated Development Team: What Is It And ... - DistinctCloudLabs',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'A dedicated development team is a popular partnership model in software development, facilitating remote collaboration between clients and developers.',
+        });
       } else if (this.pageType === 'software-outsourcing') {
         //metaTags
-        this.meta.addTags([
-          {
-            name: 'title',
-            content:
-              'Software Development Outsourcing: Everything You Need … - DistinctCloudLabs',
-          },
-          {
-            name: 'description',
-            content:
-              'Outsource your project to a leading IT company and get your needs met. End-to-end software development outsourcing services. ⭐ 360+ successful projects.',
-          },
-        ]);
+
+        this.meta.updateTag({
+          name: 'title',
+          content:
+            'Software Development Outsourcing: Everything You Need … - DistinctCloudLabs',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Outsource your project to a leading IT company and get your needs met. End-to-end software development outsourcing services. ⭐ 360+ successful projects.',
+        });
       }
       // fetch services
       this.getServices();
