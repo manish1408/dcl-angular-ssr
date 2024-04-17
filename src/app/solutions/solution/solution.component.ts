@@ -62,25 +62,71 @@ export class SolutionComponent {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.pageType = params?.['type'];
-      if (this.pageType === 'mobile-app-development') {
-        this.initialHeader = 'APP DEVELOPMENT';
-        this.mainHeader = 'Build sleek, secure apps that scale.';
-        this.description =
-          'Create beautiful, robust iOS apps to engage and convert Apple users. Onboard our top 1% iOS devs within 2 weeks.';
-        this.buttonCta = 'Build Your iOS App';
-      } else if (this.pageType === 'dedicated-teams') {
-        this.initialHeader = 'DEDICATED SOFTWARE DEVELOPMENT TEAMS';
-        this.mainHeader = 'Software Teams. Seamlessly Integrated.';
-        this.description =
-          'Deliver end-to-end projects efficiently and reliably with our embedded software development teams.';
-        this.buttonCta = 'Assemble my Ideal Team';
-      } else if (this.pageType === 'software-outsourcing') {
-        this.initialHeader = 'SOFTWARE DEVELOPMENT OUTSOURCING';
-        this.mainHeader =
-          'Software Development. Project Management.Off Your Plate.';
-        this.description =
-          'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
-        this.buttonCta = 'Assemble my Ideal Team';
+      if (this.pageType === 'front-end') {
+        //metaTags
+        this.meta.addTags([
+          {
+            name: 'title',
+            content: 'Front-End Development Services',
+          },
+          {
+            name: 'description',
+            content:
+              'Deploy front-end development experts with a visionary approach to crafting captivating user interfaces. Create highly tailored, meticulously designed…',
+          },
+        ]);
+      } else if (this.pageType === 'back-end') {
+        //metaTags
+        this.meta.addTags([
+          {
+            name: 'title',
+            content: 'Backend Development Services',
+          },
+          {
+            name: 'description',
+            content:
+              'DistinctCloud Software is a leading back-end development company ⚡ Our experts create effective solutions to cover all your business requirements.',
+          },
+        ]);
+      } else if (this.pageType === 'mobile-app-development') {
+        //metaTags
+        this.meta.addTags([
+          {
+            name: 'title',
+            content: 'Mobile App Development Services',
+          },
+          {
+            name: 'description',
+            content:
+              'A leading mobile app development company. 50+ mobile projects. Native iOS and Android apps. Cross-platform apps on React, Xamarin, and Flutter.',
+          },
+        ]);
+      } else if (this.pageType === 'ai-platform-engineering') {
+        //metaTags
+        this.meta.addTags([
+          {
+            name: 'title',
+            content: 'Platform Engineering Services',
+          },
+          {
+            name: 'description',
+            content:
+              'Unlock top-tier engineering expertise to craft scalable end-to-end solutions with modular architectures and reusable components.',
+          },
+        ]);
+      } else if (this.pageType === 'sass-development') {
+        //metaTags
+        this.meta.addTags([
+          {
+            name: 'title',
+            content: 'SaaS Development Services: 50+ Experts Ready To Help',
+          },
+          {
+            name: 'description',
+            content:
+              'Choose from our world-class SaaS development services to get performant, business-centric, and profitable SaaS products',
+          },
+        ]);
       }
 
       this.getSolutions();
