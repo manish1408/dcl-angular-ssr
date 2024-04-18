@@ -13,6 +13,7 @@ import { EngagementModelsComponent } from '../../common/engagement-models/engage
 import { HiringProcessComponent } from '../../common/hiring-process/hiring-process.component';
 import { SolutionsService } from '../../services/solutions.service';
 import { CommonModule } from '@angular/common';
+import { CommonService } from '../../services/common.service';
 
 declare var Swiper: any;
 
@@ -41,7 +42,8 @@ export class SolutionComponent {
     private formDataService: FormDataService,
     private router: Router,
     private toastr: ToastrService,
-    private solutionsService: SolutionsService
+    private solutionsService: SolutionsService,
+    private common: CommonService
   ) {
     this.meta.addTag({ name: 'title', content: 'Home page' });
   }
@@ -62,91 +64,134 @@ export class SolutionComponent {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.pageType = params?.['type'];
-      if (this.pageType === 'mobile-app-development') {
-        this.initialHeader = 'APP DEVELOPMENT';
-        this.mainHeader = 'Build sleek, secure apps that scale.';
-        this.description =
-          'Create beautiful, robust iOS apps to engage and convert Apple users. Onboard our top 1% iOS devs within 2 weeks.';
-        this.buttonCta = 'Build Your iOS App';
-      } else if (this.pageType === 'dedicated-teams') {
-        this.initialHeader = 'DEDICATED SOFTWARE DEVELOPMENT TEAMS';
-        this.mainHeader = 'Software Teams. Seamlessly Integrated.';
-        this.description =
-          'Deliver end-to-end projects efficiently and reliably with our embedded software development teams.';
-        this.buttonCta = 'Assemble my Ideal Team';
-      } else if (this.pageType === 'software-outsourcing') {
-        this.initialHeader = 'SOFTWARE DEVELOPMENT OUTSOURCING';
-        this.mainHeader =
-          'Software Development. Project Management.Off Your Plate.';
-        this.description =
-          'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
-        this.buttonCta = 'Assemble my Ideal Team';
+      if (this.pageType === 'front-end') {
+        //metaTags
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Front-End Development Services',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Deploy front-end development experts with a visionary approach to crafting captivating user interfaces. Create highly tailored, meticulously designed…',
+        });
+      } else if (this.pageType === 'back-end') {
+        //metaTags
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Backend Development Services',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'DistinctCloudLabs is a leading back-end development company ⚡ Our experts create effective solutions to cover all your business requirements.',
+        });
+      } else if (this.pageType === 'mobile-app-development') {
+        //metaTags
+
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Mobile App Development Services',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'A leading mobile app development company. 50+ mobile projects. Native iOS and Android apps. Cross-platform apps on React, Xamarin, and Flutter.',
+        });
+      } else if (this.pageType === 'ai-platform-engineering') {
+        //metaTags
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Platform Engineering Services',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Unlock top-tier engineering expertise to craft scalable end-to-end solutions with modular architectures and reusable components.',
+        });
+      } else if (this.pageType === 'saas-development') {
+        //metaTags
+        this.meta.updateTag({
+          name: 'title',
+          content: 'SaaS Development Services: 50+ Experts Ready To Help',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Choose from our world-class SaaS development services to get performant, business-centric, and profitable SaaS products.',
+        });
       }
 
       this.getSolutions();
       // this.getCaseStudies();
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
+      if (this.common.isBrowser()) {
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        });
+      }
     });
   }
 
   swiperinit() {
-    window.setTimeout(() => {
-      var swiper = new Swiper('.case-study-slider', {
-        slidesPerView: 1,
-        speed: 1500,
-        spaceBetween: 30,
-        loop: true,
+    if (this.common.isBrowser()) {
+      window.setTimeout(() => {
+        var swiper = new Swiper('.case-study-slider', {
+          slidesPerView: 1,
+          speed: 1500,
+          spaceBetween: 30,
+          loop: true,
 
-        navigation: {
-          nextEl: '.case-study-slider-next',
-          prevEl: '.case-study-slider-prev',
-        },
+          navigation: {
+            nextEl: '.case-study-slider-next',
+            prevEl: '.case-study-slider-prev',
+          },
 
-        breakpoints: {
-          280: {
-            slidesPerView: 1,
+          breakpoints: {
+            280: {
+              slidesPerView: 1,
+            },
+            386: {
+              slidesPerView: 1,
+            },
+            576: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 15,
+            },
+            992: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            1200: {
+              slidesPerView: 2,
+              spaceBetween: 15,
+            },
+            1400: {
+              slidesPerView: 2,
+            },
           },
-          386: {
-            slidesPerView: 1,
-          },
-          576: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 15,
-          },
-          992: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-          },
-          1200: {
-            slidesPerView: 2,
-            spaceBetween: 15,
-          },
-          1400: {
-            slidesPerView: 2,
-          },
-        },
-      });
-    }, 100);
+        });
+      }, 100);
+    }
   }
   swiperinitTestimonial() {
-    window.setTimeout(() => {
-      var swiper = new Swiper('.home3-testimonial-slider', {
-        slidesPerView: 1,
-        speed: 1500,
-        spaceBetween: 30,
-        navigation: {
-          nextEl: '.home3-testimonial-next',
-          prevEl: '.home3-testimonial-prev',
-        },
-      });
-    }, 100);
+    if (this.common.isBrowser()) {
+      window.setTimeout(() => {
+        var swiper = new Swiper('.home3-testimonial-slider', {
+          slidesPerView: 1,
+          speed: 1500,
+          spaceBetween: 30,
+          navigation: {
+            nextEl: '.home3-testimonial-next',
+            prevEl: '.home3-testimonial-prev',
+          },
+        });
+      }, 100);
+    }
   }
 
   // getCaseStudies() {

@@ -58,7 +58,18 @@ export class StartDateComponent implements OnInit {
     if (this.startDateForm.valid) {
       this.formDataService.setFormData(this.startDateForm.value);
 
-      this.router.navigate(['/schedule-call/technologies']);
+      this.formDataService
+        .updateScheduleCall(this.startDateForm.value)
+        .subscribe((res) => {
+          if (res.result === 1) {
+            this.id = res.data._id;
+            this.router.navigate(['/schedule-call/technologies', this.id]);
+          }
+        }),
+        (error: any) => {
+          console.error('Error occurred:', error);
+          this.toastr.error('Something went wrong. Please try again.');
+        };
     } else {
       this.toastr.error('Please select start date');
     }

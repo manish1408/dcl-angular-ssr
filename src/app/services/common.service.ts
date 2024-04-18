@@ -37,7 +37,7 @@ export class CommonService {
       )
       .pipe(
         map(({ access_token: token }) => {
-          console.log('generateAccessToken -> token', token);
+          // console.log('generateAccessToken -> token', token);
           return token as string;
         })
       );

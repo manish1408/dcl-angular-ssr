@@ -96,7 +96,7 @@ export class TechnologiesComponent implements OnInit {
       this.formDataService
         .saveScheduleCall(this.savedFormData)
         .subscribe((res) => {
-          console.log(res);
+          // console.log(res);
         });
 
       this.router.navigate(['/thank-you']);

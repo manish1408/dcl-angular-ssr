@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../common/testimonial-card/testimonial-card.component';
 import { TestimonialService } from '../services/testimonial.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -39,9 +39,13 @@ export class EngageComponent {
     private router: Router,
     private toastr: ToastrService,
     private ourServices: OurServicesService,
-    private common: CommonService
+    private common: CommonService,
+    private title: Title
   ) {
-    this.meta.addTag({ name: 'title', content: 'Home page' });
+    // this.setTitle('Services');
+  }
+  setTitle(newTitle: string) {
+    this.title.setTitle(newTitle);
   }
 
   testimonials: any = [];
@@ -62,24 +66,41 @@ export class EngageComponent {
     this.route.params.subscribe((params) => {
       this.pageType = params?.['type'];
       if (this.pageType === 'staff-augmentation') {
-        this.initialHeader = 'STAFF AUGMENTATION';
-        this.mainHeader = 'Your developers and ours. Integrated.';
-        this.description =
-          'Augment your tech teams with our developers, adding the expertise you need.';
-        this.buttonCta = 'Expand Your Lineup';
+        //metaTags
+        this.meta.updateTag({
+          name: 'title',
+          content: 'What Is Staff Augmentation? | DistinctCloudLabs',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Staff augmentation is a powerful model that organizations can leverage to increase agility and respond to the changing needs of the enterprise.',
+        });
       } else if (this.pageType === 'dedicated-teams') {
-        this.initialHeader = 'DEDICATED SOFTWARE DEVELOPMENT TEAMS';
-        this.mainHeader = 'Software Teams. Seamlessly Integrated.';
-        this.description =
-          'Deliver end-to-end projects efficiently and reliably with our embedded software development teams.';
-        this.buttonCta = 'Assemble my Ideal Team';
+        //metaTags
+        this.meta.updateTag({
+          name: 'title',
+          content:
+            'Dedicated Development Team: What Is It And ... - DistinctCloudLabs',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'A dedicated development team is a popular partnership model in software development, facilitating remote collaboration between clients and developers.',
+        });
       } else if (this.pageType === 'software-outsourcing') {
-        this.initialHeader = 'SOFTWARE DEVELOPMENT OUTSOURCING';
-        this.mainHeader =
-          'Software Development. Project Management.Off Your Plate.';
-        this.description =
-          'From definition and design, to development and testing, we provide end-to-end software outsourcing when you don’t have the capacity or expertise in-house.';
-        this.buttonCta = 'Assemble my Ideal Team';
+        //metaTags
+
+        this.meta.updateTag({
+          name: 'title',
+          content:
+            'Software Development Outsourcing: Everything You Need … - DistinctCloudLabs',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content:
+            'Outsource your project to a leading IT company and get your needs met. End-to-end software development outsourcing services. ⭐ 360+ successful projects.',
+        });
       }
       // fetch services
       this.getServices();
