@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../../common/testimonial-card/testimonial-card.component';
-import { TestimonialService } from '../../services/testimonial.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CaseStudySliderComponent } from '../../common/case-study-slider/case-study-slider.component';
-import { CaseStudyService } from '../../services/case-study.service';
 import { ServiceBannerComponent } from '../../common/service-banner/service-banner.component';
 import { FormDataService } from '../../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
@@ -36,13 +34,12 @@ declare var Swiper: any;
 export class SolutionComponent {
   constructor(
     private meta: Meta,
-    private testimonialService: TestimonialService,
     private route: ActivatedRoute,
-    private caseStudyService: CaseStudyService,
     private formDataService: FormDataService,
     private router: Router,
     private toastr: ToastrService,
     private solutionsService: SolutionsService,
+    private title: Title,
     private common: CommonService
   ) {
     this.meta.addTag({ name: 'title', content: 'Home page' });
@@ -68,58 +65,67 @@ export class SolutionComponent {
         //metaTags
         this.meta.updateTag({
           name: 'title',
-          content: 'Front-End Development Services',
+          content: 'Front-End Development Services - Distinct Cloud Labs',
         });
         this.meta.updateTag({
           name: 'description',
           content:
             'Deploy front-end development experts with a visionary approach to crafting captivating user interfaces. Create highly tailored, meticulously designed…',
         });
+        this.title.setTitle("Front-End Development Services - Distinct Cloud Labs");
       } else if (this.pageType === 'back-end') {
         //metaTags
         this.meta.updateTag({
           name: 'title',
-          content: 'Backend Development Services',
+          content: 'Backend Development Services - Distinct Cloud Labs',
         });
         this.meta.updateTag({
           name: 'description',
           content:
-            'DistinctCloudLabs is a leading back-end development company ⚡ Our experts create effective solutions to cover all your business requirements.',
+            'Distinct Cloud Labs is a leading back-end development company ⚡ Our experts create effective solutions to cover all your business requirements.',
         });
+        this.title.setTitle("Backend Development Services - Distinct Cloud Labs");
       } else if (this.pageType === 'mobile-app-development') {
         //metaTags
 
         this.meta.updateTag({
           name: 'title',
-          content: 'Mobile App Development Services',
+          content: 'Mobile App Development Services - Distinct Cloud Labs',
         });
         this.meta.updateTag({
           name: 'description',
           content:
             'A leading mobile app development company. 50+ mobile projects. Native iOS and Android apps. Cross-platform apps on React, Xamarin, and Flutter.',
         });
+
+        this.title.setTitle("Mobile App Development Services - Distinct Cloud Labs");
+
+
       } else if (this.pageType === 'ai-platform-engineering') {
         //metaTags
         this.meta.updateTag({
           name: 'title',
-          content: 'Platform Engineering Services',
+          content: 'AI Platform Engineering Services - Distinct Cloud Labs',
         });
         this.meta.updateTag({
           name: 'description',
           content:
             'Unlock top-tier engineering expertise to craft scalable end-to-end solutions with modular architectures and reusable components.',
         });
+        this.title.setTitle("AI Platform Engineering Services - Distinct Cloud Labs");
+
       } else if (this.pageType === 'saas-development') {
         //metaTags
         this.meta.updateTag({
           name: 'title',
-          content: 'SaaS Development Services: 50+ Experts Ready To Help',
+          content: 'SaaS Development Services: 50+ Experts Ready To Help - Distinct Cloud Labs',
         });
         this.meta.updateTag({
           name: 'description',
           content:
             'Choose from our world-class SaaS development services to get performant, business-centric, and profitable SaaS products.',
         });
+        this.title.setTitle("SaaS Development Services: 50+ Experts Ready To Help - Distinct Cloud Labs");
       }
 
       this.getSolutions();
@@ -132,6 +138,10 @@ export class SolutionComponent {
         });
       }
     });
+  }
+
+  setTitle(newTitle: string) {
+    this.title.setTitle(newTitle);
   }
 
   swiperinit() {
@@ -194,18 +204,6 @@ export class SolutionComponent {
     }
   }
 
-  // getCaseStudies() {
-  //   this.caseStudyService
-  //     .fetchPosts()
-  //     .then((resp: any) => {
-  //       this.posts = resp?.items;
-
-  //       this.swiperinit();
-  //     })
-  //     .catch((err: any) => {
-  //       console.log(err);
-  //     });
-  // }
   getSolutions() {
     this.solutionsService
       .getSolutions()

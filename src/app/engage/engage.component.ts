@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../common/testimonial-card/testimonial-card.component';
-import { TestimonialService } from '../services/testimonial.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CaseStudySliderComponent } from '../common/case-study-slider/case-study-slider.component';
-import { CaseStudyService } from '../services/case-study.service';
 import { ServiceBannerComponent } from '../common/service-banner/service-banner.component';
 import { FormDataService } from '../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
@@ -32,18 +30,15 @@ declare var Swiper: any;
 export class EngageComponent {
   constructor(
     private meta: Meta,
-    private testimonialService: TestimonialService,
     private route: ActivatedRoute,
-    private caseStudyService: CaseStudyService,
     private formDataService: FormDataService,
     private router: Router,
     private toastr: ToastrService,
     private ourServices: OurServicesService,
     private common: CommonService,
     private title: Title
-  ) {
-    // this.setTitle('Services');
-  }
+  ) {}
+  
   setTitle(newTitle: string) {
     this.title.setTitle(newTitle);
   }
@@ -69,38 +64,43 @@ export class EngageComponent {
         //metaTags
         this.meta.updateTag({
           name: 'title',
-          content: 'What Is Staff Augmentation? | DistinctCloudLabs',
+          content: 'What Is Staff Augmentation? | Distinct Cloud Labs',
         });
         this.meta.updateTag({
           name: 'description',
           content:
             'Staff augmentation is a powerful model that organizations can leverage to increase agility and respond to the changing needs of the enterprise.',
         });
+        this.setTitle('What Is Staff Augmentation? | Distinct Cloud Labs');
       } else if (this.pageType === 'dedicated-teams') {
         //metaTags
         this.meta.updateTag({
           name: 'title',
           content:
-            'Dedicated Development Team: What Is It And ... - DistinctCloudLabs',
+            'Dedicated Development Team: What Is It And ... - Distinct Cloud Labs',
         });
         this.meta.updateTag({
           name: 'description',
           content:
             'A dedicated development team is a popular partnership model in software development, facilitating remote collaboration between clients and developers.',
         });
+        this.setTitle('Dedicated Development Team: What Is It And ... - Distinct Cloud Labs');
       } else if (this.pageType === 'software-outsourcing') {
         //metaTags
 
         this.meta.updateTag({
           name: 'title',
           content:
-            'Software Development Outsourcing: Everything You Need … - DistinctCloudLabs',
+            'Software Development Outsourcing: Everything You Need … - Distinct Cloud Labs',
         });
         this.meta.updateTag({
           name: 'description',
           content:
             'Outsource your project to a leading IT company and get your needs met. End-to-end software development outsourcing services. ⭐ 360+ successful projects.',
         });
+
+        this.setTitle('Software Development Outsourcing: Everything You Need … - Distinct Cloud Labs');
+
       }
       // fetch services
       this.getServices();
