@@ -1,0 +1,14 @@
+/services/staff-augmentation
+/services/dedicated-teams
+/services/software-outsourcing
+/technologies/react
+/technologies/angular
+/technologies/react-native
+/technologies/node
+/technologies/net
+/solutions/front-end
+/solutions/back-end
+/solutions/front-end
+/solutions/mobile-app-development
+/solutions/ai-platform-engineering
+/solutions/saas-development
