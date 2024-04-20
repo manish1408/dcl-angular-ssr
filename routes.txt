@@ -12,3 +12,9 @@
 /solutions/mobile-app-development
 /solutions/ai-platform-engineering
 /solutions/saas-development
+/case-study/next-school
+/case-study/ivory-sapphire
+/case-study/eazy-nft
+/case-study/trade-cloud
+/case-study/signet-tags
+/case-study/docto-hub
