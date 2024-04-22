@@ -22,6 +22,10 @@ input[type="radio"] {
   color: var(--bs-form-invalid-color);
 }
 
+.custom-img {
+  filter: grayscale(100%) invert(100%);
+}
+
 .client-section {
   background-image: url(../../../assets/img/home3/home3-banner-bg.png),
     linear-gradient(180deg, #0a0a0a 0%, #0a0a0a 100%);

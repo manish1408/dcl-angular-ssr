@@ -1,6 +1,6 @@
 <div class="container-fluid overflow-x-hidden">
   <div class="row justify-content-end overflow-hidden">
-    <div class="col-lg-9 col-xxl-10">
+    <div class="col-lg-9">
       <div class="col-lg-12 offset-lg-3" style="margin-top: 10%">
         <a href="/" class="logo-dark"
           ><img
@@ -29,6 +29,7 @@
                       id="flexRadioDefault1"
                       formControlName="startDate"
                       value="I'm already late"
+                      (click)="hideMonths()"
                     />
                     <label
                       class="form-check-label m-2"
@@ -44,6 +45,7 @@
                       id="flexRadioDefault2"
                       formControlName="startDate"
                       value="Immediately"
+                      (click)="hideMonths()"
                     />
                     <label
                       class="form-check-label m-2"
@@ -60,6 +62,7 @@
                       id="flexRadioDefault3"
                       formControlName="startDate"
                       value="When I get internal funding/approval"
+                      (click)="hideMonths()"
                     />
                     <label
                       class="form-check-label m-2"
@@ -74,6 +77,8 @@
                       type="radio"
                       id="flexRadioDefault4"
                       (click)="specifyDate()"
+                      formControlName="startDate"
+                      value="specifyDate"
                     />
                     <label
                       class="form-check-label specifyDate m-2"
@@ -82,7 +87,7 @@
                       Specify a date
                     </label>
                   </div>
-                  <div class="row" *ngIf="showMonths">
+                  <div class="row" *ngIf="showMonths === true">
                     <div class="col-lg-12 offset-xl-1">
                       <div class="d-flex flex-column flex-xl-row">
                         <div class="d-flex align-items-center mx-2">
@@ -151,6 +156,7 @@
                       id="flexRadioDefault9"
                       formControlName="startDate"
                       value="I don't know"
+                      (click)="hideMonths()"
                     />
                     <label class="form-check-label m-2" for="flexRadioDefault9">
                       I don't know
@@ -165,8 +171,11 @@
                 </div>
               </div>
             </div>
-            <div class="d-flex justify-content-end my-5">
-              <a (click)="onSubmit()" class="btn btn-success px-3"
+            <div class="d-flex justify-content-between my-5">
+              <a class="btn btn-dark px-3" (click)="back()"
+                ><i class="bi bi-arrow-left px-2"></i>Back
+              </a>
+              <a class="btn btn-success px-3" (click)="onSubmit()"
                 >Next<i class="bi bi-arrow-right px-2"></i>
               </a>
             </div>
