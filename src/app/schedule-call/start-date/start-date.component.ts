@@ -19,7 +19,7 @@ import { log } from 'node:console';
   styleUrl: './start-date.component.scss',
 })
 export class StartDateComponent implements OnInit {
-  showMonths!: boolean;
+  showMonths: boolean = false;
   savedFormData: any;
   startDateForm!: FormGroup;
   id!: string;
