@@ -9,6 +9,7 @@ import {
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormDataService } from '../../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-start-date',
@@ -18,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './start-date.component.scss',
 })
 export class StartDateComponent implements OnInit {
-  showMonths: boolean = false;
+  showMonths!: boolean;
   savedFormData: any;
   startDateForm!: FormGroup;
   id!: string;
@@ -46,6 +47,18 @@ export class StartDateComponent implements OnInit {
         startDate: res.data.startDate,
         id: res.data._id,
       });
+
+      const showMonthsState = sessionStorage.getItem('showMonths');
+
+      if (showMonthsState !== null) {
+        this.showMonths = JSON.parse(showMonthsState);
+
+        if (this.showMonths === true) {
+          this.showMonths = true;
+        } else {
+          this.showMonths = false;
+        }
+      }
     });
   }
   hasError(controlName: keyof typeof this.startDateForm.controls) {
@@ -55,6 +68,7 @@ export class StartDateComponent implements OnInit {
 
   onSubmit() {
     this.startDateForm.markAllAsTouched();
+    sessionStorage.setItem('showMonths', JSON.stringify(this.showMonths));
     if (this.startDateForm.valid) {
       this.formDataService.setFormData(this.startDateForm.value);
 
@@ -77,6 +91,11 @@ export class StartDateComponent implements OnInit {
 
   specifyDate() {
     this.showMonths = !this.showMonths;
+    // sessionStorage.setItem('showMonths', JSON.stringify(this.showMonths));
+  }
+  hideMonths() {
+    this.showMonths = false;
+    // sessionStorage.setItem('showMonths', JSON.stringify(this.showMonths));
   }
   back() {
     this.router.navigate(['/schedule-call/budget', this.id]);

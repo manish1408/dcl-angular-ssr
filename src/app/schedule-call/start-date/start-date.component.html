@@ -29,6 +29,7 @@
                       id="flexRadioDefault1"
                       formControlName="startDate"
                       value="I'm already late"
+                      (click)="hideMonths()"
                     />
                     <label
                       class="form-check-label m-2"
@@ -44,6 +45,7 @@
                       id="flexRadioDefault2"
                       formControlName="startDate"
                       value="Immediately"
+                      (click)="hideMonths()"
                     />
                     <label
                       class="form-check-label m-2"
@@ -60,6 +62,7 @@
                       id="flexRadioDefault3"
                       formControlName="startDate"
                       value="When I get internal funding/approval"
+                      (click)="hideMonths()"
                     />
                     <label
                       class="form-check-label m-2"
@@ -74,6 +77,8 @@
                       type="radio"
                       id="flexRadioDefault4"
                       (click)="specifyDate()"
+                      formControlName="startDate"
+                      value="specifyDate"
                     />
                     <label
                       class="form-check-label specifyDate m-2"
@@ -82,7 +87,7 @@
                       Specify a date
                     </label>
                   </div>
-                  <div class="row" *ngIf="showMonths">
+                  <div class="row" *ngIf="showMonths === true">
                     <div class="col-lg-12 offset-xl-1">
                       <div class="d-flex flex-column flex-xl-row">
                         <div class="d-flex align-items-center mx-2">
@@ -151,6 +156,7 @@
                       id="flexRadioDefault9"
                       formControlName="startDate"
                       value="I don't know"
+                      (click)="hideMonths()"
                     />
                     <label class="form-check-label m-2" for="flexRadioDefault9">
                       I don't know
@@ -207,7 +213,7 @@
             alt="image"
             class="my-3"
             src="assets/img/eazynft-logo.png"
-            style="height: 40px"
+            style="height: 50px"
           />
           <img
             alt="image"

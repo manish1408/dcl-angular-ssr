@@ -87,6 +87,7 @@ export class TechnologiesComponent implements OnInit {
 
   onSubmit() {
     this.technologiesForm.markAllAsTouched();
+
     if (this.technologiesForm.valid) {
       this.technologyArray = this.technologiesForm.value.technologyNeeded;
       const convertedValues = {
@@ -105,6 +106,7 @@ export class TechnologiesComponent implements OnInit {
         });
 
       this.router.navigate(['/thank-you']);
+      sessionStorage.clear();
     } else {
       this.toastr.error('Please select technologies required');
     }
