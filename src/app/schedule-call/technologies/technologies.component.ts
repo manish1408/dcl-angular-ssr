@@ -8,7 +8,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import {
   IDropdownSettings,
@@ -16,6 +16,7 @@ import {
 } from 'ng-multiselect-dropdown';
 import { FormDataService } from '../../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-technologies',
@@ -39,18 +40,22 @@ export class TechnologiesComponent implements OnInit {
 
   savedFormData: any;
   itForm!: FormGroup;
+  id!: string;
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private formDataService: FormDataService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route: ActivatedRoute
   ) {
     this.technologiesForm = this.fb.group({
       technologyNeeded: ['', Validators.required],
     });
   }
   ngOnInit() {
-    this.savedFormData = this.formDataService.getFormData();
+    this.route.params.subscribe((params) => {
+      this.id = params['id'];
+    });
 
     this.dropdownList = [
       { id: 1, value: '.NET' },
@@ -103,5 +108,8 @@ export class TechnologiesComponent implements OnInit {
     } else {
       this.toastr.error('Please select technologies required');
     }
+  }
+  back() {
+    this.router.navigate(['/schedule-call/start-date', this.id]);
   }
 }

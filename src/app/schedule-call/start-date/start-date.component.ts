@@ -78,4 +78,7 @@ export class StartDateComponent implements OnInit {
   specifyDate() {
     this.showMonths = !this.showMonths;
   }
+  back() {
+    this.router.navigate(['/schedule-call/budget', this.id]);
+  }
 }
