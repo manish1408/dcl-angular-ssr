@@ -48,7 +48,6 @@ export class SolutionComponent {
   posts: any = [];
   currentIndex: number = 0;
   id!: string;
-  currentTestimonial: any;
   isLoading: boolean = false;
   pageType: any;
   initialHeader: string = '';
@@ -57,6 +56,8 @@ export class SolutionComponent {
   buttonCta: string = '';
   solutions: any = [];
   loading: boolean = true;
+  testimonialsArray: any = [];
+  reversedTestimonials: any = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -72,7 +73,9 @@ export class SolutionComponent {
           content:
             'Deploy front-end development experts with a visionary approach to crafting captivating user interfaces. Create highly tailored, meticulously designed…',
         });
-        this.title.setTitle("Front-End Development Services - Distinct Cloud Labs");
+        this.title.setTitle(
+          'Front-End Development Services - Distinct Cloud Labs'
+        );
       } else if (this.pageType === 'back-end') {
         //metaTags
         this.meta.updateTag({
@@ -84,7 +87,9 @@ export class SolutionComponent {
           content:
             'Distinct Cloud Labs is a leading back-end development company ⚡ Our experts create effective solutions to cover all your business requirements.',
         });
-        this.title.setTitle("Backend Development Services - Distinct Cloud Labs");
+        this.title.setTitle(
+          'Backend Development Services - Distinct Cloud Labs'
+        );
       } else if (this.pageType === 'mobile-app-development') {
         //metaTags
 
@@ -98,9 +103,9 @@ export class SolutionComponent {
             'A leading mobile app development company. 50+ mobile projects. Native iOS and Android apps. Cross-platform apps on React, Xamarin, and Flutter.',
         });
 
-        this.title.setTitle("Mobile App Development Services - Distinct Cloud Labs");
-
-
+        this.title.setTitle(
+          'Mobile App Development Services - Distinct Cloud Labs'
+        );
       } else if (this.pageType === 'ai-platform-engineering') {
         //metaTags
         this.meta.updateTag({
@@ -112,20 +117,24 @@ export class SolutionComponent {
           content:
             'Unlock top-tier engineering expertise to craft scalable end-to-end solutions with modular architectures and reusable components.',
         });
-        this.title.setTitle("AI Platform Engineering Services - Distinct Cloud Labs");
-
+        this.title.setTitle(
+          'AI Platform Engineering Services - Distinct Cloud Labs'
+        );
       } else if (this.pageType === 'saas-development') {
         //metaTags
         this.meta.updateTag({
           name: 'title',
-          content: 'SaaS Development Services: 50+ Experts Ready To Help - Distinct Cloud Labs',
+          content:
+            'SaaS Development Services: 50+ Experts Ready To Help - Distinct Cloud Labs',
         });
         this.meta.updateTag({
           name: 'description',
           content:
             'Choose from our world-class SaaS development services to get performant, business-centric, and profitable SaaS products.',
         });
-        this.title.setTitle("SaaS Development Services: 50+ Experts Ready To Help - Distinct Cloud Labs");
+        this.title.setTitle(
+          'SaaS Development Services: 50+ Experts Ready To Help - Distinct Cloud Labs'
+        );
       }
 
       this.getSolutions();
@@ -212,6 +221,15 @@ export class SolutionComponent {
         this.swiperinitTestimonial();
         this.swiperinit();
         this.solutions = res?.items.filter((item: any) => {
+          if (
+            item.data.testimonials &&
+            item.data['identifier-slug'].iv === this.pageType
+          ) {
+            this.testimonialsArray.push(item.data);
+            for (let i = item.data.testimonials.iv.length - 1; i >= 0; i--) {
+              this.reversedTestimonials.push(item.data.testimonials.iv[i]);
+            }
+          }
           return item.data['identifier-slug'].iv === this.pageType;
         });
       })

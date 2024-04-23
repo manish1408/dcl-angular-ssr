@@ -235,7 +235,10 @@
   <app-engagement-models [services]="solutions"></app-engagement-models>
 
   <!-- Start Testimonial section -->
-  <app-testimonial-card [services]="solutions"></app-testimonial-card>
+  <app-testimonial-card
+    [services]="solutions"
+    [testimonials]="reversedTestimonials"
+  ></app-testimonial-card>
   <!-- End Testimonial section -->
 
   <!-- Start Industry Card Section -->

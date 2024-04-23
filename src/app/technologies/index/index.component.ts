@@ -41,7 +41,8 @@ export class IndexComponent {
     private common: CommonService
   ) {}
 
-  testimonials: any = [];
+  testimonialsArray: any = [];
+  reversedTestimonials: any = [];
   posts: any = [];
   currentIndex: number = 0;
   id!: string;
@@ -70,7 +71,9 @@ export class IndexComponent {
           content:
             'Discover ReactJS application development services for crafting highly adaptable and dynamic solutions, leveraging a robust component-based architecture.',
         });
-        this.title.setTitle("Trusted ReactJS Development Company - Distinct Cloud Labs");
+        this.title.setTitle(
+          'Trusted ReactJS Development Company - Distinct Cloud Labs'
+        );
       } else if (this.pageType === 'angular') {
         this.meta.updateTag({
           name: 'title',
@@ -82,7 +85,9 @@ export class IndexComponent {
             'Hire Angular developers from DistinctCloud ✓ Angular development services ✓ 5 years in web development ✓ Agile-driven culture ✓ Rich tech stack',
         });
 
-        this.title.setTitle("AngularJS Development Company' - Distinct Cloud Labs");
+        this.title.setTitle(
+          "AngularJS Development Company' - Distinct Cloud Labs"
+        );
       } else if (this.pageType === 'react-native') {
         this.meta.updateTag({
           name: 'title',
@@ -93,8 +98,9 @@ export class IndexComponent {
           content:
             'React Native combines the best parts of native development with React, a best-in-class JavaScript library for building user interfaces',
         });
-        this.title.setTitle("React Native App Development Company - Distinct Cloud Labs");
-
+        this.title.setTitle(
+          'React Native App Development Company - Distinct Cloud Labs'
+        );
       } else if (this.pageType === 'node') {
         //metaTags
         this.meta.updateTag({
@@ -107,14 +113,15 @@ export class IndexComponent {
             'Boost your web applications with our Node.JS development services, offering dynamic and customised solutions for your business needs.',
         });
 
-        this.title.setTitle("Node JS Development Company - Distinct Cloud Labs");
-
-
+        this.title.setTitle(
+          'Node JS Development Company - Distinct Cloud Labs'
+        );
       } else if (this.pageType === 'net') {
         //metaTags
         this.meta.updateTag({
           name: 'title',
-          content: 'Custom .NET Software Development Company - Distinct Cloud Labs',
+          content:
+            'Custom .NET Software Development Company - Distinct Cloud Labs',
         });
         this.meta.updateTag({
           name: 'description',
@@ -122,8 +129,9 @@ export class IndexComponent {
             'Distinct Cloud Labs is a renowned .NET development company that offers a complete suite of .NET software development services you need for digital transformation.',
         });
 
-        this.title.setTitle("Custom .NET Software Development Company - Distinct Cloud Labs");
-
+        this.title.setTitle(
+          'Custom .NET Software Development Company - Distinct Cloud Labs'
+        );
       }
 
       this.getTechnologies();
@@ -148,11 +156,19 @@ export class IndexComponent {
       this.swiperinitTestimonial();
       this.swiperinit();
       this.technologies = res?.items.filter((item: any) => {
+        if (
+          item.data.testimonials &&
+          item.data['identifier-slug'].iv === this.pageType
+        ) {
+          this.testimonialsArray.push(item.data);
+          for (let i = item.data.testimonials.iv.length - 1; i >= 0; i--) {
+            this.reversedTestimonials.push(item.data.testimonials.iv[i]);
+          }
+        }
         return item.data['identifier-slug'].iv === this.pageType;
       });
     });
   }
- 
 
   swiperinit() {
     if (this.common.isBrowser()) {

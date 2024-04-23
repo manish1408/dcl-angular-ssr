@@ -44,7 +44,8 @@ export class EngageComponent {
     this.title.setTitle(newTitle);
   }
 
-  testimonials: any = [];
+  testimonialsArray: any = [];
+  reversedTestimonials: any = [];
   posts: any = [];
   currentIndex: number = 0;
   id!: string;
@@ -132,14 +133,13 @@ export class EngageComponent {
     //   .catch((err: any) => {
     //   });
   }
-  testimonialsArray: any = [];
-  reversedTestimonials: any = [];
+
   getServices() {
     this.ourServices.getServices().subscribe((res: any) => {
       this.loading = false;
       this.swiperinitTestimonial();
       this.swiperinit();
-      console.log(res.items);
+
       this.services = res?.items.filter((item: any) => {
         if (
           item.data.testimonials &&
