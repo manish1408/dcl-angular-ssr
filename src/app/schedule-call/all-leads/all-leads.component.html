@@ -1,0 +1,53 @@
+<section>
+  <div class="home1-banner-section px-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12" style="padding-bottom: 100px">
+          <div class="card rounded-4">
+            <div class="card-body">
+              <div class="text-center">
+                <!-- <img
+                  [src]="
+                    'https://cloud.squidex.io/api/assets/distinct-cloud-labs/'
+                  "
+                  alt=""
+                  style="height: 40px"
+                /> -->
+              </div>
+              <h2 class="card-title text-center my-4">All Leads Generated</h2>
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Phone No.</th>
+                    <th scope="col">Service Requested</th>
+                    <th scope="col">Service Mesage</th>
+                    <th scope="col">Technology Neeed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for(lead of allLeads; track i; let i=$index){
+                  <tr>
+                    <th scope="row">{{ i + 1 }}</th>
+                    <td>{{ lead.name }}</td>
+                    <td>{{ lead.email }}</td>
+                    <td>{{ lead.company }}</td>
+                    <td>{{ lead.phone }}</td>
+                    <td>{{ lead.serviceRequested }}</td>
+                    <td>{{ lead.serviceMessage }}</td>
+                    <td>{{ lead.technologyNeeded }}</td>
+                  </tr>
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
