@@ -1,0 +1,12 @@
+.testimonial-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.testimonial-card3 .logo-and-rating .rating li i {
+  color: #ffc107;
+  font-size: 30px;
+}
