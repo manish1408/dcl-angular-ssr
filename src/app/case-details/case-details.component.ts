@@ -3,6 +3,7 @@ import { CaseStudyService } from '../services/case-study.service';
 import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-case-details',
@@ -16,7 +17,8 @@ export class CaseDetailsComponent implements OnInit {
     private caseStudyService: CaseStudyService,
     private route: ActivatedRoute,
     private renderer: Renderer2,
-    private el: ElementRef
+    private el: ElementRef,
+    private common: CommonService
   ) {}
   post: any;
   posts: any = [];
@@ -37,12 +39,13 @@ export class CaseDetailsComponent implements OnInit {
 
           this.getAllCaseStudies();
         });
-
-      window.scroll({
-        top: 0,
-        left: 0,
-        behavior: 'smooth',
-      });
+      if (this.common.isBrowser()) {
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        });
+      }
     });
   }
 
