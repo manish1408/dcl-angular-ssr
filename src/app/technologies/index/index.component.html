@@ -112,7 +112,10 @@
   <app-schedule-call-cta [services]="technologies"></app-schedule-call-cta>
 
   <!-- Start Testimonial section -->
-  <app-testimonial-card [services]="technologies"></app-testimonial-card>
+  <app-testimonial-card
+    [services]="technologies"
+    [testimonials]="reversedTestimonials"
+  ></app-testimonial-card>
   <!-- End Testimonial section -->
 
   <app-engagement-models [services]="technologies"></app-engagement-models>

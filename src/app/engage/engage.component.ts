@@ -10,6 +10,7 @@ import { ScheduleCallCTAComponent } from '../common/schedule-call-cta/schedule-c
 import { OurServicesService } from '../services/our-services.service';
 import { CommonModule } from '@angular/common';
 import { CommonService } from '../services/common.service';
+import { log } from 'node:console';
 
 declare var Swiper: any;
 
@@ -38,12 +39,13 @@ export class EngageComponent {
     private common: CommonService,
     private title: Title
   ) {}
-  
+
   setTitle(newTitle: string) {
     this.title.setTitle(newTitle);
   }
 
-  testimonials: any = [];
+  testimonialsArray: any = [];
+  reversedTestimonials: any = [];
   posts: any = [];
   currentIndex: number = 0;
   id!: string;
@@ -84,7 +86,9 @@ export class EngageComponent {
           content:
             'A dedicated development team is a popular partnership model in software development, facilitating remote collaboration between clients and developers.',
         });
-        this.setTitle('Dedicated Development Team: What Is It And ... - Distinct Cloud Labs');
+        this.setTitle(
+          'Dedicated Development Team: What Is It And ... - Distinct Cloud Labs'
+        );
       } else if (this.pageType === 'software-outsourcing') {
         //metaTags
 
@@ -99,8 +103,9 @@ export class EngageComponent {
             'Outsource your project to a leading IT company and get your needs met. End-to-end software development outsourcing services. ⭐ 360+ successful projects.',
         });
 
-        this.setTitle('Software Development Outsourcing: Everything You Need … - Distinct Cloud Labs');
-
+        this.setTitle(
+          'Software Development Outsourcing: Everything You Need … - Distinct Cloud Labs'
+        );
       }
       // fetch services
       this.getServices();
@@ -134,7 +139,17 @@ export class EngageComponent {
       this.loading = false;
       this.swiperinitTestimonial();
       this.swiperinit();
+
       this.services = res?.items.filter((item: any) => {
+        if (
+          item.data.testimonials &&
+          item.data['identifier-slug'].iv === this.pageType
+        ) {
+          this.testimonialsArray.push(item.data);
+          for (let i = item.data.testimonials.iv.length - 1; i >= 0; i--) {
+            this.reversedTestimonials.push(item.data.testimonials.iv[i]);
+          }
+        }
         return item.data['identifier-slug'].iv === this.pageType;
       });
     });

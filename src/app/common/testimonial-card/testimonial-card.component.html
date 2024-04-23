@@ -1,6 +1,6 @@
 <div class="home3-testimonial-section mb-110">
-  @for(ele of services; track ele){
   <div class="container">
+    @for(ele of services; track ele){
     <div class="row justify-content-center mb-60">
       <div class="col-lg-8">
         <div
@@ -31,14 +31,15 @@
               </g>
             </svg>
           </span>
-          <h2>{{ ele.data?.testimonialHeader?.iv }}</h2>
+          <h2>{{ ele?.data?.testimonialHeader?.iv }}</h2>
 
           <p>
-            {{ ele.data?.testimonialDescription?.iv }}
+            {{ ele?.data?.testimonialDescription?.iv }}
           </p>
         </div>
       </div>
     </div>
+    }
 
     <div
       class="testimonial-wrap wow animate fadeInUp"
@@ -49,7 +50,8 @@
         <div class="col-lg-12">
           <div class="swiper home3-testimonial-slider">
             <div class="swiper-wrapper">
-              @for(item of ele?.data?.testimonials.iv; track item){
+              @for(item of testimonials; track item){
+
               <div class="swiper-slide">
                 <div class="testimonial-card3">
                   <div class="author-area">
@@ -133,7 +135,7 @@
     >
       <div class="col-md-6">
         <div class="slider-btn-and-pagination-wrap">
-          <div class="franctional-pagi2"></div>
+          <!-- <div class="franctional-pagi2"></div> -->
           <div class="slider-btn-group">
             <div class="slider-btn home3-testimonial-prev">
               <svg
@@ -188,5 +190,4 @@
       </div>
     </div>
   </div>
-  }
 </div>
