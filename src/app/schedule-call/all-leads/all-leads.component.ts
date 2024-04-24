@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ScheduleCallService } from '../../services/schedule-call.service';
+import { log } from 'node:console';
 
 @Component({
   selector: 'app-all-leads',
@@ -13,6 +14,7 @@ import { ScheduleCallService } from '../../services/schedule-call.service';
 export class AllLeadsComponent implements OnInit {
   constructor(private scheduleCallService: ScheduleCallService) {}
   allLeads: any = [];
+  openDetailsModal: boolean = false;
   ngOnInit(): void {
     this.scheduleCallService.getAllLeads().subscribe((res: any) => {
       if (res.msg === 'SUCCESS') {
@@ -20,5 +22,9 @@ export class AllLeadsComponent implements OnInit {
       }
       // console.log('all leads:', this.allLeads);
     });
+  }
+  openModal() {
+    this.openDetailsModal = true;
+    console.log(this.openDetailsModal);
   }
 }

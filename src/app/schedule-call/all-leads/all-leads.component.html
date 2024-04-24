@@ -16,7 +16,7 @@
               </div>
               <h2 class="card-title text-center my-4">All Leads Generated</h2>
 
-              <table class="table">
+              <table class="table table-striped">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -26,7 +26,8 @@
                     <th scope="col">Phone No.</th>
                     <th scope="col">Service Requested</th>
                     <th scope="col">Service Mesage</th>
-                    <th scope="col">Technology Neeed</th>
+                    <th scope="col">Technology Needed</th>
+                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -40,12 +41,85 @@
                     <td>{{ lead.serviceRequested }}</td>
                     <td>{{ lead.serviceMessage }}</td>
                     <td>{{ lead.technologyNeeded }}</td>
+                    <td>
+                      <button
+                        class="btn btn-success px-3"
+                        data-bs-toggle="modal"
+                        data-bs-target="#allLeads"
+                      >
+                        Details
+                      </button>
+                    </td>
                   </tr>
                   }
                 </tbody>
               </table>
             </div>
           </div>
+        </div>
+      </div>
+      <!-- @if(openDetailsModal){ -->
+
+      <!-- } -->
+    </div>
+  </div>
+
+  <!-- Details Table Modal -->
+  <div
+    class="modal fade"
+    id="allLeads"
+    tabindex="-1"
+    aria-labelledby="allLeadsLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-xxl custom-modal-body">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="allLeadsLabel">Modal title</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Company</th>
+                <th scope="col">Phone No.</th>
+                <th scope="col">Service Requested</th>
+                <th scope="col">Service Mesage</th>
+                <th scope="col">Technology Needed</th>
+                <th scope="col">Persons Needed</th>
+                <th scope="col">Project Duration</th>
+                <th scope="col">Budget</th>
+                <th scope="col">Start Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for(lead of allLeads; track i; let i=$index){
+              <tr>
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ lead.name }}</td>
+                <td>{{ lead.email }}</td>
+                <td>{{ lead.company }}</td>
+                <td>{{ lead.phone }}</td>
+                <td>{{ lead.serviceRequested }}</td>
+                <td>{{ lead.serviceMessage }}</td>
+                <td>{{ lead.technologyNeeded }}</td>
+                <td>{{ lead.noOfPersonsNeeded }}</td>
+                <td>{{ lead.projectDuration }}</td>
+                <td>{{ lead.budget }}</td>
+                <td>{{ lead.startDate }}</td>
+              </tr>
+              }
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

@@ -99,10 +99,12 @@ export class TechnologiesComponent implements OnInit {
       const formData = (this.savedFormData =
         this.formDataService.getFormData());
 
+      console.log('formData:', formData);
+
       this.formDataService
         .saveScheduleCall(this.savedFormData)
         .subscribe((res) => {
-          // console.log(res);
+          console.log(res);
         });
 
       this.router.navigate(['/thank-you']);
