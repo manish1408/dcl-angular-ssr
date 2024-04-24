@@ -7,6 +7,15 @@
             <div class="card-body overflow-auto">
               <div class="text-center"></div>
               <h2 class="card-title text-center my-4">All Leads Generated</h2>
+              <div class="text-end mb-3">
+                <button
+                  class="btn btn-success px-3"
+                  data-bs-toggle="modal"
+                  data-bs-target="#allLeads"
+                >
+                  Details
+                </button>
+              </div>
 
               <table class="table table-striped">
                 <thead>
@@ -19,7 +28,6 @@
                     <th scope="col">Service Requested</th>
                     <th scope="col">Service Mesage</th>
                     <th scope="col">Technology Needed</th>
-                    <th scope="col"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -33,15 +41,6 @@
                     <td>{{ lead.serviceRequested }}</td>
                     <td>{{ lead.serviceMessage }}</td>
                     <td>{{ lead.technologyNeeded }}</td>
-                    <td>
-                      <button
-                        class="btn btn-success px-3"
-                        data-bs-toggle="modal"
-                        data-bs-target="#allLeads"
-                      >
-                        Details
-                      </button>
-                    </td>
                   </tr>
                   }
                 </tbody>
@@ -65,12 +64,20 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="allLeadsLabel">Modal title</h5>
-          <button
-            type="button"
-            class="btn-close"
-            data-bs-dismiss="modal"
-            aria-label="Close"
-          ></button>
+          <div>
+            <button
+              (click)="downloadCSV(allLeads)"
+              class="btn btn-success px-3"
+            >
+              Download as CSV
+            </button>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
         </div>
         <div class="modal-body">
           <table class="table">

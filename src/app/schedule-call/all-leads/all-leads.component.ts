@@ -27,4 +27,26 @@ export class AllLeadsComponent implements OnInit {
     this.openDetailsModal = true;
     console.log(this.openDetailsModal);
   }
+
+  // Assuming leadsData contains the JSON data provided
+
+  // Convert JSON data to CSV format
+  convertToCSV(data: any[]) {
+    const header = Object.keys(data[0]).join(',') + '\n';
+    const rows = data.map((entry) => Object.values(entry).join(',') + '\n');
+    return header + rows.join('');
+  }
+
+  downloadCSV(allLeads: any) {
+    const csvData = this.convertToCSV(allLeads);
+
+    const blob = new Blob([csvData], { type: 'text/csv' });
+
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.setAttribute('href', url);
+    a.setAttribute('download', 'leads.csv');
+    a.click();
+    window.URL.revokeObjectURL(url);
+  }
 }
