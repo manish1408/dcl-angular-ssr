@@ -142,7 +142,7 @@
     });
 
 	  // Menu Text Animation
-	  document.querySelectorAll('.main-menu > li > a').forEach(button => button.innerHTML = '<div class="menu-text"><span>' + button.textContent.split('').join('</span><span>') + '</span></div>');
+	//   document.querySelectorAll('.main-menu > li > a').forEach(button => button.innerHTML = '<div class="menu-text"><span>' + button.textContent.split('').join('</span><span>') + '</span></div>');
 
 	  setTimeout(() => {
 		var menu_text = document.querySelectorAll(".menu-text span")

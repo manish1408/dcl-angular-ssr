@@ -55,7 +55,9 @@
                   ></span>
                   <ul class="submenu-list">
                     <li>
-                      <a [routerLink]="['services/staff-augmentation']"
+                      <a
+                        [routerLink]="['services/staff-augmentation']"
+                        (click)="hideSidebar()"
                         >Staff Augmentation
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +72,9 @@
                       </a>
                     </li>
                     <li>
-                      <a [routerLink]="['services/dedicated-teams']"
+                      <a
+                        [routerLink]="['services/dedicated-teams']"
+                        (click)="hideSidebar()"
                         >Dedicated Teams
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +90,9 @@
                     </li>
 
                     <li>
-                      <a [routerLink]="['services/software-outsourcing']"
+                      <a
+                        [routerLink]="['services/software-outsourcing']"
+                        (click)="hideSidebar()"
                         >Software Outsourcing
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -272,14 +278,16 @@
             </li>
 
             <li class="fs-6">
-              <a [routerLink]="['case-studies']">Case Study</a>
+              <a [routerLink]="['case-studies']" (click)="hideSidebar()"
+                >Case Study</a
+              >
             </li>
             <li class="fs-6">
-              <a [routerLink]="['blog']">Blog</a>
+              <a [routerLink]="['blog']" (click)="hideSidebar()">Blog</a>
             </li>
 
             <li class="fs-6">
-              <a [routerLink]="['contact']">Contact</a>
+              <a [routerLink]="['contact']" (click)="hideSidebar()">Contact</a>
             </li>
           </ul>
         </div>
