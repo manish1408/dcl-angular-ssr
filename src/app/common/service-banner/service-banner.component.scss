@@ -16,5 +16,73 @@
   line-height: 1em;
 }
 .home1-banner-section .banner-content .banner-content-bottom {
-  display: block;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.home1-banner-section .banner-content .banner-content-bottom .rating-area {
+  align-items: end;
+}
+.home1-banner-section
+  .banner-content
+  .banner-content-bottom
+  .rating-area
+  .clutch-star {
+  margin-bottom: 0px !important;
+}
+.home1-banner-section
+  .banner-content
+  .banner-content-bottom
+  .rating-area
+  .goodfirms-star {
+  margin-top: 0px !important;
+  margin-bottom: 5px;
+}
+.home1-banner-section {
+  padding: 85px 15px 45px 30 px;
+}
+
+@media (max-width: 576px) {
+  .home1-banner-section {
+    padding: 85px 15px 45px 15px;
+  }
+  .rating-area {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 0px;
+  }
+
+  .home1-banner-section
+    .banner-content
+    .banner-content-bottom
+    .rating-area
+    .rating
+    .star {
+    margin-top: 2px;
+    margin-right: 10px;
+  }
+
+  .home1-banner-section .banner-content .banner-content-bottom .rating-area {
+    align-items: baseline;
+  }
+
+  .home1-banner-section .banner-content .banner-content-bottom {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+  }
+  .home1-banner-section .banner-content > span {
+    display: none;
+  }
+
+  .home1-banner-section .banner-content h1 {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home1-banner-section .banner-content .banner-content-bottom {
+    margin-bottom: 20px;
+  }
 }

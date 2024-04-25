@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-lg-8">
         <div class="banner-content">
-          <span>
+          <span class="heading-one">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="14"
@@ -36,14 +36,13 @@
           <p>
             {{ ele.data?.headerDescription?.iv }}
           </p>
-          <!-- <div class="banner-content-bottom mb-4 mb-lg-0 gap-4"> -->
           <div class="row">
-            <div class="col-md-6 col-sm-12">
-              <div class="banner-content-bottom mb-4 mb-lg-0 gap-4">
+            <div class="col-6">
+              <div class="banner-content-bottom">
                 <a
                   target="_blank"
                   href="https://clutch.co/profile/distinct-cloud-labs"
-                  class="rating-area justify-content-between justify-content-md-start"
+                  class="rating-area"
                 >
                   <div class="review">
                     <span>Review On</span>
@@ -51,11 +50,11 @@
                       class="logo-dark"
                       src="assets/img/home1/icon/clutch-logo-white.svg"
                       alt=""
+                      style="width: 90px"
                     />
                   </div>
-
                   <div class="rating">
-                    <ul class="star">
+                    <ul class="star clutch-star">
                       <li><i class="bi bi-star-fill"></i></li>
                       <li><i class="bi bi-star-fill"></i></li>
                       <li><i class="bi bi-star-fill"></i></li>
@@ -66,19 +65,20 @@
                 </a>
               </div>
             </div>
-            <div class="col-md-6 col-sm-12">
-              <div class="banner-content-bottom mb-4 mb-lg-0 gap-4">
+
+            <div class="col-6">
+              <div class="banner-content-bottom">
                 <a
                   target="_blank"
                   href="https://www.goodfirms.co/company/distinct-cloud-labs"
-                  class="rating-area google justify-content-between justify-content-md-start"
+                  class="rating-area google"
                 >
                   <div class="review">
                     <span>Review On</span
                     ><img src="assets/img/goodfirms.svg" style="width: 142px" />
                   </div>
                   <div class="rating">
-                    <ul class="star">
+                    <ul class="star goodfirms-star">
                       <li><i class="bi bi-star-fill"></i></li>
                       <li><i class="bi bi-star-fill"></i></li>
                       <li><i class="bi bi-star-fill"></i></li>
@@ -90,11 +90,9 @@
               </div>
             </div>
           </div>
-
-          <!-- </div> -->
         </div>
       </div>
-      <div class="col-lg-4" style="padding-bottom: 100px">
+      <div class="col-lg-4">
         <div class="card rounded-4">
           <div class="card-body">
             <div class="text-center" *ngIf="ele.data?.headerIcon?.iv">
