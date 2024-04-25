@@ -3,14 +3,21 @@
     <div class="container" style="max-width: 1800px">
       <div class="card rounded-4 overflow-auto">
         <div class="card-body overflow-auto">
-          <h2 class="card-title text-center my-4">All Leads Generated</h2>
-          <div class="text-end mb-3">
-            <button
-              (click)="downloadCSV(allLeads)"
-              class="btn btn-success px-3"
-            >
-              Download as CSV
-            </button>
+          <div class="row">
+            <div class="col-12">
+              <h2 class="card-title text-center my-md-3 mb-3">
+                All Leads Generated
+              </h2>
+            </div>
+
+            <div class="col-12 mb-md-3 download-button">
+              <button
+                (click)="downloadCSV(allLeads)"
+                class="btn btn-success px-3"
+              >
+                Download as CSV
+              </button>
+            </div>
           </div>
 
           <table class="table table-striped">

@@ -1,1 +1,9 @@
-
+@media (max-width: 576px) {
+  .download-button {
+    text-align: center !important;
+    margin-bottom: 0px;
+  }
+}
+.download-button {
+  text-align: end;
+}
