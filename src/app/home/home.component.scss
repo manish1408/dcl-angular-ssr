@@ -96,7 +96,6 @@
 .home3-banner-section .banner-content ul {
   gap: 10px;
   margin-bottom: 5px;
-  // padding-top: 10px;
 }
 .review span {
   color: #fff9;
@@ -128,21 +127,11 @@
   margin-left: 20px;
   margin-bottom: 0px !important;
 }
+.home3-banner-section .banner-content .rating-area {
+  margin-bottom: 20px;
+}
 
 @media (max-width: 576px) {
-  // .single-rating {
-  //   display: flex;
-  //   flex-direction: column;
-  //   align-items: start;
-  //   margin-left: 0px;
-  // }
-
-  // .home3-banner-section .banner-content .rating-area {
-  //   display: flex;
-  //   flex-wrap: nowrap;
-  //   justify-content: space-evenly;
-  //   margin-bottom: 20px;
-  // }
   // new style
   .home3-banner-section .banner-content .rating {
     margin-left: 0px;
@@ -157,6 +146,7 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 20px;
+    margin-left: 20px;
   }
   .home3-banner-section {
     padding: 90px 0 20px;
@@ -167,9 +157,6 @@
 }
 
 @media (max-width: 768px) {
-  // .home3-banner-section .banner-content .rating-area {
-  //   margin-bottom: 20px;
-  // }
   .home3-banner-section {
     padding: 90px 0 30px;
   }
