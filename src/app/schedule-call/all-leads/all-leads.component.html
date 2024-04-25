@@ -1,86 +1,19 @@
 <section>
   <div class="home1-banner-section px-0">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12" style="padding-bottom: 100px">
-          <div class="card rounded-4">
-            <div class="card-body overflow-auto">
-              <div class="text-center"></div>
-              <h2 class="card-title text-center my-4">All Leads Generated</h2>
-              <div class="text-end mb-3">
-                <button
-                  class="btn btn-success px-3"
-                  data-bs-toggle="modal"
-                  data-bs-target="#allLeads"
-                >
-                  Details
-                </button>
-              </div>
-
-              <table class="table table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Company</th>
-                    <th scope="col">Phone No.</th>
-                    <th scope="col">Service Requested</th>
-                    <th scope="col">Service Mesage</th>
-                    <th scope="col">Technology Needed</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @for(lead of allLeads; track i; let i=$index){
-                  <tr>
-                    <th scope="row">{{ i + 1 }}</th>
-                    <td>{{ lead.name }}</td>
-                    <td>{{ lead.email }}</td>
-                    <td>{{ lead.company }}</td>
-                    <td>{{ lead.phone }}</td>
-                    <td>{{ lead.serviceRequested }}</td>
-                    <td>{{ lead.serviceMessage }}</td>
-                    <td>{{ lead.technologyNeeded }}</td>
-                  </tr>
-                  }
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Details Table Modal -->
-  <div
-    class="modal fade"
-    id="allLeads"
-    tabindex="-1"
-    aria-labelledby="allLeadsLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog overflow-auto" style="max-width: 1800px">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="allLeadsLabel">Modal title</h5>
-          <div>
+    <div class="container" style="max-width: 1800px">
+      <div class="card rounded-4 overflow-auto">
+        <div class="card-body overflow-auto">
+          <h2 class="card-title text-center my-4">All Leads Generated</h2>
+          <div class="text-end mb-3">
             <button
               (click)="downloadCSV(allLeads)"
               class="btn btn-success px-3"
             >
               Download as CSV
             </button>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
           </div>
-        </div>
-        <div class="modal-body">
-          <table class="table">
+
+          <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">#</th>
