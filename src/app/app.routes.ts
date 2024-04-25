@@ -17,6 +17,7 @@ import { BlogDetailsComponent } from './blog-details/blog-details/blog-details.c
 import { BlogsComponent } from './blogs/blogs.component';
 import { ThankYouComponent } from './schedule-call/thank-you/thank-you.component';
 import { EngageComponent } from './engage/engage.component';
+import { AllLeadsComponent } from './schedule-call/all-leads/all-leads.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -46,6 +47,7 @@ export const routes: Routes = [
   { path: 'schedule-call/start-date/:id', component: StartDateComponent },
   { path: 'schedule-call/technologies/:id', component: TechnologiesComponent },
   { path: 'thank-you', component: ThankYouComponent },
+  { path: 'all-leads', component: AllLeadsComponent },
 ];
 
 export const ssrTracking: Routes = [

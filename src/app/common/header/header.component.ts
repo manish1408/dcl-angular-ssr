@@ -6,8 +6,11 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-
+  hideSidebar() {
+    const sidebar = document.querySelector('.sidebar-menu') as HTMLElement;
+    sidebar.classList.remove('active');
+  }
 }
