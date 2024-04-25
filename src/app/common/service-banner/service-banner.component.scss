@@ -16,5 +16,36 @@
   line-height: 1em;
 }
 .home1-banner-section .banner-content .banner-content-bottom {
-  display: block;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+// @media (max-width: 576px) {
+//   .home1-banner-section {
+//     padding: 140px 15px 45px 15px;
+//   }
+// }
+@media (max-width: 576px) {
+  .home1-banner-section {
+    padding: 100px 15px 45px 15px;
+  }
+  .rating-area {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 0px;
+  }
+
+  .home1-banner-section
+    .banner-content
+    .banner-content-bottom
+    .rating-area
+    .rating
+    .star {
+    margin-top: 2px;
+    margin-right: 10px;
+  }
+  .row {
+    flex-wrap: wrap;
+  }
 }
