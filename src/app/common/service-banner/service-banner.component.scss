@@ -29,10 +29,21 @@
   .clutch-star {
   margin-bottom: 0px !important;
 }
+.home1-banner-section
+  .banner-content
+  .banner-content-bottom
+  .rating-area
+  .goodfirms-star {
+  margin-top: 0px !important;
+  margin-bottom: 5px;
+}
+.home1-banner-section {
+  padding: 85px 15px 45px 30 px;
+}
 
 @media (max-width: 576px) {
   .home1-banner-section {
-    padding: 100px 15px 45px 15px;
+    padding: 85px 15px 45px 15px;
   }
   .rating-area {
     display: flex;
@@ -61,5 +72,19 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
+    margin-bottom: 20px;
+  }
+  .home1-banner-section .banner-content > span {
+    display: none;
+  }
+
+  .home1-banner-section .banner-content h1 {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .home1-banner-section .banner-content .banner-content-bottom {
+    margin-bottom: 20px;
   }
 }
