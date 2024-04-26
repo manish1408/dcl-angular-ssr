@@ -49,7 +49,15 @@ export const routes: Routes = [
   { path: 'schedule-call/technologies/:id', component: TechnologiesComponent },
   { path: 'thank-you', component: ThankYouComponent },
   { path: 'all-leads', component: AllLeadsComponent },
-  { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
+  {
+    path: '**',
+    redirectTo: 'page-not-found',
+    pathMatch: 'full',
+  },
+  {
+    path: 'page-not-found',
+    component: PageNotFoundComponent,
+  },
 ];
 
 export const ssrTracking: Routes = [

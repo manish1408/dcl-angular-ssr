@@ -7,6 +7,5 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
   templateUrl: './page-not-found.component.html',
   styleUrl: './page-not-found.component.scss',
-  encapsulation: ViewEncapsulation.None,
 })
 export class PageNotFoundComponent {}
