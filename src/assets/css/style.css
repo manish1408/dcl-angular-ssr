@@ -9218,6 +9218,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
 @media (min-width: 1400px) and (max-width: 1599px) {
   .home3-banner-section .bottom-img3 {
     bottom: -14%;
+    max-width: 325px;
   }
 }
 @media (max-width: 1399px) {
