@@ -28,7 +28,8 @@ export class AppComponent {
       if (event instanceof NavigationStart) {
         if (
           event['url'].startsWith('/schedule-call') ||
-          event['url'] === '/thank-you'
+          event['url'] === '/thank-you' ||
+          event['url'] === '/page-not-found'
         ) {
           this.showHead = false;
         } else {
