@@ -28,44 +28,49 @@
               <div class="invalid-feedback">Company Name is required</div>
             </div>
 
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <!-- make default value null -->
-                <button
-                  class="btn btn-light dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                ></button>
-                <ul
-                  class="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton"
-                  id="countryDropdown"
-                >
-                  <li *ngFor="let country of PHONE_BOOK">
-                    <a class="dropdown-item">
-                      <img
-                        [src]="country.image"
-                        [alt]="country.name + ' flag'"
-                        style="width: 20px"
-                      />
-                      ({{ country.phone[0] }}) {{ country.name }}
-                    </a>
-                  </li>
-                </ul>
+            <div class="form-group my-2">
+              <label for="name">Phone Number</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <button
+                    class="btn btn-light dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  ></button>
+                  <ul
+                    class="dropdown-menu scrollable-menu"
+                    aria-labelledby="dropdownMenuButton"
+                    id="countryDropdown"
+                  >
+                    <li
+                      *ngFor="let country of PHONE_BOOK"
+                      (click)="selectCountry(country)"
+                    >
+                      <a class="dropdown-item">
+                        <img
+                          [src]="country.image"
+                          [alt]="country.name + ' flag'"
+                          style="width: 20px"
+                        />
+                        ({{ country.phone[0] }}) {{ country.name }}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+                <p slot="start" class="country_code">
+                  {{ contactInfoForm.get("countryCode")?.value }}
+                </p>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="phoneNumber"
+                  formControlName="phone"
+                  [ngClass]="{ 'is-invalid': hasError('phone') }"
+                />
+                <div class="invalid-feedback">Phone Number is required</div>
               </div>
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="phoneNumber"
-                formControlName="phone"
-                [ngClass]="{ 'is-invalid': hasError('phone') }"
-                #phoneInput
-                (input)="updateDropdown(phoneInput.value)"
-              />
-              <div class="invalid-feedback">Phone Number is required</div>
             </div>
 
             <div class="d-flex justify-content-between my-5">

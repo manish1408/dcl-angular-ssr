@@ -34,6 +34,7 @@ export class ContactInformationComponent implements OnInit {
   ) {
     this.contactInfoForm = this.fb.group({
       company: ['', Validators.required],
+      countryCode: [''],
       phone: ['', Validators.required],
       id: [],
     });
@@ -66,25 +67,28 @@ export class ContactInformationComponent implements OnInit {
     const control = this.contactInfoForm.controls[controlName];
     return control.invalid && control.touched;
   }
-  updateDropdown(code: string) {
-    const dropdownItems = document.querySelectorAll(
-      '#countryDropdown .dropdown-item'
-    );
 
-    dropdownItems.forEach((item: Element) => {
-      const countryName = (item.querySelector('img') as HTMLImageElement).alt
-        .split('flag')[0]
-        .trim()
-        .toLowerCase();
-      if (countryName.includes(code.toLowerCase())) {
-        item.classList.remove('d-none'); // Show matching items
-      } else {
-        item.classList.add('d-none'); // Hide non-matching items
-      }
-    });
+  selectCountry(value: any) {
+    console.log('selected country:', value);
+    const phoneCode = value.phone[0];
+
+    // this.contactInfoForm.patchValue({
+    //   phone: phoneCode,
+    // });
+
+    const dropdownButton = document.getElementById('dropdownMenuButton');
+    if (dropdownButton) {
+      dropdownButton.innerHTML = `
+        <img src="${value.image}" alt="${value.name} flag" style="width: 20px; margin-right: 5px;">
+        (${phoneCode}) 
+      `;
+    }
   }
+
   onSubmit() {
     this.contactInfoForm.markAllAsTouched();
+    console.log(this.contactInfoForm.value);
+    return;
 
     if (this.contactInfoForm.valid) {
       this.formDataService.setFormData(this.contactInfoForm.value);
