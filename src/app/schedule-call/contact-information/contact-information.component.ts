@@ -66,7 +66,23 @@ export class ContactInformationComponent implements OnInit {
     const control = this.contactInfoForm.controls[controlName];
     return control.invalid && control.touched;
   }
+  updateDropdown(code: string) {
+    const dropdownItems = document.querySelectorAll(
+      '#countryDropdown .dropdown-item'
+    );
 
+    dropdownItems.forEach((item: Element) => {
+      const countryName = (item.querySelector('img') as HTMLImageElement).alt
+        .split('flag')[0]
+        .trim()
+        .toLowerCase();
+      if (countryName.includes(code.toLowerCase())) {
+        item.classList.remove('d-none'); // Show matching items
+      } else {
+        item.classList.add('d-none'); // Hide non-matching items
+      }
+    });
+  }
   onSubmit() {
     this.contactInfoForm.markAllAsTouched();
 
