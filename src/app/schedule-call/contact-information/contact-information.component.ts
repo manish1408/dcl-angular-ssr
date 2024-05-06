@@ -35,7 +35,7 @@ export class ContactInformationComponent implements OnInit {
   ) {
     this.contactInfoForm = this.fb.group({
       company: ['', Validators.required],
-      countryCode: [''],
+
       phone: [
         '',
         [
@@ -82,16 +82,6 @@ export class ContactInformationComponent implements OnInit {
         phoneControl?.hasError('maxLength')) &&
       phoneControl?.touched
     );
-
-    // const control = this.contactInfoForm.get('phone');
-    // if (!control) return false;
-
-    // const phoneNumber = control.value || '';
-
-    // const hasMaxLengthError = phoneNumber.length > 11;
-    // const hasPatternError = !/^\d+$/.test(phoneNumber);
-
-    // return (hasMaxLengthError || hasPatternError) && control.touched;
   }
 
   filterCountries(searchTerm: string) {
@@ -99,10 +89,10 @@ export class ContactInformationComponent implements OnInit {
       country.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
-
+  phoneCode: string = '';
   selectCountry(value: any) {
     console.log('selected country:', value);
-    const phoneCode = value.phone[0];
+    this.phoneCode = value.phone[0];
 
     // this.contactInfoForm.patchValue({
     //   phone: phoneCode,
@@ -112,15 +102,16 @@ export class ContactInformationComponent implements OnInit {
     if (dropdownButton) {
       dropdownButton.innerHTML = `
         <img src="${value.image}" alt="${value.name} flag" style="width: 20px; margin-right: 5px;">
-        (${phoneCode}) 
+        (${this.phoneCode}) 
       `;
     }
   }
 
   onSubmit() {
     this.contactInfoForm.markAllAsTouched();
+    this.contactInfoForm.value.phone =
+      this.phoneCode + this.contactInfoForm.value.phone;
     console.log(this.contactInfoForm.value);
-    return;
 
     if (this.contactInfoForm.valid) {
       this.formDataService.setFormData(this.contactInfoForm.value);

@@ -45,12 +45,11 @@
                     id="countryDropdown"
                   >
                     <li>
-                      <!-- <input
+                      <input
                         type="text"
                         class="form-control"
                         placeholder="Search..."
-                        (input)="filterCountries(searchTerm)"
-                      /> -->
+                      />
                     </li>
                     <li
                       *ngFor="let country of PHONE_BOOK"
@@ -67,9 +66,9 @@
                     </li>
                   </ul>
                 </div>
-                <p slot="start" class="country_code">
+                <!-- <p slot="start" class="country_code">
                   {{ contactInfoForm.get("countryCode")?.value }}
-                </p>
+                </p> -->
                 <input
                   type="text"
                   class="form-control"
