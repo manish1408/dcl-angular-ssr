@@ -24,6 +24,7 @@ export class ContactInformationComponent implements OnInit {
   id!: string;
   hideBack: boolean = false;
   PHONE_BOOK = PHONE_BOOK;
+  filteredCountries: any[] = [];
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -35,7 +36,14 @@ export class ContactInformationComponent implements OnInit {
     this.contactInfoForm = this.fb.group({
       company: ['', Validators.required],
       countryCode: [''],
-      phone: ['', Validators.required],
+      phone: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(11),
+          Validators.pattern(/^\d+$/),
+        ],
+      ],
       id: [],
     });
 
@@ -66,6 +74,30 @@ export class ContactInformationComponent implements OnInit {
   hasError(controlName: keyof typeof this.contactInfoForm.controls) {
     const control = this.contactInfoForm.controls[controlName];
     return control.invalid && control.touched;
+  }
+  hasPhoneNumberError() {
+    const phoneControl = this.contactInfoForm.get('phone');
+    return (
+      (phoneControl?.hasError('pattern') ||
+        phoneControl?.hasError('maxLength')) &&
+      phoneControl?.touched
+    );
+
+    // const control = this.contactInfoForm.get('phone');
+    // if (!control) return false;
+
+    // const phoneNumber = control.value || '';
+
+    // const hasMaxLengthError = phoneNumber.length > 11;
+    // const hasPatternError = !/^\d+$/.test(phoneNumber);
+
+    // return (hasMaxLengthError || hasPatternError) && control.touched;
+  }
+
+  filterCountries(searchTerm: string) {
+    this.filteredCountries = this.PHONE_BOOK.filter((country) =>
+      country.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
   }
 
   selectCountry(value: any) {

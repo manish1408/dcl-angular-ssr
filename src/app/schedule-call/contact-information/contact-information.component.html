@@ -33,7 +33,7 @@
               <div class="input-group">
                 <div class="input-group-prepend">
                   <button
-                    class="btn btn-light dropdown-toggle"
+                    class="btn btn-outline-secondary dropdown-toggle"
                     type="button"
                     id="dropdownMenuButton"
                     data-bs-toggle="dropdown"
@@ -44,6 +44,14 @@
                     aria-labelledby="dropdownMenuButton"
                     id="countryDropdown"
                   >
+                    <li>
+                      <!-- <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Search..."
+                        (input)="filterCountries(searchTerm)"
+                      /> -->
+                    </li>
                     <li
                       *ngFor="let country of PHONE_BOOK"
                       (click)="selectCountry(country)"
@@ -67,9 +75,23 @@
                   class="form-control"
                   id="phoneNumber"
                   formControlName="phone"
-                  [ngClass]="{ 'is-invalid': hasError('phone') }"
+                  maxlength="11"
+                  [ngClass]="{
+                    'is-invalid': hasError('phone') || hasPhoneNumberError()
+                  }"
                 />
-                <div class="invalid-feedback">Phone Number is required</div>
+                <div
+                  *ngIf="hasError('phone') && !hasPhoneNumberError()"
+                  class="invalid-feedback"
+                >
+                  Phone Number is required
+                </div>
+                <div
+                  *ngIf="hasPhoneNumberError() && hasError('phone')"
+                  class="invalid-feedback"
+                >
+                  Invalid phone format
+                </div>
               </div>
             </div>
 
