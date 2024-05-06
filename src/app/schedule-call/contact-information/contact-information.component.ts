@@ -9,6 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { PHONE_BOOK } from '../../common/consts/phone-code';
 
 @Component({
   selector: 'app-contact-information',
@@ -22,7 +23,7 @@ export class ContactInformationComponent implements OnInit {
   contactInfoForm!: FormGroup;
   id!: string;
   hideBack: boolean = false;
-
+  PHONE_BOOK = PHONE_BOOK;
   constructor(
     private fb: FormBuilder,
     private router: Router,
