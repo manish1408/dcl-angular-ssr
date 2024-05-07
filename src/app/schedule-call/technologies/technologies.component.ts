@@ -30,7 +30,6 @@ import { log } from 'node:console';
   ],
   templateUrl: './technologies.component.html',
   styleUrl: './technologies.component.scss',
-  // encapsulation: ViewEncapsulation.None,
 })
 export class TechnologiesComponent implements OnInit {
   dropdownList: any = [];
@@ -69,6 +68,7 @@ export class TechnologiesComponent implements OnInit {
       { id: 8, value: '.NET' },
       { id: 9, value: 'NodeJs' },
       { id: 10, value: 'Microservices' },
+      { id: 11, value: 'Ionic' },
     ];
     this.dropdownSettings = {
       singleSelection: false,
