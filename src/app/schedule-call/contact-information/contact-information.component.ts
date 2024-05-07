@@ -21,6 +21,7 @@ import { PHONE_BOOK } from '../../common/consts/phone-code';
 export class ContactInformationComponent implements OnInit {
   savedFormData: any;
   contactInfoForm!: FormGroup;
+  searchForm!: FormGroup;
   id!: string;
   hideBack: boolean = false;
   PHONE_BOOK = PHONE_BOOK;
@@ -33,6 +34,8 @@ export class ContactInformationComponent implements OnInit {
     private toastr: ToastrService,
     private route: ActivatedRoute
   ) {
+    this.filteredCountries = this.PHONE_BOOK;
+
     this.contactInfoForm = this.fb.group({
       company: ['', Validators.required],
 
@@ -84,9 +87,16 @@ export class ContactInformationComponent implements OnInit {
     );
   }
 
+  onSearchInput(event: Event) {
+    const searchTerm = (event.target as HTMLInputElement).value;
+    this.filterCountries(searchTerm);
+  }
+
   filterCountries(searchTerm: string) {
-    this.filteredCountries = this.PHONE_BOOK.filter((country) =>
-      country.name.toLowerCase().includes(searchTerm.toLowerCase())
+    this.filteredCountries = this.PHONE_BOOK.filter(
+      (country) =>
+        country.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        country.phone.some((code: any) => code.includes(searchTerm))
     );
   }
   phoneCode: string = '';

@@ -49,10 +49,11 @@
                         type="text"
                         class="form-control"
                         placeholder="Search..."
+                        (input)="onSearchInput($event)"
                       />
                     </li>
                     <li
-                      *ngFor="let country of PHONE_BOOK"
+                      *ngFor="let country of filteredCountries"
                       (click)="selectCountry(country)"
                     >
                       <a class="dropdown-item">
@@ -66,9 +67,7 @@
                     </li>
                   </ul>
                 </div>
-                <!-- <p slot="start" class="country_code">
-                  {{ contactInfoForm.get("countryCode")?.value }}
-                </p> -->
+
                 <input
                   type="text"
                   class="form-control"
