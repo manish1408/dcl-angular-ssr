@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -30,6 +30,7 @@ import { log } from 'node:console';
   ],
   templateUrl: './technologies.component.html',
   styleUrl: './technologies.component.scss',
+  // encapsulation: ViewEncapsulation.None,
 })
 export class TechnologiesComponent implements OnInit {
   dropdownList: any = [];
@@ -58,16 +59,16 @@ export class TechnologiesComponent implements OnInit {
     });
 
     this.dropdownList = [
-      { id: 1, value: '.NET' },
-      { id: 2, value: '.NET Core' },
-      { id: 3, value: 'ABAP' },
-      { id: 4, value: 'ActionScript' },
-      { id: 5, value: 'Active Directory' },
-      { id: 6, value: 'Amazon EC2' },
-      { id: 7, value: 'Amazon ECS' },
-      { id: 8, value: 'Angular 2' },
-      { id: 9, value: 'Angular JS' },
-      { id: 10, value: 'Ansible' },
+      { id: 1, value: 'ReactJs' },
+      { id: 2, value: 'React Native' },
+      { id: 3, value: 'JavaScript' },
+      { id: 4, value: 'TypeScript' },
+      { id: 5, value: 'Angular' },
+      { id: 6, value: 'HTML/CSS' },
+      { id: 7, value: 'ASP.NET Core' },
+      { id: 8, value: '.NET' },
+      { id: 9, value: 'NodeJs' },
+      { id: 10, value: 'Microservices' },
     ];
     this.dropdownSettings = {
       singleSelection: false,

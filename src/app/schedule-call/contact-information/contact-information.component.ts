@@ -124,8 +124,7 @@ export class ContactInformationComponent implements OnInit {
       phone:
         this.contactInfoForm.value.phoneCode + this.contactInfoForm.value.phone,
     };
-    console.log('Final data:', dataToSend);
-    return;
+    // console.log('Final data:', dataToSend);
 
     if (this.contactInfoForm.valid) {
       this.formDataService.setFormData(dataToSend);
