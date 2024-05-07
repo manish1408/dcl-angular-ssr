@@ -38,7 +38,7 @@ export class ContactInformationComponent implements OnInit {
 
     this.contactInfoForm = this.fb.group({
       company: ['', Validators.required],
-
+      phoneCode: ['', Validators.required],
       phone: [
         '',
         [
@@ -101,12 +101,12 @@ export class ContactInformationComponent implements OnInit {
   }
   phoneCode: string = '';
   selectCountry(value: any) {
-    console.log('selected country:', value);
+    // console.log('selected country:', value);
     this.phoneCode = value.phone[0];
-
-    // this.contactInfoForm.patchValue({
-    //   phone: phoneCode,
-    // });
+    const phoneCodeControl = this.contactInfoForm.get('phoneCode');
+    if (phoneCodeControl) {
+      phoneCodeControl.setValue(this.phoneCode);
+    }
 
     const dropdownButton = document.getElementById('dropdownMenuButton');
     if (dropdownButton) {
@@ -119,21 +119,23 @@ export class ContactInformationComponent implements OnInit {
 
   onSubmit() {
     this.contactInfoForm.markAllAsTouched();
-    this.contactInfoForm.value.phone =
-      this.phoneCode + this.contactInfoForm.value.phone;
-    console.log(this.contactInfoForm.value);
+    const dataToSend = {
+      company: this.contactInfoForm.value.company,
+      phone:
+        this.contactInfoForm.value.phoneCode + this.contactInfoForm.value.phone,
+    };
+    console.log('Final data:', dataToSend);
+    return;
 
     if (this.contactInfoForm.valid) {
-      this.formDataService.setFormData(this.contactInfoForm.value);
+      this.formDataService.setFormData(dataToSend);
 
-      this.formDataService
-        .updateScheduleCall(this.contactInfoForm.value)
-        .subscribe((res) => {
-          if (res.result === 1) {
-            this.id = res.data._id;
-            this.router.navigate(['/schedule-call/it-professionals', this.id]);
-          }
-        }),
+      this.formDataService.updateScheduleCall(dataToSend).subscribe((res) => {
+        if (res.result === 1) {
+          this.id = res.data._id;
+          this.router.navigate(['/schedule-call/it-professionals', this.id]);
+        }
+      }),
         (error: any) => {
           console.error('Error occurred:', error);
           this.toastr.error('Something went wrong. Please try again.');

@@ -50,6 +50,7 @@
                         class="form-control"
                         placeholder="Search..."
                         (input)="onSearchInput($event)"
+                        formControlName="phoneCode"
                       />
                     </li>
                     <li
@@ -78,6 +79,7 @@
                     'is-invalid': hasError('phone') || hasPhoneNumberError()
                   }"
                 />
+
                 <div
                   *ngIf="hasError('phone') && !hasPhoneNumberError()"
                   class="invalid-feedback"
@@ -89,6 +91,9 @@
                   class="invalid-feedback"
                 >
                   Invalid phone format
+                </div>
+                <div class="invalid-feedback" *ngIf="hasError('phoneCode')">
+                  Country Code is required
                 </div>
               </div>
             </div>
