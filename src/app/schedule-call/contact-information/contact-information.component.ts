@@ -67,9 +67,9 @@ export class ContactInformationComponent implements OnInit {
       this.id = params['id'];
     });
 
-    // from localstorage
-    if (typeof localStorage !== 'undefined') {
-      this.countryCode = localStorage.getItem('phoneCode');
+    // from sessionStorage
+    if (typeof sessionStorage !== 'undefined') {
+      this.countryCode = sessionStorage.getItem('phoneCode');
       if (this.countryCode) {
         const preselectedCountry = this.filteredCountries.find(
           (country) => country.phone[0] === this.countryCode
@@ -150,8 +150,8 @@ export class ContactInformationComponent implements OnInit {
       phone:
         this.contactInfoForm.value.phoneCode + this.contactInfoForm.value.phone,
     };
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem('phoneCode', this.contactInfoForm.value.phoneCode);
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.setItem('phoneCode', this.contactInfoForm.value.phoneCode);
     }
     // console.log('Final data:', dataToSend);
 
