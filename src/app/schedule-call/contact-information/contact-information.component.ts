@@ -60,7 +60,7 @@ export class ContactInformationComponent implements OnInit {
       }
     });
   }
-
+  countryCode: any;
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
     this.route.params.subscribe((params) => {
@@ -68,23 +68,30 @@ export class ContactInformationComponent implements OnInit {
     });
 
     // from localstorage
-    const countryCode = localStorage.getItem('phoneCode');
-
-    if (countryCode) {
-      const preselectedCountry = this.filteredCountries.find(
-        (country) => country.phone[0] === countryCode
-      );
-      if (preselectedCountry) {
-        this.selectCountry(preselectedCountry);
+    if (typeof localStorage !== 'undefined') {
+      this.countryCode = localStorage.getItem('phoneCode');
+      if (this.countryCode) {
+        const preselectedCountry = this.filteredCountries.find(
+          (country) => country.phone[0] === this.countryCode
+        );
+        if (preselectedCountry) {
+          this.selectCountry(preselectedCountry);
+        }
       }
     }
 
     // get api
     this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
       let filteredPhoneNumber = res.data.phone;
-      if (countryCode && filteredPhoneNumber.startsWith(countryCode)) {
-        filteredPhoneNumber = filteredPhoneNumber.substring(countryCode.length);
+      if (
+        this.countryCode &&
+        filteredPhoneNumber.startsWith(this.countryCode)
+      ) {
+        filteredPhoneNumber = filteredPhoneNumber.substring(
+          this.countryCode.length
+        );
       }
+      console.log(this.countryCode);
 
       this.contactInfoForm.patchValue({
         company: res.data.company,
@@ -143,7 +150,9 @@ export class ContactInformationComponent implements OnInit {
       phone:
         this.contactInfoForm.value.phoneCode + this.contactInfoForm.value.phone,
     };
-    localStorage.setItem('phoneCode', this.contactInfoForm.value.phoneCode);
+    if (typeof localStorage !== 'undefined') {
+      localStorage.setItem('phoneCode', this.contactInfoForm.value.phoneCode);
+    }
     // console.log('Final data:', dataToSend);
 
     if (this.contactInfoForm.valid) {
