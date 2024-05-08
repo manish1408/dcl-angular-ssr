@@ -10,6 +10,7 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { PHONE_BOOK } from '../../common/consts/phone-code';
+import { CommonService } from '../../services/common.service';
 
 @Component({
   selector: 'app-contact-information',
@@ -32,7 +33,8 @@ export class ContactInformationComponent implements OnInit {
 
     private formDataService: FormDataService,
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private common: CommonService
   ) {
     this.filteredCountries = this.PHONE_BOOK;
 
@@ -65,11 +67,28 @@ export class ContactInformationComponent implements OnInit {
       this.id = params['id'];
     });
 
+    // from localstorage
+    const countryCode = localStorage.getItem('phoneCode');
+
+    if (countryCode) {
+      const preselectedCountry = this.filteredCountries.find(
+        (country) => country.phone[0] === countryCode
+      );
+      if (preselectedCountry) {
+        this.selectCountry(preselectedCountry);
+      }
+    }
+
     // get api
     this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
+      let filteredPhoneNumber = res.data.phone;
+      if (countryCode && filteredPhoneNumber.startsWith(countryCode)) {
+        filteredPhoneNumber = filteredPhoneNumber.substring(countryCode.length);
+      }
+
       this.contactInfoForm.patchValue({
         company: res.data.company,
-        phone: res.data.phone,
+        phone: filteredPhoneNumber,
         id: res.data._id,
       });
     });
@@ -124,6 +143,7 @@ export class ContactInformationComponent implements OnInit {
       phone:
         this.contactInfoForm.value.phoneCode + this.contactInfoForm.value.phone,
     };
+    localStorage.setItem('phoneCode', this.contactInfoForm.value.phoneCode);
     // console.log('Final data:', dataToSend);
 
     if (this.contactInfoForm.valid) {
