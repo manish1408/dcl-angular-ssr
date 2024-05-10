@@ -15,6 +15,9 @@
   color: var(--bs-form-invalid-color);
   line-height: 1em;
 }
+.home1-banner-section .container {
+  margin-top: 40px;
+}
 .home1-banner-section .banner-content .banner-content-bottom {
   display: flex;
   flex-wrap: nowrap;
@@ -44,6 +47,9 @@
 @media (max-width: 576px) {
   .home1-banner-section {
     padding: 85px 15px 45px 15px;
+  }
+  .home1-banner-section .container {
+    margin-top: 0px;
   }
   .rating-area {
     display: flex;
@@ -84,5 +90,8 @@
 @media (max-width: 768px) {
   .home1-banner-section .banner-content .banner-content-bottom {
     margin-bottom: 20px;
+  }
+  .home1-banner-section .container {
+    margin-top: 0px;
   }
 }

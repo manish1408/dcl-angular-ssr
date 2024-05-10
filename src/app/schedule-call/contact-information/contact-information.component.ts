@@ -9,6 +9,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { PHONE_BOOK } from '../../common/consts/phone-code';
+import { CommonService } from '../../services/common.service';
 
 @Component({
   selector: 'app-contact-information',
@@ -20,20 +22,33 @@ import { ToastrService } from 'ngx-toastr';
 export class ContactInformationComponent implements OnInit {
   savedFormData: any;
   contactInfoForm!: FormGroup;
+  searchForm!: FormGroup;
   id!: string;
   hideBack: boolean = false;
-
+  PHONE_BOOK = PHONE_BOOK;
+  filteredCountries: any[] = [];
   constructor(
     private fb: FormBuilder,
     private router: Router,
 
     private formDataService: FormDataService,
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private common: CommonService
   ) {
+    this.filteredCountries = this.PHONE_BOOK;
+
     this.contactInfoForm = this.fb.group({
       company: ['', Validators.required],
-      phone: ['', Validators.required],
+      phoneCode: ['', Validators.required],
+      phone: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(11),
+          Validators.pattern(/^\d+$/),
+        ],
+      ],
       id: [],
     });
 
@@ -45,18 +60,42 @@ export class ContactInformationComponent implements OnInit {
       }
     });
   }
-
+  countryCode: any;
   ngOnInit(): void {
     this.savedFormData = this.formDataService.getFormData();
     this.route.params.subscribe((params) => {
       this.id = params['id'];
     });
 
+    // from sessionStorage
+    if (typeof sessionStorage !== 'undefined') {
+      this.countryCode = sessionStorage.getItem('phoneCode');
+      if (this.countryCode) {
+        const preselectedCountry = this.filteredCountries.find(
+          (country) => country.phone[0] === this.countryCode
+        );
+        if (preselectedCountry) {
+          this.selectCountry(preselectedCountry);
+        }
+      }
+    }
+
     // get api
     this.formDataService.getScheduleCallById(this.id).subscribe((res) => {
+      let filteredPhoneNumber = res.data.phone;
+      if (
+        this.countryCode &&
+        filteredPhoneNumber.startsWith(this.countryCode)
+      ) {
+        filteredPhoneNumber = filteredPhoneNumber.substring(
+          this.countryCode.length
+        );
+      }
+      console.log(this.countryCode);
+
       this.contactInfoForm.patchValue({
         company: res.data.company,
-        phone: res.data.phone,
+        phone: filteredPhoneNumber,
         id: res.data._id,
       });
     });
@@ -65,21 +104,66 @@ export class ContactInformationComponent implements OnInit {
     const control = this.contactInfoForm.controls[controlName];
     return control.invalid && control.touched;
   }
+  hasPhoneNumberError() {
+    const phoneControl = this.contactInfoForm.get('phone');
+    return (
+      (phoneControl?.hasError('pattern') ||
+        phoneControl?.hasError('maxLength')) &&
+      phoneControl?.touched
+    );
+  }
+
+  onSearchInput(event: Event) {
+    const searchTerm = (event.target as HTMLInputElement).value;
+    this.filterCountries(searchTerm);
+  }
+
+  filterCountries(searchTerm: string) {
+    this.filteredCountries = this.PHONE_BOOK.filter(
+      (country) =>
+        country.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        country.phone.some((code: any) => code.includes(searchTerm))
+    );
+  }
+  phoneCode: string = '';
+  selectCountry(value: any) {
+    // console.log('selected country:', value);
+    this.phoneCode = value.phone[0];
+    const phoneCodeControl = this.contactInfoForm.get('phoneCode');
+    if (phoneCodeControl) {
+      phoneCodeControl.setValue(this.phoneCode);
+    }
+
+    const dropdownButton = document.getElementById('dropdownMenuButton');
+    if (dropdownButton) {
+      dropdownButton.innerHTML = `
+        <img src="${value.image}" alt="${value.name} flag" style="width: 20px; margin-right: 5px;">
+        (${this.phoneCode}) 
+      `;
+    }
+  }
 
   onSubmit() {
     this.contactInfoForm.markAllAsTouched();
+    const dataToSend = {
+      company: this.contactInfoForm.value.company,
+      phone:
+        this.contactInfoForm.value.phoneCode + this.contactInfoForm.value.phone,
+    };
+    if (typeof sessionStorage !== 'undefined') {
+      sessionStorage.setItem('phoneCode', this.contactInfoForm.value.phoneCode);
+    }
+    // console.log('Final data:', dataToSend);
 
     if (this.contactInfoForm.valid) {
-      this.formDataService.setFormData(this.contactInfoForm.value);
+      this.formDataService.setFormData(dataToSend);
 
-      this.formDataService
-        .updateScheduleCall(this.contactInfoForm.value)
-        .subscribe((res) => {
-          if (res.result === 1) {
-            this.id = res.data._id;
-            this.router.navigate(['/schedule-call/it-professionals', this.id]);
-          }
-        }),
+      this.formDataService.updateScheduleCall(dataToSend).subscribe((res) => {
+        if (res.result === 1) {
+          this.id = res.data._id;
+          this.router.navigate(['/schedule-call/it-professionals', this.id]);
+        }
+      }),
         (error: any) => {
           console.error('Error occurred:', error);
           this.toastr.error('Something went wrong. Please try again.');

@@ -164,3 +164,21 @@
     margin-bottom: 50px;
   }
 }
+// @media (max-width: 1400px) {
+//   .home3-banner-section .bottom-img3 {
+//     bottom: -10%;
+//     max-width: 325px;
+//   }
+// }
+@media (min-width: 1400px) and (max-width: 1599px) {
+  .home3-banner-section .bottom-img3 {
+    bottom: -10%;
+    max-width: 325px;
+    right: 25px !important;
+  }
+}
+.home3-banner-section .bottom-img3 {
+  position: absolute;
+  right: 45px;
+  bottom: -13%;
+}

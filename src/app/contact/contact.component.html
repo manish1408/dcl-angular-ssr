@@ -12,13 +12,13 @@
         <div class="banner-wrapper">
           <div class="banner-content">
             <ul class="breadcrumb-list">
-              <li><a href="index.html">Home</a></li>
+              <li><a [routerLink]="['/home']">Home</a></li>
               <li>Contact Us</li>
             </ul>
             <h1>Let’s Connect With Distinct Cloud Labs.</h1>
           </div>
           <div class="scroll-down-btn">
-            <a href="#contact">
+            <a (click)="scrollToSection()" role="button">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="19"
@@ -27,7 +27,7 @@
               >
                 <path
                   d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5"
-                />
+                ></path>
               </svg>
             </a>
           </div>

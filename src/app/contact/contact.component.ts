@@ -1,6 +1,6 @@
 import { ɵBrowserAnimationBuilder } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -10,10 +10,11 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ContactService } from '../services/contact.service';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
 })
@@ -23,7 +24,8 @@ export class ContactComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
-    private contactService: ContactService
+    private contactService: ContactService,
+    private el: ElementRef
   ) {}
   ngOnInit(): void {
     this.contactForm = this.fb.group({
@@ -70,5 +72,11 @@ export class ContactComponent implements OnInit {
         this.toastr.error('An error occurred while submitting');
       }
     );
+  }
+  scrollToSection() {
+    const section = this.el.nativeElement.querySelector('#contact');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }

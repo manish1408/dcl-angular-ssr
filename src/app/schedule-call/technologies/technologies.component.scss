@@ -13,3 +13,15 @@
 .custom-img {
   filter: grayscale(100%) invert(100%);
 }
+
+:host ::ng-deep {
+  .multiselect-dropdown .dropdown-btn .selected-item-container .selected-item {
+    background: #198754 !important;
+  }
+}
+
+:host ::ng-deep {
+  .multiselect-item-checkbox input[type="checkbox"]:checked + div:before {
+    background: #198754 !important;
+  }
+}
