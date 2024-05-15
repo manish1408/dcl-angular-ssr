@@ -33,8 +33,7 @@
             </svg>
           </span>
           <h1>{{ ele.data?.headerMain?.iv }}</h1>
-          <p>
-            {{ ele.data?.headerDescription?.iv }}
+          <p [innerHTML]="ele.data?.headerDescription?.iv">
           </p>
           <div class="row">
             <div class="col-6">
