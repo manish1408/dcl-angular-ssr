@@ -35,6 +35,7 @@ export class BlogDetailsComponent implements OnInit {
     });
     this.blogService.getBlogBySlug(this.slugName).subscribe((resp: any) => {
       this.post = resp?.items[0].data;
+      console.log(this.post);
       this.isLoading = false;
 
       this.date = resp.items[0].created;
