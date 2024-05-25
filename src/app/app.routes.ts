@@ -19,6 +19,7 @@ import { ThankYouComponent } from './schedule-call/thank-you/thank-you.component
 import { EngageComponent } from './engage/engage.component';
 import { AllLeadsComponent } from './schedule-call/all-leads/all-leads.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -49,6 +50,10 @@ export const routes: Routes = [
   { path: 'schedule-call/technologies/:id', component: TechnologiesComponent },
   { path: 'thank-you', component: ThankYouComponent },
   { path: 'all-leads', component: AllLeadsComponent },
+  {
+    path: 'privacy-policy',
+    component: PrivacyPolicyComponent,
+  },
   {
     path: '**',
     redirectTo: 'page-not-found',
