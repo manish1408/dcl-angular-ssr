@@ -2,12 +2,9 @@
 
 .process-card {
   .content {
-    height: 160px;
+    height: 300px;
   }
 }
-
-// new styles
-
 .home3-banner-section .banner-content ul {
   gap: 3px;
   margin-bottom: 5px;
@@ -19,7 +16,7 @@
 .review {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 .home3-banner-section .banner-content p {
   margin-bottom: 20px;
@@ -97,4 +94,29 @@
   position: absolute;
   right: 45px;
   bottom: -13%;
+}
+.banner-bottom {
+  background: url(../../assets/img/banner-bg.svg);
+    background-color: var(--bs-success);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    color: #fff9;
+    padding: 20px;
+    margin-bottom: 120px;
+    background-position: left;
+    background-size: contain;
+    h3{
+      color: #fff;
+    }
+    p{
+      margin-bottom: 0px;
+      line-height: normal;
+    }
+    a {
+      margin-top: 11%;
+    }
+}
+.gen-ai-img {
+  padding: 10% 3%;
 }

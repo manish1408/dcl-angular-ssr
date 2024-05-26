@@ -1,11 +1,6 @@
 <!-- scroll top -->
 <div class="circle-container">
-  <svg
-    class="circle-progress svg-content"
-    width="100%"
-    height="100%"
-    viewBox="-1 -1 102 102"
-  >
+  <svg class="circle-progress svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
     <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
   </svg>
 </div>
@@ -14,25 +9,15 @@
   <div class="sidebar-menu-top-area">
     <div class="container d-flex align-items-center justify-content-between">
       <div class="sidebar-menu-logo">
-        <a class="logo-dark" [routerLink]="['/home']"
-          ><img alt="image" class="img-fluid" src="assets/img/logo_dark.svg"
-        /></a>
-        <a class="logo-light" [routerLink]="['/home']"
-          ><img alt="image" class="img-fluid" src="assets/img/logo_dark.svg"
-        /></a>
+        <a class="logo-dark" [routerLink]="['/home']"><img alt="image" class="img-fluid"
+            src="assets/img/logo_dark.svg" /></a>
+        <a class="logo-light" [routerLink]="['/home']"><img alt="image" class="img-fluid"
+            src="assets/img/logo_dark.svg" /></a>
       </div>
       <div class="sidebar-menu-close">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 18 18"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M18 0L11.1686 8.99601L18 18L9.0041 11.1605L0 18L6.83156 8.99601L0 0L9.0041 6.83156L18 0Z"
-          ></path>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 18">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+            d="M18 0L11.1686 8.99601L18 18L9.0041 11.1605L0 18L6.83156 8.99601L0 0L9.0041 6.83156L18 0Z"></path>
         </svg>
       </div>
     </div>
@@ -45,242 +30,30 @@
         <div class="sidebar-menu-wrap">
           <ul class="main-menu align-items-center">
             <li>
-              <a>Services </a>
+              <a>Expertise </a>
               <span class="dropdown-icon2"><i class="bi bi-plus"></i></span>
               <ul class="submenu-list">
                 <li>
-                  <a class="fs-6">Software Development</a>
-                  <span class="dropdown-icon2 two"
-                    ><i class="bi bi-plus"></i
-                  ></span>
-                  <ul class="submenu-list">
-                    <li>
-                      <a
-                        [routerLink]="['services/staff-augmentation']"
-                        (click)="hideSidebar()"
-                        >Staff Augmentation
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        [routerLink]="['services/dedicated-teams']"
-                        (click)="hideSidebar()"
-                        >Dedicated Teams
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-
-                    <li>
-                      <a
-                        [routerLink]="['services/software-outsourcing']"
-                        (click)="hideSidebar()"
-                        >Software Outsourcing
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
+                  <a class="fs-6" [routerLink]="['solutions/front-end']">AI in Commerce</a>
+                  <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
                 </li>
                 <li>
-                  <a class="fs-6">Technologies</a>
-                  <span class="dropdown-icon2 two"
-                    ><i class="bi bi-plus"></i
-                  ></span>
-                  <ul class="submenu-list">
-                    <li>
-                      <a [routerLink]="['technologies/react']"
-                        >React, Next.js
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['technologies/angular']"
-                        >Angular
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['technologies/react-native']"
-                        >React Native
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['technologies/node']"
-                        >Node.js
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['technologies/net']"
-                        >.NET
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
+                  <a class="fs-6" [routerLink]="['solutions/front-end']">AI in Customer Support</a>
+                  <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
                 </li>
                 <li>
-                  <a class="fs-6">Solutions</a>
-                  <span class="dropdown-icon2 two"
-                    ><i class="bi bi-plus"></i
-                  ></span>
-                  <ul class="submenu-list">
-                    <li>
-                      <a [routerLink]="['solutions/front-end']"
-                        >Front-end Development
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['solutions/back-end']"
-                        >Back-end Development
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['solutions/mobile-app-development']"
-                        >Mobile App Development
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['solutions/ai-platform-engineering']"
-                        >AI Platform Engineering
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a [routerLink]="['solutions/saas-development']"
-                        >SaaS Development
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
+                  <a class="fs-6" [routerLink]="['solutions/front-end']">AI in Data Analytics</a>
+                  <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
+                </li>
+                <li>
+                  <a class="fs-6">Custom AI Development</a>
+                  <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
                 </li>
               </ul>
             </li>
 
             <li class="fs-6">
-              <a [routerLink]="['case-studies']" (click)="hideSidebar()"
-                >Case Study</a
-              >
+              <a [routerLink]="['case-studies']" (click)="hideSidebar()">Case Study</a>
             </li>
             <li class="fs-6">
               <a [routerLink]="['blog']" (click)="hideSidebar()">Blog</a>
@@ -294,392 +67,38 @@
       </div>
     </div>
   </div>
-  <!-- <div class="container">
-    <div class="row g-lg-4 gy-5">
-      <div class="col-lg-8">
-        <div class="sidebar-menu-wrap">
-          <ul class="main-menu">
-            <li>
-              <span>
-                <a [routerLink]="['services/staff-augmentation']"> Services </a>
-              </span>
-              <span class="dropdown-icon2 active">
-                <i class="bi bi-plus"></i>
-              </span>
-              <ul class="submenu-list active">
-                <li>
-                  <a >Software Development</a>
-                  <span class="dropdown-icon2 two">
-                    <i class="bi bi-plus"></i
-                  ></span>
-                  <ul class="submenu-list">
-                    <li>
-                      <a
-                        
-                        [routerLink]="['services/staff-augmentation']"
-                      >
-                        Staff Augmentation
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        
-                        [routerLink]="['services/dedicated-teams']"
-                      >
-                        Dedicated Teams
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        
-                        [routerLink]="['services/software-outsourcing']"
-                      >
-                        Software Outsourcing
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a [routerLink]="['technologies/react']">Technologies</a>
-                  <span class="dropdown-icon2 two">
-                    <i class="bi bi-plus"></i
-                  ></span>
-                  <ul class="submenu-list">
-                    <li>
-                      <a
-                        
-                        [routerLink]="['technologies/react']"
-                      >
-                        React, Next.Js
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        
-                        [routerLink]="['technologies/angular']"
-                      >
-                        Angular
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        
-                        [routerLink]="['technologies/react-native']"
-                      >
-                        React Native
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        
-                        [routerLink]="['technologies/node']"
-                      >
-                        Node.Js
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        
-                        [routerLink]="['technologies/net']"
-                      >
-                        .Net
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <a [routerLink]="['solutions/front-end']">Solutions</a>
-                  <span class="dropdown-icon2 two">
-                    <i class="bi bi-plus"></i
-                  ></span>
-                  <ul class="submenu-list">
-                    <li>
-                      <a
-                        
-                        [routerLink]="['solutions/front-end']"
-                      >
-                        Front-end Development
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        
-                        [routerLink]="['solutions/back-end']"
-                      >
-                        Back-end Development
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        
-                        [routerLink]="['solutions/mobile-app-development']"
-                      >
-                        Mobile App Development
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        
-                        [routerLink]="['solutions/ai-platform-engineering']"
-                      >
-                        AI Platform Engineering
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        
-                        [routerLink]="['solutions/saas-development']"
-                      >
-                        SaaS Development
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="10"
-                          height="10"
-                          viewBox="0 0 10 10"
-                        >
-                          <path
-                            d="M8.33624 2.84003L1.17627 10L0 8.82373L7.15914 1.66376H0.849347V0H10V9.15065H8.33624V2.84003Z"
-                          />
-                        </svg>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-            <li >
-              <span>
-                <a [routerLink]="['case-studies']">Case Studies</a>
-              </span>
-            </li>
-            <li >
-              <span>
-                <a [routerLink]="['contact']">Contact</a>
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div> -->
+  
 </div>
 <!-- End Sidebar section -->
 <!-- Start header section -->
 <header class="header-area style-2">
-  <div
-    class="container d-flex flex-nowrap align-items-center justify-content-between"
-  >
+  <div class="container d-flex flex-nowrap align-items-center justify-content-between">
     <div class="company-logo">
-      <a class="logo-dark" [routerLink]="['/home']"
-        ><img alt="image" class="img-fluid" src="assets/img/logo_light.svg"
-      /></a>
-      <a class="logo-light" [routerLink]="['/home']"
-        ><img alt="image" class="img-fluid" src="assets/img/logo_light.svg"
-      /></a>
+      <a class="logo-dark" [routerLink]="['/home']"><img alt="image" class="img-fluid"
+          src="assets/img/logo_light.svg" /></a>
+      <a class="logo-light" [routerLink]="['/home']"><img alt="image" class="img-fluid"
+          src="assets/img/logo_light.svg" /></a>
     </div>
     <div class="main-menu d-lg-flex d-none">
       <ul class="menu-list">
         <li class="menu-item-has-children">
-          <a class="drop-down">Services </a
-          ><i class="bi bi-plus dropdown-icon"></i>
+          <a class="drop-down">Expertise </a><i class="bi bi-plus dropdown-icon"></i>
           <ul class="sub-menu">
-            <li class="active">
-              <a>Software Development</a>
-              <i class="d-lg-flex d-none bi bi-chevron-right dropdown-icon"></i>
-              <i class="d-lg-none d-flex bi bi-plus dropdown-icon"></i>
-              <ul class="sub-menu">
-                <li>
-                  <a [routerLink]="['services/staff-augmentation']">
-                    Staff Augmentation
-                  </a>
-                </li>
-                <li>
-                  <a [routerLink]="['services/dedicated-teams']">
-                    Dedicated Teams
-                  </a>
-                </li>
-                <li>
-                  <a [routerLink]="['services/software-outsourcing']">
-                    Software Outsourcing
-                  </a>
-                </li>
-              </ul>
+            <li>
+              <a class="fs-6" [routerLink]="['solutions/front-end']">AI in Commerce</a>
+              <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
             </li>
             <li>
-              <a>Technologies</a>
-              <i class="d-lg-flex d-none bi bi-chevron-right dropdown-icon"></i>
-              <i class="d-lg-none d-flex bi bi-plus dropdown-icon"></i>
-              <ul class="sub-menu">
-                <li>
-                  <a [routerLink]="['technologies/react']">React, Next.Js</a>
-                </li>
-                <li>
-                  <a [routerLink]="['technologies/angular']">Angular</a>
-                </li>
-                <li>
-                  <a [routerLink]="['technologies/react-native']">
-                    React Native
-                  </a>
-                </li>
-                <li>
-                  <a [routerLink]="['technologies/node']">Node.Js</a>
-                </li>
-                <li>
-                  <a [routerLink]="['technologies/net']">.Net</a>
-                </li>
-              </ul>
+              <a class="fs-6" [routerLink]="['solutions/front-end']">AI in Customer Support</a>
+              <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
             </li>
             <li>
-              <a>Solutions</a>
-              <i class="d-lg-flex d-none bi bi-chevron-right dropdown-icon"></i>
-              <i class="d-lg-none d-flex bi bi-plus dropdown-icon"></i>
-              <ul class="sub-menu">
-                <li>
-                  <a [routerLink]="['solutions/front-end']">
-                    Front-end Development
-                  </a>
-                </li>
-                <li>
-                  <a [routerLink]="['solutions/back-end']">
-                    Back-end Development
-                  </a>
-                </li>
-                <li>
-                  <a [routerLink]="['solutions/mobile-app-development']">
-                    Mobile App Development
-                  </a>
-                </li>
-                <li>
-                  <a [routerLink]="['solutions/ai-platform-engineering']">
-                    AI Platform Engineering
-                  </a>
-                </li>
-                <li>
-                  <a [routerLink]="['solutions/saas-development']">
-                    SaaS Development
-                  </a>
-                </li>
-              </ul>
+              <a class="fs-6" [routerLink]="['solutions/front-end']">AI in Data Analytics</a>
+              <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
+            </li>
+            <li>
+              <a class="fs-6" [routerLink]="['solutions/ai-platform-engineering']">Custom AI Development</a>
+              <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
             </li>
           </ul>
         </li>
@@ -694,27 +113,17 @@
     <div class="nav-right d-flex jsutify-content-end align-items-center">
       <div class="sidebar-and-btn">
         <div class="sidebar-btn d-sm-none">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-          >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
             <g>
               <path
-                d="M6.79688 9.375H2.57812C1.15652 9.375 0 8.21848 0 6.79688V2.57812C0 1.15652 1.15652 0 2.57812 0H6.79688C8.21848 0 9.375 1.15652 9.375 2.57812V6.79688C9.375 8.21848 8.21848 9.375 6.79688 9.375ZM2.57812 1.25C1.84578 1.25 1.25 1.84578 1.25 2.57812V6.79688C1.25 7.52922 1.84578 8.125 2.57812 8.125H6.79688C7.52922 8.125 8.125 7.52922 8.125 6.79688V2.57812C8.125 1.84578 7.52922 1.25 6.79688 1.25H2.57812ZM17.4219 9.375H13.2031C11.7815 9.375 10.625 8.21848 10.625 6.79688V2.57812C10.625 1.15652 11.7815 0 13.2031 0H17.4219C18.8435 0 20 1.15652 20 2.57812V6.79688C20 8.21848 18.8435 9.375 17.4219 9.375ZM13.2031 1.25C12.4708 1.25 11.875 1.84578 11.875 2.57812V6.79688C11.875 7.52922 12.4708 8.125 13.2031 8.125H17.4219C18.1542 8.125 18.75 7.52922 18.75 6.79688V2.57812C18.75 1.84578 18.1542 1.25 17.4219 1.25H13.2031ZM15.3125 20C12.7278 20 10.625 17.8972 10.625 15.3125C10.625 12.7278 12.7278 10.625 15.3125 10.625C17.8972 10.625 20 12.7278 20 15.3125C20 17.8972 17.8972 20 15.3125 20ZM15.3125 11.875C13.4171 11.875 11.875 13.4171 11.875 15.3125C11.875 17.2079 13.4171 18.75 15.3125 18.75C17.2079 18.75 18.75 17.2079 18.75 15.3125C18.75 13.4171 17.2079 11.875 15.3125 11.875ZM6.79688 20H2.57812C1.15652 20 0 18.8435 0 17.4219V13.2031C0 11.7815 1.15652 10.625 2.57812 10.625H6.79688C8.21848 10.625 9.375 11.7815 9.375 13.2031V17.4219C9.375 18.8435 8.21848 20 6.79688 20ZM2.57812 11.875C1.84578 11.875 1.25 12.4708 1.25 13.2031V17.4219C1.25 18.1542 1.84578 18.75 2.57812 18.75H6.79688C7.52922 18.75 8.125 18.1542 8.125 17.4219V13.2031C8.125 12.4708 7.52922 11.875 6.79688 11.875H2.57812Z"
-              />
+                d="M6.79688 9.375H2.57812C1.15652 9.375 0 8.21848 0 6.79688V2.57812C0 1.15652 1.15652 0 2.57812 0H6.79688C8.21848 0 9.375 1.15652 9.375 2.57812V6.79688C9.375 8.21848 8.21848 9.375 6.79688 9.375ZM2.57812 1.25C1.84578 1.25 1.25 1.84578 1.25 2.57812V6.79688C1.25 7.52922 1.84578 8.125 2.57812 8.125H6.79688C7.52922 8.125 8.125 7.52922 8.125 6.79688V2.57812C8.125 1.84578 7.52922 1.25 6.79688 1.25H2.57812ZM17.4219 9.375H13.2031C11.7815 9.375 10.625 8.21848 10.625 6.79688V2.57812C10.625 1.15652 11.7815 0 13.2031 0H17.4219C18.8435 0 20 1.15652 20 2.57812V6.79688C20 8.21848 18.8435 9.375 17.4219 9.375ZM13.2031 1.25C12.4708 1.25 11.875 1.84578 11.875 2.57812V6.79688C11.875 7.52922 12.4708 8.125 13.2031 8.125H17.4219C18.1542 8.125 18.75 7.52922 18.75 6.79688V2.57812C18.75 1.84578 18.1542 1.25 17.4219 1.25H13.2031ZM15.3125 20C12.7278 20 10.625 17.8972 10.625 15.3125C10.625 12.7278 12.7278 10.625 15.3125 10.625C17.8972 10.625 20 12.7278 20 15.3125C20 17.8972 17.8972 20 15.3125 20ZM15.3125 11.875C13.4171 11.875 11.875 13.4171 11.875 15.3125C11.875 17.2079 13.4171 18.75 15.3125 18.75C17.2079 18.75 18.75 17.2079 18.75 15.3125C18.75 13.4171 17.2079 11.875 15.3125 11.875ZM6.79688 20H2.57812C1.15652 20 0 18.8435 0 17.4219V13.2031C0 11.7815 1.15652 10.625 2.57812 10.625H6.79688C8.21848 10.625 9.375 11.7815 9.375 13.2031V17.4219C9.375 18.8435 8.21848 20 6.79688 20ZM2.57812 11.875C1.84578 11.875 1.25 12.4708 1.25 13.2031V17.4219C1.25 18.1542 1.84578 18.75 2.57812 18.75H6.79688C7.52922 18.75 8.125 18.1542 8.125 17.4219V13.2031C8.125 12.4708 7.52922 11.875 6.79688 11.875H2.57812Z" />
             </g>
           </svg>
         </div>
-        <a
-          [routerLink]="['schedule-call/basic-details']"
-          class="primary-btn2 d-lg-flex d-none"
-          data-text="Schedule a call"
-          ><span>Schedule a call</span>
+        <a [routerLink]="['schedule-call/basic-details']" class="primary-btn2 d-lg-flex d-none"
+          data-text="Schedule a call"><span>Schedule a call</span>
         </a>
       </div>
     </div>
   </div>
 </header>
-<!-- End header section -->
