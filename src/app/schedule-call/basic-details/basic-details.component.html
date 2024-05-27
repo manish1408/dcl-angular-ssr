@@ -2,73 +2,134 @@
   <div class="row justify-content-end overflow-hidden">
     <div class="col-lg-9 col-xxl-10">
       <div class="col-lg-9 col-xxl-6 offset-xl-3" style="margin-top: 10%">
-        <a href="/" class="logo-dark"><img alt="image" class="img-fluid mb-5" style="height: 40px"
-            src="assets/img/logo_dark.svg" /></a>
+        <a href="/" class="logo-dark"
+          ><img
+            alt="image"
+            class="img-fluid mb-5"
+            style="height: 40px"
+            src="assets/img/logo_dark.svg"
+        /></a>
 
         <h3 class="site-paragraph-l text-site-neutrals-500 mb-30">
-          Thanks for your interest. Enter the details below for a <strong> Free AI enablement assessment </strong> of
-          your business.
+          Thanks for your interest. Enter the details below for a
+          <strong> Free AI enablement assessment </strong> of your business.
         </h3>
 
         <div class="row">
           <form [formGroup]="basicDetailsForm">
             <div class="form-group">
               <label for="name">Your name</label>
-              <input type="text" class="form-control" id="name" aria-describedby="name"
-                [placeholder]="isLoading ? '' : 'Your name'" formControlName="name"
-                [ngClass]="{ 'is-invalid': hasError('name') }" [disabled]="isLoading" />
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                aria-describedby="name"
+                [placeholder]="isLoading ? '' : 'Your name'"
+                formControlName="name"
+                [ngClass]="{ 'is-invalid': hasError('name') }"
+                [disabled]="isLoading"
+              />
               <div class="invalid-feedback">Name is required</div>
             </div>
             <div class="form-group my-2">
               <label for="email">Your work email</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
-                formControlName="email" [ngClass]="{
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                aria-describedby="emailHelp"
+                placeholder="Enter email"
+                formControlName="email"
+                [ngClass]="{
                   'is-invalid': hasError('email') || hasEmailFormatError()
-                }" />
+                }"
+              />
               <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
                 Invalid email format
               </div>
-              <div *ngIf="hasError('email') && !hasEmailFormatError()" class="invalid-feedback">
+              <div
+                *ngIf="hasError('email') && !hasEmailFormatError()"
+                class="invalid-feedback"
+              >
                 Email is required
               </div>
             </div>
 
             <div>
-              <label class="" for="serviceMessage">Tell us about your business.</label>
-              <textarea class="form-control" aria-label="With textarea" style="height: 100px" id="serviceMessage"
-                placeholder="Explain in detail what your business does" formControlName="serviceMessage"
-                [ngClass]="{ 'is-invalid': hasError('name') }"></textarea>
-              <div class="invalid-feedback">Business information is required</div>
+              <label class="" for="serviceMessage"
+                >Tell us about your business.</label
+              >
+              <textarea
+                class="form-control"
+                aria-label="With textarea"
+                style="height: 100px"
+                id="serviceMessage"
+                placeholder="Explain in detail what your business does"
+                formControlName="serviceMessage"
+                [ngClass]="{ 'is-invalid': hasError('name') }"
+              ></textarea>
+              <div class="invalid-feedback">
+                Business information is required
+              </div>
             </div>
 
             <div>
               <label class="" for="challenges">Challenges</label>
-              <textarea class="form-control" aria-label="With textarea" style="height: 100px" id="challenges"
-                placeholder="Highlight the Challenges that you want to solve with AI" formControlName="challenges"
-                ></textarea>
+              <textarea
+                class="form-control"
+                aria-label="With textarea"
+                style="height: 100px"
+                id="challenges"
+                placeholder="Highlight the Challenges that you want to solve with AI"
+                formControlName="challenges"
+              ></textarea>
             </div>
 
             <div class="d-flex justify-content-end my-5">
-              <a class="btn btn-success px-3" (click)="onSubmit()">Submit
-              </a>
+              <a class="btn btn-success px-3" (click)="onSubmit()">Submit </a>
             </div>
           </form>
         </div>
       </div>
     </div>
     <div class="col-lg-2 vh-100 client-section">
-      <div class="" style="margin-top: 150px">
+      <div class="client-section2">
         <p class="text-white text-center mb-4 fs-5">
           Amazing clients who trust us
         </p>
         <div class="d-flex flex-column align-items-center">
           <img alt="image" class="my-2" src="assets/img/polyone-logo.png" />
 
-          <img alt="image" class="my-3" src="assets/img/diywork-logo.png" style="height: 50px" />
-          <img alt="image" class="my-3 custom-img" src="assets/img/upmatch-logo.png" style="height: 50px" />
-          <img alt="image" class="my-3" src="assets/img/ezaccess-logo.png" style="height: 80px" />
-          <img alt="image" class="my-3" src="assets/img/eazynft-logo.png" style="height: 40px" />
-          <img alt="image" class="my-3 custom-img" src="assets/img/signet-logo.svg" style="height: 50px" />
+          <img
+            alt="image"
+            class="my-3"
+            src="assets/img/diywork-logo.png"
+            style="height: 50px"
+          />
+          <img
+            alt="image"
+            class="my-3 custom-img"
+            src="assets/img/upmatch-logo.png"
+            style="height: 50px"
+          />
+          <img
+            alt="image"
+            class="my-3"
+            src="assets/img/ezaccess-logo.png"
+            style="height: 80px"
+          />
+          <img
+            alt="image"
+            class="my-3"
+            src="assets/img/eazynft-logo.png"
+            style="height: 40px"
+          />
+          <img
+            alt="image"
+            class="my-3 custom-img"
+            src="assets/img/signet-logo.svg"
+            style="height: 50px"
+          />
         </div>
       </div>
     </div>
