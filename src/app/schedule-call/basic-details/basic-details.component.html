@@ -2,128 +2,54 @@
   <div class="row justify-content-end overflow-hidden">
     <div class="col-lg-9 col-xxl-10">
       <div class="col-lg-9 col-xxl-6 offset-xl-3" style="margin-top: 10%">
-        <a href="/" class="logo-dark"
-          ><img
-            alt="image"
-            class="img-fluid mb-5"
-            style="height: 40px"
-            src="assets/img/logo_dark.svg"
-        /></a>
+        <a href="/" class="logo-dark"><img alt="image" class="img-fluid mb-5" style="height: 40px"
+            src="assets/img/logo_dark.svg" /></a>
 
         <h3 class="site-paragraph-l text-site-neutrals-500 mb-30">
-          Thanks for your interest. Enter your name and details so we can
-          connect you with one of our team.
+          Thanks for your interest. Enter the details below for a <strong> Free AI enablement assessment </strong> of
+          your business.
         </h3>
 
         <div class="row">
           <form [formGroup]="basicDetailsForm">
             <div class="form-group">
               <label for="name">Your name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                aria-describedby="name"
-                [placeholder]="isLoading ? '' : 'Your name'"
-                formControlName="name"
-                [ngClass]="{ 'is-invalid': hasError('name') }"
-                [disabled]="isLoading"
-              />
+              <input type="text" class="form-control" id="name" aria-describedby="name"
+                [placeholder]="isLoading ? '' : 'Your name'" formControlName="name"
+                [ngClass]="{ 'is-invalid': hasError('name') }" [disabled]="isLoading" />
               <div class="invalid-feedback">Name is required</div>
             </div>
             <div class="form-group my-2">
               <label for="email">Your work email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-                formControlName="email"
-                [ngClass]="{
+              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email"
+                formControlName="email" [ngClass]="{
                   'is-invalid': hasError('email') || hasEmailFormatError()
-                }"
-              />
+                }" />
               <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
                 Invalid email format
               </div>
-              <div
-                *ngIf="hasError('email') && !hasEmailFormatError()"
-                class="invalid-feedback"
-              >
+              <div *ngIf="hasError('email') && !hasEmailFormatError()" class="invalid-feedback">
                 Email is required
               </div>
             </div>
 
-            <div class="my-3">
-              <h2 class="site-paragraph-m">Select your service</h2>
-              <div class="d-flex flex-lg-row flex-column form-group">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    id="flexRadioDefault1"
-                    formControlName="serviceRequested"
-                    value="Staff Augmentation"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault1">
-                    Staff Augmentation
-                  </label>
-                </div>
-
-                <div class="form-check">
-                  <input
-                    class="form-check-input mx-lg-2"
-                    type="radio"
-                    formControlName="serviceRequested"
-                    id="flexRadioDefault2"
-                    value="Dedicated Teams"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault2">
-                    Dedicated Teams
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input mx-lg-3"
-                    type="radio"
-                    formControlName="serviceRequested"
-                    id="flexRadioDefault3"
-                    value="Software Outsourcing"
-                  />
-                  <label class="form-check-label" for="flexRadioDefault3">
-                    Software Outsourcing
-                  </label>
-                </div>
-              </div>
-              <div
-                *ngIf="hasError('serviceRequested')"
-                class="custom-invalid-feedback my-0"
-              >
-                Service is required
-              </div>
+            <div>
+              <label class="" for="serviceMessage">Tell us about your business.</label>
+              <textarea class="form-control" aria-label="With textarea" style="height: 100px" id="serviceMessage"
+                placeholder="Explain in detail what your business does" formControlName="serviceMessage"
+                [ngClass]="{ 'is-invalid': hasError('name') }"></textarea>
+              <div class="invalid-feedback">Business information is required</div>
             </div>
 
             <div>
-              <label
-                class="site-paragraph-m .text-site-neutrals-600"
-                for="serviceMessage"
-                >How can we help?</label
-              >
-              <textarea
-                class="form-control"
-                aria-label="With textarea"
-                style="height: 100px"
-                id="serviceMessage"
-                placeholder="Tell us how we can help."
-                formControlName="serviceMessage"
-                [ngClass]="{ 'is-invalid': hasError('name') }"
-              ></textarea>
-              <div class="invalid-feedback">Service Message is required</div>
+              <label class="" for="challenges">Challenges</label>
+              <textarea class="form-control" aria-label="With textarea" style="height: 100px" id="challenges"
+                placeholder="Highlight the Challenges that you want to solve with AI" formControlName="challenges"
+                ></textarea>
             </div>
+
             <div class="d-flex justify-content-end my-5">
-              <a class="btn btn-success px-3" (click)="onSubmit()"
-                >Get Started<i class="bi bi-arrow-right px-2"></i>
+              <a class="btn btn-success px-3" (click)="onSubmit()">Submit
               </a>
             </div>
           </form>
@@ -138,36 +64,11 @@
         <div class="d-flex flex-column align-items-center">
           <img alt="image" class="my-2" src="assets/img/polyone-logo.png" />
 
-          <img
-            alt="image"
-            class="my-3"
-            src="assets/img/diywork-logo.png"
-            style="height: 50px"
-          />
-          <img
-            alt="image"
-            class="my-3 custom-img"
-            src="assets/img/upmatch-logo.png"
-            style="height: 50px"
-          />
-          <img
-            alt="image"
-            class="my-3"
-            src="assets/img/ezaccess-logo.png"
-            style="height: 80px"
-          />
-          <img
-            alt="image"
-            class="my-3"
-            src="assets/img/eazynft-logo.png"
-            style="height: 40px"
-          />
-          <img
-            alt="image"
-            class="my-3 custom-img"
-            src="assets/img/signet-logo.svg"
-            style="height: 50px"
-          />
+          <img alt="image" class="my-3" src="assets/img/diywork-logo.png" style="height: 50px" />
+          <img alt="image" class="my-3 custom-img" src="assets/img/upmatch-logo.png" style="height: 50px" />
+          <img alt="image" class="my-3" src="assets/img/ezaccess-logo.png" style="height: 80px" />
+          <img alt="image" class="my-3" src="assets/img/eazynft-logo.png" style="height: 40px" />
+          <img alt="image" class="my-3 custom-img" src="assets/img/signet-logo.svg" style="height: 50px" />
         </div>
       </div>
     </div>

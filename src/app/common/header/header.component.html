@@ -29,7 +29,7 @@
       <div class="col-lg-8">
         <div class="sidebar-menu-wrap">
           <ul class="main-menu align-items-center">
-            <li>
+            <!-- <li>
               <a>Expertise </a>
               <span class="dropdown-icon2"><i class="bi bi-plus"></i></span>
               <ul class="submenu-list">
@@ -50,11 +50,12 @@
                   <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
                 </li>
               </ul>
-            </li>
+            </li> -->
 
             <li class="fs-6">
               <a [routerLink]="['case-studies']" (click)="hideSidebar()">Case Study</a>
             </li>
+
             <li class="fs-6">
               <a [routerLink]="['blog']" (click)="hideSidebar()">Blog</a>
             </li>
@@ -81,7 +82,7 @@
     </div>
     <div class="main-menu d-lg-flex d-none">
       <ul class="menu-list">
-        <li class="menu-item-has-children">
+        <!-- <li class="menu-item-has-children">
           <a class="drop-down">Expertise </a><i class="bi bi-plus dropdown-icon"></i>
           <ul class="sub-menu">
             <li>
@@ -101,9 +102,12 @@
               <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
             </li>
           </ul>
-        </li>
+        </li> -->
         <li>
           <a [routerLink]="['case-studies']">Case Studies</a>
+        </li>
+        <li>
+          <a [routerLink]="['blog']">Blog</a>
         </li>
         <li class="drop-down">
           <a [routerLink]="['contact']">Contact</a>
@@ -120,8 +124,8 @@
             </g>
           </svg>
         </div>
-        <a [routerLink]="['schedule-call/basic-details']" class="primary-btn2 d-lg-flex d-none"
-          data-text="Schedule a call"><span>Schedule a call</span>
+        <a [routerLink]="['assessment/basic-details']" class="primary-btn2 d-lg-flex d-none"
+          data-text="Get Free Assessment"><span>Get Free Assessment</span>
         </a>
       </div>
     </div>

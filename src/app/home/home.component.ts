@@ -43,11 +43,9 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().subscribe((res: any) => {
       this.testimonials = res.items;
-
       this.swiperinitTestimonial();
     });
     this.getCTA();
-    this.getEngagementModels();
 
     if (this.common.isBrowser()) {
       window.scroll({

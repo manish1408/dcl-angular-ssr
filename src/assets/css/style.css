@@ -5747,6 +5747,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
 }
 .blog-card.style-2 .blog-card-img-wrap .card-img img {
   border-radius: 10px 10px 0 0;
+  width: 100%;
 }
 .blog-card.style-2 .blog-card-img-wrap .date {
   position: absolute;

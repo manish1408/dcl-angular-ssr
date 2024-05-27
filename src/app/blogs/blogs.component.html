@@ -14,7 +14,7 @@
               <li><a [routerLink]="['/home']">Home</a></li>
               <li>Blog</li>
             </ul>
-            <h1>Latest News Blog &amp; Article.</h1>
+            <h1>Company Updates & Technology Articles</h1>
           </div>
           <div class="scroll-down-btn">
             <a (click)="scrollToSection()" role="button">
@@ -68,21 +68,9 @@
                 alt=""
               />
             </a>
-            <a class="date">
-              <span
-                ><strong>{{ post?.day }}</strong> {{ post?.month }}</span
-              >
-            </a>
+           
           </div>
           <div class="card-content">
-            <div class="blog-meta">
-              <ul class="category">
-                <li><a>Development</a></li>
-              </ul>
-              <div class="blog-comment">
-                <span>Comment (20)</span>
-              </div>
-            </div>
             <h4>
               <a [routerLink]="['/blog/', post.data?.slug?.iv]">{{
                 post.data?.title?.iv

@@ -32,8 +32,8 @@ export class BasicDetailsComponent implements OnInit {
     this.basicDetailsForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      serviceRequested: ['', Validators.required],
       serviceMessage: ['', [Validators.required]],
+      challenges: [''],
     });
   }
 
@@ -49,8 +49,8 @@ export class BasicDetailsComponent implements OnInit {
         this.basicDetailsForm.patchValue({
           name: res.data.name,
           email: res.data.email,
-          serviceRequested: res.data.serviceRequested,
           serviceMessage: res.data.serviceMessage,
+          challenges: res.data.challenges,
         });
       });
     }
@@ -74,10 +74,7 @@ export class BasicDetailsComponent implements OnInit {
         .subscribe((res) => {
           if (res.result === 1) {
             this.id = res.data._id;
-            this.router.navigate([
-              '/schedule-call/contact-information',
-              this.id,
-            ]);
+            this.router.navigateByUrl('/thank-you');
           }
         }),
         (error: any) => {

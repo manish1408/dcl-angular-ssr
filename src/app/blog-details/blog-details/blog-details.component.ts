@@ -38,7 +38,7 @@ export class BlogDetailsComponent implements OnInit {
       this.isLoading = false;
 
       this.date = resp.items[0].created;
-
+      console.log(this.post);
       this.formatDate(this.date);
       this.getAllBlogs();
     });

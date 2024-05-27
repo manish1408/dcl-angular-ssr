@@ -173,6 +173,6 @@ export class ContactInformationComponent implements OnInit {
     }
   }
   back() {
-    this.router.navigate(['/schedule-call/basic-details', this.id]);
+    this.router.navigate(['/assessment/basic-details', this.id]);
   }
 }
