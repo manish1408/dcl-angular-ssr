@@ -8947,23 +8947,19 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   27.Home3 Banner section
 ========================================*/
 .home3-banner-section {
-  background-image: url(../img/home3/home3-banner-bg.png), linear-gradient(180deg, #0A0A0A 0%, #0A0A0A 100%);
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
-  padding: 11% 0 8%;
+  padding: 8% 0 8%;
+  background-image: url(../img/home3/home3-banner-bg.png), linear-gradient(180deg, #0A0A0A 0%, #0A0A0A 100%);
 }
-@media (max-width: 1699px) {
-  .home3-banner-section {
-    margin-bottom: 300px;
-  }
-}
+
 @media (min-width: 1400px) and (max-width: 1599px) {
-  .home3-banner-section {
-    padding: 11% 0 17%;
+  .banner-bottom {
+    background: url(../../assets/img/banner-bg.svg);
   }
 }
-@media (max-width: 1399px) {
+/*  @media (max-width: 1399px) {
   .home3-banner-section {
     padding: 13% 0 17%;
     margin-bottom: 280px;
@@ -8984,7 +8980,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   .home3-banner-section {
     padding: 140px 0 70px;
   }
-}
+} */
 .home3-banner-section .banner-content {
   text-align: center;
 }
@@ -15476,10 +15472,10 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   scroll-margin-top: 50px;
 }
 .case-study-details-page .case-thumb {
-  margin-bottom: 25px;
 }
 .case-study-details-page .case-thumb img {
   border-radius: 10px;
+  width: 100%;
 }
 .case-study-details-page .case-details-content h3 {
   color: var(--title-color);
@@ -15583,6 +15579,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   gap: 20px;
   border-bottom: 1px solid var(--border-color);
   padding: 20px 0 15px;
+  height: 123px;
 }
 .case-study-details-page .case-sidebar .case-info-wrap .case-info li:last-child {
   border-bottom: none;
