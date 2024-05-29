@@ -56,7 +56,8 @@
 
 
             <ul class="tag-list">
-              <li *ngFor="let i of clientServices"><a [routerLink]="['/case-study/', post.data?.slug?.iv]"> {{i}} </a></li>
+              <li *ngFor="let i of clientServices"><a [routerLink]="['/case-study/', post.data?.slug?.iv]"> {{i}} </a>
+              </li>
             </ul>
 
             <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="read-more-btn">Read More
@@ -72,18 +73,32 @@
       </div>
       }
     </div>
-    <!-- <div class="row">
-                <div class="col-lg-12 d-flex justify-content-center wow animate fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
-                    <a href="package-grid.html" class="load-btn">
-                        <span>
-                            Load More
-                            <svg viewBox="0 0 13 20">
-                                <polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-                </div>
-            </div> -->
+
+    <div class="row g-4 mb-50">
+      <div class="home3-newsletter-section mb-110">
+        <div class="newsletter-wrapper">
+          <div class="row g-lg-4 gy-5 align-items-center">
+            <div data-wow-delay="200ms" data-wow-duration="1500ms" class="col-lg-7 col-md-6 wow animate fadeInLeft"
+              style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
+              <div class="section-title white">
+                <h2>Explore how AI can help your Business </h2>
+              </div>
+            </div>
+            <div data-wow-delay="200ms" data-wow-duration="1500ms" class="col-lg-5 col-md-6 wow animate fadeInRight"
+              style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
+              <div class="newsletter-form-area">
+                <h6>Distinct Cloud Labs offers a free assessment of your business for AI enablement. Our assessment can
+                  help you analyze how AI can transform your business.</h6><button class="primary-btn1 hover-white"
+                  tabindex="0" [routerLink]="['/assessment/basic-details']"> Get Free Assessment<i
+                    class="bi bi-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
 </div>
-<!-- End Team Section -->

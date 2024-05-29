@@ -56,7 +56,7 @@ export class CaseDetailsComponent implements OnInit {
       this.posts = resp?.items.filter((item: any) => {
         return item.data.slug.iv !== this.slugName;
       });
-
+      this.posts = this.posts.slice(0,3);
       this.isLoading = false;
     });
   }
