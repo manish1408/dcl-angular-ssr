@@ -1,5 +1,3 @@
-
-
 .process-card {
   .content {
     height: 300px;
@@ -90,31 +88,41 @@
     right: 25px !important;
   }
 }
+@media (max-width: 1699px) {
+  .home3-banner-section {
+    margin-bottom: 0px;
+    padding: 170px 0px 0px 0px;
+  }
+  .banner-bottom {
+    margin-bottom: 50px !important;
+  }
+}
+
 .home3-banner-section .bottom-img3 {
   position: absolute;
   right: 45px;
   bottom: -13%;
 }
 .banner-bottom {
-    background-color: var(--bs-success);
-    background-size: cover;
-    background-repeat: no-repeat;
-    position: relative;
-    color: #fff9;
-    padding: 20px;
-    margin-bottom: 120px;
-    background-position: left;
-    background-size: contain;
-    h3{
-      color: #fff;
-    }
-    p{
-      margin-bottom: 0px;
-      line-height: normal;
-    }
-    a {
-      margin-top: 11%;
-    }
+  background-color: var(--bs-success);
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  color: #fff9;
+  padding: 20px;
+  margin-bottom: 120px;
+  background-position: left;
+  background-size: contain;
+  h3 {
+    color: #fff;
+  }
+  p {
+    margin-bottom: 0px;
+    line-height: normal;
+  }
+  a {
+    margin-top: 11%;
+  }
 }
 .gen-ai-img {
   padding: 10% 3%;
