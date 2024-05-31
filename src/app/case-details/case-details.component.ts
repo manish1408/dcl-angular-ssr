@@ -25,7 +25,7 @@ export class CaseDetailsComponent implements OnInit {
   slugName: string = '';
   imgCDN: string = environment.squidexAssets;
   isLoading: boolean = false;
-
+  timeline:any;
   async ngOnInit() {
     this.route.params.subscribe((param) => {
       this.isLoading = true;
@@ -35,6 +35,7 @@ export class CaseDetailsComponent implements OnInit {
         .getCaseStudyBySlug(this.slugName)
         .subscribe((resp: any) => {
           this.post = resp?.items[0].data;
+          this.timeline = resp?.items[0].data.devTrack.iv;
           this.isLoading = false;
 
           this.getAllCaseStudies();
@@ -55,7 +56,7 @@ export class CaseDetailsComponent implements OnInit {
       this.posts = resp?.items.filter((item: any) => {
         return item.data.slug.iv !== this.slugName;
       });
-
+      this.posts = this.posts.slice(0,3);
       this.isLoading = false;
     });
   }

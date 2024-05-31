@@ -1,11 +1,8 @@
 <!-- Start Breadcrumb section -->
-<div
-  class="breadcrumb-section"
-  style="
+<div class="breadcrumb-section" style="
     background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
       linear-gradient(180deg, #121212 0%, #121212 100%);
-  "
->
+  ">
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
@@ -15,19 +12,12 @@
               <li><a [routerLink]="['/home']">Home</a></li>
               <li>Case Study</li>
             </ul>
-            <h1>Success In The Field.</h1>
+            <h1>AI use cases and demos.</h1>
           </div>
           <div class="scroll-down-btn">
             <a (click)="scrollToSection()" role="button">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="19"
-                height="29"
-                viewBox="0 0 19 29"
-              >
-                <path
-                  d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5"
-                />
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="29" viewBox="0 0 19 29">
+                <path d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5" />
               </svg>
             </a>
           </div>
@@ -40,76 +30,42 @@
 
 <!-- Start Team Section -->
 <div class="d-flex justify-content-center">
-  <span
-    *ngIf="isLoading"
-    class="spinner-border spinner-border-sm mt-5"
-    role="status"
-  ></span>
+  <span *ngIf="isLoading" class="spinner-border spinner-border-sm mt-5" role="status"></span>
 </div>
 
-<div
-  class="case-study-card-section scroll-margin pt-120 mb-120"
-  id="case-study-card-section"
->
+<div class="case-study-card-section scroll-margin pt-120 mb-120" id="case-study-card-section">
   <div class="container">
     <div class="row g-4 mb-50">
       @for (post of posts; track post) {
-      <div
-        class="col-xl-4 col-md-6 wow animate fadeInDown"
-        data-wow-delay="200ms"
-        data-wow-duration="1500ms"
-      >
+      <div class="col-xl-4 col-md-6 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
         <div class="case-study-card2">
-          <a
-            [routerLink]="['/case-study/', post.data?.slug?.iv]"
-            class="card-img"
-          >
-            <img
-              [src]="
-                'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
+          <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="card-img">
+            <img [src]="
+                'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' + 
                 post?.data?.thumbnail?.iv[0]
-              "
-              alt=""
-            />
+              " alt="" />
           </a>
           <div class="card-content">
             <h4>
-              <a [routerLink]="['/case-study/', post.data?.slug?.iv]"
-                >{{ post.data?.projectName?.iv }}
+              <a [routerLink]="['/case-study/', post.data?.slug?.iv]">{{ post.data?.projectName?.iv }}
               </a>
             </h4>
-            <h5>
-              {{ post.data?.ProjectDomain?.iv }}
-            </h5>
+            <p>
+              {{ post.data?.projectSubheading?.iv }}
+            </p>
 
-            <!-- <div class="number">
-                               <span>+</span>
-                               <h5 class="">40</h5>
-                               <span>%</span>
-                           </div> -->
-            <!-- <ul class="tag-list">
-                               <li><a href="case-study.html">Paid Search</a></li>
-                               <li><a href="case-study.html">Paid Social</a></li>
-                               <li><a href="case-study.html">SEO</a></li>
-                           </ul> -->
-            <!-- <a [routerLink]="['/case-study-details', post.data?.ProjectDomain?.iv?.toLowerCase().replace(/\s+/g, '-')]"> -->
 
-            <a
-              [routerLink]="['/case-study/', post.data?.slug?.iv]"
-              class="read-more-btn"
-              >Read More
+            <ul class="tag-list">
+              <li *ngFor="let i of clientServices"><a [routerLink]="['/case-study/', post.data?.slug?.iv]"> {{i}} </a>
+              </li>
+            </ul>
 
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="10"
-                height="10"
-                viewBox="0 0 10 10"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M8.48878 0.885308L0 9.37364L0.626356 10L9.11469 1.51122V7.38037H10V0H2.61963V0.885308H8.48878Z"
-                ></path>
+            <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="read-more-btn">Read More
+
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M8.48878 0.885308L0 9.37364L0.626356 10L9.11469 1.51122V7.38037H10V0H2.61963V0.885308H8.48878Z">
+                </path>
               </svg>
             </a>
           </div>
@@ -117,18 +73,32 @@
       </div>
       }
     </div>
-    <!-- <div class="row">
-                <div class="col-lg-12 d-flex justify-content-center wow animate fadeInUp" data-wow-delay="400ms" data-wow-duration="1500ms">
-                    <a href="package-grid.html" class="load-btn">
-                        <span>
-                            Load More
-                            <svg viewBox="0 0 13 20">
-                                <polyline points="0.5 19.5 3 19.5 12.5 10 3 0.5"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-                </div>
-            </div> -->
+
+    <div class="row g-4 mb-50">
+      <div class="home3-newsletter-section mb-110">
+        <div class="newsletter-wrapper">
+          <div class="row g-lg-4 gy-5 align-items-center">
+            <div data-wow-delay="200ms" data-wow-duration="1500ms" class="col-lg-7 col-md-6 wow animate fadeInLeft"
+              style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
+              <div class="section-title white">
+                <h2>Explore how AI can help your Business </h2>
+              </div>
+            </div>
+            <div data-wow-delay="200ms" data-wow-duration="1500ms" class="col-lg-5 col-md-6 wow animate fadeInRight"
+              style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
+              <div class="newsletter-form-area">
+                <h6>Distinct Cloud Labs offers a free assessment of your business for AI enablement. Our assessment can
+                  help you analyze how AI can transform your business.</h6><button class="primary-btn1 hover-white"
+                  tabindex="0" [routerLink]="['/assessment/basic-details']"> Get Free Assessment<i
+                    class="bi bi-arrow-right"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
   </div>
 </div>
-<!-- End Team Section -->
