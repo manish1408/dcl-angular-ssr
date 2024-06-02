@@ -1,14 +1,9 @@
 <div class="container-fluid">
   <div class="row justify-content-end overflow-hidden">
     <div class="col-lg-9 col-xxl-10">
-      <div class="col-lg-9 col-xxl-6 offset-xl-3" style="margin-top: 10%">
-        <a href="/" class="logo-dark"
-          ><img
-            alt="image"
-            class="img-fluid mb-5"
-            style="height: 40px"
-            src="assets/img/logo_dark.svg"
-        /></a>
+      <div class="col-lg-9 col-xxl-6 offset-xl-3" style="margin-top: 25px">
+        <a href="/" class="logo-dark"><img alt="image" class="img-fluid mb-5" style="height: 40px"
+            src="assets/img/logo_dark.svg" /></a>
 
         <h3 class="site-paragraph-l text-site-neutrals-500 mb-30">
           Thanks for your interest. Enter the details below for a
@@ -52,6 +47,22 @@
                 class="invalid-feedback"
               >
                 Email is required
+              </div>
+            </div>
+
+            <div class="form-group my-2">
+              <label for="industry">Your work industry</label>
+              <select type="industry" class="form-control" id="industry" aria-describedby="industryHelp" placeholder="Enter industry"
+                formControlName="industry" [ngClass]="{
+                  'is-invalid': hasError('industry')
+                }" >
+
+                <option *ngFor="let item of industryList" [value]="item.Description">{{item.Description}}</option>
+
+              </select>
+              
+              <div *ngIf="hasError('industry')" class="invalid-feedback">
+                Industry is required
               </div>
             </div>
 
