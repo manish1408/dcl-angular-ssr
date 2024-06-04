@@ -29,6 +29,7 @@ export class AppComponent {
         if (
           event['url'].startsWith('/assessment') ||
           event['url'] === '/thank-you' ||
+          event['url'] === '/ai-in-commerce' ||
           event['url'] === '/page-not-found'
         ) {
           this.showHead = false;
