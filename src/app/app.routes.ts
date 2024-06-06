@@ -14,16 +14,18 @@ import { StartDateComponent } from './schedule-call/start-date/start-date.compon
 import { TechnologiesComponent } from './schedule-call/technologies/technologies.component';
 import { BlogDetailsComponent } from './blog-details/blog-details/blog-details.component';
 import { BlogsComponent } from './blogs/blogs.component';
-import { ThankYouComponent } from './schedule-call/thank-you/thank-you.component'; 
+import { ThankYouComponent } from './schedule-call/thank-you/thank-you.component';
 import { AllLeadsComponent } from './schedule-call/all-leads/all-leads.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ExperiseComponent } from './expertise/expertise/expertise.component';
 import { AiInCommerceComponent } from './ai-in-commerce/ai-in-commerce.component';
+import { OurServicesComponent } from './our-services/our-services.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'services/:type', component: OurServicesComponent },
   { path: 'ai-in-commerce', component: AiInCommerceComponent },
   { path: 'solutions/:type', component: SolutionComponent },
   { path: 'expertise/:type', component: ExperiseComponent },
