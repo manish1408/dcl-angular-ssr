@@ -3,7 +3,7 @@
     @for(ele of services; track ele){
 
     <div class="row">
-      <div class="col-lg-8">
+      <div class="col-12">
         <div class="banner-content">
           <span class="heading-one">
             <svg
@@ -33,8 +33,7 @@
             </svg>
           </span>
           <h1>{{ ele.data?.headerMain?.iv }}</h1>
-          <p [innerHTML]="ele.data?.headerDescription?.iv">
-          </p>
+          <p [innerHTML]="ele.data?.headerDescription?.iv"></p>
           <div class="row">
             <div class="col-6">
               <div class="banner-content-bottom">
@@ -91,7 +90,7 @@
           </div>
         </div>
       </div>
-      <div class="col-lg-4">
+      <!-- <div class="col-lg-4">
         <div class="card rounded-4">
           <div class="card-body">
             <div class="text-center" *ngIf="ele.data?.headerIcon?.iv">
@@ -174,7 +173,7 @@
             </form>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     }
   </div>

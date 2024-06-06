@@ -1,1 +1,157 @@
-<p>our-services works!</p>
+<section>
+  <app-service-banner
+    [isLoading]="isLoading"
+    [services]="services"
+  ></app-service-banner>
+
+  <!-- End Banner section -->
+
+  <!-- Start Home1 About section -->
+  <div>
+    @for (items of services; track items;) {
+    <div class="home1-about-section mb-110">
+      <div class="container">
+        <div class="row mb-90">
+          <div
+            class="col-lg-9 wow animate fadeInUp"
+            data-wow-delay="200ms"
+            data-wow-duration="2000ms"
+          >
+            <div class="about-content">
+              <div class="about-section-title">
+                <h2>
+                  {{ items.data.section1Title.iv }}
+                </h2>
+                @for(ele of items.data?.section1Description?.iv?.content; track
+                ele){
+
+                <p *ngIf="ele?.content">
+                  {{ ele.content[0].text }}
+                </p>
+                }
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 d-flex justify-content-lg-end wow animate fadeInRight"
+            data-wow-delay="200ms"
+            data-wow-duration="2000ms"
+          ></div>
+        </div>
+      </div>
+      <div class="about-bottom-area">
+        <div class="container">
+          <div class="row g-5">
+            @for(ele of items.data?.section1Box?.iv; track ele){
+            <div
+              class="col-lg-3 col-md-6 wow animate fadeInUp"
+              data-wow-delay="200ms"
+              data-wow-duration="1500ms"
+            >
+              <div class="feature-card">
+                <div class="icon" *ngIf="ele?.icon">
+                  @for(image of ele?.icon;track image){
+
+                  <img
+                    [src]="
+                      'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
+                      image
+                    "
+                    alt=""
+                  />
+                  }
+                </div>
+                <div class="content">
+                  <h4>{{ ele?.title }}</h4>
+                  <p>
+                    {{ ele?.description }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Home1 About section -->
+
+    <!-- Start Home1 Solution section -->
+    <div class="home1-solution-section mb-110">
+      <div class="container">
+        <div class="row mb-60">
+          <div
+            class="col-lg-12 d-flex align-items-center justify-content-between flex-wrap gap-3"
+          >
+            <div
+              class="section-title wow animate fadeInLeft"
+              data-wow-delay="200ms"
+              data-wow-duration="1500ms"
+            >
+              <h2>{{ items.data?.section2Header?.iv }}</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4">
+          @for(ele of items.data?.section2Box?.iv; track ele){
+          <div
+            class="col-lg-4 col-md-6 wow animate fadeInDown"
+            data-wow-delay="200ms"
+            data-wow-duration="1500ms"
+          >
+            <div class="service-card">
+              <div class="content">
+                <h4>
+                  {{ ele.title }}
+                </h4>
+                <div class="icon" *ngIf="ele?.icon">
+                  @for(image of ele?.icon;track image){
+
+                  <img
+                    [src]="
+                      'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
+                      image
+                    "
+                    alt=""
+                  />
+                  }
+                </div>
+
+                <p>
+                  {{ ele.description }}
+                </p>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+  <!-- End Home1 Solution section -->
+
+  <!-- <app-schedule-call-cta [services]="services"></app-schedule-call-cta> -->
+
+  <!-- Start Testimonial section -->
+  <app-testimonial-card
+    [services]="services"
+    [testimonials]="reversedTestimonials"
+  ></app-testimonial-card>
+  <!-- End Testimonial section -->
+
+  <!-- Start Industry Card Section -->
+
+  <!-- End Industry Card Section -->
+
+  <!-- Start Banner With Case Study Slider section -->
+  <!-- <app-case-study-slider [services]="services"></app-case-study-slider> -->
+
+  <!-- End Banner With Case Study Slider section -->
+
+  <!-- Start Approach section -->
+
+  <!-- End Approach section -->
+
+  <!-- <app-schedule-call-cta [services]="services"></app-schedule-call-cta> -->
+</section>
