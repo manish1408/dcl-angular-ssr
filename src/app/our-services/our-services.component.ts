@@ -41,6 +41,8 @@ export class OurServicesComponent implements OnInit {
   testimonials: any = [];
   isLoading: boolean = false;
   isProductDiscovery: boolean = false;
+  isMVP: boolean = false;
+  isNoCode: boolean = false;
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.pageType = params?.['type'];
@@ -57,22 +59,11 @@ export class OurServicesComponent implements OnInit {
           content: 'Rapidly Validate Your Idea Using Product Discovery.',
         });
         this.setTitle('What Is Product Discovery? | Distinct Cloud Labs');
+      } else if (this.pageType === 'mvp-building') {
+        this.isMVP = true;
+      } else if (this.pageType === 'no-code') {
+        this.isNoCode = true;
       }
-      // else if (this.pageType === 'design') {
-      //   //metaTags
-      //   this.meta.updateTag({
-      //     name: 'title',
-      //     content: 'Design',
-      //   });
-      //   this.meta.updateTag({
-      //     name: 'description',
-      //     content:
-      //       'A dedicated development team is a popular partnership model in software development, facilitating remote collaboration between clients and developers.',
-      //   });
-      //   this.setTitle(
-      //     'Dedicated Development Team: What Is It And ... - Distinct Cloud Labs'
-      //   );
-      // }
 
       // fetch services
       this.getServices();
