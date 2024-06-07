@@ -40,22 +40,25 @@ export class OurServicesComponent implements OnInit {
   reversedTestimonials: any = [];
   testimonials: any = [];
   isLoading: boolean = false;
+  isProductDiscovery: boolean = false;
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.pageType = params?.['type'];
-      // if (this.pageType === 'product-discovery') {
-      //   //metaTags
-      //   this.meta.updateTag({
-      //     name: 'title',
-      //     content: 'Product Discovery',
-      //   });
-      //   this.meta.updateTag({
-      //     name: 'description',
-      //     content:
-      //       'Staff augmentation is a powerful model that organizations can leverage to increase agility and respond to the changing needs of the enterprise.',
-      //   });
-      //   this.setTitle('What Is Staff Augmentation? | Distinct Cloud Labs');
-      // } else if (this.pageType === 'design') {
+
+      if (this.pageType === 'product-discovery') {
+        this.isProductDiscovery = true;
+        //metaTags
+        this.meta.updateTag({
+          name: 'title',
+          content: 'Product Discovery',
+        });
+        this.meta.updateTag({
+          name: 'description',
+          content: 'Rapidly Validate Your Idea Using Product Discovery.',
+        });
+        this.setTitle('What Is Product Discovery? | Distinct Cloud Labs');
+      }
+      // else if (this.pageType === 'design') {
       //   //metaTags
       //   this.meta.updateTag({
       //     name: 'title',

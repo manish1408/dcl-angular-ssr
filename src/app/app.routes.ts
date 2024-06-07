@@ -69,6 +69,7 @@ export const routes: Routes = [
 export const ssrTracking: Routes = [
   { path: 'solutions/:type', component: SolutionComponent },
   { path: 'expertise/:type', component: ExperiseComponent },
+  { path: 'services/:type', component: OurServicesComponent },
   { path: 'case-studies', component: CaseStudiesComponent },
   { path: 'case-study/:type', component: CaseDetailsComponent },
   { path: 'contact', component: ContactComponent },
