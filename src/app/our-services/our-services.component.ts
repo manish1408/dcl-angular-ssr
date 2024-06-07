@@ -89,7 +89,7 @@ export class OurServicesComponent implements OnInit {
 
   getServices() {
     this.ourServices.getServices().subscribe((res: any) => {
-      console.log('services:', res);
+      // console.log('services:', res);
       this.loading = false;
       this.swiperinitTestimonial();
       this.swiperinit();
