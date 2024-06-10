@@ -41,11 +41,14 @@ export class OurServicesComponent implements OnInit {
   testimonials: any = [];
   isLoading: boolean = false;
   isProductDiscovery: boolean = false;
+  isDesign: boolean = false;
   isMVP: boolean = false;
   isNoCode: boolean = false;
+  isDevelopment: boolean = false;
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.pageType = params?.['type'];
+      console.log(this.pageType);
 
       if (this.pageType === 'product-discovery') {
         this.isProductDiscovery = true;
@@ -59,10 +62,14 @@ export class OurServicesComponent implements OnInit {
           content: 'Rapidly Validate Your Idea Using Product Discovery.',
         });
         this.setTitle('What Is Product Discovery? | Distinct Cloud Labs');
+      } else if (this.pageType === 'design') {
+        this.isDesign = true;
       } else if (this.pageType === 'mvp-building') {
         this.isMVP = true;
       } else if (this.pageType === 'no-code') {
         this.isNoCode = true;
+      } else if (this.pageType === 'development') {
+        this.isDevelopment = true;
       }
 
       // fetch services
