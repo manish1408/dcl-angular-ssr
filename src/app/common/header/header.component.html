@@ -66,6 +66,53 @@
               </ul>
             </li> -->
 
+            <li>
+              <a>Services </a>
+              <span class="dropdown-icon2"><i class="bi bi-plus"></i></span>
+              <ul class="submenu-list">
+                <li>
+                  <a
+                    class="fs-6"
+                    [routerLink]="['services/product-discovery']"
+                    (click)="hideSidebar()"
+                    >Product Discovery</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="fs-6"
+                    [routerLink]="['services/design']"
+                    (click)="hideSidebar()"
+                    >Design</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="fs-6"
+                    [routerLink]="['services/mvp-building']"
+                    (click)="hideSidebar()"
+                    >MVP Building</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="fs-6"
+                    [routerLink]="['services/no-code']"
+                    (click)="hideSidebar()"
+                    >No Code</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="fs-6"
+                    [routerLink]="['services/development']"
+                    (click)="hideSidebar()"
+                    >Development</a
+                  >
+                </li>
+              </ul>
+            </li>
+
             <li class="fs-6">
               <a [routerLink]="['case-studies']" (click)="hideSidebar()"
                 >Case Study</a
@@ -121,6 +168,30 @@
             </li>
           </ul>
         </li> -->
+        <li class="menu-item-has-children">
+          <a class="drop-down">Services </a
+          ><i class="bi bi-plus dropdown-icon"></i>
+          <ul class="sub-menu">
+            <li>
+              <a [routerLink]="['services/product-discovery']"
+                >Product Discovery</a
+              >
+            </li>
+            <li>
+              <a [routerLink]="['services/design']">Design</a>
+            </li>
+            <li>
+              <a [routerLink]="['services/mvp-building']">MVP Building</a>
+            </li>
+            <li>
+              <a [routerLink]="['services/no-code']">No Code</a>
+            </li>
+            <li>
+              <a [routerLink]="['services/development']">Development</a>
+            </li>
+          </ul>
+        </li>
+
         <li>
           <a [routerLink]="['case-studies']">Case Studies</a>
         </li>

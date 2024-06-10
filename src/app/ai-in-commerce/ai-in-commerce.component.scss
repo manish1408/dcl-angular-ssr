@@ -1,0 +1,130 @@
+.process-card {
+    .content {
+      height: 300px;
+    }
+  }
+  .home3-banner-section .banner-content ul {
+    gap: 3px;
+    margin-bottom: 5px;
+  }
+  .review span {
+    color: #fff9;
+  }
+  
+  .review {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .home3-banner-section .banner-content p {
+    margin-bottom: 20px;
+  }
+  .google .rating .star li i {
+    color: #ffc107;
+  }
+  .clutch .rating .star li i {
+    color: #e62415;
+  }
+  
+  .home3-banner-section .banner-content .single-rating {
+    display: flex;
+  
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  
+  .home3-banner-section .banner-content .rating {
+    margin-left: 20px;
+    margin-bottom: 0px !important;
+  }
+  .home3-banner-section .banner-content .rating-area {
+    margin-top: 50px;
+    margin-bottom: 60px;
+  }
+  
+  @media (max-width: 576px) {
+    // new style
+    .home3-banner-section .banner-content .rating {
+      margin-left: 0px;
+      margin-bottom: 0px !important;
+    }
+    .home3-banner-section .banner-content ul {
+      gap: 10px;
+      margin-bottom: 10px;
+      padding-top: 10px;
+    }
+    .home3-banner-section .banner-content .single-rating {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+      margin-left: 20px;
+    }
+    .home3-banner-section {
+      padding: 90px 0 20px;
+    }
+    .home3-banner-section {
+      margin-bottom: 50px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .home3-banner-section {
+      padding: 90px 0 30px;
+    }
+    .home3-banner-section {
+      margin-bottom: 50px;
+    }
+  }
+  // @media (max-width: 1400px) {
+  //   .home3-banner-section .bottom-img3 {
+  //     bottom: -10%;
+  //     max-width: 325px;
+  //   }
+  // }
+  @media (min-width: 1400px) and (max-width: 1599px) {
+    .home3-banner-section .bottom-img3 {
+      bottom: -10%;
+      max-width: 325px;
+      right: 25px !important;
+    }
+  }
+  @media (max-width: 1699px) {
+    .home3-banner-section {
+      margin-bottom: 0px;
+      padding: 170px 0px 0px 0px;
+    }
+    .banner-bottom {
+      margin-bottom: 50px !important;
+    }
+  }
+  
+  .home3-banner-section .bottom-img3 {
+    position: absolute;
+    right: 45px;
+    bottom: -13%;
+  }
+  .banner-bottom {
+    background-color: var(--bs-success);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    color: #fff9;
+    padding: 20px;
+    margin-bottom: 120px;
+    background-position: left;
+    background-size: contain;
+    h3 {
+      color: #fff;
+    }
+    p {
+      margin-bottom: 0px;
+      line-height: normal;
+    }
+    a {
+      margin-top: 11%;
+    }
+  }
+  .gen-ai-img {
+    padding: 10% 3%;
+  }
+  
