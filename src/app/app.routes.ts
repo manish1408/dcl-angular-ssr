@@ -88,4 +88,5 @@ export const ssrTracking: Routes = [
   { path: 'schedule-call/start-date/:id', component: StartDateComponent },
   { path: 'schedule-call/technologies/:id', component: TechnologiesComponent },
   { path: 'thank-you', component: ThankYouComponent },
+  { path: 'dcl-sprint', component: DclSprintComponent },
 ];

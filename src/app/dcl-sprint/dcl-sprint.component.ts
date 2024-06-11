@@ -62,6 +62,10 @@ export class DclSprintComponent implements OnInit {
           slidesPerView: 1,
           speed: 1500,
           spaceBetween: 30,
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: true,
+          },
           navigation: {
             nextEl: '.home3-testimonial-next',
             prevEl: '.home3-testimonial-prev',
