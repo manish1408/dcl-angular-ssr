@@ -1,0 +1,93 @@
+.process-card {
+  .content {
+    height: 300px;
+  }
+}
+.dcl-sprint-section{
+  background: rgb(244,250,255);
+  background: linear-gradient(79deg, rgba(244,250,255,1) 50%, rgba(227,230,244,1) 82%);
+}
+.dcl-sprint-section .banner-content ul {
+  gap: 3px;
+  margin-bottom: 3px;
+}
+.review span {
+  color: #fff9;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.rating {
+  margin-left: 0;
+  margin-bottom: 0!important;
+}
+
+
+.google .rating .star li i {
+  color: #ffc107;
+}
+.clutch .rating .star li i {
+  color: #e62415;
+}
+
+.dcl-sprint-section .banner-content .single-rating {
+  display: flex;
+  align-items: center;
+}
+
+.dcl-sprint-section .banner-content .rating {
+  margin-left: 20px;
+  margin-bottom: 0px !important;
+}
+
+
+@media (max-width: 576px) {
+  // new style
+  .dcl-sprint-section .banner-content .rating {
+    margin-left: 0px;
+    margin-bottom: 0px !important;
+  }
+  .dcl-sprint-section .banner-content ul {
+    margin-bottom: 0px !important;
+    padding-top: 0px !important;
+  }
+  .dcl-sprint-section .banner-content .single-rating {
+    display: flex;
+    justify-content: space-evenly;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  .dcl-sprint-section {
+    padding: 90px 0 20px;
+  }
+  .dcl-sprint-section {
+    margin-bottom: 50px;
+  }
+}
+
+.full-page {
+  height: 100vh !important;
+}
+.company-logo {
+  width: 130px;
+  margin: 0 auto;
+}
+.dcl-sprint-section .banner-content ul li {
+  font-size: 14px;
+}
+.dcl-sprint-section .banner-content  ul {
+  gap: 3px;
+  display: flex;
+}
+.primary-btn1 {
+  justify-content: space-evenly;
+  margin: 15px;
+}
+.primary-btn1 {
+  width: calc(100% - 30px);
+}

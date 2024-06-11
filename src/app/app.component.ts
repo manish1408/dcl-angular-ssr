@@ -27,6 +27,7 @@ export class AppComponent {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
         if (
+          event['url'].startsWith('/dcl-sprint') ||
           event['url'].startsWith('/assessment') ||
           event['url'] === '/thank-you' ||
           event['url'] === '/page-not-found'

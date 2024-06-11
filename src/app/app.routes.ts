@@ -19,10 +19,12 @@ import { AllLeadsComponent } from './schedule-call/all-leads/all-leads.component
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ExperiseComponent } from './expertise/expertise/expertise.component';
+import { DclSprintComponent } from './dcl-sprint/dcl-sprint.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'dcl-sprint', component: DclSprintComponent },
   { path: 'solutions/:type', component: SolutionComponent },
   { path: 'expertise/:type', component: ExperiseComponent },
   { path: 'case-studies', component: CaseStudiesComponent },
