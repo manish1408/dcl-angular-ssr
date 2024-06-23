@@ -4749,6 +4749,9 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
 .case-study-card .card-img img {
   border-radius: 10px;
   transition: all 0.5s ease-out;
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
 }
 .case-study-card .card-img::after {
   position: absolute;
