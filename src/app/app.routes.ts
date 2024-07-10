@@ -20,6 +20,8 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ExperiseComponent } from './expertise/expertise/expertise.component';
 import { DclSprintComponent } from './dcl-sprint/dcl-sprint.component';
+import { PortfolioComponent } from './portfolio/portfolio.component';
+import { PortfolioDetailsComponent } from './portfolio-details/portfolio-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +31,8 @@ export const routes: Routes = [
   { path: 'expertise/:type', component: ExperiseComponent },
   { path: 'case-studies', component: CaseStudiesComponent },
   { path: 'case-study/:type', component: CaseDetailsComponent },
+  { path: 'portfolios', component: PortfolioComponent },
+  { path: 'demo/:type', component: PortfolioDetailsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'blog', component: BlogsComponent },
   { path: 'blog/:type', component: BlogDetailsComponent },
@@ -72,6 +76,8 @@ export const ssrTracking: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'blog', component: BlogsComponent },
   { path: 'blog/:type', component: BlogDetailsComponent },
+  { path: 'portfolios', component: PortfolioComponent },
+  { path: 'demo/:type', component: PortfolioDetailsComponent },
   { path: 'assessment/basic-details', component: BasicDetailsComponent },
   { path: 'assessment/basic-details/:id', component: BasicDetailsComponent },
   { path: 'schedule-call/budget/:id', component: BudgetComponent },

@@ -10,9 +10,10 @@
           <div class="banner-content">
             <ul class="breadcrumb-list">
               <li><a [routerLink]="['/home']">Home</a></li>
-              <li>Case Study</li>
+              <li>Our Demos</li>
             </ul>
-            <h1>AI use cases and demos.</h1>
+            <h1>AI Demos.</h1>
+            <p class="text-white">Take a glimpse of the work that we have done for our clients recently,</p>
           </div>
           <div class="scroll-down-btn">
             <a (click)="scrollToSection()" role="button">
@@ -39,23 +40,19 @@
       @for (post of posts; track post) {
       <div class="col-xl-4 col-md-6 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
         <div class="case-study-card2">
-          <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="card-img">
+          <a [routerLink]="['/demo/', post.data?.slug?.iv]" class="card-img">
             <img [src]="
                 'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' + 
-                post?.data?.thumbnail?.iv[0]
+                post?.data?.image?.iv[0]
               " alt="" />
           </a>
           <div class="card-content">
             <h4>
-              <a [routerLink]="['/case-study/', post.data?.slug?.iv]">{{ post.data?.projectName?.iv }}
+              <a [routerLink]="['/demo/', post.data?.slug?.iv]">{{ post.data?.title?.iv }}
               </a>
             </h4>
-            <p>
-              {{ post.data?.projectSubheading?.iv }}
-            </p>
 
-
-            <button [routerLink]="['/case-study/', post.data?.slug?.iv]" class="btn btn-success btn-block">Read More</button>
+            <button [routerLink]="['/demo/', post.data?.slug?.iv]" class="btn btn-success btn-block" style="width: 100%;">Watch Video</button>
           </div>
         </div>
       </div>
