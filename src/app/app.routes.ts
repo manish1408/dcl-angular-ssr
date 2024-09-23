@@ -18,6 +18,7 @@ import { ThankYouComponent } from './schedule-call/thank-you/thank-you.component
 import { AllLeadsComponent } from './schedule-call/all-leads/all-leads.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermsConditionsComponent } from './terms-conditions/terms-conditions.component';
 import { ExperiseComponent } from './expertise/expertise/expertise.component';
 import { DclSprintComponent } from './dcl-sprint/dcl-sprint.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
@@ -56,6 +57,10 @@ export const routes: Routes = [
   {
     path: 'privacy-policy',
     component: PrivacyPolicyComponent,
+  },
+  {
+    path: 'terms-and-conditions',
+    component: TermsConditionsComponent,
   },
   {
     path: '**',
