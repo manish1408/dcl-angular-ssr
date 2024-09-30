@@ -14,7 +14,7 @@ import { StartDateComponent } from './schedule-call/start-date/start-date.compon
 import { TechnologiesComponent } from './schedule-call/technologies/technologies.component';
 import { BlogDetailsComponent } from './blog-details/blog-details/blog-details.component';
 import { BlogsComponent } from './blogs/blogs.component';
-import { ThankYouComponent } from './schedule-call/thank-you/thank-you.component'; 
+import { ThankYouComponent } from './schedule-call/thank-you/thank-you.component';
 import { AllLeadsComponent } from './schedule-call/all-leads/all-leads.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
@@ -23,6 +23,7 @@ import { ExperiseComponent } from './expertise/expertise/expertise.component';
 import { DclSprintComponent } from './dcl-sprint/dcl-sprint.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioDetailsComponent } from './portfolio-details/portfolio-details.component';
+import { AiDevelopmentComponent } from './ai-development/ai-development.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -62,6 +63,7 @@ export const routes: Routes = [
     path: 'terms-and-conditions',
     component: TermsConditionsComponent,
   },
+  { path: 'ai-development', component: AiDevelopmentComponent },
   {
     path: '**',
     redirectTo: 'page-not-found',
@@ -100,4 +102,5 @@ export const ssrTracking: Routes = [
   { path: 'schedule-call/technologies/:id', component: TechnologiesComponent },
   { path: 'thank-you', component: ThankYouComponent },
   { path: 'dcl-sprint', component: DclSprintComponent },
+  { path: 'ai-development', component: AiDevelopmentComponent },
 ];

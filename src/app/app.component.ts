@@ -30,7 +30,8 @@ export class AppComponent {
           event['url'].startsWith('/dcl-sprint') ||
           event['url'].startsWith('/assessment') ||
           event['url'] === '/thank-you' ||
-          event['url'] === '/page-not-found'
+          event['url'] === '/page-not-found' ||
+          event['url'] === '/ai-development'
         ) {
           this.showHead = false;
         } else {

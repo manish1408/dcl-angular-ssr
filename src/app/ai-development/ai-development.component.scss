@@ -1,0 +1,136 @@
+.testimonials-users > img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.testimonials-footer a {
+  color: var(--color-2);
+  margin-bottom: 5px;
+}
+
+.testimonials-footer i {
+  color: #ffc107;
+  // font-size: 30px;
+}
+
+.modal-content {
+  border: 1px solid #00fe8a;
+  background-color: #151617;
+  padding: 50px;
+}
+.modal-header {
+  border: 0;
+}
+
+.form-inner label {
+  color: #d9d9d9;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; /* 150% */
+}
+.form-title {
+  color: #04e781;
+  // font-family: "Hartwell Alt";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 133.333% */
+  margin: 24px 0;
+}
+
+.btn-close-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+}
+
+.button-wapper button {
+  box-shadow: 0 0 45px rgb(1 255 138 / 70%);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-color: #fff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  background: var(--gradient);
+}
+
+@font-face {
+  font-display: block;
+  font-family: Roboto;
+  src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2)
+      format("woff2"),
+    url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff)
+      format("woff");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: Roboto;
+  font-weight: 600;
+  src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2)
+      format("woff2"),
+    url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff)
+      format("woff");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: Roboto;
+  font-weight: 700;
+  src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2)
+      format("woff2"),
+    url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff)
+      format("woff");
+}
+#sib-container {
+  padding: 0;
+}
+
+.sib-input,
+.sib-sms-field {
+  // padding: 0 !important;
+}
+
+#sib-container input:-ms-input-placeholder {
+  text-align: left;
+  font-family: "Helvetica", sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container input::placeholder {
+  text-align: left;
+  font-family: "Helvetica", sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container textarea::placeholder {
+  text-align: left;
+  font-family: "Helvetica", sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container a {
+  text-decoration: underline;
+  color: #2bb2fc;
+}
+
+.sib-form {
+  background-attachment: fixed;
+  font-size: 16px;
+  font-family: Roboto, sans-serif;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color: transparent !important;
+}
+.entry__label {
+  color: #ffffff !important;
+}
+
+.entry-field {
+  padding: 2px 6px !important;
+}

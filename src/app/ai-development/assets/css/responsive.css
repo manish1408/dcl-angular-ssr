@@ -1,0 +1,301 @@
+/*------------------------------------------------------------------------------------------------------
+* Template Name  : 
+* Author	     : Nikunj Galathiya | +91 9712267052
+* Support        : nikunjgalathiya@gmail.com
+*-----------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width:1600px) {
+    .clients-say-area .slider-wapper {
+        margin: 0 60px
+    }
+
+    .projects-area .slider-wapper {
+        margin-left: 20px;
+        margin-right: 20px
+    }
+}
+
+@media only screen and (max-width:1199px) {
+
+    .section-title h2 br,
+    .section-title p br,
+    .banner-content p br {
+        display: none
+    }
+}
+
+@media only screen and (max-width:991px) {
+
+    .container,
+    .container-md,
+    .container-sm {
+        max-width: 100%
+    }
+
+    .navbar-collapse.show {
+        transform: translate(0, 0);
+        padding: 20px 0
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        background-color: var(--color-1);
+        width: calc(100% - 65px);
+        left: 0;
+        right: 0;
+        height: 100%;
+        z-index: 9999;
+        transition: transform .3s ease-in-out;
+        transform: translate(-282px, 0)
+    }
+
+    .navbar-toggler:focus {
+        text-decoration: none;
+        outline: 0;
+        box-shadow: none
+    }
+
+    .navbar .navbar-nav .nav-link {
+        color: var(--white-color);
+        padding: 10px;
+        background-color: var(--color-3);
+        margin: 5px
+    }
+
+    .navbar-toggler {
+        height: 45px;
+        width: 45px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .navbar-toggler[aria-expanded="true"] svg.menus {
+        display: none
+    }
+
+    .navbar-toggler[aria-expanded="true"] svg.close {
+        display: block
+    }
+
+    .showcase-image {
+        border-radius: 15px;
+        margin-bottom: 15px
+    }
+
+    .showcase-content {
+        margin: 0 !important
+    }
+
+    .show-mobile {
+        display: block
+    }
+
+    .hide-mobile {
+        display: none
+    }
+
+    .showcase-content h3 {
+        font-size: 28px
+    }
+
+    .showcase-content h3 br {
+        display: none
+    }
+
+    .showcase-content p {
+        font-size: 16px
+    }
+
+    .section-title {
+        margin-bottom: 30px !important
+    }
+
+    .clients-patten,
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none
+    }
+
+    .clients-say-area .slider-wapper {
+        margin: 0
+    }
+
+    .swiper.testimonials-slider {
+        margin-left: 20px;
+        margin-right: 20px
+    }
+
+    .clients-say-area {
+        padding: 50px 0 20px 0
+    }
+
+    .services-area,
+    .projects-area,
+    .showcase-area {
+        padding: 50px 0
+    }
+
+    .banner-content h1 {
+        font-size: 46px
+    }
+
+    .banner-area {
+        padding: 130px 0 80px 0;
+        border-radius: 0
+    }
+
+    .bg-shape-1 {
+        opacity: .2
+    }
+
+    .banner-content p {
+        font-size: 18px;
+        line-height: normal;
+        padding-bottom: 40px
+    }
+
+    .banner-content {
+        text-align: center;
+        margin-bottom: 60px
+    }
+
+    header.header {
+        top: 10px
+    }
+
+    .services-image {
+        height: 300px;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 30px
+    }
+
+    .services-image img {
+        max-height: 300px;
+        max-width: 100%;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        object-fit: cover;
+        border-radius: 10px
+    }
+
+    .accordion-body {
+        padding: 15px
+    }
+
+    .accordion-body-icon svg {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px
+    }
+
+    .accordion-body-content p {
+        font-size: 15px;
+        line-height: normal
+    }
+
+    .accordion-button {
+        font-size: 18px;
+        line-height: normal
+    }
+
+    .accordion-item {
+        margin-bottom: 15px
+    }
+
+    .accordion-button .title-icon {
+        width: 40px;
+        height: 50px;
+        margin-right: 15px
+    }
+
+    .accordion-button .arrow-icon {
+        width: 35px
+    }
+
+    .single-projects-item,
+    .single-projects-item .single-projects-image {
+        overflow: hidden;
+        border-radius: 15px
+    }
+
+    .projects-area .swiper-wrapper {
+        padding-bottom: 60px !important
+    }
+}
+
+@media only screen and (max-width:767px) {
+
+    .shap-items1,
+    .shap-items2,
+    .shap-items3,
+    .shap-items4 {
+        display: none
+    }
+
+    .header-right-button a {
+        padding: 10px 15px;
+        font-size: 14px;
+        box-shadow: none;
+        border-radius: 5px
+    }
+
+    .swiper-slide {
+        margin-top: 0 !important
+    }
+
+    .cta-wapper .section-title .tags:before {
+        height: 5px;
+        width: 18px;
+        top: 7px;
+        left: -30px
+    }
+
+    .cta-wapper .section-title .tags::after {
+        height: 4px;
+        width: 18px;
+        top: 7px;
+        right: -30px
+    }
+
+    .cta-wapper .section-title .tags {
+        font-size: 14px
+    }
+
+    .cta-wapper .section-title {
+        padding: 20px
+    }
+
+    .cta-area {
+        padding: 50px 0 50px 0
+    }
+
+    .scrolling-ticker-area .scrolling-ticker-box .scrolling-content h2 {
+        font-size: 26px
+    }
+
+    .portal-icon {
+        width: 25px
+    }
+
+    .footer-widget-about .widget-content {
+        margin-right: 0
+    }
+
+    .footer-widget {
+        margin-bottom: 30px
+    }
+}
+
+@media only screen and (max-width:480px) {
+    .banner-content h1 {
+        font-size: 38px
+    }
+
+    .navbar-brand img.desktop-logo {
+        width: 80px
+    }
+}
