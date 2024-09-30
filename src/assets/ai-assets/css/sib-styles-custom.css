@@ -1,0 +1,132 @@
+@font-face {
+  font-display: block;
+  font-family: Roboto;
+  src: url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2)
+      format("woff2"),
+    url(https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff)
+      format("woff");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: Roboto;
+  font-weight: 600;
+  src: url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2)
+      format("woff2"),
+    url(https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff)
+      format("woff");
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: Roboto;
+  font-weight: 700;
+  src: url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2)
+      format("woff2"),
+    url(https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff)
+      format("woff");
+}
+
+#sib-container {
+  padding: 0;
+  background-color: transparent !important;
+  border: 0 !important;
+}
+
+.sib-input,
+.sib-sms-field {
+  padding: 0 !important;
+}
+
+#sib-container input:-ms-input-placeholder {
+  text-align: left;
+  font-family: "Helvetica", sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container input::placeholder {
+  text-align: left;
+  font-family: "Helvetica", sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container textarea::placeholder {
+  text-align: left;
+  font-family: "Helvetica", sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container a {
+  text-decoration: underline;
+  color: #2bb2fc;
+}
+
+.sib-form {
+  background-attachment: fixed;
+  font-size: 16px;
+  font-family: Roboto, sans-serif;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  background-color: transparent !important;
+}
+.entry__label {
+  color: #ffffff !important;
+  margin-bottom: 0px !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+.entry-field {
+  padding: 2px 6px !important;
+}
+
+.sib-form-block {
+  padding: 0 !important;
+  word-wrap: break-word;
+  outline: none;
+}
+
+.sib-form .entry__error {
+  line-height: 1rem;
+  background-color: transparent !important;
+  margin-top: 0.25rem !important;
+  font-size: 14px !important;
+  color: var(--bs-form-invalid-color) !important;
+}
+
+.sib-button-wapper button {
+  box-shadow: 0 0 45px rgb(1 255 138 / 70%) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  border-color: #fff !important;
+  padding: 15px 25px !important;
+  border-radius: 10px !important;
+  background: var(--gradient) !important;
+}
+
+.sib-button-style {
+  display: inline-block !important;
+  vertical-align: top !important;
+  padding: 10px 25px !important;
+  border-radius: 5px !important;
+  border: 1px solid #ffffff !important;
+  background: var(--secondary) !important;
+  color: var(--white-color) !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  position: relative !important;
+  z-index: 5 !important;
+  overflow: hidden !important;
+  text-transform: capitalize !important;
+}
+
+.sib-button-style:hover {
+  background: var(--secondary-hover) !important;
+  color: var(--white-color) !important;
+}
+
+.sib-sms-select__list {
+  z-index: 99999 !important;
+}

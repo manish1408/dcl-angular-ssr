@@ -13,16 +13,17 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav m-auto">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">What We Do</a>
+                                    <a class="nav-link" (click)="scrollToSection('#services')">What We Do</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#testimonialsSection">Testimonial</a>
+                                    <a class="nav-link"
+                                        (click)="scrollToSection('#testimonialsSection')">Testimonial</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Our Project</a>
+                                    <a class="nav-link" (click)="scrollToSection('#projects')">Our Project</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Contact</a>
+                                    <a class="nav-link" (click)="scrollToSection('#interested')">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -95,7 +96,8 @@
                             <p class="wow fadeInDown" data-wow-delay="0.2s">Leverage our state-of-the-art customs AI
                                 services that <br> automate mundane processes and strengthen business intelligence</p>
                             <div class="button-wapper wow fadeInUp" data-wow-delay="0.2s">
-                                <a href="#" class="button-style">
+                                <a href="#" class="button-style" data-bs-toggle="modal"
+                                    data-bs-target="#scheduleCallModal">
                                     Schedule a call
                                     <svg width="8" height="15" viewBox="0 0 8 15" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -267,7 +269,7 @@
         <!-- banner-area end -->
 
         <!-- services-area start -->
-        <section class="services-area">
+        <section class="services-area" id="services">
             <div class="services-bg"><img src="assets/ai-assets/images/services/background-pattern.svg" alt="image">
             </div>
             <div class="container">
@@ -291,7 +293,7 @@
                             <img src="assets/ai-assets/images/services/services-image.svg" alt="image">
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
+                    <div class="col-lg-6 col-md-12 ai-accordion">
                         <div class="accordion wow fadeInLeft" data-wow-delay="0.2s" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
@@ -706,7 +708,7 @@
         <!-- clients-say-area end -->
 
         <!-- projects-area start -->
-        <section class="projects-area">
+        <section class="projects-area" id="projects">
             <div class="projects-bg"><img src="assets/ai-assets/images/project/background-pattern.svg" alt="shape">
             </div>
             <div class="container">
@@ -733,7 +735,8 @@
                                     <div class="overlay-wapper">
                                         <div class="overlay-content">
                                             <p class="fs_12 fw_5 text-white">Web Development</p>
-                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#">Scaling Agile Development
+                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
                                                 </a></h4>
                                         </div>
                                         <div class="overlay-btn">
@@ -760,7 +763,8 @@
                                     <div class="overlay-wapper">
                                         <div class="overlay-content">
                                             <p class="fs_12 fw_5 text-white">Web Development</p>
-                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#">Scaling Agile Development
+                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
                                                 </a></h4>
                                         </div>
                                         <div class="overlay-btn">
@@ -787,7 +791,8 @@
                                     <div class="overlay-wapper">
                                         <div class="overlay-content">
                                             <p class="fs_12 fw_5 text-white">Web Development</p>
-                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#">Scaling Agile Development
+                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
                                                 </a></h4>
                                         </div>
                                         <div class="overlay-btn">
@@ -814,7 +819,8 @@
                                     <div class="overlay-wapper">
                                         <div class="overlay-content">
                                             <p class="fs_12 fw_5 text-white">Web Development</p>
-                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#">Scaling Agile Development
+                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
                                                 </a></h4>
                                         </div>
                                         <div class="overlay-btn">
@@ -841,7 +847,8 @@
                                     <div class="overlay-wapper">
                                         <div class="overlay-content">
                                             <p class="fs_12 fw_5 text-white">Web Development</p>
-                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#">Scaling Agile Development
+                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
                                                 </a></h4>
                                         </div>
                                         <div class="overlay-btn">
@@ -868,7 +875,8 @@
                                     <div class="overlay-wapper">
                                         <div class="overlay-content">
                                             <p class="fs_12 fw_5 text-white">Web Development</p>
-                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#">Scaling Agile Development
+                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
+                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
                                                 </a></h4>
                                         </div>
                                         <div class="overlay-btn">
@@ -1161,7 +1169,7 @@
         <!-- showcase-area end -->
 
         <!-- scrolling ticker area start -->
-        <section class="scrolling-ticker-area">
+        <section class="scrolling-ticker-area" id="interested">
             <div class="scrolling-shape-left">
                 <svg width="192" height="250" viewBox="0 0 192 250" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g filter="url(#filter0_f_75_222)">
@@ -1229,7 +1237,8 @@
                                 <p>Orci at id enim eu pellentesque habitant. Ut at diam suscipit amet id cursus id
                                     blandit. <br> Consectetur maecenas id vivamus integer integer aliquam.</p>
                                 <div class="button-wapper">
-                                    <a href="#" class="button-style">SCHEDULE A CALL</a>
+                                    <a href="#" class="button-style" data-bs-toggle="modal"
+                                        data-bs-target="#scheduleCallModal">SCHEDULE A CALL</a>
                                 </div>
                             </div>
                         </div>
@@ -1269,11 +1278,12 @@
                             </div>
                             <div class="widget-content">
                                 <ul>
-                                    <li><a href="#">Case Studies </a></li>
-                                    <li><a href="#">Blog</a></li>
-                                    <li><a href="#">Contact</a></li>
-                                    <li><a href="#">Free Consultation</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a routerLink="/case-studies">Case Studies </a></li>
+                                    <li><a routerLink="/blog">Blog</a></li>
+                                    <li><a routerLink="/contact">Contact</a></li>
+                                    <li><a routerLink="/assessment/basic-details">Free Consultation</a></li>
+                                    <li><a routerLink="/privacy-policy">Privacy policy</a></li>
+                                    <li><a routerLink="/terms-and-conditions">Terms and Conditions</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -1284,10 +1294,11 @@
                                 <h4>Newsletter</h4>
                             </div>
                             <div class="widget-content">
-                                <form action="">
+                                <form (ngSubmit)="newsLetterSubmit()">
                                     <div class="form-group">
-                                        <input type="text" placeholder="Enter your email">
-                                        <button class="button-style">Subscribe</button>
+                                        <input type="text" [(ngModel)]="newsEmail" [ngModelOptions]="{standalone: true}"
+                                            placeholder="Enter your email" required>
+                                        <button class="button-style" type="submit">Subscribe</button>
                                     </div>
                                 </form>
                             </div>
@@ -1298,7 +1309,7 @@
                             </div>
                             <div class="widget-content">
                                 <div class="socialmedia-icon">
-                                    <a href="#">
+                                    <a target="_blank" href="https://twitter.com/distinct_cloud">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -1306,7 +1317,7 @@
                                                 fill="white" />
                                         </svg>
                                     </a>
-                                    <a href="#">
+                                    <a target="_blank" href="https://www.instagram.com/distinctcloudlabs/">
                                         <svg width="21" height="24" viewBox="0 0 21 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_488_11934)">
@@ -1321,7 +1332,7 @@
                                             </defs>
                                         </svg>
                                     </a>
-                                    <a href="#">
+                                    <a target="_blank" href="https://www.linkedin.com/company/distinct-cloud-labs">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
                                             <g clip-path="url(#clip0_488_11933)">
@@ -1351,7 +1362,7 @@
                     <div class="row ">
                         <div class="col-lg-12">
                             <div class="copyright-text text-center wow fadeInUp" data-wow-delay="0.2s">
-                                <p class="fs_14 fw_4 mb-20">Made with love by Distinct Cloud Labs</p>
+                                <p class="fs_14 fw_4 mb-20">Copyright &#64; 2024 Distinct Cloud Labs LLP</p>
                             </div>
                         </div>
                     </div>

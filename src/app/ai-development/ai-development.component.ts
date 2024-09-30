@@ -20,77 +20,32 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AiDevelopmentComponent {
   testimonials: any = [];
-  contactForm!: FormGroup;
-  isLoading: boolean = false;
+  newsEmail: string = '';
   constructor(
     private testimonialService: TestimonialService,
     private fb: FormBuilder,
     private toastr: ToastrService,
 
-    private el: ElementRef,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      company: ['', Validators.required],
-      phone: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', Validators.required],
-    });
-  }
+    private el: ElementRef
+  ) {}
 
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().subscribe((res: any) => {
       this.testimonials = res.items;
     });
   }
-  ngAfterViewInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      // window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
-      // window.LOCALE = 'en';
-      // window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE =
-      //   'The information provided is invalid. Please review and try again.';
-      // window.REQUIRED_ERROR_MESSAGE = 'Required. ';
-      // window.GENERIC_INVALID_MESSAGE =
-      //   'The information provided is invalid. Please review and try again.';
-      // window.translation = {
-      //   common: {
-      //     selectedList: '{quantity} list selected',
-      //     selectedLists: '{quantity} lists selected',
-      //   },
-      // };
-      // var AUTOHIDE = Boolean(0);
-      // const script = document.createElement('script');
-      // script.src = 'https://sibforms.com/forms/end-form/build/main.js';
-      // script.defer = true;
-      // document.body.appendChild(script);
+
+  scrollToSection(section: string) {
+    const sectionEle = this.el.nativeElement.querySelector(section);
+    if (sectionEle) {
+      sectionEle.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  hasError(controlName: keyof typeof this.contactForm.controls) {
-    const control = this.contactForm.controls[controlName];
-    return control.invalid && control.touched;
+  newsLetterSubmit() {
+    if (!this.newsEmail) {
+      this.toastr.error('Email is required');
+      return;
+    }
+    this.toastr.success('Thankyou for subscribing');
   }
-  hasEmailFormatError() {
-    return (
-      this.contactForm.controls['email'].hasError('email') &&
-      this.contactForm.controls['email'].touched
-    );
-  }
-  // onSubmit() {
-  //   this.isLoading = true;
-
-  //   this.contactForm.markAllAsTouched();
-  //   if (this.contactForm.invalid) {
-  //     this.isLoading = false;
-  //     this.toastr.error('Please provide all the details');
-  //     return;
-  //   }
-  // }
-  // scrollToSection(section:string) {
-  //   const sectionEle = this.el.nativeElement.querySelector(section);
-  //   if (sectionEle) {
-  //     section.scrollIntoView({ behavior: 'smooth' });
-  //   }
-  // }
 }

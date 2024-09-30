@@ -1,9 +1,4 @@
 @charset "UTF-8";
-/*------------------------------------------------------------------------------------------------------
-* Template Name  : 
-* Author	     : Nikunj Galathiya | +91 9712267052
-* Support        : nikunjgalathiya@gmail.com
-*-----------------------------------------------------------------------------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
@@ -531,12 +526,12 @@ header.header.sticky {
   object-fit: cover;
 }
 
-.accordion-header {
+.ai-accordion .accordion-header {
   font-size: initial;
   line-height: inherit;
 }
 
-.accordion-item {
+.ai-accordion .accordion-item {
   background-color: #fff;
   border: none;
   margin-bottom: 30px;
@@ -544,15 +539,15 @@ header.header.sticky {
   border-radius: 20px;
 }
 
-.accordion-item:nth-last-child(1) {
+.ai-accordion .accordion-item:nth-last-child(1) {
   margin-bottom: 0;
 }
 
-.accordion-button:focus {
+.ai-accordion .accordion-button:focus {
   box-shadow: none;
 }
 
-.accordion-button {
+.ai-accordion .accordion-button {
   background: var(--gradient-2);
   border-radius: 10px !important;
   overflow: hidden;
@@ -563,43 +558,43 @@ header.header.sticky {
   font-weight: 700;
 }
 
-.accordion-button[aria-expanded="true"] {
+.ai-accordion .accordion-button[aria-expanded="true"] {
   border-bottom-left-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
 }
 
-.accordion-button::after {
+.ai-accordion .accordion-button::after {
   display: none;
 }
 
-.accordion-button .title-icon {
+.ai-accordion .accordion-button .title-icon {
   width: 50px;
   height: 60px;
   margin-right: 20px;
 }
 
-.accordion-button .arrow-icon {
+.ai-accordion .accordion-button .arrow-icon {
   position: absolute;
   right: 20px;
 }
 
-.accordion-body {
+.ai-accordion .accordion-body {
   padding: 30px;
 }
 
-.accordion-body-icon svg {
+.ai-accordion .accordion-body-icon svg {
   width: 80px;
   height: 80px;
   margin-bottom: 20px;
 }
 
-.accordion-body-content h6 {
+.ai-accordion .accordion-body-content h6 {
   font-size: 24px;
   font-weight: 700;
   color: #232323;
 }
 
-.accordion-body-content p {
+.ai-accordion .accordion-body-content p {
   color: #b3b3b3;
   font-size: 23px;
   font-weight: 500;
