@@ -627,7 +627,7 @@
             </div>
             <div class="slider-wapper">
                 <div class="swiper testimonials-slider">
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper align-items-center">
                         @for(item of testimonials;track item.id){
 
                         <div class="swiper-slide">
@@ -640,8 +640,11 @@
                                     <p class="fs_14 fw_4 text-white">{{ item?.data?.customerTitle?.iv }}</p>
                                 </div>
                                 <div class="testimonials-content">
-                                    <p class="text-white fs_16 fw_7 mb-15"> {{ item?.data?.testimonialHeading?.iv }}</p>
-                                    <p class="text-white fs_16 line_height fw_4"> {{ item?.data?.testimonialText?.iv }}
+                                    <p class="text-white fs_16 fw_7 mb-15 testimonial-heading"> {{
+                                        item?.data?.testimonialHeading?.iv }}
+                                    </p>
+                                    <p class="text-white fs_16 line_height fw_4"> {{ item?.data?.testimonialText?.iv |
+                                        summary :180 }}
                                     </p>
                                 </div>
                                 <div class="testimonials-footer">

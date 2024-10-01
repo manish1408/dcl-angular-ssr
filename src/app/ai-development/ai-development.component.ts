@@ -10,11 +10,18 @@ import {
   Validators,
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { SummaryPipe } from '../_pipes/summary.pipe';
 
 @Component({
   selector: 'app-ai-development',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SummaryPipe,
+  ],
   templateUrl: './ai-development.component.html',
   styleUrl: './ai-development.component.scss',
 })
