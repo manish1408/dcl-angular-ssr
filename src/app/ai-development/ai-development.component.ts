@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { SummaryPipe } from '../_pipes/summary.pipe';
+import { CaseStudyService } from '../services/case-study.service';
 
 @Component({
   selector: 'app-ai-development',
@@ -28,17 +29,23 @@ import { SummaryPipe } from '../_pipes/summary.pipe';
 export class AiDevelopmentComponent {
   testimonials: any = [];
   newsEmail: string = '';
+  posts: any[] = [];
+  clientServices: any;
   constructor(
     private testimonialService: TestimonialService,
     private fb: FormBuilder,
     private toastr: ToastrService,
-
+    private caseStudyService: CaseStudyService,
     private el: ElementRef
   ) {}
 
   ngOnInit(): void {
     this.testimonialService.fetchTestimonials().subscribe((res: any) => {
       this.testimonials = res.items;
+    });
+    this.caseStudyService.fetchPosts().subscribe((resp: any) => {
+      this.posts = resp?.items;
+      this.clientServices = this.posts[0].data?.ClientServices.iv.split(',');
     });
   }
 

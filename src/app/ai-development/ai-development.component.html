@@ -730,17 +730,23 @@
             <div class="slider-wapper">
                 <div class="swiper projects-slider">
                     <div class="swiper-wrapper pb-100">
-                        <div class="swiper-slide mt-40">
+                        @for (post of posts; track post;let index = $index) {
+                        <div class="swiper-slide" [ngClass]="{'mt-40': index % 2 !== 0}">
                             <div class="single-projects-item">
                                 <div class="single-projects-image">
-                                    <img src="assets/ai-assets/images/project/project-1.svg" alt="project">
+                                    <img [src]=" 
+                                        'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' + 
+                                        post?.data?.thumbnail?.iv[0]
+                                      " alt="project">
                                 </div>
                                 <div class="overlay">
                                     <div class="overlay-wapper">
                                         <div class="overlay-content">
-                                            <p class="fs_12 fw_5 text-white">Web Development</p>
+                                            <p class="fs_12 fw_5 text-white"> {{ post.data?.projectSubheading?.iv
+                                                |summary:35 }}</p>
                                             <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
+                                                    data-bs-target="#scheduleCallModal">{{ post.data?.projectName?.iv
+                                                    }}
                                                 </a></h4>
                                         </div>
                                         <div class="overlay-btn">
@@ -758,146 +764,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="swiper-slide">
-                            <div class="single-projects-item">
-                                <div class="single-projects-image">
-                                    <img src="assets/ai-assets/images/project/project-2.svg" alt="project">
-                                </div>
-                                <div class="overlay">
-                                    <div class="overlay-wapper">
-                                        <div class="overlay-content">
-                                            <p class="fs_12 fw_5 text-white">Web Development</p>
-                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
-                                                </a></h4>
-                                        </div>
-                                        <div class="overlay-btn">
-                                            <a href="#">
-                                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="20" cy="20" r="20" fill="#02E27C" />
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M17.1757 26.0241C16.9414 25.7898 16.9414 25.4099 17.1757 25.1755L22.3515 19.9998L17.1757 14.8241C16.9414 14.5898 16.9414 14.2099 17.1757 13.9755C17.4101 13.7412 17.7899 13.7412 18.0243 13.9755L23.6243 19.5755C23.8586 19.8099 23.8586 20.1898 23.6243 20.4241L18.0243 26.0241C17.7899 26.2584 17.4101 26.2584 17.1757 26.0241Z"
-                                                        fill="black" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mt-40">
-                            <div class="single-projects-item">
-                                <div class="single-projects-image">
-                                    <img src="assets/ai-assets/images/project/project-3.svg" alt="project">
-                                </div>
-                                <div class="overlay">
-                                    <div class="overlay-wapper">
-                                        <div class="overlay-content">
-                                            <p class="fs_12 fw_5 text-white">Web Development</p>
-                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
-                                                </a></h4>
-                                        </div>
-                                        <div class="overlay-btn">
-                                            <a href="#">
-                                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="20" cy="20" r="20" fill="#02E27C" />
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M17.1757 26.0241C16.9414 25.7898 16.9414 25.4099 17.1757 25.1755L22.3515 19.9998L17.1757 14.8241C16.9414 14.5898 16.9414 14.2099 17.1757 13.9755C17.4101 13.7412 17.7899 13.7412 18.0243 13.9755L23.6243 19.5755C23.8586 19.8099 23.8586 20.1898 23.6243 20.4241L18.0243 26.0241C17.7899 26.2584 17.4101 26.2584 17.1757 26.0241Z"
-                                                        fill="black" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="single-projects-item">
-                                <div class="single-projects-image">
-                                    <img src="assets/ai-assets/images/project/project-4.svg" alt="project">
-                                </div>
-                                <div class="overlay">
-                                    <div class="overlay-wapper">
-                                        <div class="overlay-content">
-                                            <p class="fs_12 fw_5 text-white">Web Development</p>
-                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
-                                                </a></h4>
-                                        </div>
-                                        <div class="overlay-btn">
-                                            <a href="#">
-                                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="20" cy="20" r="20" fill="#02E27C" />
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M17.1757 26.0241C16.9414 25.7898 16.9414 25.4099 17.1757 25.1755L22.3515 19.9998L17.1757 14.8241C16.9414 14.5898 16.9414 14.2099 17.1757 13.9755C17.4101 13.7412 17.7899 13.7412 18.0243 13.9755L23.6243 19.5755C23.8586 19.8099 23.8586 20.1898 23.6243 20.4241L18.0243 26.0241C17.7899 26.2584 17.4101 26.2584 17.1757 26.0241Z"
-                                                        fill="black" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide mt-40">
-                            <div class="single-projects-item">
-                                <div class="single-projects-image">
-                                    <img src="assets/ai-assets/images/project/project-5.svg" alt="project">
-                                </div>
-                                <div class="overlay">
-                                    <div class="overlay-wapper">
-                                        <div class="overlay-content">
-                                            <p class="fs_12 fw_5 text-white">Web Development</p>
-                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
-                                                </a></h4>
-                                        </div>
-                                        <div class="overlay-btn">
-                                            <a href="#">
-                                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="20" cy="20" r="20" fill="#02E27C" />
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M17.1757 26.0241C16.9414 25.7898 16.9414 25.4099 17.1757 25.1755L22.3515 19.9998L17.1757 14.8241C16.9414 14.5898 16.9414 14.2099 17.1757 13.9755C17.4101 13.7412 17.7899 13.7412 18.0243 13.9755L23.6243 19.5755C23.8586 19.8099 23.8586 20.1898 23.6243 20.4241L18.0243 26.0241C17.7899 26.2584 17.4101 26.2584 17.1757 26.0241Z"
-                                                        fill="black" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="single-projects-item">
-                                <div class="single-projects-image">
-                                    <img src="assets/ai-assets/images/project/project-2.svg" alt="project">
-                                </div>
-                                <div class="overlay">
-                                    <div class="overlay-wapper">
-                                        <div class="overlay-content">
-                                            <p class="fs_12 fw_5 text-white">Web Development</p>
-                                            <h4 class="fs_20 fw_6 mb-0 text-white"><a href="#" data-bs-toggle="modal"
-                                                    data-bs-target="#scheduleCallModal">Scaling Agile Development
-                                                </a></h4>
-                                        </div>
-                                        <div class="overlay-btn">
-                                            <a href="#">
-                                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <circle cx="20" cy="20" r="20" fill="#02E27C" />
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M17.1757 26.0241C16.9414 25.7898 16.9414 25.4099 17.1757 25.1755L22.3515 19.9998L17.1757 14.8241C16.9414 14.5898 16.9414 14.2099 17.1757 13.9755C17.4101 13.7412 17.7899 13.7412 18.0243 13.9755L23.6243 19.5755C23.8586 19.8099 23.8586 20.1898 23.6243 20.4241L18.0243 26.0241C17.7899 26.2584 17.4101 26.2584 17.1757 26.0241Z"
-                                                        fill="black" />
-                                                </svg>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        }
+
                     </div>
                     <!-- If we need pagination -->
                     <div class="swiper-pagination"></div>
