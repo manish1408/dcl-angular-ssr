@@ -1,0 +1,84 @@
+<!-- <div class="d-flex justify-content-center">
+    <span *ngIf="loading" class="spinner-border spinner-border-sm mt-5" role="status"></span>
+</div> -->
+<div class="slider-wapper">
+    <div class="swiper testimonials-slider">
+        <div class="swiper-wrapper align-items-center">
+            @for(item of testimonials;track item.id){
+
+            <div class="swiper-slide">
+                <div class="single-testimonials-item">
+                    <div class="testimonials-users">
+                        <img class="rounded-circle" [src]="
+                       item?.data.profileImage.iv ? item?.data.profileImage.iv
+                            : 'assets/img/person-circle-white.svg'" alt=" user">
+                        <p class="fs_18 fw_7 text-white">{{ item?.data?.customerName?.iv }}</p>
+                        <p class="fs_14 fw_4 text-white customer-title">{{ item?.data?.customerTitle?.iv }}
+                        </p>
+                    </div>
+                    <div class="testimonials-content">
+                        <p class="text-white fs_16 fw_7 mb-15 testimonial-heading"> {{
+                            item?.data?.testimonialHeading?.iv }}
+                        </p>
+                        <p class="text-white fs_16 line_height fw_4"> {{ item?.data?.testimonialText?.iv |
+                            summary :180 }}
+                        </p>
+                    </div>
+                    <div class="testimonials-footer">
+                        @if(item?.data.reviewPlatform.iv === 'goodfirms'){
+                        <a [href]="item?.data.ctaLink.iv" target="_blank">Read complete review on
+                            Goodfirms</a>}
+                        @else {
+                        <a target="_blank" [href]="item?.data.ctaLink.iv">Read complete review on Clutch</a>
+                        }
+                        <div class="testimonials-footer-wapper">
+                            <div class="testimonials-footer-left">
+                                <!-- src="assets/ai-assets/images/clients-say/logo-1.svg"  -->
+                                <img [src]="
+              item?.data.reviewPlatform.iv === 'goodfirms'
+                ? 'assets/ai-assets/images/clients-say/logo-1.svg'
+                : 'assets/img/clutch-logo-white.svg'
+            " alt="" [style.height.px]="
+              item?.data.reviewPlatform.iv === 'goodfirms' ? 25 : 25
+            " alt="image">
+                            </div>
+                            <div class="testimonials-footer-right">
+                                <ul>
+                                    @for(starIndex of [1, 2, 3, 4, 5];track $index){
+                                    <li>
+                                        <i class="bi bi-star-fill" [ngClass]="{
+                                            filled: starIndex <= item?.data.rating.iv
+                                          }"></i>
+                                    </li>}
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>}
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev">
+        <svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="60" height="60" rx="8" fill="#0D0C10" />
+            <rect x="0.5" y="0.5" width="61" height="61" rx="8.5" stroke="#00FE8A" stroke-opacity="0.5" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M22 31C22 31.2652 22.1054 31.5196 22.2929 31.7071L29.2929 38.7071C29.6834 39.0976 30.3166 39.0976 30.7071 38.7071C31.0976 38.3166 31.0976 37.6834 30.7071 37.2929L25.4142 32H39C39.5523 32 40 31.5523 40 31C40 30.4477 39.5523 30 39 30L25.4142 30L30.7071 24.7071C31.0976 24.3166 31.0976 23.6834 30.7071 23.2929C30.3166 22.9024 29.6834 22.9024 29.2929 23.2929L22.2929 30.2929C22.1054 30.4804 22 30.7348 22 31Z"
+                fill="#08C86E" />
+        </svg>
+    </div>
+    <div class="swiper-button-next">
+        <svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="60" height="60" rx="8" fill="#0D0C10" />
+            <rect x="0.5" y="0.5" width="61" height="61" rx="8.5" stroke="#00FE8A" stroke-opacity="0.5" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M40 31C40 31.2652 39.8946 31.5196 39.7071 31.7071L32.7071 38.7071C32.3166 39.0976 31.6834 39.0976 31.2929 38.7071C30.9024 38.3166 30.9024 37.6834 31.2929 37.2929L36.5858 32H23C22.4477 32 22 31.5523 22 31C22 30.4477 22.4477 30 23 30L36.5858 30L31.2929 24.7071C30.9024 24.3166 30.9024 23.6834 31.2929 23.2929C31.6834 22.9024 32.3166 22.9024 32.7071 23.2929L39.7071 30.2929C39.8946 30.4804 40 30.7348 40 31Z"
+                fill="#08C86E" />
+        </svg>
+    </div>
+</div>

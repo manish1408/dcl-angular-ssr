@@ -1,0 +1,119 @@
+<footer class="footer">
+    <!-- footer-top start -->
+    <div class="footer-top">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-md-5 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="footer-widget footer-widget-about">
+                        <div class="widget-title mb-30">
+                            <a href="index.html">
+                                <img src="assets/ai-assets/images/logo.svg" width="140px" alt="image">
+                            </a>
+                        </div>
+                        <div class="widget-content">
+                            <p class="fs_14">We help companies to build software product in fraction of the time and
+                                cost of traditional development. Distinct cloud offers a suite of software product
+                                and services in web, mobile, analytics, complex algos and AI</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="footer-widget">
+                        <div class="widget-title mb-20">
+                            <h4>Company</h4>
+                        </div>
+                        <div class="widget-content">
+                            <ul>
+                                <li><a routerLink="/case-studies">Case Studies </a></li>
+                                <li><a routerLink="/blog">Blog</a></li>
+                                <li><a routerLink="/contact">Contact</a></li>
+                                <li><a routerLink="/assessment/basic-details">Free Consultation</a></li>
+                                <li><a routerLink="/privacy-policy">Privacy policy</a></li>
+                                <li><a routerLink="/terms-and-conditions">Terms and Conditions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.42s">
+                    <div class="footer-widget footer-widget-newsletter">
+                        <div class="widget-title mb-20">
+                            <h4>Newsletter</h4>
+                        </div>
+                        <div class="widget-content">
+                            <form (ngSubmit)="newsLetterSubmit()">
+                                <div class="form-group">
+                                    <input type="text" [(ngModel)]="newsEmail" [ngModelOptions]="{standalone: true}"
+                                        placeholder="Enter your email" required>
+                                    <button class="button-style" type="submit">Subscribe</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="footer-widget footer-widget-socialmedia">
+                        <div class="widget-title mb-20">
+                            <h4 class="text-decoration-underline">Connect with us!</h4>
+                        </div>
+                        <div class="widget-content">
+                            <div class="socialmedia-icon">
+                                <a target="_blank" href="https://twitter.com/distinct_cloud">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M7.55016 21.7507C16.6045 21.7507 21.5583 14.2474 21.5583 7.74259C21.5583 7.53166 21.5536 7.31603 21.5442 7.10509C22.5079 6.40819 23.3395 5.54499 24 4.55603C23.1025 4.95533 22.1496 5.21611 21.1739 5.32947C22.2013 4.71364 22.9705 3.7462 23.3391 2.6065C22.3726 3.17929 21.3156 3.58334 20.2134 3.80134C19.4708 3.01229 18.489 2.48985 17.4197 2.31478C16.3504 2.13972 15.2532 2.32178 14.2977 2.83283C13.3423 3.34387 12.5818 4.15544 12.1338 5.14204C11.6859 6.12865 11.5754 7.23535 11.8195 8.29103C9.86249 8.19282 7.94794 7.68444 6.19998 6.79883C4.45203 5.91323 2.90969 4.67017 1.67297 3.15025C1.0444 4.23398 0.852057 5.51638 1.13503 6.73682C1.418 7.95727 2.15506 9.02418 3.19641 9.72072C2.41463 9.6959 1.64998 9.48541 0.965625 9.10666V9.16759C0.964925 10.3049 1.3581 11.4073 2.07831 12.2875C2.79852 13.1677 3.80132 13.7713 4.91625 13.9957C4.19206 14.1939 3.43198 14.2227 2.69484 14.0801C3.00945 15.0582 3.62157 15.9136 4.44577 16.5271C5.26997 17.1405 6.26512 17.4813 7.29234 17.502C5.54842 18.8718 3.39417 19.6149 1.17656 19.6113C0.783287 19.6107 0.390399 19.5866 0 19.5392C2.25286 20.9845 4.87353 21.7521 7.55016 21.7507Z"
+                                            fill="white" />
+                                    </svg>
+                                </a>
+                                <a target="_blank" href="https://www.instagram.com/distinctcloudlabs/">
+                                    <svg width="21" height="24" viewBox="0 0 21 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_488_11934)">
+                                            <path
+                                                d="M10.5043 6.60977C7.52305 6.60977 5.11836 9.01445 5.11836 11.9957C5.11836 14.977 7.52305 17.3816 10.5043 17.3816C13.4855 17.3816 15.8902 14.977 15.8902 11.9957C15.8902 9.01445 13.4855 6.60977 10.5043 6.60977ZM10.5043 15.4973C8.57773 15.4973 7.00273 13.927 7.00273 11.9957C7.00273 10.0645 8.57305 8.49414 10.5043 8.49414C12.4355 8.49414 14.0059 10.0645 14.0059 11.9957C14.0059 13.927 12.4309 15.4973 10.5043 15.4973ZM17.3668 6.38945C17.3668 7.08789 16.8043 7.6457 16.1105 7.6457C15.4121 7.6457 14.8543 7.0832 14.8543 6.38945C14.8543 5.6957 15.4168 5.1332 16.1105 5.1332C16.8043 5.1332 17.3668 5.6957 17.3668 6.38945ZM20.934 7.66445C20.8543 5.98164 20.4699 4.49102 19.2371 3.26289C18.009 2.03477 16.5184 1.65039 14.8355 1.56602C13.1012 1.46758 7.90273 1.46758 6.16836 1.56602C4.49023 1.6457 2.99961 2.03008 1.7668 3.2582C0.533984 4.48633 0.154297 5.97695 0.0699219 7.65977C-0.0285156 9.39414 -0.0285156 14.5926 0.0699219 16.327C0.149609 18.0098 0.533984 19.5004 1.7668 20.7285C2.99961 21.9566 4.48555 22.341 6.16836 22.4254C7.90273 22.5238 13.1012 22.5238 14.8355 22.4254C16.5184 22.3457 18.009 21.9613 19.2371 20.7285C20.4652 19.5004 20.8496 18.0098 20.934 16.327C21.0324 14.5926 21.0324 9.39883 20.934 7.66445ZM18.6934 18.1879C18.3277 19.1066 17.6199 19.8145 16.6965 20.1848C15.3137 20.7332 12.0324 20.6066 10.5043 20.6066C8.97617 20.6066 5.69023 20.7285 4.31211 20.1848C3.39336 19.8191 2.68555 19.1113 2.31523 18.1879C1.7668 16.8051 1.89336 13.5238 1.89336 11.9957C1.89336 10.4676 1.77148 7.18164 2.31523 5.80352C2.68086 4.88477 3.38867 4.17695 4.31211 3.80664C5.69492 3.2582 8.97617 3.38477 10.5043 3.38477C12.0324 3.38477 15.3184 3.26289 16.6965 3.80664C17.6152 4.17227 18.323 4.88008 18.6934 5.80352C19.2418 7.18633 19.1152 10.4676 19.1152 11.9957C19.1152 13.5238 19.2418 16.8098 18.6934 18.1879Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_488_11934">
+                                                <rect width="21" height="24" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                                <a target="_blank" href="https://www.linkedin.com/company/distinct-cloud-labs">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <g clip-path="url(#clip0_488_11933)">
+                                            <path
+                                                d="M22.2234 0H1.77187C0.792187 0 0 0.773438 0 1.72969V22.2656C0 23.2219 0.792187 24 1.77187 24H22.2234C23.2031 24 24 23.2219 24 22.2703V1.72969C24 0.773438 23.2031 0 22.2234 0ZM7.12031 20.4516H3.55781V8.99531H7.12031V20.4516ZM5.33906 7.43438C4.19531 7.43438 3.27188 6.51094 3.27188 5.37187C3.27188 4.23281 4.19531 3.30937 5.33906 3.30937C6.47813 3.30937 7.40156 4.23281 7.40156 5.37187C7.40156 6.50625 6.47813 7.43438 5.33906 7.43438ZM20.4516 20.4516H16.8937V14.8828C16.8937 13.5562 16.8703 11.8453 15.0422 11.8453C13.1906 11.8453 12.9094 13.2937 12.9094 14.7891V20.4516H9.35625V8.99531H12.7687V10.5609H12.8156C13.2891 9.66094 14.4516 8.70938 16.1813 8.70938C19.7859 8.70938 20.4516 11.0813 20.4516 14.1656V20.4516Z"
+                                                fill="white" />
+                                        </g>
+                                        <defs>
+                                            <clipPath id="clip0_488_11933">
+                                                <rect width="24" height="24" fill="white" />
+                                            </clipPath>
+                                        </defs>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-top end -->
+    <!-- footer-bottom start -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-wapper">
+                <div class="row ">
+                    <div class="col-lg-12">
+                        <div class="copyright-text text-center wow fadeInUp" data-wow-delay="0.2s">
+                            <p class="fs_14 fw_4 mb-20">Copyright &#64; 2024 Distinct Cloud Labs LLP</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- footer-bottom end -->
+</footer>
