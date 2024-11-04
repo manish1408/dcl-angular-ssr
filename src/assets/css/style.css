@@ -7949,9 +7949,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
 .case-study-card2 .card-img img {
   border-radius: 10px 10px 0 0;
   transition: all 0.5s ease-out;
-  object-fit: cover;
-    width: 100%;
-    height: 300px;
+  object-fit: contain;
 }
 .case-study-card2 .card-img::after {
   position: absolute;
@@ -7965,7 +7963,9 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   z-index: 1;
 }
 .case-study-card2 .card-content {
-  padding: 30px 25px;
+  padding: 15px;
+  background-color: #F4F4F4;
+  border-radius: 0px 0px 10px 10px;
 }
 @media (max-width: 1199px) {
   .case-study-card2 .card-content {
@@ -7973,7 +7973,8 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   }
 }
 .case-study-card2 .card-content h4 {
-  margin-bottom: 25px;
+  min-height: 65px;
+  line-height: 32px;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .case-study-card2 .card-content h4 {
@@ -15482,6 +15483,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
 .case-study-details-page .case-thumb img {
   border-radius: 10px;
   width: 100%;
+  object-fit: contain;
 }
 .case-study-details-page .case-details-content h3 {
   color: var(--title-color);
