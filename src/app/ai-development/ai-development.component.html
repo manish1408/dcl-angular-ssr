@@ -665,7 +665,85 @@
                         </div>
                     </div>
                 </div>
-                <app-ai-demos></app-ai-demos>
+                @for (p of portfolios; track p;let i=$index) {
+                <div class="showcase-wapper hide-mobile">
+                    <div [ngClass]="i % 2 == 0 ? 'row flex-row-reverse' :'row'">
+                        <div class="col-md-5">
+                            <div class="showcase-image wow " data-wow-delay="0.3s"
+                                [ngClass]="i % 2 !== 0 ? 'fadeInRight' :'fadeInLeft'">
+                                <img [src]="
+                                    'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' + 
+                                    p?.data?.image?.iv[0]
+                                 " alt="">
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="showcase-content wow fadeInRight" data-wow-delay="0.3s">
+                                <h3 class="text-black fw_7">{{ p.data?.title?.iv }}</h3>
+                                <p [innerHTML]="p.data?.description?.iv"></p>
+                                <div class="button-wapper">
+                                    <a [routerLink]="['/demo/', p.data?.slug?.iv]" class="button-style">
+                                        Details
+                                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                                d="M2.25 1C2.25 0.585786 2.58579 0.25 3 0.25H13C13.4142 0.25 13.75 0.585786 13.75 1V11C13.75 11.4142 13.4142 11.75 13 11.75C12.5858 11.75 12.25 11.4142 12.25 11V2.81066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.46967 13.5303C0.176777 13.2374 0.176777 12.7626 0.46967 12.4697L11.1893 1.75H3C2.58579 1.75 2.25 1.41421 2.25 1Z"
+                                                fill="white" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+                <div class="row show-mobile">
+                    <div class="col-12">
+                    <div class="slider-wapper">
+                        <div class="swiper showcase-slider">
+                            <div class="swiper-wrapper pb-30">
+                                @for (portfolio of portfolios; track portfolio;let index=$index) {
+                                <div class="swiper-slide">
+                                    <div class="showcase-wapper">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="showcase-image">
+                                                    <img [src]="
+                                                        'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' + 
+                                                        portfolio?.data?.image?.iv[0]
+                                                        " alt="">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="showcase-content">
+                                                    <h3 class="text-black fw_7">{{ portfolio.data?.title?.iv }}
+                                                    </h3>
+                                                    <p [innerHTML]="portfolio.data?.description?.iv"></p>
+                                                    <div class="button-wapper">
+                                                        <a [routerLink]="['/demo/', portfolio.data?.slug?.iv]"
+                                                            class="button-style">
+                                                            Details
+                                                            <svg width="14" height="14" viewBox="0 0 14 14"
+                                                                fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                                                    d="M2.25 1C2.25 0.585786 2.58579 0.25 3 0.25H13C13.4142 0.25 13.75 0.585786 13.75 1V11C13.75 11.4142 13.4142 11.75 13 11.75C12.5858 11.75 12.25 11.4142 12.25 11V2.81066L1.53033 13.5303C1.23744 13.8232 0.762563 13.8232 0.46967 13.5303C0.176777 13.2374 0.176777 12.7626 0.46967 12.4697L11.1893 1.75H3C2.58579 1.75 2.25 1.41421 2.25 1Z"
+                                                                    fill="white" />
+                                                            </svg>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                            <!-- If we need pagination -->
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
 
             </div>
 

@@ -29,15 +29,5 @@ export class AiDemosComponent {
         this.portfolios = resp?.items;
       });
   }
-  // ngAfterViewInit() {
-  //   if (isPlatformBrowser(this.platformId)) {
-  //     const isReloaded = window.sessionStorage.getItem('isReloaded');
-  //     if (!isReloaded) {
-  //       window.sessionStorage.setItem('isReloaded', 'true');
-  //       window.location.reload();
-  //     } else {
-  //       window.sessionStorage.removeItem('isReloaded');
-  //     }
-  //   }
-  // }
+ 
 }

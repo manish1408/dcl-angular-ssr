@@ -19,7 +19,7 @@ import { ToastrService } from 'ngx-toastr';
 import { SummaryPipe } from '../_pipes/summary.pipe';
 import { CaseStudyService } from '../services/case-study.service';
 import { Router } from '@angular/router';
-import { forkJoin } from 'rxjs';
+import { finalize, forkJoin } from 'rxjs';
 import { AiProjectsComponent } from '../common/ai-projects/ai-projects.component';
 import { AiDemosComponent } from '../common/ai-demos/ai-demos.component';
 import { AiTestimonialsComponent } from '../common/ai-testimonials/ai-testimonials.component';
@@ -61,19 +61,16 @@ export class AiDevelopmentComponent {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.caseStudyService
+    .fetchPortfolio()
+    .pipe(finalize(() => (this.loading = false)))
+    .subscribe((resp: any) => {
+      this.portfolios = resp?.items;
+    });
+  }
 
-  // ngAfterViewInit() {
-  //   if (isPlatformBrowser(this.platformId)) {
-  //     const isReloaded = window.sessionStorage.getItem('isReloaded');
-  //     if (!isReloaded) {
-  //       window.sessionStorage.setItem('isReloaded', 'true');
-  //       window.location.reload();
-  //     } else {
-  //       window.sessionStorage.removeItem('isReloaded');
-  //     }
-  //   }
-  // }
+
 
   scrollToSection(section: string) {
     const sectionEle = this.el.nativeElement.querySelector(section);
