@@ -50,12 +50,17 @@
               <a [routerLink]="['/case-study/', post.data?.slug?.iv]">{{ post.data?.projectName?.iv }}
               </a>
             </h4>
-            <p style="min-height: 60px;" class="mb-4">
+            <p style="min-height: 85px;" class="mb-4">
               {{ post.data?.projectSubheading?.iv }}
             </p>
 
 
-            <button [routerLink]="['/case-study/', post.data?.slug?.iv]" class="btn btn-success btn-block">Read More</button>
+            <button [routerLink]="['/case-study/', post.data?.slug?.iv]" class="clear-btn">Read More
+              <div class="btn-icon-wrapper">
+
+                <img src="assets/icons/sm-arrow-upright.svg" />
+              </div>
+            </button>
           </div>
         </div>
       </div>

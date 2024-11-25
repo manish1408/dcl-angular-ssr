@@ -16,8 +16,10 @@
               {{ post?.projectName?.iv }}
             </h1>
             <p class="text-white">{{ post?.projectSubheading?.iv }}</p>
-            <a target="_blank" href="{{ post?.DownloadPDF?.iv }}" class="btn btn-success btn-lg"><i class="bi bi-file-pdf-fill"></i> Download in PDF</a>
-            <a target="_blank" href="https://calendly.com/manish-gautam/30-minute-meeting" class="btn btn btn-outline-light btn-lg mx-4"><i class="bi bi-kanban"></i> Start a similiar project</a>
+            <a target="_blank" href="{{ post?.DownloadPDF?.iv }}" class="btn btn-success btn-lg"><i
+                class="bi bi-file-pdf-fill"></i> Download in PDF</a>
+            <a target="_blank" href="https://calendly.com/manish-gautam/30-minute-meeting"
+              class="btn btn btn-outline-light btn-lg mx-4"><i class="bi bi-kanban"></i> Start a similiar project</a>
           </div>
           <div class="scroll-down-btn">
             <a (click)="scrollToSection()" role="button">
@@ -66,7 +68,7 @@
         </div>
 
 
-        
+
         <div class="mt-4 ">
           <div class="section-title5 two">
             <span class="sub-title5 two">
@@ -159,11 +161,7 @@
             <ul class="case-info">
               <li>
                 <div class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="23" viewBox="0 0 34 23" fill="none">
-                    <path
-                      d="M-4.5897e-07 11.5L33 11.5M33 11.5C28.6786 10.8824 20.1536 7.91765 20.625 1M33 11.5C28.4821 12.7353 19.6821 16.5647 20.625 22"
-                      stroke-width="2" stroke-linejoin="round" />
-                  </svg>
+                  <img src="assets/icons/arrow-right.svg" />
                 </div>
                 <div class="content">
                   <span>Industry:</span>
@@ -172,11 +170,7 @@
               </li>
               <li>
                 <div class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="23" viewBox="0 0 34 23" fill="none">
-                    <path
-                      d="M-4.5897e-07 11.5L33 11.5M33 11.5C28.6786 10.8824 20.1536 7.91765 20.625 1M33 11.5C28.4821 12.7353 19.6821 16.5647 20.625 22"
-                      stroke-width="2" stroke-linejoin="round" />
-                  </svg>
+                  <img src="assets/icons/arrow-right.svg" />
                 </div>
                 <div class="content">
                   <span>Stack:</span>
@@ -193,11 +187,7 @@
             <ul class="case-info">
               <li *ngFor="let highlight of post?.Highlights?.iv">
                 <div class="icon">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="34" height="23" viewBox="0 0 34 23" fill="none">
-                    <path
-                      d="M-4.5897e-07 11.5L33 11.5M33 11.5C28.6786 10.8824 20.1536 7.91765 20.625 1M33 11.5C28.4821 12.7353 19.6821 16.5647 20.625 22"
-                      stroke-width="2" stroke-linejoin="round" />
-                  </svg>
+                  <img src="assets/icons/arrow-right.svg" />
                 </div>
                 <div class="content">
                   <h5>{{ highlight.value }}</h5>
@@ -211,7 +201,7 @@
     </div>
     <div class="row g-lg-4 gy-5 mb-60">
     </div>
-  
+
   </div>
 </div>
 
@@ -242,7 +232,7 @@
     <div class="row g-4 mb-60">
       @for (post of posts; track post) {
       <div class="col-xl-4 col-md-6">
-        <div class="case-study-card style-2">
+        <div class="case-study-card2">
           <div class="card-img">
             <img [src]="
                 'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
@@ -254,11 +244,15 @@
               <a [routerLink]="['/case-study/', post.data?.slug?.iv]">
                 {{ post.data?.projectName?.iv }}</a>
             </h4>
-            <p>
+            <p style="min-height: 85px;">
               {{ post.data?.projectSubheading?.iv }}
             </p>
 
-            <button [routerLink]="['/case-study/', post.data?.slug?.iv]" class="btn btn-success">Read more
+            <button [routerLink]="['/case-study/', post.data?.slug?.iv]" class="clear-btn">Read More
+              <div class="btn-icon-wrapper">
+
+                <img src="assets/icons/sm-arrow-upright.svg" />
+              </div>
             </button>
           </div>
         </div>

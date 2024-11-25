@@ -29,3 +29,57 @@
   width: 11px;
   content: "";
 }
+
+.case-study-details-page .case-thumb img {
+  border-radius: 0;
+}
+.case-study-details-page
+  .case-sidebar
+  .case-info-wrap
+  .case-info
+  li
+  .content
+  span {
+  color: #c9cace;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.icon {
+  flex-shrink: 0;
+  img {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.case-study-details-page
+  .case-sidebar
+  .case-info-wrap
+  .case-info
+  li
+  .content
+  h5 {
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.case-study-details-page .case-sidebar .case-info-wrap h4 {
+  color: #232323;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.case-study-details-page .case-sidebar .case-info-wrap {
+  padding: 16px;
+  background: #f9faff;
+}

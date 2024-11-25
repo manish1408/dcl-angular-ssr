@@ -31,3 +31,60 @@
   background: transparent;
   z-index: 1;
 }
+
+.clear-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #000;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background: transparent;
+}
+
+.btn-icon-wrapper {
+  display: flex;
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 28px;
+  background: #23af6f;
+  img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+}
+.case-study-card2 .card-content h4 {
+  margin-bottom: 8px;
+}
+
+.case-study-card2 .card-content h4 a {
+  color: #232323;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.case-study-card2 .card-content p {
+  color: var(--Grays-Gray-2, var(--Grays-Gray-2, #aeaeb2));
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.case-study-card2 .card-content {
+  padding: 24px 16px;
+  background-color: #f4f4f4;
+  border-radius: 0px 0px 10px 10px;
+}
