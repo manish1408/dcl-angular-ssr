@@ -21,7 +21,6 @@ export class PortfolioComponent {
   async ngOnInit() {
     this.isLoading = true;
     this.caseStudyService.fetchPortfolio().subscribe((resp: any) => {
-      console.log('resr', resp);
       this.posts = resp?.items;
       this.isLoading = false;
     });

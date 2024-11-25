@@ -38,28 +38,27 @@
           animation-duration: 1500ms;
           animation-delay: 200ms;
         ">
-        <div class="blog-card style-2 h-100">
-          <div class="blog-card-img-wrap">
-            <a [routerLink]="['/blog/', post.data?.slug?.iv]" class="card-img">
-              <img [src]="
+        <div class="card-wrapper"> <img alt="image" src="assets/img/logo_light.svg" class="dcl-logo">
+          <img alt="image" src="assets/icons/diamond-square.svg" class="diamond-icon">
+          <div class="blog-card style-2 h-100">
+            <div class="blog-card-img-wrap">
+              <img [routerLink]="['/blog/', post.data?.slug?.iv]" class="card-top-img" [src]="
                   'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' +
                   post?.data?.thumbnail?.iv[0]
                 " alt="" />
-            </a>
-          </div>
-          <div class="card-content">
-            <h4>
-              <a [routerLink]="['/blog/', post.data?.slug?.iv]">{{
-                post.data?.title?.iv
-                }}</a>
-            </h4>
-            <a [routerLink]="['/blog/', post.data?.slug?.iv]" class="read-more-btn">Read More
-              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M8.48878 0.885308L0 9.37364L0.626356 10L9.11469 1.51122V7.38037H10V0H2.61963V0.885308H8.48878Z">
-                </path>
-              </svg>
-            </a>
+            </div>
+            <div class="card-content">
+              <div class="card-text-info">
+                <h4 [routerLink]="['/blog/', post.data?.slug?.iv]">
+                  {{
+                  post.data?.title?.iv
+                  }}
+                </h4>
+              </div>
+              <a [routerLink]="['/blog/', post.data?.slug?.iv]" class="btn btn-success w-100">Read More
+                <img src="assets/icons/sm-arrow-upright.svg" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
