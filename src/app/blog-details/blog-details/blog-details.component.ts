@@ -34,6 +34,7 @@ export class BlogDetailsComponent implements OnInit {
       this.slugName = param['type'];
     });
     this.blogService.getBlogBySlug(this.slugName).subscribe((resp: any) => {
+      console.log(resp);
       this.post = resp?.items[0].data;
       this.isLoading = false;
 

@@ -34,7 +34,7 @@
 <!-- Start Blog Details Section -->
 <div class="blog-details scroll-margin pt-120 mb-120 style-6" id="blog-details">
   <div class="container">
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-12">
         <div class="blog-details-author-meta">
           <div class="author-area">
@@ -49,10 +49,40 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div>
       <div class="row justify-content-center g-4">
-        <div class="col-lg-8">
+        <div class="col-lg-9">
+          <div class="image-wrapper">
+
+            <img [src]="imgCDN + post?.image.iv[0]" alt="" />
+            <div class="image-bottom-content">
+              <h1>{{post?.title.iv}}</h1>
+              <p>{{post?.metaDesc.iv}}</p>
+              <div class="author-area">
+                <div class="author-img">
+                  <img *ngIf="post?.author.iv.image" [src]="imgCDN + post?.author.iv.image[0]" alt="" />
+                  <h6>{{post?.author.iv.name}}</h6>
+                </div>
+                <div class="date-content">
+                  <div class="date-icon">
+                    <img src="assets/icons/calendar-icon.svg" />
+                  </div>
+                  <h6>{{date | date:'MMM dd, yyyy'}}</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row gx-3">
+            <div class="col-4" *ngFor="let a of [1,2,3]">
+              <div class="podcast-wrapper">
+                <h2>Sick leave for Indie Founder!</h2>
+                <p>DCL stories - Jan 24 - Episode 01</p>
+                <img class='play-icon' src="assets/icons/play-btn-white.svg" />
+              </div>
+            </div>
+
+          </div>
           <div [innerHTML]="post?.text?.iv"></div>
         </div>
       </div>
