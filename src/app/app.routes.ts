@@ -24,6 +24,7 @@ import { DclSprintComponent } from './dcl-sprint/dcl-sprint.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioDetailsComponent } from './portfolio-details/portfolio-details.component';
 import { AiDevelopmentComponent } from './ai-development/ai-development.component';
+import { ServicePageComponent } from './service-page/service-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -64,6 +65,7 @@ export const routes: Routes = [
     component: TermsConditionsComponent,
   },
   { path: 'ai-development', component: AiDevelopmentComponent },
+  { path: 'services', component: ServicePageComponent },
   {
     path: '**',
     redirectTo: 'page-not-found',
@@ -103,4 +105,5 @@ export const ssrTracking: Routes = [
   { path: 'thank-you', component: ThankYouComponent },
   { path: 'dcl-sprint', component: DclSprintComponent },
   { path: 'ai-development', component: AiDevelopmentComponent },
+  { path: 'services', component: ServicePageComponent },
 ];
