@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterModule, CommonModule],
   templateUrl: './portfolio.component.html',
-  styleUrl: './portfolio.component.scss'
+  styleUrl: './portfolio.component.scss',
 })
 export class PortfolioComponent {
   constructor(
@@ -16,11 +16,12 @@ export class PortfolioComponent {
   ) {}
   posts: any[] = [];
   isLoading: boolean = false;
-  clientServices:any;
+  clientServices: any;
 
   async ngOnInit() {
     this.isLoading = true;
-    this.caseStudyService.fetchPortfolio().subscribe((resp: any) => { 
+    this.caseStudyService.fetchPortfolio().subscribe((resp: any) => {
+      console.log('resr', resp);
       this.posts = resp?.items;
       this.isLoading = false;
     });

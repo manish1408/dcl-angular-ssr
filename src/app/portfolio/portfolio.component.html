@@ -39,22 +39,32 @@
     <div class="row g-4 mb-50">
       @for (post of posts; track post) {
       <div class="col-xl-4 col-md-6 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
-        <div class="case-study-card2">
-          <a [routerLink]="['/demo/', post.data?.slug?.iv]" class="card-img">
-            <img [src]="
-                'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' + 
-                post?.data?.image?.iv[0]
-              " alt="" />
-          </a>
-          <div class="card-content">
-            <h4>
-              <a [routerLink]="['/demo/', post.data?.slug?.iv]">{{ post.data?.title?.iv }}
-              </a>
-            </h4>
+        <div class="card-wrapper">
+          <img alt="image" src="assets/img/logo_light.svg" class="dcl-logo">
+          <img alt="image" src="assets/icons/diamond-square.svg" class="diamond-icon">
+          <div class="case-study-card3">
 
-            <button [routerLink]="['/demo/', post.data?.slug?.iv]" class="btn btn-success btn-block" style="width: 100%;">Watch Video</button>
+            <img [routerLink]="['/demo/', post.data?.slug?.iv]" class="card-top-img" [src]="
+                  'https://cloud.squidex.io/api/assets/distinct-cloud-labs/' + 
+                  post?.data?.image?.iv[0]
+                " alt="" />
+
+            <div class="card-content">
+              <div class="card-text-info">
+
+                <h4 [routerLink]="['/demo/', post.data?.slug?.iv]">
+                  {{ post.data?.title?.iv }}
+                </h4>
+                <!-- <p>{{post.data?.description?.iv}}</p> -->
+              </div>
+
+              <button [routerLink]="['/demo/', post.data?.slug?.iv]" class="clear-btn">
+                <img src="assets/icons/play-icon.svg" />
+              </button>
+            </div>
           </div>
         </div>
+
       </div>
       }
     </div>
