@@ -65,7 +65,7 @@ export const routes: Routes = [
     component: TermsConditionsComponent,
   },
   { path: 'ai-development', component: AiDevelopmentComponent },
-  { path: 'services', component: ServicePageComponent },
+  { path: 'services/:slug', component: ServicePageComponent },
   {
     path: '**',
     redirectTo: 'page-not-found',
@@ -105,5 +105,5 @@ export const ssrTracking: Routes = [
   { path: 'thank-you', component: ThankYouComponent },
   { path: 'dcl-sprint', component: DclSprintComponent },
   { path: 'ai-development', component: AiDevelopmentComponent },
-  { path: 'services', component: ServicePageComponent },
+  { path: 'services/:slug', component: ServicePageComponent },
 ];

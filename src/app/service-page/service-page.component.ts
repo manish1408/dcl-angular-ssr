@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { OurServicesService } from '../services/our-services.service';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-service-page',
@@ -11,7 +13,60 @@ import { RouterModule } from '@angular/router';
 })
 export class ServicePageComponent {
   isLoading: boolean = false;
-  constructor(private el: ElementRef) {}
+  imgCDN: string = environment.squidexAssets;
+  service: any;
+  slugName: string = '';
+  posts: any = [];
+  date: any;
+  formattedDate: any;
+  constructor(
+    private el: ElementRef,
+    private ourServicesService: OurServicesService,
+    private route: ActivatedRoute
+  ) {}
+
+  async ngOnInit() {
+    this.route.params.subscribe((param) => {
+      this.isLoading = true;
+      this.slugName = param['slug'];
+    });
+    this.ourServicesService
+      .getServiceBySlug(this.slugName)
+      .subscribe((resp: any) => {
+        console.log(resp);
+        this.service = resp?.items[0].data;
+        this.isLoading = false;
+      });
+  }
+
+  getCardColor(index: number): string {
+    const forward = ['green', 'gray', 'brown']; // Forward sequence
+    const reverse = ['brown', 'gray', 'green']; // Reverse sequence
+
+    // Determine which sequence to use (alternates every 3 indices)
+    const sequence = Math.floor(index / 3) % 2 === 0 ? forward : reverse;
+
+    // Return the color based on the index within the sequence
+    return sequence[index % 3];
+  }
+
+  getColumnClass(index: number): string {
+    // Pattern: 0-1: col-lg-6, 2-4: col-lg-4, 5-6: col-lg-6, repeat
+    const group = Math.floor(index / 7); // Determine the repeating group
+    const position = index % 7; // Position within the group
+
+    if (position <= 1 || (position >= 5 && position <= 6)) {
+      return 'col-lg-6';
+    } else if (position >= 2 && position <= 4) {
+      return 'col-lg-4';
+    }
+
+    return ''; // Default class (if needed)
+  }
+  isMidGroup(index: number): boolean {
+    const position = index % 7;
+    return position >= 2 && position <= 4; // True for indexes 2, 3, 4 in the pattern
+  }
 
   scrollToSection() {
     const section = this.el.nativeElement.querySelector('#blog-grid');

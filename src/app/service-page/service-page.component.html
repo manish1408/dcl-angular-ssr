@@ -1,3 +1,8 @@
+<!-- <div *ngIf="isLoading" class="d-flex justify-content-center">
+    <span class="spinner-border spinner-border-sm mt-5" role="status"></span>
+</div> -->
+
+<!-- <ng-container *ngIf="!isLoading"> -->
 <div class="breadcrumb-section" style="
     background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
       linear-gradient(180deg, #121212 0%, #121212 100%);
@@ -11,8 +16,7 @@
                             <li><a [routerLink]="['/home']">Home</a></li>
                             <li>Services</li>
                         </ul>
-                        <h1>GenAI and ML Consulting
-                            Services</h1>
+                        <h1>{{service?.pageTitle?.iv}}</h1>
                     </div>
                     <div class="scroll-down-btn">
                         <a (click)="scrollToSection()" role="button">
@@ -32,246 +36,38 @@
     <span *ngIf="isLoading" class="spinner-border spinner-border-sm mt-5" role="status"></span>
 </div>
 
-<div class="home3-process-section mb-110 pt-60">
-    <div class="container mb-110">
+<div class="home3-process-section mb-110">
+    <div class="container pt-100 pb-100">
         <div class="row justify-content-center mb-60">
             <div class="col-lg-8">
                 <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms"
                     data-wow-duration="1500ms">
 
-                    <h2>Empower your business with our AI development services</h2>
+                    <h2>{{service?.section1Title?.iv}}</h2>
                     <p>
-                        Unlock the full potential of AI and propel your success with Apriorit’s comprehensive suite of
-                        AI software development services:
+                        {{service?.section1Desc?.iv}}
                     </p>
                 </div>
             </div>
         </div>
         <div class="row g-4">
-            <div class="col-xl-4 col-lg-4 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
-                data-wow-duration="1500ms">
-                <div class="process-card green">
-                    <div class="process-card-top">
-                        <div class="icon-wrapper">
-                            <img src="assets/icons/custom-ai.svg" />
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4>Custom AI software development</h4>
-                        <p>
-                            Build unique AI-powered applications tailored to solving your specific business challenges.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
-                data-wow-duration="1500ms">
-                <div class="process-card gray">
-                    <div class="process-card-top">
-                        <div class="icon-wrapper">
-                            <img src="assets/icons/custom-gen-ai.svg" />
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4>Generative AI development</h4>
-                        <p>
-                            Receive a reliable solution for automating content creation, including generation of text,
-                            audio, images, and video.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
-                data-wow-duration="1500ms">
-                <div class="process-card brown">
-                    <div class="process-card-top">
-                        <div class="icon-wrapper">
-                            <img src="assets/icons/custom-chat-ai.svg" />
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4>AI chatbot development</h4>
-                        <p>
-                            Develop intelligent chatbots to automate customer service, provide 24/7 support, and enhance
-                            user engagement.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
-                data-wow-duration="1500ms">
-                <div class="process-card green">
-                    <div class="process-card-top">
-                        <div class="icon-wrapper">
-                            <img src="assets/icons/custom-ml-dl.svg" />
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4>Machine learning and deep learning</h4>
-                        <p>
-                            Leverage cutting-edge algorithms to build efficient solutions for extracting information,
-                            forecasting, automating tasks, and more.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
-                data-wow-duration="1500ms">
-                <div class="process-card gray">
-                    <div class="process-card-top">
-                        <div class="icon-wrapper">
-                            <img src="assets/icons/custom-ai-ml.svg" />
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4>AI and machine learning integration</h4>
-                        <p>
-                            Have a team of experts continuously improving your chatbot using customer feedback and
-                            emerging AI technologies.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-4 col-lg-4 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
-                data-wow-duration="1500ms">
-                <div class="process-card brown">
-                    <div class="process-card-top">
-                        <div class="icon-wrapper">
-                            <img src="assets/icons/custom-da.svg" />
-                        </div>
-                    </div>
-                    <div class="content">
-                        <h4>Data analytics and data management</h4>
-                        <p>
-                            We include an admin panel with every chatbot, allowing you to easily access usage
-                            statistics, expenditure records, conversation history, and more.
-                        </p>
-                    </div>
-                </div>
-            </div>
+            @for(s1c of service?.section1Cards?.iv;let i = $index; track s1c){
 
-        </div>
-    </div>
-    <div class="expertise-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="banner-wrapper">
-                        <div class="banner-content">
 
-                            <h2 class='expertise-heading'>Leverage our AI development expertise</h2>
-                            <p class="expertise-subtitle">Our specialists offer professional AI application development
-                                services, helping our clients leverage state-of-the-art technologies to align their
-                                products with business goals.</p>
-                        </div>
-                        <div class="container expertise-card-section">
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="expertise-card">
-                                        <img class='icon-img' src="assets/icons/vision-icon.svg" />
-                                        <div class="text-content min-h-110">
-                                            <h4>Custom AI software development</h4>
-                                            <p>Build unique AI-powered applications tailored to solving your specific
-                                                business challenges.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="expertise-card">
-                                        <img src="assets/icons/nlp-icon.svg" />
-                                        <div class="text-content min-h-110">
-                                            <h4>Custom AI software development</h4>
-                                            <p>Build unique AI-powered applications tailored to solving your specific
-                                                business challenges.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-                                <div class="col-4">
-                                    <div class="expertise-card  ">
-                                        <img class='icon-img' src="assets/icons/time-series.svg" />
-                                        <div class="text-content min-h-160">
-                                            <h4>Time series analysis</h4>
-                                            <p>To extract useful statistics, insights, trends, patterns, and forecasts
-                                                from big data</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="expertise-card  ">
-                                        <img src="assets/icons/content-gen.svg" />
-                                        <div class="text-content min-h-160">
-                                            <h4>Content generation</h4>
-                                            <p>To create new texts, images, audio files, and videos
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="expertise-card  ">
-                                        <img src="assets/icons/data-analytics.svg" />
-                                        <div class="text-content min-h-160">
-                                            <h4>Data analytics</h4>
-                                            <p>To structure and visualize data, mine data arrays, and detect patterns
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mt-4">
-                                <div class="col-6">
-                                    <div class="expertise-card">
-                                        <img class='icon-img' src="assets/icons/ml.svg" />
-                                        <div class="text-content  min-h-110">
-                                            <h4>Machine learning
-                                            </h4>
-                                            <p>To train algorithms to learn from data and make intelligent predictions
-                                                without explicit programming
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="expertise-card">
-                                        <img src="assets/icons/deep-learning.svg" />
-                                        <div class="text-content  min-h-110">
-                                            <h4>Deep learning
-                                            </h4>
-                                            <p>To tackle complex tasks like image recognition and natural language
-                                                processing with the help of artificial neural networks
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
+                data-wow-duration="1500ms">
+                <div class="process-card" [ngClass]="getCardColor(i)">
+                    <div class="process-card-top">
+                        <div class="icon-wrapper">
+                            <img [src]="imgCDN+s1c.icon[0]" />
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container mb-110 pt-60">
-        <div class="row justify-content-center mb-60">
-            <div class="col-lg-8">
-                <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms"
-                    data-wow-duration="1500ms">
-
-                    <h2>Our Diverse Industry Reach</h2>
-                    <p>
-                        With more than a decade of experience delivering tailored AI and ML solutions, Ksolves serves
-                        businesses sprawling diverse industries.
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="row g-4">
-            @for(a of industry;track a){
-            <div class="col-xl-3 col-lg-3 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
-                data-wow-duration="1500ms">
-                <div class="industry-card">
-                    <img [src]="a.icon" />
-                    <h4>{{a.title}}</h4>
+                    <div class="content ">
+                        <h4>{{s1c?.title}}</h4>
+                        <p>
+                            {{s1c?.description}}
+                        </p>
+                    </div>
                 </div>
             </div>
             }
@@ -279,25 +75,84 @@
 
         </div>
     </div>
-    <div class="expertise-section">
+    <div class="expertise-section pt-100 pb-100">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="banner-wrapper">
                         <div class="banner-content">
 
-                            <h2 class='expertise-heading'>Our Expertise in AI Technologies</h2>
-                            <p class="expertise-subtitle">We aim to empower our clients with our expertise in AI
-                                technologies, enhancing their
-                                operational capabilities and offerings.</p>
+                            <h2 class='expertise-heading'>{{service?.section2Title?.iv}}</h2>
+                            <p class="expertise-subtitle">{{service?.section2Desc?.iv}}</p>
+                        </div>
+                        <div class="container expertise-card-section">
+                            <div class="row g-4">
+                                @for(s2c of service?.section2Cards.iv;let i=$index;track s2c){
+
+                                <div [ngClass]="getColumnClass(i)" class="col-sm-12">
+                                    <div class="expertise-card">
+                                        <img class='icon-img' [src]="imgCDN+s2c?.icon[0]" />
+                                        <div class="text-content "
+                                            [ngClass]="{'min-h-160': isMidGroup(i), 'min-h-110': !isMidGroup(i)}">
+                                            <h4>{{s2c?.title}}</h4>
+                                            <p>{{s2c?.description}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container pt-100 pb-100">
+        <div class="row justify-content-center mb-60">
+            <div class="col-lg-8">
+                <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms"
+                    data-wow-duration="1500ms">
+
+                    <h2>{{service?.section3Title?.iv}}</h2>
+                    <p>
+                        {{service?.section3Desc?.iv}}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4">
+            @for(s3c of service?.section3Cards.iv;track s3c){
+            <div class="col-xl-3 col-lg-3 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
+                data-wow-duration="1500ms">
+                <div class="industry-card">
+                    <img [src]="imgCDN+ s3c?.icon[0]" />
+                    <h4>{{s3c?.title}}</h4>
+                </div>
+            </div>
+            }
+
+
+        </div>
+    </div>
+    <div class="expertise-section pt-100 pb-100">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="banner-wrapper">
+                        <div class="banner-content">
+
+                            <h2 class='expertise-heading'>{{service?.section4Title?.iv}}</h2>
+                            <p class="expertise-subtitle">{{service?.section4Desc?.iv}}</p>
                         </div>
                         <div class="container-fluid ai-card-section px-5">
 
 
-                            @for(ai of aiTech;track ai){
+                            @for(s4c of service?.section4Cards.iv;track s4c){
                             <div class="ai-tech-card">
-                                <img [src]="ai.icon" />
-                                <h4>{{ai.title}}</h4>
+                                <img [src]="imgCDN+ s4c?.icon[0]" />
+                                <h4>{{s4c?.title}}</h4>
                             </div>
                             }
                         </div>
@@ -306,28 +161,28 @@
             </div>
         </div>
     </div>
-    <div class="container mb-110 pt-60">
+    <div class="container pt-100">
         <div class="row justify-content-center mb-60">
             <div class="col-lg-8">
                 <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms"
                     data-wow-duration="1500ms">
 
-                    <h2>Why choose Apriorit for your AI development services?</h2>
+                    <h2>{{service?.section5Title?.iv}}</h2>
                     <p>
-                        At Apriorit, we have our own approach to artificial intelligence software development services
+                        {{service?.section5Desc?.iv}}
                     </p>
                 </div>
             </div>
         </div>
         <div class="row g-4">
-            @for(ais of aiServices;track ais){
+            @for(s5c of service?.section5Cards?.iv;track s5c){
             <div class="col-xl-3 col-lg-3 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
                 data-wow-duration="1500ms">
                 <div class="aiServices-card">
-                    <img [src]="ais.icon" />
+                    <img [src]="imgCDN +  s5c?.icon[0]" />
                     <div class="text-center">
-                        <h4>{{ais.title}}</h4>
-                        <p>{{ais.desc}}</p>
+                        <h4>{{s5c?.title}}</h4>
+                        <p>{{s5c?.description}}</p>
                     </div>
                 </div>
             </div>
@@ -335,8 +190,8 @@
 
 
         </div>
-        <div class="row g-4 mb-50 mt-5">
-            <div class="home3-newsletter-section mb-110">
+        <div class="row g-4 mt-5">
+            <div class="home3-newsletter-section ">
                 <div class="newsletter-wrapper">
                     <div class="row g-lg-4 gy-5 align-items-center">
                         <div data-wow-delay="200ms" data-wow-duration="1500ms"
@@ -374,3 +229,4 @@
     </div>
 
 </div>
+<!-- </ng-container> -->

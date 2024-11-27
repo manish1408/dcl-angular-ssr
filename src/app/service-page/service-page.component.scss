@@ -49,7 +49,6 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  padding: 100px 0px 90px;
 }
 .expertise-heading {
   color: #fff;
@@ -75,7 +74,7 @@
   border: 1px solid #dadce0;
   background: linear-gradient(129deg, #f7f7fa 19.26%, #edf7fc 97.48%);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 50px;
   padding: 34px;
   .icon-img {
@@ -107,13 +106,6 @@
       margin: 0;
     }
   }
-}
-
-.min-h-160 {
-  height: 160px;
-}
-.min-h-110 {
-  height: 110px;
 }
 
 .industry-card {
@@ -156,6 +148,20 @@
   align-items: center;
   gap: 16px;
   width: 552px;
+  img {
+    width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+  }
+  h4 {
+    color: #000;
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px; /* 116.667% */
+    margin: 0;
+  }
 }
 
 .aiServices-card {
@@ -187,5 +193,25 @@
     line-height: normal;
     margin: 0;
     margin-top: 8px;
+  }
+}
+
+.min-h-160 {
+  height: 160px;
+}
+.min-h-110 {
+  height: 110px;
+}
+
+.min-h-175 {
+  height: 175px;
+}
+
+@media (max-width: 576px) {
+  .min-h-110 {
+    height: 185px;
+  }
+  .min-h-160 {
+    height: 185px;
   }
 }
