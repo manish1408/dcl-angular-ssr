@@ -11,6 +11,12 @@ import { OurServicesService } from '../../services/our-services.service';
 })
 export class HeaderComponent {
   serviceNav: any[] = [];
+  productNav = [
+    {
+      title: 'Milo',
+      slug: 'milo',
+    },
+  ];
   constructor(private ourServicesService: OurServicesService) {}
 
   hideSidebar() {

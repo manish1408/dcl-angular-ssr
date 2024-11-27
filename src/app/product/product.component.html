@@ -1,0 +1,289 @@
+<div class="content-container">
+    <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center loader-container">
+        <span class="spinner-border spinner-border-sm mt-5" role="status"></span>
+    </div>
+
+    <div *ngIf="!isLoading" class="main-content">
+        <div class="breadcrumb-section" style="
+    background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
+      linear-gradient(180deg, #121212 0%, #121212 100%);">
+            <div class="top-section">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <img class='product-logo' src="assets/img/product/milo-logo.svg" />
+                            <div class="heading-section">
+                                <h1>Help you instantly with an AI-driven chatbot</h1>
+                                <p>Milo AI-driven chatbot in the past allowing you to focus more on your business or
+                                    simply leaving pen-and-paper</p>
+                            </div>
+                            <div class="users-section">
+                                <div class="users">
+                                    <div class="user-avatar">
+                                        <img src="assets/img/product/user-1.png" />
+                                        <img src="assets/img/product/user-2.png" />
+                                        <img src="assets/img/product/user-3.png" />
+                                    </div>
+                                    <div class="users-count">
+                                        <h4>84k</h4>
+                                        <p>Users World - wide</p>
+                                    </div>
+                                </div>
+                                <div class="play-wrapper">
+                                    <img src="assets/img/product/play-icon-black.png" />
+                                    <p>Watch promo video</p>
+                                </div>
+                            </div>
+                            <button class="primary-btn2 d-lg-flex d-none">Start chatting
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <img src="assets/img/product/i-pad-frame.png" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-section">
+                <div class="container">
+                    <div class="row justify-content-center g-4">
+                        <div class="col-lg-9">
+                            <div class="tabs-wrapper">
+                                @for(tab of tabs;track tab;let last = $last){
+
+                                <div class="tab" [class.tab-border-right]="!last"
+                                    [ngClass]="{'selected-tab':selectedTab===tab.value}"
+                                    (click)="selectedTab=tab.value">
+                                    {{tab?.text}}
+                                </div>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="tab-content">
+
+                                <div class="row gx-5 align-items-center">
+
+                                    <div class="col-6">
+                                        <img src="assets/img/product/milo-chat.png" />
+                                    </div>
+                                    <div class="col-6">
+                                        <h2>Milo in Chat is your helpful teammate</h2>
+                                        <p>With Milo in Chat, you have a partner who's always ready to provide answers,
+                                            summaries conversations, find files in Drive and brainstorm new creative
+                                            ideas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="platform-section">
+                <div class="container">
+                    <div class="row justify-content-center g-4">
+                        <div class="col-lg-5">
+                            <h2>Made for modern messaging, powered by AI</h2>
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="row gx-5 align-items-center">
+                                <div class="col-7">
+                                    <h3>Chatbot Platform</h3>
+                                    <h4>Our chatbot platform is powered by artificial intelligence, providing quick
+                                        support solutions and interactive communication with your customers.
+                                    </h4>
+                                    <p>We stay at the forefront of technology trends and emerging innovations to bring
+                                        our clients cutting-edge solutions that help them stay ahead of the competition.
+                                        Our focus on innovation enables us to provide customized IT solutions that
+                                        address our clients’ specific needs and drive business success.</p>
+                                </div>
+                                <div class="col-5">
+                                    <img src="assets/img/product/milo-platform.png" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="benefits-section">
+                <div class="container">
+                    <div class="row justify-content-center g-4">
+                        <div class="col-lg-5">
+                            <h2>Benefits Of AI-Powered Chatbots</h2>
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="row g-4 align-items-center">
+                                @for(a of [1,2,3,4,5,6];track a){
+
+                                <div class="col-4">
+                                    <div class="benefit-card">
+                                        <img src="assets/img/product/24-7.svg" />
+                                        <h3>24/7 Availability</h3>
+                                        <p>Chatbot can operate around the clock, instant assistance and support
+                                            enhancing customer satisfaction and services accessibility</p>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="industries-section">
+                <div class="container">
+                    <div class="row justify-content-center g-4">
+                        <div class="col-lg-6 text-center">
+                            <h2>Our Chatbot Spans Industries</h2>
+                            <p>Our chatbot platform is powered by artificial intelligence</p>
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="row g-4 align-items-center">
+                                @for(a of [1,2,3];track a){
+
+                                <div class="col-4">
+                                    <div class="industry-card">
+                                        <img src="assets/img/product/chatbot.png" />
+                                        <h3>24/7 Availability</h3>
+                                        <p>Chatbot can operate around the clock, instant assistance and support
+                                            enhancing customer satisfaction and services accessibility</p>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="safety-section">
+                <div class="container">
+                    <div class="row justify-content-center g-4">
+                        <div class="col-lg-6 text-center">
+                            <h2>Safe and secure</h2>
+                            <p>Collaborate, connect and share while keeping your data private and secure.
+                            </p>
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="row g-4 align-items-center">
+                                @for(a of [1,2,3];track a){
+
+                                <div class="col-4">
+                                    <div class="safety-card">
+                                        <img src="assets/img/product/safety.svg" />
+                                        <h3>Collaborate with confidence</h3>
+                                        <p>Keep communities healthy and inclusive with active content moderation.</p>
+                                    </div>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="faq-section">
+                <div class="container">
+                    <div class="row justify-content-center g-4">
+                        <div class="col-lg-6 text-center">
+                            <h2>Curious about Chat?</h2>
+                            <p>Take a look at our FAQ to learn more.
+                            </p>
+                        </div>
+                        <div class="col-lg-10">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#collapseOne" aria-expanded="true"
+                                            aria-controls="collapseOne">
+                                            How do I start using Chat?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse show"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Milo AI-driven chatbot in the past allowing you to focus more on your
+                                            business or simply leaving pen-and-paper
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                            aria-expanded="false" aria-controls="collapseTwo">
+                                            How can I use Milo
+                                        </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Milo AI-driven chatbot in the past allowing you to focus more on your
+                                            business or simply leaving pen-and-paper
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                            aria-expanded="false" aria-controls="collapseThree">
+                                            Is there a cost-effective way for my company to explore AI features in Chat?
+                                        </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            Milo AI-driven chatbot in the past allowing you to focus more on your
+                                            business or simply leaving pen-and-paper
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="explore-section">
+                <div class="container">
+                    <div class="row g-4 mt-5 mb-5">
+                        <div class="home3-newsletter-section ">
+                            <div class="newsletter-wrapper">
+                                <div class="row g-lg-4 gy-5 align-items-center">
+                                    <div data-wow-delay="200ms" data-wow-duration="1500ms"
+                                        class="col-lg-7 col-md-6 wow animate fadeInLeft" style="
+                  visibility: visible;
+                  animation-duration: 1500ms;
+                  animation-delay: 200ms;
+                ">
+                                        <div class="section-title white">
+                                            <h2>Explore how AI can help your Business</h2>
+                                        </div>
+                                    </div>
+                                    <div data-wow-delay="200ms" data-wow-duration="1500ms"
+                                        class="col-lg-5 col-md-6 wow animate fadeInRight" style="
+                  visibility: visible;
+                  animation-duration: 1500ms;
+                  animation-delay: 200ms;
+                ">
+                                        <div class="newsletter-form-area">
+                                            <h6>
+                                                Distinct Cloud Labs offers a free assessment of your business
+                                                for AI enablement. Our assessment can help you analyze how AI
+                                                can transform your business.
+                                            </h6>
+                                            <button class="primary-btn1 hover-white" tabindex="0"
+                                                [routerLink]="['/assessment/basic-details']">
+                                                Free Consultation<i class="bi bi-arrow-right"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
