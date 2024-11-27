@@ -1,232 +1,232 @@
-<!-- <div *ngIf="isLoading" class="d-flex justify-content-center">
-    <span class="spinner-border spinner-border-sm mt-5" role="status"></span>
-</div> -->
+<div class="content-container">
+    <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center loader-container">
+        <span class="spinner-border spinner-border-sm mt-5" role="status"></span>
+    </div>
 
-<!-- <ng-container *ngIf="!isLoading"> -->
-<div class="breadcrumb-section" style="
+    <div *ngIf="!isLoading" class="main-content">
+        <div class="breadcrumb-section" style="
     background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
-      linear-gradient(180deg, #121212 0%, #121212 100%);
-  ">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="banner-wrapper">
-                    <div class="banner-content">
-                        <ul class="breadcrumb-list">
-                            <li><a [routerLink]="['/home']">Home</a></li>
-                            <li>Services</li>
-                        </ul>
-                        <h1>{{service?.pageTitle?.iv}}</h1>
-                    </div>
-                    <div class="scroll-down-btn">
-                        <a (click)="scrollToSection()" role="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="29" viewBox="0 0 19 29">
-                                <path
-                                    d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5">
-                                </path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="d-flex justify-content-center">
-    <span *ngIf="isLoading" class="spinner-border spinner-border-sm mt-5" role="status"></span>
-</div>
-
-<div class="home3-process-section mb-110">
-    <div class="container pt-100 pb-100">
-        <div class="row justify-content-center mb-60">
-            <div class="col-lg-8">
-                <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms"
-                    data-wow-duration="1500ms">
-
-                    <h2>{{service?.section1Title?.iv}}</h2>
-                    <p>
-                        {{service?.section1Desc?.iv}}
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="row g-4">
-            @for(s1c of service?.section1Cards?.iv;let i = $index; track s1c){
-
-
-            <div class="col-xl-4 col-lg-4 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
-                data-wow-duration="1500ms">
-                <div class="process-card" [ngClass]="getCardColor(i)">
-                    <div class="process-card-top">
-                        <div class="icon-wrapper">
-                            <img [src]="imgCDN+s1c.icon[0]" />
+      linear-gradient(180deg, #121212 0%, #121212 100%);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="banner-wrapper">
+                            <div class="banner-content">
+                                <ul class="breadcrumb-list">
+                                    <li><a [routerLink]="['/home']">Home</a></li>
+                                    <li>Services</li>
+                                </ul>
+                                <h1>{{service?.pageTitle?.iv}}</h1>
+                            </div>
+                            <div class="scroll-down-btn">
+                                <a (click)="scrollToSection()" role="button">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="29" viewBox="0 0 19 29">
+                                        <path
+                                            d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="content ">
-                        <h4>{{s1c?.title}}</h4>
-                        <p>
-                            {{s1c?.description}}
-                        </p>
-                    </div>
                 </div>
             </div>
-            }
-
-
         </div>
-    </div>
-    <div class="expertise-section pt-100 pb-100">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="banner-wrapper">
-                        <div class="banner-content">
 
-                            <h2 class='expertise-heading'>{{service?.section2Title?.iv}}</h2>
-                            <p class="expertise-subtitle">{{service?.section2Desc?.iv}}</p>
+
+        <div class="home3-process-section mb-110">
+            <div class="container pt-100 pb-100">
+                <div class="row justify-content-center mb-60">
+                    <div class="col-lg-8">
+                        <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms"
+                            data-wow-duration="1500ms">
+
+                            <h2>{{service?.section1Title?.iv}}</h2>
+                            <p>
+                                {{service?.section1Desc?.iv}}
+                            </p>
                         </div>
-                        <div class="container expertise-card-section">
-                            <div class="row g-4">
-                                @for(s2c of service?.section2Cards.iv;let i=$index;track s2c){
+                    </div>
+                </div>
+                <div class="row g-4">
+                    @for(s1c of service?.section1Cards?.iv;let i = $index; track s1c){
 
-                                <div [ngClass]="getColumnClass(i)" class="col-sm-12">
-                                    <div class="expertise-card">
-                                        <img class='icon-img' [src]="imgCDN+s2c?.icon[0]" />
-                                        <div class="text-content "
-                                            [ngClass]="{'min-h-160': isMidGroup(i), 'min-h-110': !isMidGroup(i)}">
-                                            <h4>{{s2c?.title}}</h4>
-                                            <p>{{s2c?.description}}</p>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
+                        data-wow-duration="1500ms">
+                        <div class="process-card" [ngClass]="getCardColor(i)">
+                            <div class="process-card-top">
+                                <div class="icon-wrapper">
+                                    <img [src]="imgCDN+s1c.icon[0]" />
+                                </div>
+                            </div>
+                            <div class="content ">
+                                <h4>{{s1c?.title}}</h4>
+                                <p>
+                                    {{s1c?.description}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+
+                </div>
+            </div>
+            <div class="expertise-section pt-100 pb-100">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="banner-wrapper">
+                                <div class="banner-content">
+
+                                    <h2 class='expertise-heading'>{{service?.section2Title?.iv}}</h2>
+                                    <p class="expertise-subtitle">{{service?.section2Desc?.iv}}</p>
+                                </div>
+                                <div class="container expertise-card-section">
+                                    <div class="row g-4">
+                                        @for(s2c of service?.section2Cards.iv;let i=$index;track s2c){
+
+                                        <div [ngClass]="getColumnClass(i)" class="col-sm-12">
+                                            <div class="expertise-card">
+                                                <img class='icon-img' [src]="imgCDN+s2c?.icon[0]" />
+                                                <div class="text-content "
+                                                    [ngClass]="{'min-h-160': isMidGroup(i), 'min-h-110': !isMidGroup(i)}">
+                                                    <h4>{{s2c?.title}}</h4>
+                                                    <p>{{s2c?.description}}</p>
+                                                </div>
+                                            </div>
                                         </div>
+                                        }
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container pt-100 pb-100">
+                <div class="row justify-content-center mb-60">
+                    <div class="col-lg-8">
+                        <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms"
+                            data-wow-duration="1500ms">
+
+                            <h2>{{service?.section3Title?.iv}}</h2>
+                            <p>
+                                {{service?.section3Desc?.iv}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    @for(s3c of service?.section3Cards.iv;track s3c){
+                    <div class="col-xl-3 col-lg-3 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
+                        data-wow-duration="1500ms">
+                        <div class="industry-card">
+                            <img [src]="imgCDN+ s3c?.icon[0]" />
+                            <h4>{{s3c?.title}}</h4>
+                        </div>
+                    </div>
+                    }
+
+
+                </div>
+            </div>
+            <div class="expertise-section pt-100 pb-100">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="banner-wrapper">
+                                <div class="banner-content">
+
+                                    <h2 class='expertise-heading'>{{service?.section4Title?.iv}}</h2>
+                                    <p class="expertise-subtitle">{{service?.section4Desc?.iv}}</p>
+                                </div>
+                                <div class="container-fluid ai-card-section px-5">
+
+
+                                    @for(s4c of service?.section4Cards.iv;track s4c){
+                                    <div class="ai-tech-card">
+                                        <img [src]="imgCDN+ s4c?.icon[0]" />
+                                        <h4>{{s4c?.title}}</h4>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container pt-100">
+                <div class="row justify-content-center mb-60">
+                    <div class="col-lg-8">
+                        <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms"
+                            data-wow-duration="1500ms">
+
+                            <h2>{{service?.section5Title?.iv}}</h2>
+                            <p>
+                                {{service?.section5Desc?.iv}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    @for(s5c of service?.section5Cards?.iv;track s5c){
+                    <div class="col-xl-3 col-lg-3 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
+                        data-wow-duration="1500ms">
+                        <div class="aiServices-card">
+                            <img [src]="imgCDN +  s5c?.icon[0]" />
+                            <div class="text-center">
+                                <h4>{{s5c?.title}}</h4>
+                                <p>{{s5c?.description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+
+                </div>
+                <div class="row g-4 mt-5">
+                    <div class="home3-newsletter-section ">
+                        <div class="newsletter-wrapper">
+                            <div class="row g-lg-4 gy-5 align-items-center">
+                                <div data-wow-delay="200ms" data-wow-duration="1500ms"
+                                    class="col-lg-7 col-md-6 wow animate fadeInLeft" style="
+                      visibility: visible;
+                      animation-duration: 1500ms;
+                      animation-delay: 200ms;
+                    ">
+                                    <div class="section-title white">
+                                        <h2>Explore how AI can help your Business</h2>
                                     </div>
                                 </div>
-                                }
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container pt-100 pb-100">
-        <div class="row justify-content-center mb-60">
-            <div class="col-lg-8">
-                <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms"
-                    data-wow-duration="1500ms">
-
-                    <h2>{{service?.section3Title?.iv}}</h2>
-                    <p>
-                        {{service?.section3Desc?.iv}}
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="row g-4">
-            @for(s3c of service?.section3Cards.iv;track s3c){
-            <div class="col-xl-3 col-lg-3 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
-                data-wow-duration="1500ms">
-                <div class="industry-card">
-                    <img [src]="imgCDN+ s3c?.icon[0]" />
-                    <h4>{{s3c?.title}}</h4>
-                </div>
-            </div>
-            }
-
-
-        </div>
-    </div>
-    <div class="expertise-section pt-100 pb-100">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="banner-wrapper">
-                        <div class="banner-content">
-
-                            <h2 class='expertise-heading'>{{service?.section4Title?.iv}}</h2>
-                            <p class="expertise-subtitle">{{service?.section4Desc?.iv}}</p>
-                        </div>
-                        <div class="container-fluid ai-card-section px-5">
-
-
-                            @for(s4c of service?.section4Cards.iv;track s4c){
-                            <div class="ai-tech-card">
-                                <img [src]="imgCDN+ s4c?.icon[0]" />
-                                <h4>{{s4c?.title}}</h4>
-                            </div>
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container pt-100">
-        <div class="row justify-content-center mb-60">
-            <div class="col-lg-8">
-                <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms"
-                    data-wow-duration="1500ms">
-
-                    <h2>{{service?.section5Title?.iv}}</h2>
-                    <p>
-                        {{service?.section5Desc?.iv}}
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="row g-4">
-            @for(s5c of service?.section5Cards?.iv;track s5c){
-            <div class="col-xl-3 col-lg-3 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
-                data-wow-duration="1500ms">
-                <div class="aiServices-card">
-                    <img [src]="imgCDN +  s5c?.icon[0]" />
-                    <div class="text-center">
-                        <h4>{{s5c?.title}}</h4>
-                        <p>{{s5c?.description}}</p>
-                    </div>
-                </div>
-            </div>
-            }
-
-
-        </div>
-        <div class="row g-4 mt-5">
-            <div class="home3-newsletter-section ">
-                <div class="newsletter-wrapper">
-                    <div class="row g-lg-4 gy-5 align-items-center">
-                        <div data-wow-delay="200ms" data-wow-duration="1500ms"
-                            class="col-lg-7 col-md-6 wow animate fadeInLeft" style="
+                                <div data-wow-delay="200ms" data-wow-duration="1500ms"
+                                    class="col-lg-5 col-md-6 wow animate fadeInRight" style="
                       visibility: visible;
                       animation-duration: 1500ms;
                       animation-delay: 200ms;
                     ">
-                            <div class="section-title white">
-                                <h2>Explore how AI can help your Business</h2>
-                            </div>
-                        </div>
-                        <div data-wow-delay="200ms" data-wow-duration="1500ms"
-                            class="col-lg-5 col-md-6 wow animate fadeInRight" style="
-                      visibility: visible;
-                      animation-duration: 1500ms;
-                      animation-delay: 200ms;
-                    ">
-                            <div class="newsletter-form-area">
-                                <h6>
-                                    Distinct Cloud Labs offers a free assessment of your business
-                                    for AI enablement. Our assessment can help you analyze how AI
-                                    can transform your business.
-                                </h6>
-                                <button class="primary-btn1 hover-white" tabindex="0"
-                                    [routerLink]="['/assessment/basic-details']">
-                                    Free Consultation<i class="bi bi-arrow-right"></i>
-                                </button>
+                                    <div class="newsletter-form-area">
+                                        <h6>
+                                            Distinct Cloud Labs offers a free assessment of your business
+                                            for AI enablement. Our assessment can help you analyze how AI
+                                            can transform your business.
+                                        </h6>
+                                        <button class="primary-btn1 hover-white" tabindex="0"
+                                            [routerLink]="['/assessment/basic-details']">
+                                            Free Consultation<i class="bi bi-arrow-right"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 
 </div>
-<!-- </ng-container> -->

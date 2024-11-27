@@ -1,3 +1,20 @@
+.content-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.loader-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-content {
+  flex: 1;
+}
+
 .icon-wrapper {
   width: 100px;
   height: 100px;
