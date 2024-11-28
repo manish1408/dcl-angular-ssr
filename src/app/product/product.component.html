@@ -11,12 +11,11 @@
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-6">
-                            <img class='product-logo' src="assets/img/product/milo-logo.svg" />
+                        <div class="col-lg-6 col-sm-12">
+                            <img class='product-logo' [src]="imgCDN + product?.productLogo.iv[0]" />
                             <div class="heading-section">
-                                <h1>Help you instantly with an AI-driven chatbot</h1>
-                                <p>Milo AI-driven chatbot in the past allowing you to focus more on your business or
-                                    simply leaving pen-and-paper</p>
+                                <h1>{{product?.section1Title?.iv}}</h1>
+                                <p>{{product?.section1Desc?.iv}}</p>
                             </div>
                             <div class="users-section">
                                 <div class="users">
@@ -39,7 +38,7 @@
                             </button>
                         </div>
                         <div class="col-6">
-                            <img src="assets/img/product/i-pad-frame.png" />
+                            <img [src]="imgCDN + product?.section1Img?.iv[0]" />
                         </div>
                     </div>
                 </div>
@@ -48,7 +47,7 @@
             <div class="tab-section">
                 <div class="container">
                     <div class="row justify-content-center g-4">
-                        <div class="col-lg-9">
+                        <div class="col-lg-9 col-sm-12">
                             <div class="tabs-wrapper">
                                 @for(tab of tabs;track tab;let last = $last){
 
@@ -66,10 +65,10 @@
 
                                 <div class="row gx-5 align-items-center">
 
-                                    <div class="col-6">
+                                    <div class="col-lg-6 col-sm-12">
                                         <img src="assets/img/product/milo-chat.png" />
                                     </div>
-                                    <div class="col-6">
+                                    <div class="col-lg-6 col-sm-12">
                                         <h2>Milo in Chat is your helpful teammate</h2>
                                         <p>With Milo in Chat, you have a partner who's always ready to provide answers,
                                             summaries conversations, find files in Drive and brainstorm new creative
@@ -89,7 +88,7 @@
                         </div>
                         <div class="col-lg-10">
                             <div class="row gx-5 align-items-center">
-                                <div class="col-7">
+                                <div class="col-lg-7 col-sm-12">
                                     <h3>Chatbot Platform</h3>
                                     <h4>Our chatbot platform is powered by artificial intelligence, providing quick
                                         support solutions and interactive communication with your customers.
@@ -99,7 +98,7 @@
                                         Our focus on innovation enables us to provide customized IT solutions that
                                         address our clients’ specific needs and drive business success.</p>
                                 </div>
-                                <div class="col-5">
+                                <div class="col-lg-5 col-sm-12">
                                     <img src="assets/img/product/milo-platform.png" />
                                 </div>
                             </div>
@@ -117,7 +116,7 @@
                             <div class="row g-4 align-items-center">
                                 @for(a of [1,2,3,4,5,6];track a){
 
-                                <div class="col-4">
+                                <div class="col-lg-4 col-sm-12">
                                     <div class="benefit-card">
                                         <img src="assets/img/product/24-7.svg" />
                                         <h3>24/7 Availability</h3>
@@ -142,12 +141,12 @@
                             <div class="row g-4 align-items-center">
                                 @for(a of [1,2,3];track a){
 
-                                <div class="col-4">
+                                <div class="col-lg-4 col-sm-12">
                                     <div class="industry-card">
                                         <img src="assets/img/product/chatbot.png" />
-                                        <h3>24/7 Availability</h3>
-                                        <p>Chatbot can operate around the clock, instant assistance and support
-                                            enhancing customer satisfaction and services accessibility</p>
+                                        <h3>Chatbot</h3>
+                                        <p>We pioneered the concept of indoor deliveries at airports, malls, office
+                                            complex allowing customer to get convenient delivery options</p>
                                     </div>
                                 </div>
                                 }
@@ -168,7 +167,7 @@
                             <div class="row g-4 align-items-center">
                                 @for(a of [1,2,3];track a){
 
-                                <div class="col-4">
+                                <div class="col-lg-4 col-sm-12">
                                     <div class="safety-card">
                                         <img src="assets/img/product/safety.svg" />
                                         <h3>Collaborate with confidence</h3>

@@ -2,6 +2,7 @@ import { Component, ElementRef } from '@angular/core';
 import { environment } from '../environments/environment';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-product',
@@ -13,7 +14,7 @@ import { CommonModule } from '@angular/common';
 export class ProductComponent {
   isLoading: boolean = false;
   imgCDN: string = environment.squidexAssets;
-  service: any;
+  product: any;
   slugName: string = '';
   posts: any = [];
   date: any;
@@ -47,7 +48,7 @@ export class ProductComponent {
   ];
   constructor(
     private el: ElementRef,
-
+    private productService: ProductsService,
     private route: ActivatedRoute
   ) {}
 
@@ -57,13 +58,13 @@ export class ProductComponent {
       // this.isLoading = true;
       this.slugName = param['slug'];
     });
-    // this.ourServicesService
-    //   .getServiceBySlug(this.slugName)
-    //   .subscribe((resp: any) => {
-    //     console.log(resp);
-    //     this.service = resp?.items[0].data;
-    //     this.isLoading = false;
-    //   });
+    this.productService
+      .getProductBySlug(this.slugName)
+      .subscribe((resp: any) => {
+        console.log(resp);
+        this.product = resp?.items[0].data;
+        this.isLoading = false;
+      });
   }
 
   scrollToSection() {
