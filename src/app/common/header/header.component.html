@@ -82,7 +82,7 @@
             </li>
             }
 
-            @if(productNav.length > 0){
+            <!-- @if(productNav.length > 0){
             <li>
               <a>Products </a>
               <span class="dropdown-icon2"><i class="bi bi-plus"></i></span>
@@ -90,12 +90,12 @@
                 @for(pNav of productNav;track pNav){
                 <li>
                   <a class="fs-6" [routerLink]="['/product/',pNav.slug]">{{pNav?.title}}</a>
-                  <!-- <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span> -->
+                
                 </li>
                 }
               </ul>
             </li>
-            }
+            } -->
 
           </ul>
         </div>
@@ -168,7 +168,7 @@
 
         </li>
         }
-        @if(productNav.length > 0){
+        <!-- @if(productNav.length > 0){
         <li class="menu-item-has-children">
           <a class="drop-down">Products </a><i class="bi bi-plus dropdown-icon"></i>
 
@@ -184,7 +184,7 @@
           </ul>
 
         </li>
-        }
+        } -->
       </ul>
     </div>
     <div class="nav-right d-flex jsutify-content-end align-items-center">
