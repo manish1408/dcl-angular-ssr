@@ -44,7 +44,7 @@
                 </div>
             </div>
 
-            <div class="tab-section">
+            <div class="tab-section pb-2">
                 <div class="container">
                     <div class="row justify-content-center g-4">
                         <div class="col-lg-9 col-sm-12">
@@ -53,75 +53,85 @@
 
                                 <div class="tab" [class.tab-border-right]="!last"
                                     [ngClass]="{'selected-tab':selectedTab===tab.value}"
-                                    (click)="selectedTab=tab.value">
+                                    (click)="onTabClick(tab.value)">
                                     {{tab?.text}}
                                 </div>
                                 }
 
                             </div>
                         </div>
-                        <div class="col-lg-10">
+                        <!-- <div class="col-lg-10" id="milo-in-chat">
                             <div class="tab-content">
 
                                 <div class="row gx-5 align-items-center">
 
                                     <div class="col-lg-6 col-sm-12">
-                                        <img src="assets/img/product/milo-chat.png" />
+                                        <img [src]="imgCDN + product?.section2Img?.iv[0]" />
                                     </div>
                                     <div class="col-lg-6 col-sm-12">
-                                        <h2>Milo in Chat is your helpful teammate</h2>
-                                        <p>With Milo in Chat, you have a partner who's always ready to provide answers,
-                                            summaries conversations, find files in Drive and brainstorm new creative
-                                            ideas.</p>
+                                        <h2>{{product?.section2Title?.iv}}</h2>
+                                        <p>{{product?.section2Desc?.iv}}</p>
                                     </div>
                                 </div>
                             </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <div class="chat-section" id="milo-in-chat">
+                <div class="container">
+                    <div class="row justify-content-center g-4">
+                        <div class="col-lg-10 mt-0">
+                            <div class="row gx-5 align-items-center">
+                                <div class="col-lg-6 col-sm-12">
+                                    <img [src]="imgCDN + product?.section2Img?.iv[0]" />
+                                </div>
+                                <div class="col-lg-6 col-sm-12">
+                                    <h2>{{product?.section2Title?.iv}}</h2>
+                                    <p>{{product?.section2Desc?.iv}}</p>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="platform-section">
+            <div class="platform-section" id="messaging">
                 <div class="container">
                     <div class="row justify-content-center g-4">
                         <div class="col-lg-5">
-                            <h2>Made for modern messaging, powered by AI</h2>
+                            <h2>{{product?.section3Title?.iv}}</h2>
                         </div>
                         <div class="col-lg-10">
                             <div class="row gx-5 align-items-center">
                                 <div class="col-lg-7 col-sm-12">
-                                    <h3>Chatbot Platform</h3>
-                                    <h4>Our chatbot platform is powered by artificial intelligence, providing quick
-                                        support solutions and interactive communication with your customers.
-                                    </h4>
-                                    <p>We stay at the forefront of technology trends and emerging innovations to bring
-                                        our clients cutting-edge solutions that help them stay ahead of the competition.
-                                        Our focus on innovation enables us to provide customized IT solutions that
-                                        address our clients’ specific needs and drive business success.</p>
+                                    <h3>{{product?.section3Title2?.iv}}</h3>
+                                    <h4>{{product?.section3Desc?.iv}}</h4>
+                                    <p>{{product?.section3Desc2?.iv}}</p>
                                 </div>
                                 <div class="col-lg-5 col-sm-12">
-                                    <img src="assets/img/product/milo-platform.png" />
+                                    <img [src]="imgCDN+ product?.section3Img?.iv[0]" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="benefits-section">
+            <div class="benefits-section" id="benefits">
                 <div class="container">
                     <div class="row justify-content-center g-4">
                         <div class="col-lg-5">
-                            <h2>Benefits Of AI-Powered Chatbots</h2>
+                            <h2>{{product?.section4Title?.iv}}</h2>
                         </div>
                         <div class="col-lg-10">
                             <div class="row g-4 align-items-center">
-                                @for(a of [1,2,3,4,5,6];track a){
+                                @for(a of product?.section4Cards?.iv;track a){
 
                                 <div class="col-lg-4 col-sm-12">
                                     <div class="benefit-card">
-                                        <img src="assets/img/product/24-7.svg" />
-                                        <h3>24/7 Availability</h3>
-                                        <p>Chatbot can operate around the clock, instant assistance and support
-                                            enhancing customer satisfaction and services accessibility</p>
+                                        <img [src]="imgCDN+ a?.icon[0]" />
+                                        <h3>{{a?.title}}</h3>
+                                        <p>{{a?.description}}</p>
                                     </div>
                                 </div>
                                 }
@@ -130,23 +140,22 @@
                     </div>
                 </div>
             </div>
-            <div class="industries-section">
+            <div class="industries-section" id="industries">
                 <div class="container">
                     <div class="row justify-content-center g-4">
                         <div class="col-lg-6 text-center">
-                            <h2>Our Chatbot Spans Industries</h2>
-                            <p>Our chatbot platform is powered by artificial intelligence</p>
+                            <h2>{{product?.section5Title?.iv}}</h2>
+                            <p>{{product?.section5Desc?.iv}}</p>
                         </div>
                         <div class="col-lg-10">
                             <div class="row g-4 align-items-center">
-                                @for(a of [1,2,3];track a){
+                                @for(a of product?.section5Cards.iv;track a){
 
                                 <div class="col-lg-4 col-sm-12">
                                     <div class="industry-card">
-                                        <img src="assets/img/product/chatbot.png" />
-                                        <h3>Chatbot</h3>
-                                        <p>We pioneered the concept of indoor deliveries at airports, malls, office
-                                            complex allowing customer to get convenient delivery options</p>
+                                        <img [src]="imgCDN+a?.icon[0]" />
+                                        <h3>{{a?.title}}</h3>
+                                        <p>{{a?.description}}</p>
                                     </div>
                                 </div>
                                 }
@@ -155,23 +164,23 @@
                     </div>
                 </div>
             </div>
-            <div class="safety-section">
+            <div class="safety-section" id="safety">
                 <div class="container">
                     <div class="row justify-content-center g-4">
                         <div class="col-lg-6 text-center">
-                            <h2>Safe and secure</h2>
-                            <p>Collaborate, connect and share while keeping your data private and secure.
+                            <h2>{{product?.section6Title?.iv}}</h2>
+                            <p>{{product?.section6Desc?.iv}}
                             </p>
                         </div>
                         <div class="col-lg-10">
                             <div class="row g-4 align-items-center">
-                                @for(a of [1,2,3];track a){
+                                @for(a of product?.section6Cards.iv;track a){
 
                                 <div class="col-lg-4 col-sm-12">
                                     <div class="safety-card">
-                                        <img src="assets/img/product/safety.svg" />
-                                        <h3>Collaborate with confidence</h3>
-                                        <p>Keep communities healthy and inclusive with active content moderation.</p>
+                                        <img [src]="imgCDN+a?.icon[0]" />
+                                        <h3>{{a?.title}}</h3>
+                                        <p>{{a?.description}}</p>
                                     </div>
                                 </div>
                                 }
@@ -180,32 +189,32 @@
                     </div>
                 </div>
             </div>
-            <div class="faq-section">
+            <div class="faq-section" id="learn-more">
                 <div class="container">
                     <div class="row justify-content-center g-4">
                         <div class="col-lg-6 text-center">
-                            <h2>Curious about Chat?</h2>
-                            <p>Take a look at our FAQ to learn more.
+                            <h2>{{product?.section7Title?.iv}}</h2>
+                            <p>{{product?.section7Desc?.iv}}
                             </p>
                         </div>
                         <div class="col-lg-10">
                             <div class="accordion" id="accordionExample">
+                                @for(item of product?.section7Faqs?.iv;track item;let i = $index){
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            data-bs-target="#collapseOne" aria-expanded="true"
-                                            aria-controls="collapseOne">
-                                            How do I start using Chat?
+                                            [attr.data-bs-target]="'#accordion-item-' + i" aria-expanded="false"
+                                            [attr.aria-controls]="'accordion-item-' + i">
+                                            {{item?.title}}
                                         </button>
                                     </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show"
+                                    <div [id]="'accordion-item-' + i" class="accordion-collapse collapse"
                                         data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
-                                            Milo AI-driven chatbot in the past allowing you to focus more on your
-                                            business or simply leaving pen-and-paper
+                                            {{item?.description}}
                                         </div>
                                     </div>
-                                </div>
+                                </div>}
                                 <div class="accordion-item">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button collapsed" type="button"

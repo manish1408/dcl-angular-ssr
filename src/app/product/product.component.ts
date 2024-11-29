@@ -55,7 +55,7 @@ export class ProductComponent {
   ngOnInit() {
     this.selectedTab = this.tabs[0].value;
     this.route.params.subscribe((param) => {
-      // this.isLoading = true;
+      this.isLoading = true;
       this.slugName = param['slug'];
     });
     this.productService
@@ -65,6 +65,14 @@ export class ProductComponent {
         this.product = resp?.items[0].data;
         this.isLoading = false;
       });
+  }
+  onTabClick(tabValue: string): void {
+    this.selectedTab = tabValue;
+    const element = this.el.nativeElement.querySelector(`#${tabValue}`);
+    console.log(element);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 
   scrollToSection() {

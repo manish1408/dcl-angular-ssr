@@ -15,6 +15,8 @@
   flex: 1;
 }
 .breadcrumb-section {
+  // background-image: url("/assets/img/innerpage/breadcrumb-bg1.png"),
+  //   linear-gradient(180deg, #121212 0%, #121212 100%);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -35,15 +37,22 @@ p {
   margin-top: 50px;
 }
 .top-section,
-.tab-section,
+.tab-section {
+  background-color: #ffffff;
+  padding: 50px 0px;
+}
+.chat-section,
 .platform-section,
 .benefits-section,
 .industries-section,
 .safety-section,
 .faq-section,
 .explore-section {
+  padding: 25px 0px 25px;
   background-color: #ffffff;
-  padding: 50px 0px;
+  .container {
+    margin-top: 50px;
+  }
 }
 
 .top-section {
@@ -162,7 +171,7 @@ p {
     font-weight: 600;
   }
 }
-.tab-content {
+.chat-section {
   img {
     width: 576.481px;
   }
