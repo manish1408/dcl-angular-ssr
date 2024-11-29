@@ -3,6 +3,7 @@ import { Component, ElementRef } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { OurServicesService } from '../services/our-services.service';
 import { environment } from '../environments/environment';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-service-page',
@@ -22,21 +23,30 @@ export class ServicePageComponent {
   constructor(
     private el: ElementRef,
     private ourServicesService: OurServicesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private common: CommonService
   ) {}
 
   ngOnInit() {
     this.route.params.subscribe((param) => {
       this.isLoading = true;
       this.slugName = param['slug'];
+
+      this.ourServicesService
+        .getServiceBySlug(this.slugName)
+        .subscribe((resp: any) => {
+          console.log('Service', resp?.items[0].data);
+          this.service = resp?.items[0].data;
+          this.isLoading = false;
+        });
+      if (this.common.isBrowser()) {
+        window.scroll({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        });
+      }
     });
-    this.ourServicesService
-      .getServiceBySlug(this.slugName)
-      .subscribe((resp: any) => {
-        console.log(resp);
-        this.service = resp?.items[0].data;
-        this.isLoading = false;
-      });
   }
 
   getCardColor(index: number): string {
