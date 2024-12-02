@@ -73,12 +73,28 @@
               </div>
             </div>
           </div>
-          <div class="row gx-3">
-            <div class="col-4" *ngFor="let a of [1,2,3]">
-              <div class="podcast-wrapper">
-                <h2>Sick leave for Indie Founder!</h2>
-                <p>DCL stories - Jan 24 - Episode 01</p>
-                <img class='play-icon' src="assets/icons/play-btn-white.svg" />
+          <div class="row gx-3" *ngIf="post?.podcasts.iv.length > 0">
+            <div class="col-4" *ngFor="let podcast of post?.podcasts.iv;let i = index">
+              <div class="podcast-wrapper" [ngStyle]="{
+                'background-image': getBackgroundImage(podcast?.thumbnailImage, i)
+              }">
+                <h2>{{podcast?.title}}</h2>
+                <p>{{podcast?.channelName}} - {{podcast?.publishedDate | date:'MMM dd'}} - Episode {{podcast?.episode}}
+                </p>
+                <!-- <img class='play-icon' src="assets/icons/play-btn-white.svg" /> -->
+                <audio #audioPlayer [src]="imgCDN + podcast?.audioFile">
+                  Your browser does not support the audio element.
+                </audio>
+                <ng-container *ngIf="currentPlayingIndex === i;else play">
+                  <div class="pause-icon" (click)="toggleAudio(audioPlayer, i)">
+                    <div class=" pause-square"></div>
+                  </div>
+                </ng-container>
+                <ng-template #play>
+                  <img src="assets/icons/play-btn-white.svg" class="play-icon" (click)="toggleAudio(audioPlayer, i)"
+                    alt="Play/Stop" />
+
+                </ng-template>
               </div>
             </div>
 

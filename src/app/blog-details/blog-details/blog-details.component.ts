@@ -27,7 +27,7 @@ export class BlogDetailsComponent implements OnInit {
   posts: any = [];
   date: any;
   formattedDate: any;
-
+  currentPlayingIndex: number | null = null;
   async ngOnInit() {
     this.route.params.subscribe((param) => {
       this.isLoading = true;
@@ -64,6 +64,38 @@ export class BlogDetailsComponent implements OnInit {
     const section = this.el.nativeElement.querySelector('#blog-details');
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  getBackgroundImage(thumbnainImage: string, index: number): string {
+    const gradients = [
+      '109deg, #22a76c 37.47%, rgba(102, 102, 102, 0.5) 100%',
+      '109deg, #8B5CF6 37.47%, rgba(102, 102, 102, 0.50) 100%',
+      '109deg, #F472B6 37.47%, rgba(102, 102, 102, 0.50) 100%',
+    ];
+    const gradient = gradients[index % gradients.length];
+    const imageUrl = thumbnainImage
+      ? `${this.imgCDN}${thumbnainImage}`
+      : '/assets/icons/podcast-sample-img.png';
+
+    return `linear-gradient(${gradient}), url('${imageUrl}')`;
+  }
+  toggleAudio(audioPlayer: any, index: number): void {
+    if (this.currentPlayingIndex === index) {
+      // If the current audio is already playing, stop it
+      audioPlayer.pause();
+      audioPlayer.currentTime = 0; // Reset the audio
+      this.currentPlayingIndex = null;
+    } else {
+      // Stop the previously playing audio (if any)
+      const previouslyPlayingAudio = document.querySelector('audio');
+      if (previouslyPlayingAudio) {
+        previouslyPlayingAudio.pause();
+        previouslyPlayingAudio.currentTime = 0;
+      }
+
+      // Play the selected audio
+      audioPlayer.play();
+      this.currentPlayingIndex = index;
     }
   }
 }
