@@ -12,15 +12,12 @@ export class TestimonialService {
   private testimonialApiUrl = environment.squidexApiUrl + 'testimonials';
 
   fetchTestimonials() {
-    return this.common.generateAccessToken().pipe(
-      switchMap((token) => {
-        var headers = new HttpHeaders()
-          .set('Content-Type', 'application/x-www-form-urlencoded')
-          .set('Authorization', 'Bearer ' + token);
-        return this.http.get(this.testimonialApiUrl, {
-          headers,
-        });
-      })
+    var headers = new HttpHeaders().set(
+      'Content-Type',
+      'application/x-www-form-urlencoded'
     );
+    return this.http.get(this.testimonialApiUrl, {
+      headers,
+    });
   }
 }

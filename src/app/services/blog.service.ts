@@ -13,28 +13,24 @@ export class BlogService {
   private blogApiUrl = environment.squidexApiUrl + 'posts';
 
   fetchPosts() {
-    return this.common.generateAccessToken().pipe(
-      switchMap((token) => {
-        var headers = new HttpHeaders()
-          .set('Content-Type', 'application/x-www-form-urlencoded')
-          .set('Authorization', 'Bearer ' + token);
-        return this.http.get(this.blogApiUrl, {
-          headers,
-        });
-      })
+    var headers = new HttpHeaders().set(
+      'Content-Type',
+      'application/x-www-form-urlencoded'
     );
+    return this.http.get(this.blogApiUrl, {
+      headers,
+    });
   }
   getBlogBySlug(slug: string) {
-    return this.common.generateAccessToken().pipe(
-      switchMap((token) => {
-        var headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-        return this.http.get(
-          this.blogApiUrl + "?$filter=data/slug/iv eq '" + slug + "'",
-          {
-            headers,
-          }
-        );
-      })
+    var headers = new HttpHeaders().set(
+      'Content-Type',
+      'application/x-www-form-urlencoded'
+    );
+    return this.http.get(
+      this.blogApiUrl + "?$filter=data/slug/iv eq '" + slug + "'",
+      {
+        headers,
+      }
     );
   }
 }

@@ -12,28 +12,21 @@ export class OurServicesService {
   private servicesApiURL = environment.squidexApiUrl + 'services';
 
   getServices() {
-    return this.common.generateAccessToken().pipe(
-      switchMap((token) => {
-        var headers = new HttpHeaders()
-          .set('Content-Type', 'application/x-www-form-urlencoded')
-          .set('Authorization', 'Bearer ' + token);
-        return this.http.get(this.servicesApiURL, {
-          headers,
-        });
-      })
+    var headers = new HttpHeaders().set(
+      'Content-Type',
+      'application/x-www-form-urlencoded'
     );
+    return this.http.get(this.servicesApiURL, {
+      headers,
+    });
   }
   getServiceBySlug(slug: string) {
-    return this.common.generateAccessToken().pipe(
-      switchMap((token) => {
-        var headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
-        return this.http.get(
-          this.servicesApiURL + "?$filter=data/slug/iv eq '" + slug + "'",
-          {
-            headers,
-          }
-        );
-      })
+    var headers = new HttpHeaders();
+    return this.http.get(
+      this.servicesApiURL + "?$filter=data/slug/iv eq '" + slug + "'",
+      {
+        headers,
+      }
     );
   }
 }

@@ -17,29 +17,28 @@ export class CommonService {
     return isPlatformBrowser(this.platformId);
   }
 
-  generateAccessToken() {
-    const headers = new HttpHeaders().set(
-      'Content-Type',
-      'application/x-www-form-urlencoded'
-    );
+  // generateAccessToken() {
+  //   const headers = new HttpHeaders().set(
+  //     'Content-Type',
+  //     'application/x-www-form-urlencoded'
+  //   );
 
-    const body = new URLSearchParams();
-    body.set('grant_type', 'client_credentials');
-    body.set('client_id', environment.squidexClientId);
-    body.set('client_secret', environment.squidexClientSecret);
-    body.set('scope', 'squidex-api');
+  //   const body = new URLSearchParams();
+  //   body.set('grant_type', 'client_credentials');
+  //   body.set('client_id', environment.squidexClientId);
+  //   body.set('client_secret', environment.squidexClientSecret);
+  //   body.set('scope', 'squidex-api');
 
-    return this.http
-      .post<any>(
-        'https://cloud.squidex.io/identity-server/connect/token',
-        body.toString(),
-        { headers }
-      )
-      .pipe(
-        map(({ access_token: token }) => {
-          // console.log('generateAccessToken -> token', token);
-          return token as string;
-        })
-      );
-  }
+  //   return this.http
+  //     .post<any>(
+  //       'https://cloud.squidex.io/identity-server/connect/token',
+  //       body.toString(),
+  //       { headers }
+  //     )
+  //     .pipe(
+  //       map(({ access_token: token }) => {
+  //         return token as string;
+  //       })
+  //     );
+  // }
 }
