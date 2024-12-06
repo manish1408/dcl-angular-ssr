@@ -27,82 +27,64 @@
   </div>
 </div>
 <!-- End Breadcrumb section -->
-<div class="d-flex justify-content-center">
-  <span *ngIf="isLoading" class="spinner-border spinner-border-sm mt-5" role="status"></span>
-</div>
 
 <!-- Start Blog Details Section -->
 <div class="blog-details scroll-margin pt-120 mb-120 style-6" id="blog-details">
-  <div class="container">
-    <!-- <div class="row">
-      <div class="col-12">
-        <div class="blog-details-author-meta">
-          <div class="author-area">
-            <div class="author-img" *ngIf="post?.author.iv.image">
-              <img [src]="imgCDN + post?.author.iv.image[0]" alt="" />
-            </div>
-            <div class="author-content">
-              <h6>
-                By, <a href="blog-grid.html">{{ post?.author.iv.name }}</a>
-              </h6>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <div>
-      <div class="row justify-content-center g-4">
-        <div class="col-lg-9">
-          <div class="image-wrapper">
+  <div *ngIf="isLoading" class="d-flex justify-content-center">
+    <span class="spinner-border spinner-border-sm mt-5" role="status"></span>
+  </div>
+  <div *ngIf="!isLoading" class="container">
+    <div class="row justify-content-center g-4">
+      <div class="col-lg-9">
+        <div class="image-wrapper">
 
-            <img [src]="imgCDN + post?.image.iv[0]" alt="" />
-            <div class="image-bottom-content">
-              <h1>{{post?.title.iv}}</h1>
-              <p>{{post?.metaDesc.iv}}</p>
-              <div class="author-area">
-                <div class="author-img">
-                  <img *ngIf="post?.author.iv.image" [src]="imgCDN + post?.author.iv.image[0]" alt="" />
-                  <h6>{{post?.author.iv.name}}</h6>
+          <img [src]="imgCDN + post?.image.iv[0]" alt="" />
+          <div class="image-bottom-content">
+            <h1>{{post?.title.iv}}</h1>
+            <p>{{post?.metaDesc.iv}}</p>
+            <div class="author-area">
+              <div class="author-img">
+                <img *ngIf="post?.author.iv.image" [src]="imgCDN + post?.author.iv.image[0]" alt="" />
+                <h6>{{post?.author.iv.name}}</h6>
+              </div>
+              <div class="date-content">
+                <div class="date-icon">
+                  <img src="assets/icons/calendar-icon.svg" />
                 </div>
-                <div class="date-content">
-                  <div class="date-icon">
-                    <img src="assets/icons/calendar-icon.svg" />
-                  </div>
-                  <h6>{{date | date:'MMM dd, yyyy'}}</h6>
-                </div>
+                <h6>{{date | date:'MMM dd, yyyy'}}</h6>
               </div>
             </div>
           </div>
-          <div class="row gx-3" *ngIf="post?.podcasts.iv.length > 0">
-            <div class="col-4" *ngFor="let podcast of post?.podcasts.iv;let i = index">
-              <div class="podcast-wrapper" [ngStyle]="{
+        </div>
+        <div class="row g-3 mt-50 mb-50" *ngIf="post?.podcasts.iv.length > 0">
+          <div class="col-md-4 col-sm-12" *ngFor="let podcast of post?.podcasts.iv;let i = index">
+            <div class="podcast-wrapper" [ngStyle]="{
                 'background-image': getBackgroundImage(podcast?.thumbnailImage, i)
               }">
-                <h2>{{podcast?.title}}</h2>
-                <p>{{podcast?.channelName}} - {{podcast?.publishedDate | date:'MMM dd'}} - Episode {{podcast?.episode}}
-                </p>
-                <!-- <img class='play-icon' src="assets/icons/play-btn-white.svg" /> -->
-                <audio #audioPlayer [src]="imgCDN + podcast?.audioFile">
-                  Your browser does not support the audio element.
-                </audio>
-                <ng-container *ngIf="currentPlayingIndex === i;else play">
-                  <div class="pause-icon" (click)="toggleAudio(audioPlayer, i)">
-                    <div class=" pause-square"></div>
-                  </div>
-                </ng-container>
-                <ng-template #play>
-                  <img src="assets/icons/play-btn-white.svg" class="play-icon" (click)="toggleAudio(audioPlayer, i)"
-                    alt="Play/Stop" />
+              <h2>{{podcast?.title}}</h2>
+              <p>{{podcast?.channelName}} - {{podcast?.publishedDate | date:'MMM dd'}} - Episode {{podcast?.episode}}
+              </p>
+              <!-- <img class='play-icon' src="assets/icons/play-btn-white.svg" /> -->
+              <audio #audioPlayer [src]="imgCDN + podcast?.audioFile">
+                Your browser does not support the audio element.
+              </audio>
+              <ng-container *ngIf="currentPlayingIndex === i;else play">
+                <div class="pause-icon" (click)="toggleAudio(audioPlayer, i)">
+                  <div class=" pause-square"></div>
+                </div>
+              </ng-container>
+              <ng-template #play>
+                <img src="assets/icons/play-btn-white.svg" class="play-icon" (click)="toggleAudio(audioPlayer, i)"
+                  alt="Play/Stop" />
 
-                </ng-template>
-              </div>
+              </ng-template>
             </div>
-
           </div>
-          <div [innerHTML]="post?.text?.iv"></div>
         </div>
+        <div [innerHTML]="post?.text?.iv"></div>
       </div>
     </div>
+
 
     <div class="row mb-120">
       <div class="col-lg-12">

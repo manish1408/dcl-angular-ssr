@@ -28,14 +28,14 @@
 }
 .blog-card.style-2 .blog-card-img-wrap {
   border-radius: 8px;
-  overflow: hidden;
+  overflow: hidden; 
+  aspect-ratio: 4 / 3; 
 }
 .blog-card .card-top-img {
-  // height: 332px;
   width: 100%;
-  object-fit: contain;
-  border-radius: 8px;
-  border: 1px solid #fff;
+  height: 100%; 
+  object-fit: cover; 
+ 
 }
 
 .blog-card {
