@@ -2,6 +2,7 @@ import { Component, ElementRef } from '@angular/core';
 import { BlogService } from '../services/blog.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blogs',
@@ -20,7 +21,9 @@ export class BlogsComponent {
   constructor(
     private blogService: BlogService,
     private datePipe: DatePipe,
-    private el: ElementRef
+    private el: ElementRef,
+    private meta: Meta,
+    private title: Title
   ) {}
 
   ngOnInit() {
@@ -31,6 +34,27 @@ export class BlogsComponent {
 
       this.formatDates();
     });
+
+    this.title.setTitle(`Distinct Cloud Labs | Blogs - Company Updates & Technology Articles`);
+    this.meta.addTags([
+      {
+        name: "description",
+        content: 'Stay updated with the latest insights, trends, and success stories in AI and ML. Explore expert articles, case studies, and innovative solutions from Distinct Cloud Labs to drive growth and transformation in your business.',
+      },
+      { property: "og:title", content: `Distinct Cloud Labs | Blogs - Company Updates & Technology Articles` },
+      {
+        property: "og:description",
+        content: 'Stay updated with the latest insights, trends, and success stories in AI and ML. Explore expert articles, case studies, and innovative solutions from Distinct Cloud Labs to drive growth and transformation in your business.',
+      },
+      {
+        property: "twitter:title",
+        content: `Distinct Cloud Labs | Blogs - Company Updates & Technology Articles`,
+      },
+      {
+        property: "twitter:description",
+        content: 'Stay updated with the latest insights, trends, and success stories in AI and ML. Explore expert articles, case studies, and innovative solutions from Distinct Cloud Labs to drive growth and transformation in your business.',
+      },
+    ]);
   }
 
   formatDates() {

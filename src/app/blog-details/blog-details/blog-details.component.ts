@@ -3,6 +3,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BlogService } from '../../services/blog.service';
 import { environment } from '../../environments/environment';
 import { CommonModule, DatePipe } from '@angular/common';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-blog-details',
@@ -17,7 +18,9 @@ export class BlogDetailsComponent implements OnInit {
     private blogService: BlogService,
     private route: ActivatedRoute,
     private datePipe: DatePipe,
-    private el: ElementRef
+    private el: ElementRef,
+    private meta: Meta,
+    private title: Title
   ) {}
 
   imgCDN: string = environment.squidexAssets;
@@ -32,17 +35,19 @@ export class BlogDetailsComponent implements OnInit {
     this.route.params.subscribe((param) => {
       this.isLoading = true;
       this.slugName = param['type'];
-    });
+   
     this.blogService.getBlogBySlug(this.slugName).subscribe((resp: any) => {
       console.log(resp);
       this.post = resp?.items[0].data;
+      this.updateMetaTags(resp?.items[0].data)
       this.isLoading = false;
 
       this.date = resp.items[0].created;
       console.log(this.post);
       this.formatDate(this.date);
       this.getAllBlogs();
-    });
+    }); 
+   });
   }
 
   getAllBlogs() {
@@ -97,5 +102,33 @@ export class BlogDetailsComponent implements OnInit {
       audioPlayer.play();
       this.currentPlayingIndex = index;
     }
+  }
+
+  updateMetaTags(blog: any) {
+    const sanitizedContent = this.stripHtmlTags(blog.text.iv);
+    this.title.setTitle(`Distinct Cloud Labs |  ${blog.title.iv}`);
+    this.meta.addTags([
+      {
+        name: "description",
+        content: sanitizedContent.substring(0, 160),
+      },
+      { property: "og:title", content: `Distinct Cloud Labs | ${blog.title.iv}` },
+      {
+        property: "og:description",
+        content: sanitizedContent.substring(0, 160),
+      },
+      {
+        property: "twitter:title",
+        content: `Distinct Cloud Labs | ${blog.title.iv}`,
+      },
+      {
+        property: "twitter:description",
+        content: sanitizedContent.substring(0, 160),
+      },
+    ]);
+  }
+
+  stripHtmlTags(content: string): string {
+    return content.replace(/<\/?[^>]+(>|$)/g, "");
   }
 }

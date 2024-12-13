@@ -43,7 +43,7 @@
   <div class="container">
     <div class="row g-lg-4 gy-5 mb-60">
       <div class="col-lg-8">
-        <div class="case-thumb">
+        <div class="case-thumb" *ngIf="post?.logo?.iv[0]">
           <img [src]="imgCDN + post?.logo?.iv[0]" alt="" />
         </div>
 

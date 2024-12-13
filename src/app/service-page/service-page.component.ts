@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { OurServicesService } from '../services/our-services.service';
 import { environment } from '../environments/environment';
 import { CommonService } from '../services/common.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-service-page',
@@ -24,7 +25,9 @@ export class ServicePageComponent {
     private el: ElementRef,
     private ourServicesService: OurServicesService,
     private route: ActivatedRoute,
-    private common: CommonService
+    private common: CommonService,
+    private meta: Meta,
+    private title: Title
   ) {}
 
   ngOnInit() {
@@ -35,8 +38,8 @@ export class ServicePageComponent {
       this.ourServicesService
         .getServiceBySlug(this.slugName)
         .subscribe((resp: any) => {
-          console.log('Service', resp?.items[0].data);
           this.service = resp?.items[0].data;
+          this.updateMetaTags(resp?.items[0].data);
           this.isLoading = false;
         });
       if (this.common.isBrowser()) {
@@ -47,6 +50,34 @@ export class ServicePageComponent {
         });
       }
     });
+  }
+
+  updateMetaTags(blog: any) {
+    const sanitizedContent = this.stripHtmlTags(blog.section1Desc.iv);
+    this.title.setTitle(`Distinct Cloud Labs |  ${blog.pageTitle.iv}`);
+    this.meta.addTags([
+      {
+        name: "description",
+        content: sanitizedContent.substring(0, 160),
+      },
+      { property: "og:title", content: `${blog.pageTitle.iv}` },
+      {
+        property: "og:description",
+        content: sanitizedContent.substring(0, 160),
+      },
+      {
+        property: "twitter:title",
+        content: `Distinct Cloud Labs | ${blog.pageTitle.iv}`,
+      },
+      {
+        property: "twitter:description",
+        content: sanitizedContent.substring(0, 160),
+      },
+    ]);
+  }
+
+  stripHtmlTags(content: string): string {
+    return content.replace(/<\/?[^>]+(>|$)/g, "");
   }
 
   getCardColor(index: number): string {

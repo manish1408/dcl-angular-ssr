@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { EngagementModelsComponent } from '../common/engagement-models/engagement-models.component';
 import { HiringProcessComponent } from '../common/hiring-process/hiring-process.component';
@@ -26,12 +26,36 @@ declare var Swiper: any;
 })
 export class HomeComponent implements OnInit {
   constructor(
-    private meta: Meta,
     private testimonialService: TestimonialService,
     private homeService: HomeService,
-    private common: CommonService
+    private common: CommonService,
+    private meta: Meta,
+    private title: Title
   ) {
-    this.meta.addTag({ name: 'title', content: 'Home page' });
+    this.title.setTitle("Distinct Cloud Labs | Empower Your Business with AI and ML ");
+
+    this.meta.addTags([
+      {
+        name: "description",
+        content:
+          "Transform your business with Distinct Cloud Labs' AI enablement services. From tailored AI strategies to custom development, seamless integration, and expert training, we help you unlock growth and innovation with cutting-edge AI solutions.",
+      },
+      { property: "og:title", content: "Home" },
+      {
+        property: "og:description",
+        content:
+          "Transform your business with Distinct Cloud Labs' AI enablement services. From tailored AI strategies to custom development, seamless integration, and expert training, we help you unlock growth and innovation with cutting-edge AI solutions.",
+      },
+      {
+        property: "twitter:title",
+        content: "Distinct Cloud Labs | Empower Your Business with AI and ML",
+      },
+      {
+        property: "twitter:description",
+        content:
+          "Transform your business with Distinct Cloud Labs' AI enablement services. From tailored AI strategies to custom development, seamless integration, and expert training, we help you unlock growth and innovation with cutting-edge AI solutions.",
+      },
+    ]);
   }
 
   testimonials: any = [];

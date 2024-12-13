@@ -4,6 +4,7 @@ import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
 import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 import { CommonService } from '../services/common.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-portfolio-details',
@@ -18,7 +19,9 @@ export class PortfolioDetailsComponent {
     private route: ActivatedRoute,
     private renderer: Renderer2,
     private el: ElementRef,
-    private common: CommonService
+    private common: CommonService,
+    private meta: Meta,
+    private title: Title
   ) {}
   post: any;
   posts: any = [];
@@ -35,6 +38,7 @@ export class PortfolioDetailsComponent {
         .getPortfolioBySlug(this.slugName)
         .subscribe((resp: any) => {
           this.post = resp?.items[0].data;
+          this.updateMetaTags(resp?.items[0].data);
           this.isLoading = false;
         });
       if (this.common.isBrowser()) {
@@ -55,5 +59,33 @@ export class PortfolioDetailsComponent {
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+
+  updateMetaTags(blog: any) {
+    const sanitizedContent = this.stripHtmlTags(blog.description.iv);
+    this.title.setTitle(`Distinct Cloud Labs |  ${blog.title.iv}`);
+    this.meta.addTags([
+      {
+        name: "description",
+        content: sanitizedContent.substring(0, 160),
+      },
+      { property: "og:title", content: `Distinct Cloud Labs | ${blog.title.iv}` },
+      {
+        property: "og:description",
+        content: sanitizedContent.substring(0, 160),
+      },
+      {
+        property: "twitter:title",
+        content: `Distinct Cloud Labs | ${blog.title.iv}`,
+      },
+      {
+        property: "twitter:description",
+        content: sanitizedContent.substring(0, 160),
+      },
+    ]);
+  }
+
+  stripHtmlTags(content: string): string {
+    return content.replace(/<\/?[^>]+(>|$)/g, "");
   }
 }
