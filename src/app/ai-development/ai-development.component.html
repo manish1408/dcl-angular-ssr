@@ -679,10 +679,10 @@
                         </div>
                         <div class="col-md-7">
                             <div class="showcase-content wow fadeInRight" data-wow-delay="0.3s">
-                                <h3 class="text-black fw_7">{{ p.data?.title?.iv }}</h3>
-                                <p [innerHTML]="p.data?.description?.iv"></p>
+                                <h3 class="text-black fw_7">{{ p?.data?.title?.iv }}</h3>
+                                <p [innerHTML]="p?.data?.description?.iv"></p>
                                 <div class="button-wapper">
-                                    <a [routerLink]="['/demo/', p.data?.slug?.iv]" class="button-style">
+                                    <a [routerLink]="['/demo/', p?.data?.slug?.iv]" class="button-style">
                                         Details
                                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">
@@ -716,11 +716,11 @@
                                             </div>
                                             <div class="col-12">
                                                 <div class="showcase-content">
-                                                    <h3 class="text-black fw_7">{{ portfolio.data?.title?.iv }}
+                                                    <h3 class="text-black fw_7">{{ portfolio?.data?.title?.iv }}
                                                     </h3>
-                                                    <p [innerHTML]="portfolio.data?.description?.iv"></p>
+                                                    <p [innerHTML]="portfolio?.data?.description?.iv"></p>
                                                     <div class="button-wapper">
-                                                        <a [routerLink]="['/demo/', portfolio.data?.slug?.iv]"
+                                                        <a [routerLink]="['/demo/', portfolio?.data?.slug?.iv]"
                                                             class="button-style">
                                                             Details
                                                             <svg width="14" height="14" viewBox="0 0 14 14"
