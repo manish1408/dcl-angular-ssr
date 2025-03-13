@@ -20,15 +20,14 @@ export function app(): express.Express {
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
-  server.get(
-    '*.*',
-    express.static(browserDistFolder, {
-      maxAge: '1y',
-    })
-  );
+  // server.get('**', express.static(browserDistFolder, {
+  //   maxAge: '1y',
+  //   index: 'index.html',
+  // }));
 
   // All regular routes use the Angular engine
-  server.get('*', (req, res, next) => {
+  server.get('**', (req, res, next) => {
+    console.log("New Request ", req)
     const { protocol, originalUrl, baseUrl, headers } = req;
 
     commonEngine
@@ -47,7 +46,7 @@ export function app(): express.Express {
 }
 
 function run(): void {
-  const port = process.env['PORT'] || 4000;
+  const port = 8080;
 
   // Start up the Node server
   const server = app();
@@ -56,4 +55,4 @@ function run(): void {
   });
 }
 
-// run();
+run();
