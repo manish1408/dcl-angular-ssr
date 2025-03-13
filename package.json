@@ -1,6 +1,7 @@
 {
   "name": "dcl-angular-landing",
   "version": "1.0.4",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -12,6 +13,9 @@
     "test": "ng test",
     "sitemap": "ngx-sitemap src localhost:4200",
     "serve:ssr:dcl-angular-landing": "node dist/dcl-angular-landing/server/server.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   },
   "private": true,
   "dependencies": {

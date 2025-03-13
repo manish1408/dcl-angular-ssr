@@ -14,6 +14,11 @@ export function app(): express.Express {
 
   const commonEngine = new CommonEngine();
 
+  server.use(express.static(browserDistFolder, {
+    maxAge: '1y',
+    index: false // Ensure it doesn't serve index.html automatically
+  }));
+
   server.set('view engine', 'html');
   server.set('views', browserDistFolder);
 
