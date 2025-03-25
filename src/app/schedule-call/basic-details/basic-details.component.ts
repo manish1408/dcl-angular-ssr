@@ -8,11 +8,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { environment } from '../../environments/environment';
 import { FormDataService } from '../../services/form-data.service';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, OperatorFunction } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-
+declare var Calendly: any; 
 @Component({
   selector: 'app-basic-details',
   standalone: true,
@@ -24,6 +25,7 @@ export class BasicDetailsComponent implements OnInit {
   basicDetailsForm!: FormGroup;
   id!: string;
   isLoading: boolean = false;
+  calendlyLink=environment.calendlyLink;
 
   industryList = [
     {"Code": 47,"Groups": "corp, fin","Description": "Accounting"},
@@ -192,6 +194,7 @@ export class BasicDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initializeCalendly();
     this.route.params.subscribe((params) => {
       this.id = params['id'];
     });
@@ -209,6 +212,16 @@ export class BasicDetailsComponent implements OnInit {
       });
     }
   }
+  initializeCalendly(): void {
+    Calendly.initInlineWidget({
+      url: this.calendlyLink, 
+      parentElement: document.getElementById('calendly-inline-widget'), 
+      prefill: {},
+      utm: {}
+    });
+
+  }
+
   hasError(controlName: keyof typeof this.basicDetailsForm.controls) {
     const control = this.basicDetailsForm.controls[controlName];
     return control.invalid && control.touched;
