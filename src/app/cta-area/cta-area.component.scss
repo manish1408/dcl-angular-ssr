@@ -1,0 +1,186 @@
+.cta-container {
+  position: relative;
+
+  .cta-content {
+    position: relative;
+    white-space: wrap;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: -112px;
+      top: 0;
+      transform: translateY(-50%); /* Center the image vertically */
+      width: 80px; /* Adjust the width of the image */
+      height: 80px; /* Adjust the height of the image */
+      background-image: url("/assets/img/users/user_image1.webp"); /* Set the image URL here */
+      background-size: contain; /* Ensure the image scales correctly */
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 100%;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      right: -100px;
+      top: 0;
+      transform: translateY(-50%); /* Center the image vertically */
+      width: 80px; /* Adjust the width of the image */
+      height: 80px; /* Adjust the height of the image */
+      background-image: url("/assets/img/users/user_image2.webp"); /* Set the image URL here */
+      background-size: contain; /* Ensure the image scales correctly */
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 100%;
+    }
+
+    span.third-image {
+      width: 80px;
+      height: 80px;
+      // background-image: url("/assets/img/users/user_image3.webp");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 100%;
+      left: -50px;
+      position: absolute;
+      bottom: -40px;
+    }
+
+    span.fourth-image {
+      width: 80px;
+      height: 80px;
+      // background-image: url("/assets/img/users/user_image4.webp");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border-radius: 100%;
+      right: -50px;
+      position: absolute;
+      bottom: -40px;
+    }
+  }
+
+  // Media query to hide img on screens smaller than or equal to 768px
+  @media (max-width: 768px) {
+    .cta-content::after,
+    .cta-content::before,
+    .cta-content span.third-image,
+    .cta-content span.fourth-image {
+      display: none;
+    }
+  }
+}
+
+.cta-wrapper {
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  padding: 100px 0px;
+  gap: 40px;
+  background-image: url("../../assets/img/bg.webp");
+  background-size: cover;
+  border-radius: 16px;
+  // width:1000px;
+  margin: auto;
+
+  @media only screen and (min-width: 576px) {
+    .cta-wrapper {
+      padding: 0px 40px;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .cta-wrapper {
+      padding: 0px 60px;
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    .cta-wrapper {
+      padding: 0px 60px;
+    }
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .cta-wrapper {
+      padding: 0px 80px;
+    }
+  }
+
+  @media only screen and (min-width: 1400px) {
+    .cta-wrapper {
+      padding: 0px 80px;
+    }
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+  }
+  .user_1 {
+    position: absolute;
+    left: -20px;
+    top: -64px;
+  }
+}
+
+.robot-img {
+  flex-shrink: 0;
+  width: 100%; // Use a percentage to make it responsive
+  max-width: 415px; // Ensure it doesn't grow larger than the original size
+  height: auto; // Maintain aspect ratio of the container
+  aspect-ratio: 415.53 / 399; // This ensures the correct aspect ratio (width / height)
+  position: relative; // Necessary to ensure the image fits within the container
+
+  img {
+    width: 100%; // Ensure the image fills the container
+    height: 100%;
+    object-fit: cover; // Ensure the image covers the container without stretching
+    position: absolute; // Ensures the image is positioned correctly inside the container
+    top: 0;
+    left: 0;
+  }
+}
+.button-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.section-container-1 {
+  background-color: white;
+  padding: 50px 10px 50px 10px;
+  overflow: hidden;
+
+  @media only screen and (min-width: 576px) {
+    padding: 50px 20px 50px 20px;
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding: 70px 30px 70px 30px;
+  }
+
+  @media only screen and (min-width: 992px) {
+    padding: 70px 30px 70px 30px;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    padding: 100px 50px 100px 50px;
+  }
+
+  @media only screen and (min-width: 1400px) {
+    padding: 100px 50px 100px 50px;
+  }
+}
+.color{
+  color: #072032;
+}

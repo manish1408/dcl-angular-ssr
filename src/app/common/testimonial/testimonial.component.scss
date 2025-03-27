@@ -1,0 +1,95 @@
+.single-testimonials-item {
+  background-color: #fff;
+  box-shadow: 0px 2px 4px 0px rgba(27, 42, 82, 0.2);
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 25px;
+  display: grid;
+  grid-gap: 0px;
+  height: 100%;
+  border: none;
+  height: 360px;
+
+  
+}
+
+.testimonial-slider-bg {
+  background-image: url("/assets/img/home4_bg.webp");
+  background-size: cover;
+}
+
+::ng-deep .reviewstar p {
+  display: flex;
+  gap: 2px;
+
+  img {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+::ng-deep .clutch-logo p {
+  img {
+    margin-bottom: 4px;
+    height: 20px !important;
+  }
+  br{
+    display: none;
+  }
+}
+
+.top-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quote {
+  width: 40px;
+  height: 40px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+
+  .initials {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #072032;
+    color: white;
+    border-radius: 50%;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.bottom-div {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+::ng-deep .testimonials-customer-name{
+        font-weight: 600 !important;
+    
+}
+::ng-deep .testimonial-text{
+    min-height: 145px;
+}
+
+::ng-deep .swiper-pagination-bullet{
+  width: 12px !important;
+    height: 12px !important;
+}
+
+swiper-slide{
+  margin-bottom: 20px !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: var(--swiper-pagination-bullet-opacity, 1);
+  background: #00a359;
+}

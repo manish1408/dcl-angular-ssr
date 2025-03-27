@@ -4,15 +4,22 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../services/products.service';
 import { Meta, Title } from '@angular/platform-browser';
+import { TemplateCardComponent } from "../common/template-card/template-card.component";
+import { TemplateService } from '../services/templates.service';
+import { finalize } from 'rxjs';
+import { CtaAreaComponent } from "../cta-area/cta-area.component";
+import { FaqComponent } from "../faq/faq.component";
+import { TestimonialComponent } from "../common/testimonial/testimonial.component";
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, TemplateCardComponent, CtaAreaComponent, FaqComponent, TestimonialComponent],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss',
 })
 export class ProductComponent {
+  useCases:any[]=[]
   isLoading: boolean = false;
   imgCDN: string = environment.squidexAssets;
   product: any;
@@ -52,7 +59,8 @@ export class ProductComponent {
     private productService: ProductsService,
     private route: ActivatedRoute,
     private meta: Meta,
-    private title: Title
+    private title: Title,
+    private templateService: TemplateService
   ) {}
 
   ngOnInit() {
@@ -64,11 +72,21 @@ export class ProductComponent {
     this.productService
       .getProductBySlug(this.slugName)
       .subscribe((resp: any) => {
-        console.log(resp);
+        // console.log(resp);
         this.product = resp?.items[0].data;
         this.updateMetaTags(resp?.items[0].data);
         this.isLoading = false;
       });
+    });
+    this.getAiUsecases()
+  }
+  getAiUsecases(){
+    this.isLoading = true;
+    this.templateService.getAiUsecases()
+    .pipe(finalize(()=>this.isLoading = false))
+    .subscribe((resp: any) => {
+      console.log('resp',resp);
+      this.useCases = resp?.items.slice(0,4);
     });
   }
   onTabClick(tabValue: string): void {

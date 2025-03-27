@@ -88,3 +88,13 @@
   background-color: #f4f4f4;
   border-radius: 0px 0px 10px 10px;
 }
+.section-container {
+  padding: 70px 30px !important;
+  overflow: hidden !important;
+}
+
+:root {
+  --swiper-theme-color: #6be3aa !important;
+  --swiper-pagination-color: #6be3aa !important;
+
+}

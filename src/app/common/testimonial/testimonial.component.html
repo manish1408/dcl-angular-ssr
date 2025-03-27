@@ -1,0 +1,59 @@
+
+  
+
+
+<section class="testimonial-slider-bg">
+  <div class="section-container container">
+      <div class="row">
+          <div class="col-12">
+              <div class="text-center mb-50 wow fadeInUp" data-wow-delay="0.2s">
+                  <h2 class=""> Real Stories.  <br> <span class="position-relative">Real Impact.</span></h2>
+                  <p class="">See how businesses are transforming with AI-powered automation—effortless support, smarter workflows, and game-changing results.
+                  </p>
+              </div>
+          </div>
+      </div>
+      <div class="row"> 
+          <div class="col-12">
+            <swiper-container class="testimonials-slider" space-between="20"  
+            [slidesPerView]="slidesPerView" pagination-clickable="true" pagination="true">
+              <swiper-slide *ngFor="let testimonial of testimonials"><div class="single-testimonials-item">
+                <div class="mb-3 top-div"> 
+                <div class="">
+                  <div class="clutch-logo" [innerHTML]="sanitizeHtml(testimonial.data.reviewPlatform.iv)"></div>
+                  <div class="reviewstar" [innerHTML]="sanitizeHtml(testimonial.data.rating.iv)"></div>
+                </div>
+                <div class="quote">
+                  <img src="assets/img/icons/quote.svg" height="40" width="40" alt="">
+                </div>
+              </div>
+                
+                <!-- <p class="mb-2 testimonials-title">{{ testimonial.data.testimonialHeading.iv }}</p> -->
+                <p class="testimonial-text">“{{ testimonial.data.testimonialText.iv }}”</p>
+                <div class="mt-3 bottom-div">
+                  <div class="profile">
+                    <div *ngIf="testimonial.data.profileImage.iv; else initials">
+                      <img [src]="testimonial.data.profileImage.iv" alt="Profile Image" />
+                    </div>
+                    <ng-template #initials>
+                      <div class="initials">
+                        {{ getInitials(testimonial.data.customerName.iv) }}
+                      </div>
+                    </ng-template>
+                  </div>
+                  
+                  <div>
+          
+                    <p class="testimonials-customer-name">{{ testimonial.data.customerName.iv }}</p>
+                    <p class="testimonials-sub">{{ testimonial.data.customerTitle.iv }}</p>
+                  </div>
+                </div>
+              </div>
+            </swiper-slide>
+            
+            </swiper-container>
+              
+          </div>
+      </div>
+  </div>
+</section>

@@ -1,0 +1,118 @@
+
+
+
+.faq-card-header:hover {
+  cursor: pointer;
+}
+
+.faq-que {
+  font-weight: 500;
+}
+
+.faq-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  // background-color: #fff;
+  background-clip: border-box;
+  // border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 1rem;
+  padding: 1rem 1rem;
+  border-bottom: 0.5px solid #eaecf0;
+  transition: background-color 0.5s ease;
+  
+  &.active {
+    background-color: #f0f2f8;
+    
+
+  }
+  .faq-card-header {
+
+    border: none;
+    padding: 0.5rem 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .faq-answer {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.2s ease; // Smooth transitions for height and opacity
+    padding: 0;
+
+    &.open {
+      max-height: 500px; // Set to a large enough value based on your content
+      opacity: 1;
+      padding: 10px 0; // Padding when open
+    }
+  }
+}
+.contact-info {
+  // background: #f0f2f8;
+  // border-radius: 14px;
+  // padding: 30px;
+  text-align: left;
+  .info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 25px 20px;
+    background: #f0f2f8;
+    border-radius: 14px;
+    margin-bottom: 10px;
+  }
+}
+
+.icon {
+  height: 55px;
+  width: 55px;
+}
+.faq {
+  font-size: 48px;
+  line-height: 57px !important;
+}
+.row {
+  align-items: start;
+  justify-content: space-between;
+}
+
+::ng-deep #accordionFAQ   {
+  // Main accordion styles
+
+  .accordion-item {
+    background-color: #f0f2f8;
+    color: #072032 ;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    
+
+    .accordion-header {
+      overflow: hidden;
+     
+    border-radius: 10px;
+      // Styles for the header (button that toggles)
+      
+      .accordion-button {
+        background-color: #f0f2f8;
+    color: #072032 ;
+      }
+    }
+
+    
+
+      .accordion-body {
+        // Styles for the content inside the collapse
+      
+
+        a {
+          color: #2F80ED;
+        }
+      }
+    }
+  }
+
+

@@ -1,23 +1,76 @@
 <div class="content-container">
-    <div *ngIf="isLoading" class="d-flex justify-content-center align-items-center loader-container">
-        <span class="spinner-border spinner-border-sm mt-5" role="status"></span>
-    </div>
+  <div
+    *ngIf="isLoading"
+    class="d-flex justify-content-center align-items-center loader-container"
+  >
+    <span class="spinner-border spinner-border-sm mt-5" role="status"></span>
+  </div>
 
-    <div *ngIf="!isLoading" class="main-content">
-        <div class="breadcrumb-section" style="
-    background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
-      linear-gradient(180deg, #121212 0%, #121212 100%);">
-            <div class="top-section">
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-sm-12">
-                            <img class='product-logo' [src]="imgCDN + product?.productLogo.iv[0]" />
-                            <div class="heading-section">
-                                <h1>{{product?.section1Title?.iv}}</h1>
-                                <p>{{product?.section1Desc?.iv}}</p>
-                            </div>
-                            <div class="users-section">
+  <div *ngIf="!isLoading" class="main-content">
+    <div
+      class="breadcrumb-section"
+      style="
+        background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
+          linear-gradient(180deg, #121212 0%, #121212 100%);
+      "
+    >
+      <div class="top-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-sm-12">
+              <img
+                class="product-logo"
+                [src]="imgCDN + product?.productLogo.iv[0]"
+              />
+              <div class="heading-section">
+                <h1>{{ product?.section1Title?.iv }}</h1>
+                <p>{{ product?.section1Desc?.iv }}</p>
+              </div>
+              <div class="banner-info">
+                <div class="banner-users-box">
+                  <div class="banner-users-top">
+                    <ul class="users-list">
+                      <li>
+                        <img
+                          src="assets/img/avatar/avatar-1.svg"
+                          width="46"
+                          height="46"
+                          alt="avatar"
+                        />
+                      </li>
+                      <li>
+                        <img
+                          src="assets/img/avatar/avatar-2.svg"
+                          width="46"
+                          height="46"
+                          alt="avatar"
+                        />
+                      </li>
+                      <li>
+                        <img
+                          src="assets/img/avatar/avatar-3.svg"
+                          width="46"
+                          height="46"
+                          alt="avatar"
+                        />
+                      </li>
+                      <li>
+                        <img
+                          src="assets/img/favicon.svg"
+                          width="46"
+                          height="46"
+                          alt="favicon"
+                        />
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="banner-users-top">
+                    <p class="tag">4k+</p>
+                    <p class="text-start">Users</p>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="users-section">
                                 <div class="users">
                                     <div class="user-avatar">
                                         <img src="assets/img/product/user-1.png" />
@@ -33,34 +86,37 @@
                                     <img src="assets/img/product/play-icon-black.png" />
                                     <p>Watch promo video</p>
                                 </div>
-                            </div>
-                            <button class="primary-btn2 d-lg-flex d-none">Start chatting
-                            </button>
-                        </div>
-                        <div class="col-6">
-                            <img [src]="imgCDN + product?.section1Img?.iv[0]" />
-                        </div>
-                    </div>
-                </div>
+                            </div> -->
+              <button class="primary-btn2 d-lg-flex d-none">
+                Explore now
+              </button>
             </div>
+            <div class="col-6">
+              <img [src]="imgCDN + product?.section1Img?.iv[0]" />
+            </div>
+          </div>
+        </div>
+      </div>
 
-            <div class="tab-section pb-2">
-                <div class="container">
-                    <div class="row justify-content-center g-4">
-                        <div class="col-lg-9 col-sm-12">
-                            <div class="tabs-wrapper">
-                                @for(tab of tabs;track tab;let last = $last){
+      <div class="tab-section pb-2">
+        <div class="container">
+          <div class="row justify-content-center g-4">
+            <div class="col-lg-9 col-sm-12">
+              <div class="tabs-wrapper">
+                @for(tab of tabs;track tab;let last = $last){
 
-                                <div class="tab" [class.tab-border-right]="!last"
-                                    [ngClass]="{'selected-tab':selectedTab===tab.value}"
-                                    (click)="onTabClick(tab.value)">
-                                    {{tab?.text}}
-                                </div>
-                                }
-
-                            </div>
-                        </div>
-                        <!-- <div class="col-lg-10" id="milo-in-chat">
+                <div
+                  class="tab"
+                  [class.tab-border-right]="!last"
+                  [ngClass]="{ 'selected-tab': selectedTab === tab.value }"
+                  (click)="onTabClick(tab.value)"
+                >
+                  {{ tab?.text }}
+                </div>
+                }
+              </div>
+            </div>
+            <!-- <div class="col-lg-12" id="milo-in-chat">
                             <div class="tab-content">
 
                                 <div class="row gx-5 align-items-center">
@@ -75,192 +131,218 @@
                                 </div>
                             </div>
                         </div> -->
-                    </div>
-                </div>
-            </div>
-            <div class="chat-section" id="milo-in-chat">
-                <div class="container">
-                    <div class="row justify-content-center g-4">
-                        <div class="col-lg-10 mt-0">
-                            <div class="row gx-5 align-items-center">
-                                <div class="col-lg-6 col-sm-12">
-                                    <img [src]="imgCDN + product?.section2Img?.iv[0]" />
-                                </div>
-                                <div class="col-lg-6 col-sm-12">
-                                    <h2>{{product?.section2Title?.iv}}</h2>
-                                    <p>{{product?.section2Desc?.iv}}</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="platform-section" id="messaging">
-                <div class="container">
-                    <div class="row justify-content-center g-4">
-                        <div class="col-lg-5">
-                            <h2>{{product?.section3Title?.iv}}</h2>
-                        </div>
-                        <div class="col-lg-10">
-                            <div class="row gx-5 align-items-center">
-                                <div class="col-lg-7 col-sm-12">
-                                    <h3>{{product?.section3Title2?.iv}}</h3>
-                                    <h4>{{product?.section3Desc?.iv}}</h4>
-                                    <p>{{product?.section3Desc2?.iv}}</p>
-                                </div>
-                                <div class="col-lg-5 col-sm-12">
-                                    <img [src]="imgCDN+ product?.section3Img?.iv[0]" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="benefits-section" id="benefits">
-                <div class="container">
-                    <div class="row justify-content-center g-4">
-                        <div class="col-lg-5">
-                            <h2>{{product?.section4Title?.iv}}</h2>
-                        </div>
-                        <div class="col-lg-10">
-                            <div class="row g-4 align-items-center">
-                                @for(a of product?.section4Cards?.iv;track a){
-
-                                <div class="col-lg-4 col-sm-12">
-                                    <div class="benefit-card">
-                                        <img [src]="imgCDN+ a?.icon[0]" />
-                                        <h3>{{a?.title}}</h3>
-                                        <p>{{a?.description}}</p>
-                                    </div>
-                                </div>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="industries-section" id="industries">
-                <div class="container">
-                    <div class="row justify-content-center g-4">
-                        <div class="col-lg-6 text-center">
-                            <h2>{{product?.section5Title?.iv}}</h2>
-                            <p>{{product?.section5Desc?.iv}}</p>
-                        </div>
-                        <div class="col-lg-10">
-                            <div class="row g-4 align-items-center">
-                                @for(a of product?.section5Cards.iv;track a){
-
-                                <div class="col-lg-4 col-sm-12">
-                                    <div class="industry-card">
-                                        <img [src]="imgCDN+a?.icon[0]" />
-                                        <h3>{{a?.title}}</h3>
-                                        <p>{{a?.description}}</p>
-                                    </div>
-                                </div>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="safety-section" id="safety">
-                <div class="container">
-                    <div class="row justify-content-center g-4">
-                        <div class="col-lg-6 text-center">
-                            <h2>{{product?.section6Title?.iv}}</h2>
-                            <p>{{product?.section6Desc?.iv}}
-                            </p>
-                        </div>
-                        <div class="col-lg-10">
-                            <div class="row g-4 align-items-center">
-                                @for(a of product?.section6Cards.iv;track a){
-
-                                <div class="col-lg-4 col-sm-12">
-                                    <div class="safety-card">
-                                        <img [src]="imgCDN+a?.icon[0]" />
-                                        <h3>{{a?.title}}</h3>
-                                        <p>{{a?.description}}</p>
-                                    </div>
-                                </div>
-                                }
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="faq-section" id="learn-more">
-                <div class="container">
-                    <div class="row justify-content-center g-4">
-                        <div class="col-lg-6 text-center">
-                            <h2>{{product?.section7Title?.iv}}</h2>
-                            <p>{{product?.section7Desc?.iv}}
-                            </p>
-                        </div>
-                        <div class="col-lg-10">
-                            <div class="accordion" id="accordionExample">
-                                @for(item of product?.section7Faqs?.iv;track item;let i = $index){
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                            [attr.data-bs-target]="'#accordion-item-' + i" aria-expanded="false"
-                                            [attr.aria-controls]="'accordion-item-' + i">
-                                            {{item?.title}}
-                                        </button>
-                                    </h2>
-                                    <div [id]="'accordion-item-' + i" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            {{item?.description}}
-                                        </div>
-                                    </div>
-                                </div>}
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="explore-section">
-                <div class="container">
-                    <div class="row g-4 mt-5 mb-5">
-                        <div class="home3-newsletter-section ">
-                            <div class="newsletter-wrapper">
-                                <div class="row g-lg-4 gy-5 align-items-center">
-                                    <div data-wow-delay="200ms" data-wow-duration="1500ms"
-                                        class="col-lg-7 col-md-6 wow animate fadeInLeft" style="
-                  visibility: visible;
-                  animation-duration: 1500ms;
-                  animation-delay: 200ms;
-                ">
-                                        <div class="section-title white">
-                                            <h2>Explore how AI can help your Business</h2>
-                                        </div>
-                                    </div>
-                                    <div data-wow-delay="200ms" data-wow-duration="1500ms"
-                                        class="col-lg-5 col-md-6 wow animate fadeInRight" style="
-                  visibility: visible;
-                  animation-duration: 1500ms;
-                  animation-delay: 200ms;
-                ">
-                                        <div class="newsletter-form-area">
-                                            <h6>
-                                                Distinct Cloud Labs offers a free assessment of your business
-                                                for AI enablement. Our assessment can help you analyze how AI
-                                                can transform your business.
-                                            </h6>
-                                            <button class="primary-btn1 hover-white" tabindex="0"
-                                                [routerLink]="['/assessment/basic-details']">
-                                                Free Consultation<i class="bi bi-arrow-right"></i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+          </div>
         </div>
+      </div>
+      <div class="chat-section" id="milo-in-chat">
+        <div class="container">
+          <div class="row justify-content-center g-4">
+            <div class="col-lg-12 mt-0">
+              <div class="row gx-5 align-items-center">
+                <div class="col-lg-6 col-sm-12">
+                  <img [src]="imgCDN + product?.section2Img?.iv[0]" />
+                </div>
+                <div class="col-lg-6 col-sm-12">
+                  <h2>{{ product?.section2Title?.iv }}</h2>
+                  <p>{{ product?.section2Desc?.iv }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="platform-section" id="messaging">
+        <div class="container">
+          <div class="row justify-content-center g-4">
+            <div class="col-lg-5">
+              <h2>{{ product?.section3Title?.iv }}</h2>
+            </div>
+            <div class="col-lg-12">
+              <div class="row gx-5 align-items-center">
+                <div class="col-lg-7 col-sm-12">
+                  <h3>{{ product?.section3Title2?.iv }}</h3>
+                  <h4>{{ product?.section3Desc?.iv }}</h4>
+                  <p>{{ product?.section3Desc2?.iv }}</p>
+                </div>
+                <div class="col-lg-5 col-sm-12">
+                  <img [src]="imgCDN + product?.section3Img?.iv[0]" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="benefits-section" id="benefits">
+        <div class="container">
+          <div class="row justify-content-center g-4">
+            <div class="col-lg-5">
+              <h2>{{ product?.section4Title?.iv }}</h2>
+            </div>
+            <div class="col-lg-12">
+              <div class="row g-4 align-items-center">
+                @for(a of product?.section4Cards?.iv;track a){
+
+                <div class="col-lg-4 col-sm-12">
+                  <div class="benefit-card">
+                    <img class="" [src]="imgCDN + a?.icon[0]" />
+                    <h3>{{ a?.title }}</h3>
+                    <p>{{ a?.description }}</p>
+                  </div>
+                </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="industries-section" id="industries">
+        <div class="container">
+          <div class="row justify-content-center g-4">
+            <div class="col-lg-8 text-center">
+              <h2>{{ product?.section5Title?.iv }}</h2>
+              <p>{{ product?.section5Desc?.iv }}</p>
+            </div>
+            <div class="col-lg-12">
+              <div class="row g-4 align-items-center">
+                <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let case of useCases">
+                    <app-template-card [case]="case"></app-template-card>
+                </div>
+                <!-- @for(a of product?.section5Cards.iv;track a){
+
+                <div class="col-lg-4 col-sm-12">
+                  <div class="industry-card">
+                    <img [src]="imgCDN + a?.icon[0]" />
+                    <h3>{{ a?.title }}</h3>
+                    <p>{{ a?.description }}</p>
+                  </div>
+                </div>
+                } -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="safety-section" id="safety">
+        <div class="container">
+          <div class="row justify-content-center g-4">
+            <div class="col-lg-8 text-center">
+              <h2>{{ product?.section6Title?.iv }}</h2>
+              <p>{{ product?.section6Desc?.iv }}</p>
+            </div>
+            
+            <div class="col-lg-12">
+              <div class="row g-4 align-items-center">
+               
+                @for(a of product?.section6Cards.iv;track a){
+
+                <div class="col-lg-4 col-sm-12">
+                  <div class="safety-card">
+                    <img [src]="imgCDN + a?.icon[0]" />
+                    <h3>{{ a?.title }}</h3>
+                    <p>{{ a?.description }}</p>
+                  </div>
+                </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="faq-section" id="learn-more">
+        <div class="container">
+          <div class="row justify-content-center g-4">
+            <div class="col-lg-8 text-center">
+              <h2>{{ product?.section7Title?.iv }}</h2>
+              <p>{{ product?.section7Desc?.iv }}</p>
+            </div>
+            <div class="col-lg-12">
+              <div class="accordion" id="accordionExample">
+                @for(item of product?.section7Faqs?.iv;track item;let i =
+                $index){
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      [attr.data-bs-target]="'#accordion-item-' + i"
+                      aria-expanded="false"
+                      [attr.aria-controls]="'accordion-item-' + i"
+                    >
+                      {{ item?.title }}
+                    </button>
+                  </h2>
+                  <div
+                    [id]="'accordion-item-' + i"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      {{ item?.description }}
+                    </div>
+                  </div>
+                </div>
+                }
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- <div class="explore-section">
+        <div class="container">
+          <div class="row g-4 mt-5 mb-5">
+            <div class="home3-newsletter-section">
+              <div class="newsletter-wrapper">
+                <div class="row g-lg-4 gy-5 align-items-center">
+                  <div
+                    data-wow-delay="200ms"
+                    data-wow-duration="1500ms"
+                    class="col-lg-7 col-md-6 wow animate fadeInLeft"
+                    style="
+                      visibility: visible;
+                      animation-duration: 1500ms;
+                      animation-delay: 200ms;
+                    "
+                  >
+                    <div class="section-title white">
+                      <h2>Explore how AI can help your Business</h2>
+                    </div>
+                  </div>
+                  <div
+                    data-wow-delay="200ms"
+                    data-wow-duration="1500ms"
+                    class="col-lg-5 col-md-6 wow animate fadeInRight"
+                    style="
+                      visibility: visible;
+                      animation-duration: 1500ms;
+                      animation-delay: 200ms;
+                    "
+                  >
+                    <div class="newsletter-form-area">
+                      <h6>
+                        Distinct Cloud Labs offers a free assessment of your
+                        business for AI enablement. Our assessment can help you
+                        analyze how AI can transform your business.
+                      </h6>
+                      <button
+                        class="primary-btn1 hover-white"
+                        tabindex="0"
+                        [routerLink]="['/assessment/basic-details']"
+                      >
+                        Free Consultation<i class="bi bi-arrow-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <app-testimonial></app-testimonial>
+      <app-faq></app-faq>
+      <app-cta-area></app-cta-area>
+      
+    </div>
+  </div>
+</div>

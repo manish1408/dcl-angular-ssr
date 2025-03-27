@@ -1,0 +1,272 @@
+<div
+  class="iielevenlabs-title-box card-style m-auto top-img-wrapper"
+  [routerLink]="['/template-details', case?.data?.SEOSlug?.iv]"
+>
+  <div class="image-container">
+    <div class="shaper-box">
+      <div class="channels-wrapper">
+        <img
+          *ngIf="case?.data?.Channels?.iv?.Discord"
+          src="assets/img/integration/discord.svg"
+          loading="lazy"
+          alt="Discord"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.InstagramMessenger"
+          src="assets/img/integration/instagram.svg"
+          loading="lazy"
+          alt="Instagram Messenger"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.Messenger"
+          src="assets/img/integration/messenger.svg"
+          loading="lazy"
+          alt="Messenger"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.MicrosoftTeams"
+          src="assets/img/integration/teams.svg"
+          loading="lazy"
+          alt="Teams"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.Slack"
+          src="assets/img/integration/slack.svg"
+          loading="lazy"
+          alt="Slack"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.Voice"
+          src="assets/img/integration/phone-call.svg"
+          loading="lazy"
+          alt="Phone-call"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.Whatsapp"
+          src="assets/img/integration/whatsapp.svg"
+          loading="lazy"
+          alt="Whatsapp"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.Linkedin"
+          src="assets/img/integration/linkedin.svg"
+          loading="lazy"
+          alt="Linkedin"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.MacDesktopApp"
+          src="assets/img/integration/mac.svg"
+          loading="lazy"
+          alt="Mac Desktop App"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.WindowsDesktopApp"
+          src="assets/img/integration/window.svg"
+          loading="lazy"
+          alt="Windows Desktop App"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.GoogleDrive"
+          src="assets/img/integration/drive.svg"
+          loading="lazy"
+          alt="Google Drive"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.MongoDB"
+          src="assets/img/integration/mongodb.svg"
+          loading="lazy"
+          alt="Mongo DB"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.Chrome"
+          src="assets/img/integration/chrome.svg"
+          loading="lazy"
+          alt="Google chrome"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.Telegram"
+          src="assets/img/integration/telegram.svg"
+          loading="lazy"
+          alt="Telegram"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.MicrosoftSharePoint"
+          src="assets/img/integration/ms-sharepoint.svg"
+          loading="lazy"
+          alt="ms-sharepoint"
+        />
+        <img
+          *ngIf="case?.data?.Channels?.iv?.sms"
+          loading="lazy"
+          alt="sms"
+          src="assets/img/integration/sms.svg"
+        />
+      </div>
+    </div>
+    <img
+      class="card-image"
+      *ngIf="case?.data?.About?.iv?.image?.length > 0"
+      [ngSrc]="cdn + case?.data?.About?.iv?.image[0]"
+      loading="lazy"
+      width="321"
+      height="220"
+      alt="image"
+    />
+  </div>
+  <div>
+    <div class="wrap-box-template wrap-box-top">
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.AccountingandTaxFirm"
+      >
+        <p class="department-text">
+          <i class="fas fa-calculator"></i>
+          Accounting and Tax Firm
+        </p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.GamingandESports"
+      >
+        <p class="department-text">
+          <i class="fas fa-gamepad"></i>Gaming and E-Sports
+        </p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.HospitalityandTourism"
+      >
+        <p class="department-text">
+          <i class="fas fa-hotel"></i>Hospitality and Tourism
+        </p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.Manufacturing"
+      >
+        <p class="department-text">
+          <i class="fas fa-industry"></i>Manufacturing
+        </p>
+      </div>
+      <div class="department-badge" *ngIf="case?.data?.Industry?.iv?.NonProfit">
+        <p class="department-text">
+          <i class="fas fa-hand-holding-heart"></i>Non-Profit
+        </p>
+      </div>
+      <div class="department-badge" *ngIf="case?.data?.Industry?.iv?.Insurance">
+        <p class="department-text">
+          <i class="fas fa-shield-alt"></i>Insurance
+        </p>
+      </div>
+      <div class="department-badge" *ngIf="case?.data?.Industry?.iv?.Fitness">
+        <p class="department-text"><i class="fas fa-dumbbell"></i>Fitness</p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.Restaurant"
+      >
+        <p class="department-text"><i class="fas fa-utensils"></i>Restaurant</p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.BeautySalon"
+      >
+        <p class="department-text"><i class="fas fa-spa"></i>Beauty Salon</p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.HealthCare"
+      >
+        <p class="department-text">
+          <i class="fas fa-heartbeat"></i>HealthCare
+        </p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.RealEstate"
+      >
+        <p class="department-text"><i class="fas fa-home"></i>Real Estate</p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.CoachesCourseCommunity"
+      >
+        <p class="department-text">
+          <i class="fas fa-chalkboard-teacher"></i>Coaches-Course-Community
+        </p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.ProfessionalServices"
+      >
+        <p class="department-text">
+          <i class="fas fa-briefcase"></i>Professional Services
+        </p>
+      </div>
+      <div class="department-badge" *ngIf="case?.data?.Industry?.iv?.SaaS">
+        <p class="department-text"><i class="fas fa-cloud"></i>SaaS</p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.MarketingAgency"
+      >
+        <p class="department-text">
+          <i class="fas fa-bullhorn"></i>Marketing Agency
+        </p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.RecruitmentandStaffing"
+      >
+        <p class="department-text">
+          <i class="fa fa-user-friends"></i>Recruitment and Staffing
+        </p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.EnterpriseandCorporate"
+      >
+        <p class="department-text">
+          <i class="fas fa-building"></i>Enterprise and Corporate
+        </p>
+      </div>
+      <div
+        class="department-badge"
+        *ngIf="case?.data?.Industry?.iv?.DebtCollectionAgency"
+      >
+        <p class="department-text">
+          <i class="fas fa-money-bill-wave"></i>Debt Collection Agency
+        </p>
+      </div>
+      <div class="department-badge" *ngIf="case?.data?.Industry?.iv?.Ecommerce">
+        <p class="department-text">
+          <i class="fas fa-shopping-cart"></i>Ecommerce
+        </p>
+      </div>
+    </div>
+    <div class="wrap-box-template h-heading">
+      {{ case?.data?.Title?.iv | summary : 40 }}
+    </div>
+
+    <p class="wrap-box-template card-content">
+      {{ case?.data?.ShortDescription?.iv | summary : 100 }}
+    </p>
+  </div>
+  <div
+    class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-10 mt-20 wrap-box-template wrap-box-bottom"
+  >
+    <a
+      [routerLink]="['/template-details', case?.data?.SEOSlug?.iv]"
+      class="primary-btn2"
+      >Details</a
+    >
+    <a
+      [href]="
+        'https://app.miloassistant.ai/signup?signup=' + case?.data?.SEOSlug?.iv
+      "
+      target="_blank"
+      class="color"
+      >Try this agent</a
+    >
+  </div>
+</div>
