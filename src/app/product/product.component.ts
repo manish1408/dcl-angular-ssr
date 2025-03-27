@@ -55,6 +55,25 @@ export class ProductComponent {
       value: 'learn-more',
     },
   ];
+  logos = [
+    { name: 'Integration Logo', image: '/assets/img/integration/apple.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/chrome.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/discord.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/drive.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/instagram.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/linkedin.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/messenger.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/mongo.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/ms-sharepoint.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/phone-call.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/slack.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/sms.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/teams.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/telegram.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/whatsapp.svg' },
+    { name: 'Integration Logo', image: '/assets/img/integration/windows.svg' }
+  
+  ];
   constructor(
     private el: ElementRef,
     private productService: ProductsService,
@@ -63,7 +82,9 @@ export class ProductComponent {
     private title: Title,
     private templateService: TemplateService
   ) {}
-
+  animationState = {
+    'animation-duration': `${this.logos.length * 1}s`
+  };
   ngOnInit() {
     this.selectedTab = this.tabs[0].value;
     this.route.params.subscribe((param) => {

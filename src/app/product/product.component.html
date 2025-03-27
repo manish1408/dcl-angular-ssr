@@ -90,9 +90,24 @@
               <button class="primary-btn2 d-lg-flex d-none">Explore now</button>
             </div>
             <div class="col-6">
-              <img [src]="imgCDN + product?.section1Img?.iv[0]" />
+              <img class="hero-img" [src]="imgCDN + product?.section1Img?.iv[0]" />
             </div>
           </div>
+          <div class="clients-section">
+       
+            <div class="logos-container">
+              <div class="logos-track" [ngStyle]="animationState">
+                <div class="logo-item" *ngFor="let logo of logos; let i = index">
+                  <img [src]="logo.image" [alt]="logo.name + ' logo'">
+                </div>
+                <!-- Duplicate for seamless looping -->
+                <div class="logo-item" *ngFor="let logo of logos; let i = index">
+                  <img [src]="logo.image" [alt]="logo.name + ' logo'">
+                </div>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
 
