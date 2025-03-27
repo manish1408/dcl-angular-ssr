@@ -87,9 +87,7 @@
                                     <p>Watch promo video</p>
                                 </div>
                             </div> -->
-              <button class="primary-btn2 d-lg-flex d-none">
-                Explore now
-              </button>
+              <button class="primary-btn2 d-lg-flex d-none">Explore now</button>
             </div>
             <div class="col-6">
               <img [src]="imgCDN + product?.section1Img?.iv[0]" />
@@ -98,7 +96,199 @@
         </div>
       </div>
 
-      <div class="tab-section pb-2">
+      <!-- experiences-area start -->
+      <section class="experiences-area bg-primary section-container">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div
+                class="section-title text-center mb-50 wow fadeInUp"
+                data-wow-delay="0.2s"
+              >
+                <h2 class="white-color">
+                  Pick a Template. Customize. Dominate.
+                </h2>
+                <p class="white-color">
+                  Pick a template, tweak it to fit your business, and launch
+                  instantly. No coding, no hassle—just AI that works.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4 col-md-12">
+              <div
+                class="accordion wow fadeInLeft"
+                data-wow-delay="0.3s"
+                id="accordionExample"
+              >
+                <div class="accordion-item">
+                  <h3 class="accordion-header fs_20" id="headingOne">
+                    <button
+                      class="accordion-button"
+                      (click)="imageShown = 1"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      Industry Specific AI Templates
+                    </button>
+                  </h3>
+                  <div
+                    id="collapseOne"
+                    class="accordion-collapse collapse show"
+                    aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <div class="inner">
+                        <div class="accordion-content">
+                          <p class="disc fs_14">
+                            Our AI agents are prebuilt for industries like
+                            Recruitment, E-commerce, Customer Support, and
+                            Marketing, ensuring tailored AI solutions instead of
+                            one-size-fits-all bots.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h3 class="accordion-header" id="headingTwo">
+                    <button
+                      class="accordion-button collapsed"
+                      (click)="imageShown = 2"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo"
+                    >
+                      Omnichannel AI Integration
+                      <span class="button-bg"></span>
+                    </button>
+                  </h3>
+                  <div
+                    id="collapseTwo"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <div class="inner">
+                        <div class="accordion-content">
+                          <p class="disc">
+                            Deploy your AI agent seamlessly across WhatsApp,
+                            Slack, Microsoft Teams, and Websites, allowing
+                            customers to interact with your business wherever
+                            they prefer.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h3
+                    class="accordion-header"
+                    (click)="imageShown = 3"
+                    id="headingThree"
+                  >
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
+                      Rapid Deployment & Customization
+                      <span class="button-bg"></span>
+                    </button>
+                  </h3>
+                  <div
+                    id="collapseThree"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <div class="inner">
+                        <div class="accordion-content">
+                          <p class="disc">
+                            Forget complex AI development. Pick a template,
+                            personalize it, and go live in minutes—no coding
+                            required.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h3
+                    class="accordion-header"
+                    (click)="imageShown = 4"
+                    id="headingFour"
+                  >
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapseFour"
+                      aria-expanded="false"
+                      aria-controls="collapseFour"
+                    >
+                      Automation That Saves Time & Costs
+                      <span class="button-bg"></span>
+                    </button>
+                  </h3>
+                  <div
+                    id="collapseFour"
+                    class="accordion-collapse collapse"
+                    aria-labelledby="headingFour"
+                    data-bs-parent="#accordionExample"
+                  >
+                    <div class="accordion-body">
+                      <div class="inner">
+                        <div class="accordion-content">
+                          <p class="disc">
+                            Cut operational costs by up to 50%, reduce manual
+                            work, and enhance customer engagement with
+                            AI-powered automation.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pl col-lg-8 col-md-12">
+              <div *ngIf="imageShown === 1" class="experiences-image text-center wow fadeInRight" data-wow-delay="0.4s">
+                <img src="./assets/img/chatbot.webp" width="641" height="671" class="img-fluid" loading="lazy" alt="image">
+            </div>
+            <div *ngIf="imageShown === 2" class="experiences-image text-center wow fadeInRight" data-wow-delay="0.4s">
+                <img src="./assets/img/omnichannel.webp" width="599" height="627" class="img-fluid" loading="lazy" alt="image">	
+            </div>
+
+            <div *ngIf="imageShown === 3" class="experiences-image text-center wow fadeInRight" data-wow-delay="0.4s">
+                <img src="./assets/img/experiences/1.webp" width="793" height="467" class="img-fluid" loading="lazy" alt="image">
+            </div>
+
+            <div *ngIf="imageShown === 4" class="experiences-image text-center wow fadeInRight" data-wow-delay="0.4s">
+                <img src="./assets/img/automation.webp" width="793" height="635" class="img-fluid" loading="lazy" alt="image">
+            </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- experiences-area end -->
+
+      <!-- <div class="tab-section pb-2">
         <div class="container">
           <div class="row justify-content-center g-4">
             <div class="col-lg-9 col-sm-12">
@@ -116,25 +306,11 @@
                 }
               </div>
             </div>
-            <!-- <div class="col-lg-12" id="milo-in-chat">
-                            <div class="tab-content">
-
-                                <div class="row gx-5 align-items-center">
-
-                                    <div class="col-lg-6 col-sm-12">
-                                        <img [src]="imgCDN + product?.section2Img?.iv[0]" />
-                                    </div>
-                                    <div class="col-lg-6 col-sm-12">
-                                        <h2>{{product?.section2Title?.iv}}</h2>
-                                        <p>{{product?.section2Desc?.iv}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
+           
           </div>
         </div>
-      </div>
-      <div class="chat-section" id="milo-in-chat">
+      </div> -->
+      <!-- <div class="chat-section" id="milo-in-chat">
         <div class="container">
           <div class="row justify-content-center g-4">
             <div class="col-lg-12 mt-0">
@@ -150,8 +326,8 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="platform-section" id="messaging">
+      </div> -->
+      <!-- <div class="platform-section section-container-2" id="messaging">
         <div class="container">
           <div class="row justify-content-center g-4">
             <div class="col-lg-5">
@@ -171,12 +347,12 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="benefits-section" id="benefits">
+      </div> -->
+      <div class="benefits-section section-container-2" id="benefits">
         <div class="container">
           <div class="row justify-content-center g-4">
-            <div class="col-lg-5">
-              <h2>{{ product?.section4Title?.iv }}</h2>
+            <div class="col-lg-8">
+              <h2 class="mb-50">{{ product?.section4Title?.iv }}</h2>
             </div>
             <div class="col-lg-12">
               <div class="row g-4 align-items-center">
@@ -195,17 +371,20 @@
           </div>
         </div>
       </div>
-      <div class="industries-section" id="industries">
+      <div class="industries-section section-container-1" id="industries">
         <div class="container">
           <div class="row justify-content-center g-4">
-            <div class="col-lg-8 text-center">
+            <div class="col-lg-8 mb-50 text-center">
               <h2>{{ product?.section5Title?.iv }}</h2>
               <p>{{ product?.section5Desc?.iv }}</p>
             </div>
             <div class="col-lg-12">
               <div class="row g-4 align-items-center">
-                <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let case of useCases">
-                    <app-template-card [case]="case"></app-template-card>
+                <div
+                  class="col-md-6 col-lg-4 col-xl-3"
+                  *ngFor="let case of useCases"
+                >
+                  <app-template-card [case]="case"></app-template-card>
                 </div>
                 <!-- @for(a of product?.section5Cards.iv;track a){
 
@@ -342,7 +521,6 @@
       <app-testimonial></app-testimonial>
       <app-faq></app-faq>
       <app-cta-area></app-cta-area>
-      
     </div>
   </div>
 </div>

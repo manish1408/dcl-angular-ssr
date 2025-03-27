@@ -19,7 +19,8 @@ import { TestimonialComponent } from "../common/testimonial/testimonial.componen
   styleUrl: './product.component.scss',
 })
 export class ProductComponent {
-  useCases:any[]=[]
+  imageShown = 1;
+  useCases:any[]=[];
   isLoading: boolean = false;
   imgCDN: string = environment.squidexAssets;
   product: any;

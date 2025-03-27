@@ -158,28 +158,10 @@
 
 .section-container-1 {
   background-color: white;
-  padding: 50px 10px 50px 10px;
+  padding: 0px 30px 70px 30px;
   overflow: hidden;
 
-  @media only screen and (min-width: 576px) {
-    padding: 50px 20px 50px 20px;
-  }
-
-  @media only screen and (min-width: 768px) {
-    padding: 70px 30px 70px 30px;
-  }
-
-  @media only screen and (min-width: 992px) {
-    padding: 70px 30px 70px 30px;
-  }
-
-  @media only screen and (min-width: 1200px) {
-    padding: 100px 50px 100px 50px;
-  }
-
-  @media only screen and (min-width: 1400px) {
-    padding: 100px 50px 100px 50px;
-  }
+  
 }
 .color{
   color: #072032;
