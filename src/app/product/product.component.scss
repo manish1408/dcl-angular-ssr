@@ -252,7 +252,7 @@ p {
 }
 .accordion .accordion-button {
   background: #10293a;
-  color: #072032;
+  // color: #072032;
   font-size: 20px;
   font-weight: 500;
   padding: 25px 62px 25px 25px;
@@ -357,5 +357,10 @@ p {
 }
 
 .hero-img{
-  height: 500px;
+  margin-top: 40px;
+  @media screen and (min-width:992px) {
+    height: 500px;
+  }
 }
+
+
