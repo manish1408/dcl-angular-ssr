@@ -90,10 +90,19 @@ p {
 
 .top-section {
   .product-logo {
-    width: 130.638px;
-    height: 39px;
+    img{
+      width: 130.638px;
+      height: 39px;
+    }
+ 
     flex-shrink: 0;
     margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (min-width:992px) {
+      justify-content: start;
+    }
 
   }
 }
@@ -105,8 +114,12 @@ p {
     display: flex;
     align-items: center;
     flex-direction: row;
+    justify-content: center;
     gap: 10px;
     padding-top: 0;
+    @media screen and (min-width:992px) {
+      justify-content: start;
+    }
     .banner-users-top {
       display: flex;
       align-items: center;
@@ -159,7 +172,7 @@ p {
   .tab {
     // color: #808387;
     font-family: Inter;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -362,5 +375,16 @@ p {
     height: 500px;
   }
 }
+.row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
+}
 
+.heading-section{
+  text-align: center;
+  @media screen and (min-width:992px) {
+   text-align: left;
+  }
+}

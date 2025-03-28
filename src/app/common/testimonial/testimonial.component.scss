@@ -8,8 +8,10 @@
   grid-gap: 0px;
   height: 100%;
   border: none;
-  height: 360px;
-
+  
+  @media screen and (min-width:992px){
+    height: 360px;
+  }
   
 }
 
@@ -77,7 +79,9 @@
     
 }
 ::ng-deep .testimonial-text{
+
     min-height: 145px;
+ 
 }
 
 ::ng-deep .swiper-pagination-bullet{
@@ -86,10 +90,20 @@
 }
 
 swiper-slide{
-  margin-bottom: 20px !important;
+  height: auto;
+  margin-bottom: 40px !important;
 }
 
 .swiper-pagination-bullet-active {
   opacity: var(--swiper-pagination-bullet-opacity, 1);
   background: #00a359;
+}
+
+h2 {
+  color: #072032;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 50px;
+  word-spacing: -5px;
 }

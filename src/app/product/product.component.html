@@ -18,10 +18,13 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-6 col-sm-12">
-              <img
-                class="product-logo"
+              <div class="product-logo">
+                <img
+                
                 [src]="imgCDN + product?.productLogo.iv[0]"
               />
+              </div>
+             
               <div class="heading-section">
                 <h1>{{ product?.section1Title?.iv }}</h1>
                 <p>{{ product?.section1Desc?.iv }}</p>

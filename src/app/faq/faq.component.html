@@ -12,7 +12,7 @@
           <div class="customer-support info">
             <div>
               <p class="mb-2">For technical support</p>
-              <p class="fs_20 fw_5 mb-2">
+              <p class="heading-text mb-2">
                 <a href="mailto:support@miloassistant.ai"
                   >support&#64;miloassistant.ai</a
                 >
@@ -29,7 +29,7 @@
           <div class="email-support info">
             <div>
               <p class="mb-2">For enterprise enquiry</p>
-              <p class="fs_20 fw_5 mb-2">
+              <p class="heading-text mb-2">
                 <a href="mailto:sales@miloassistant.ai"
                   >sales&#64;miloassistant.ai</a
                 >
@@ -44,7 +44,7 @@
       <div class="col-lg-7">
         <div class="accordion accordion-flush" id="accordionFAQ">
           <div *ngFor="let faq of faqs; let i = index" class="accordion-item">
-            <h2 class="accordion-header">
+            <p class="fs_20 fw_6 mb-2 accordion-header">
               <button
                 class="accordion-button collapsed"
                 type="button"
@@ -56,7 +56,7 @@
               >
                 {{ faq.data.question.iv }}
               </button>
-            </h2>
+            </p>
             <div
               [id]="'flush-collapse' + i"
               class="accordion-collapse collapse"
