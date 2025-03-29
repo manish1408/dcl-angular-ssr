@@ -5,6 +5,11 @@ body{
   background-image: url("../../assets/img/bg.webp");
   background-size: cover;
   background-position: right;
+  padding: 50px 0 !important;
+  @media screen and (min-width:768px) {
+    padding: 70px 0 !important;
+    
+  }
 }
 .loader-container {
   flex: 1;
@@ -69,11 +74,11 @@ p {
   text-transform: uppercase;
   margin-top: 50px;
 }
-.top-section,
-.tab-section {
-  background-color: #ffffff;
-  padding: 150px 0px;
-}
+
+// .tab-section {
+//   background-color: #ffffff;
+//   padding: 150px 0px;
+// }
 .chat-section,
 .platform-section,
 .benefits-section,
@@ -99,7 +104,8 @@ p {
     margin-bottom: 40px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
+    // justify-content: center;
     @media screen and (min-width:992px) {
       justify-content: start;
     }
