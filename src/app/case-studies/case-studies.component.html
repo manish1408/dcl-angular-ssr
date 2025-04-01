@@ -15,7 +15,7 @@
             <h1>AI use cases and demos.</h1>
           </div>
           <div class="scroll-down-btn">
-            <a (click)="scrollToSection()" role="button">
+            <a (click)="scrollToSection()" aria-label="arrow-down" role="button">
               <svg xmlns="http://www.w3.org/2000/svg" width="19" height="29" viewBox="0 0 19 29">
                 <path d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5" />
               </svg>
@@ -39,17 +39,17 @@
       @for (post of posts; track post) {
       <div class="col-xl-4 col-md-6 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
         <div class="case-study-card2">
-          <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="card-img">
+          <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="card-img" [attr.aria-label]="'View case study: ' + post.data?.slug?.iv">
             <img [src]="
                 'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + 
                 post?.data?.thumbnail?.iv[0]
-              " alt="" />
+              " alt="Image" />
           </a>
           <div class="card-content">
-            <h4>
+            <h2>
               <a [routerLink]="['/case-study/', post.data?.slug?.iv]">{{ post.data?.projectName?.iv }}
               </a>
-            </h4>
+            </h2>
             <p style="min-height: 85px;" class="mb-4">
               {{ post.data?.projectSubheading?.iv }}
             </p>
@@ -58,7 +58,7 @@
             <button [routerLink]="['/case-study/', post.data?.slug?.iv]" class="clear-btn">Read More
               <div class="btn-icon-wrapper">
 
-                <img src="assets/icons/sm-arrow-upright.svg" />
+                <img src="assets/icons/sm-arrow-upright.svg" class="" alt="arrow-upright" />
               </div>
             </button>
           </div>

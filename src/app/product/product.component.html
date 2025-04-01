@@ -19,7 +19,7 @@
           <div class="row">
             <div class="col-lg-6 col-sm-12">
               <div class="product-logo">
-                <img
+                <img alt="Product Image"
                 
                 [src]="imgCDN + product?.productLogo.iv[0]"
               />
@@ -93,7 +93,7 @@
               <button class="primary-btn2 d-lg-flex d-none">Explore now</button>
             </div>
             <div class="col-6">
-              <img class="hero-img" [src]="imgCDN + product?.section1Img?.iv[0]" />
+              <img class="hero-img" alt="hero-image" [src]="imgCDN + product?.section1Img?.iv[0]" />
             </div>
           </div>
           <div class="clients-section">
@@ -378,7 +378,7 @@
 
                 <div class="col-lg-4 col-sm-12">
                   <div class="benefit-card">
-                    <img class="" [src]="imgCDN + a?.icon[0]" />
+                    <img class="" alt="image" [src]="imgCDN + a?.icon[0]" />
                     <h3>{{ a?.title }}</h3>
                     <p>{{ a?.description }}</p>
                   </div>

@@ -1,3 +1,16 @@
 .sidebar-menu-logo{
     width: 152px;
 }
+
+header.style-2 .main-menu > ul > li > div {
+    color: var(--white-color);
+    display: block;
+    letter-spacing: 0.4px;
+    padding: 25px 0px;
+    position: relative;
+    font-family: var(--font-inter);
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.5s ease-out 0s;
+    position: relative;
+}

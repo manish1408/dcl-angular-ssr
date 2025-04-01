@@ -19,7 +19,7 @@
                                 <h1>{{service?.pageTitle?.iv}}</h1>
                             </div>
                             <div class="scroll-down-btn">
-                                <a (click)="scrollToSection()" role="button">
+                                <a (click)="scrollToSection()" aria-label="arrow-down" role="button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="29" viewBox="0 0 19 29">
                                         <path
                                             d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5">
@@ -57,7 +57,7 @@
                         <div class="process-card" [ngClass]="getCardColor(i)">
                             <div class="process-card-top">
                                 <div class="icon-wrapper">
-                                    <img [src]="imgCDN+s1c.icon[0]" />
+                                    <img alt="icon-image" [src]="imgCDN+s1c.icon[0]" />
                                 </div>
                             </div>
                             <div class="content ">
@@ -89,10 +89,10 @@
 
                                         <div [ngClass]="getColumnClass(i)" class="col-sm-12">
                                             <div class="expertise-card">
-                                                <img class='icon-img' [src]="imgCDN+s2c?.icon[0]" />
+                                                <img alt="icon-image" class='icon-img' [src]="imgCDN+s2c?.icon[0]" />
                                                 <div class="text-content "
                                                     [ngClass]="{'min-h-160': isMidGroup(i), 'min-h-110': !isMidGroup(i)}">
-                                                    <h4>{{s2c?.title}}</h4>
+                                                    <h3>{{s2c?.title}}</h3>
                                                     <p>{{s2c?.description}}</p>
                                                 </div>
                                             </div>
@@ -125,7 +125,7 @@
                     <div class="col-xl-3 col-lg-3 col-md-6 wow animate fadeInUp" data-wow-delay="800ms"
                         data-wow-duration="1500ms">
                         <div class="industry-card">
-                            <img [src]="imgCDN+ s3c?.icon[0]" />
+                            <img alt="icon-image" [src]="imgCDN+ s3c?.icon[0]" />
                             <h4>{{s3c?.title}}</h4>
                         </div>
                     </div>
@@ -149,8 +149,8 @@
 
                                     @for(s4c of service?.section4Cards.iv;track s4c){
                                     <div class="ai-tech-card">
-                                        <img [src]="imgCDN+ s4c?.icon[0]" />
-                                        <h4>{{s4c?.title}}</h4>
+                                        <img alt="icon-image" [src]="imgCDN+ s4c?.icon[0]" />
+                                        <h3>{{s4c?.title}}</h3>
                                     </div>
                                     }
                                 </div>
