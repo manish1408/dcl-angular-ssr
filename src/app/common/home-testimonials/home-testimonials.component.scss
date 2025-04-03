@@ -19,3 +19,8 @@ height: 40px;
   object-fit: cover;  /* Crop to maintain aspect ratio */
   border-radius: 50%; /* Optional: For circular images */
 }}
+.review-platform-logo {
+  height: 25px;       /* Fixed height for both logos */
+  width: auto;        /* Maintain natural aspect ratio */
+  max-width: 100%;    /* Prevent overflow */
+}

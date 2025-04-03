@@ -61,14 +61,25 @@
                     class="read-more-btn" target="_blank"><span>Read complete review on Clutch </span></a>
 
                   <div class="logo-and-rating mt-2">
-                    <div class="logo">
-                      <img [src]="
+                    <div class="logo"><img [src]="item?.data.reviewPlatform.iv === 'goodfirms' 
+                      ? 'assets/img/goodfirmslogo.png' 
+                      : 'assets/img/clutch-logo.png'" 
+                      alt="logo"
+                      [width]="item?.data.reviewPlatform.iv === 'goodfirms' ? 141 : 89"
+                      [height]="item?.data.reviewPlatform.iv === 'goodfirms' ? 25 : 25"
+                      class="review-platform-logo" />
+                      <!-- <img [src]="item?.data.reviewPlatform.iv === 'goodfirms' 
+                      ? 'assets/img/goodfirmslogo.png' 
+                      : 'assets/img/clutch-logo.png'"
+                alt="logo"
+                class="review-platform-logo" /> -->
+                      <!-- <img [src]="
                           item?.data.reviewPlatform.iv === 'goodfirms'
                             ? 'assets/img/goodfirmslogo.png'
                             : 'assets/img/clutch-logo.png'
                         " alt="Goodfirms Logo" width="89" height="25" [style.height.px]="
                           item?.data.reviewPlatform.iv === 'goodfirms' ? 25 : 25
-                        " />
+                        " /> -->
                     </div>
                     <ul class="rating" *ngIf="item?.data.rating.iv">
                       <li *ngFor="let starIndex of [1, 2, 3, 4, 5]">
