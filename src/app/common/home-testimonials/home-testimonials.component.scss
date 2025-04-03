@@ -10,9 +10,12 @@
   color: #ffc107;
   font-size: 30px;
 }
-.author-img img {
+.author-img {
+width: 40px;
+height: 40px;
+ img {
   width: 100%;        /* Fill container width */
   height: 100%;       /* Fill container height */
   object-fit: cover;  /* Crop to maintain aspect ratio */
   border-radius: 50%; /* Optional: For circular images */
-}
+}}
