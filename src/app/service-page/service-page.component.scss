@@ -21,6 +21,7 @@
 }
 .process-card {
   border-radius: 34px;
+  height: 100%;
 }
 .green {
   border: 1px solid #dadce0;
@@ -127,7 +128,9 @@
 
 .industry-card {
   display: flex;
-  padding: 34px;
+  height: 100%;
+  // padding: 34px;
+  padding: 24px;
   flex-direction: column;
   align-items: center;
   gap: 16px;
@@ -183,7 +186,7 @@
 
 .aiServices-card {
   display: flex;
-  padding: 24px;
+  // padding: 24px;
   flex-direction: column;
   align-items: center;
   gap: 34px;
@@ -231,4 +234,22 @@
   .min-h-160 {
     height: 185px;
   }
+}
+.home3-newsletter-section .newsletter-wrapper .newsletter-form-area .context {
+  color: var(--white-color);
+  font-family: var(--font-hankenGrotesk);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.content[_ngcontent-ng-c313459702] h3[_ngcontent-ng-c313459702] {
+  color: #072032;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 15px;
 }
