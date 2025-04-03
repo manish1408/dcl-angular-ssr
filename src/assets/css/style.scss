@@ -3729,6 +3729,7 @@ header.style-3 {
                 }
             }
             
+            
             .dropdown-icon2{
                 position: absolute;
                 right: 25px;
@@ -3750,6 +3751,7 @@ header.style-3 {
                 }
                 @include sm-down-device(){
                   top: 10px;
+                 
                   right: 20px;
                   width: 35px;
                   height: 35px;

@@ -47,7 +47,7 @@
             <img [routerLink]="['/demo/', post.data?.slug?.iv]" class="card-top-img" [src]="
                   'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + 
                   post?.data?.image?.iv[0]
-                " alt="" />
+                " alt="{{ post.data?.title?.iv }}" width="351" height="240" />
 
             <div class="card-content">
               <div class="card-text-info">

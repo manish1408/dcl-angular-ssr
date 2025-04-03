@@ -51,54 +51,57 @@
                 </li>
               </ul>
             </li> -->
+           
+            @if(serviceNav.length > 0){
+              <li>
+                <div>Services </div>
+                <!-- <button class="dropdown-toggle">Services</button> -->
+                <span class="dropdown-icon2"><i class="bi bi-plus"></i></span>
+                <ul class="submenu-list">
+                  @for(sNav of serviceNav;track sNav){
+                  <li>
+                    <a class="fs-6" [routerLink]="['/services/',sNav.slug]">{{sNav?.title}}</a>
+                    <!-- <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span> -->
+                  </li>
+                  }
+                </ul>
+              </li>
+              }
+  
+              @if(productNav.length > 0){
+              <li>
+                <div>Products </div>
+                <span class="dropdown-icon2"><i class="bi bi-plus"></i></span>
+                <ul class="submenu-list">
+                  @for(pNav of productNav;track pNav){
+                  <li>
+                    <a class="fs-6" [routerLink]="['/product/',pNav.slug]">{{pNav?.title}}</a>
+  
+                  </li>
+                  }
+                </ul>
+              </li>
+              }
 
             <li class="fs-6">
               <a [routerLink]="['case-studies']" (click)="hideSidebar()">Case Study</a>
             </li>
 
             <li class="fs-6">
-              <a [routerLink]="['blog']" (click)="hideSidebar()">Blog</a>
+              <a [routerLink]="['portfolios']" (click)="hideSidebar()">Demos</a>
             </li>
 
             <li class="fs-6">
               <a [routerLink]="['contact']" (click)="hideSidebar()">Contact</a>
             </li>
-            <li class="fs-6">
+            <!-- <li class="fs-6">
               <a [routerLink]="['services']" (click)="hideSidebar()">Services</a>
-            </li>
+            </li> -->
 
-            @if(serviceNav.length > 0){
-            <li>
-              <div>Services </div>
-              <!-- <button class="dropdown-toggle">Services</button> -->
-              <span class="dropdown-icon2"><i class="bi bi-plus"></i></span>
-              <ul class="submenu-list">
-                @for(sNav of serviceNav;track sNav){
-                <li>
-                  <a class="fs-6" [routerLink]="['/services/',sNav.slug]">{{sNav?.title}}</a>
-                  <!-- <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span> -->
-                </li>
-                }
-              </ul>
-            </li>
-            }
-
-            @if(productNav.length > 0){
-            <li>
-              <div>Products </div>
-              <span class="dropdown-icon2"><i class="bi bi-plus"></i></span>
-              <ul class="submenu-list">
-                @for(pNav of productNav;track pNav){
-                <li>
-                  <a class="fs-6" [routerLink]="['/product/',pNav.slug]">{{pNav?.title}}</a>
-
-                </li>
-                }
-              </ul>
-            </li>
-            }
+           
 
           </ul>
+         
         
         </div>
       </div>
