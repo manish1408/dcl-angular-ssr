@@ -443,7 +443,7 @@ header.header.sticky {
   font-weight: 500;
   line-height: 31.27px;
   margin: 0 auto 0 auto;
-  padding-bottom: 55px;
+  /* padding-bottom: 55px; */
 }
 
 .banner-content .button-wapper a {

@@ -27,14 +27,27 @@
 
 
   <!-- Google Tag Manager -->
-  <script async>(function (w, d, s, l, i) {
+  <!-- <script async>(function (w, d, s, l, i) {
       w[l] = w[l] || []; w[l].push({
         'gtm.start':
           new Date().getTime(), event: 'gtm.js'
       }); var f = d.getElementsByTagName(s)[0],
         j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
           'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-MLQB9JN');</script>
+    })(window, document, 'script', 'dataLayer', 'GTM-MLQB9JN');</script> -->
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WRSJHKY3TT"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-WRSJHKY3TT');
+
+  </script>
   <!-- End Google Tag Manager -->
 
 </head>
@@ -49,7 +62,7 @@
 
   <script src="assets/js/jquery-3.7.1.min.js"></script>
   <!-- <script src="assets/js/jquery-ui.js"></script> -->
-
+  <script type=“text/javascript” src=“https://widget.clutch.co/static/js/widget.js”></script> 
   <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
   <script src="assets/js/swiper-bundle.min.js"></script>
@@ -1027,7 +1040,8 @@
   <script>
     window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
     window.LOCALE = 'en';
-    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "The information provided is invalid. Please review and try again.";
+    window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE =
+      "The information provided is invalid. Please review and try again.";
 
     window.REQUIRED_ERROR_MESSAGE = "Required. ";
 
@@ -1044,6 +1058,7 @@
     };
 
     var AUTOHIDE = Boolean(0);
+
   </script>
   <script src="https://sibforms.com/forms/end-form/build/main.js"></script>
 

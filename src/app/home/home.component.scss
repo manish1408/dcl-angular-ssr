@@ -16,9 +16,19 @@
   flex-direction: column;
   align-items: flex-start;
 }
-.home3-banner-section .banner-content p {
-  margin-bottom: 20px;
+// .home3-banner-section .banner-content p {
+//   margin-bottom: 20px;
+// }
+
+.banner-content p {
+  font-size: 24px;
+  color: #fff;
+  font-weight: 500;
+  line-height: 31.27px;
+  margin: 0 auto 0 auto;
+  padding-bottom: 0px;
 }
+
 .google .rating .star li i {
   color: #ffc107;
 }
@@ -131,4 +141,44 @@
   font-weight: 700;
   margin-bottom: 0;
   line-height: 1;
+}
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+  justify-items: center;
+  align-items: center;
+  margin: 3rem auto;
+  gap: 10px;
+  max-width: 400px;
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  // padding: 1rem;
+}
+
+.logo-img {
+  max-width: 100%;
+  height: auto;
+  max-height: 80px;
+
+  transition: all 0.3s ease;
+}
+/* Ensure widget container is visible */
+.clutch-widget-container {
+  min-height: 60px; /* Match your design */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Widget iframe styling */
+.clutch-widget iframe {
+  border: none;
+  width: 100%;
+  max-width: 200px; /* Adjust based on your design */
+  overflow: hidden;
 }
