@@ -61,7 +61,7 @@ export class ContactComponent implements OnInit {
     this.contactService.postContact(this.contactForm.value).subscribe(
       (res: any) => {
         this.isLoading = false;
-        if (res.msg == 'SUCCESS') {
+        if (res.success) {
           this.toastr.success('Thanks for submitting');
           this.contactForm.reset();
         } else this.toastr.error('An error occurred while submitting');
