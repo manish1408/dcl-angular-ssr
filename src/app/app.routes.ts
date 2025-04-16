@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { AIAgencyComponent } from './ai-agency/ai-agency.component';
 import { SolutionComponent } from './solutions/solution/solution.component';
 import { CaseStudiesComponent } from './case-studies/case-studies.component';
 import { CaseDetailsComponent } from './case-details/case-details.component';
@@ -30,6 +31,7 @@ import { ProductComponent } from './product/product.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'ai-agency', component: AIAgencyComponent },
   { path: 'dcl-sprint', component: DclSprintComponent },
   { path: 'solutions/:type', component: SolutionComponent },
   { path: 'expertise/:type', component: ExperiseComponent },
