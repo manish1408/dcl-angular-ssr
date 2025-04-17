@@ -1,7 +1,7 @@
 <div class="home3-banner-section">
   <div class="container">
     <div class="row justify-content-center align-items-center">
-      <div class="col-lg-6">
+      <div class="col-lg-7">
         <div class="banner-content">
           <h1 class="">Transform your Business with AI and ML</h1>
           <p>
@@ -93,7 +93,7 @@
         </div>
       </div>
       <div
-        class="col-lg-6 wow animate fadeInUp"
+        class="col-lg-5 wow animate fadeInUp"
         data-wow-delay="200ms"
         data-wow-duration="1500ms"
       >
@@ -102,7 +102,7 @@
             <h3>Your Success Starts Here!</h3>
             <form [formGroup]="contactForm">
               <div class="row">
-                <div class="col-lg-6 mb-20">
+                <div class="col-lg-12 mb-20">
                   <div class="form-inner">
                     <label for="name">Full Name</label>
                     <input
@@ -115,7 +115,7 @@
                     <div class="invalid-feedback">Name is required</div>
                   </div>
                 </div>
-                <div class="col-lg-6 mb-20">
+                <!-- <div class="col-lg-6 mb-20">
                   <div class="form-inner">
                     <label for="company">Company / Organization *</label>
                     <input
@@ -127,8 +127,8 @@
                     />
                     <div class="invalid-feedback">Company is required</div>
                   </div>
-                </div>
-                <div class="col-lg-6 mb-20">
+                </div> -->
+                <div class="col-lg-12 mb-20">
                   <div class="form-inner">
                     <label for="phone">Phone *</label>
                     <div class="d-flex align-items-start gap-0">
@@ -150,7 +150,7 @@
                   </div> 
                 </div>
                 
-                <div class="col-lg-6 mb-20">
+                <div class="col-lg-12 mb-20">
                   <div class="form-inner">
                     <label for="email">Company email *</label>
                     <input
@@ -206,7 +206,7 @@
                       data-text="Submit Now"
                       (click)="onSubmit()"
                     >
-                      <span>Submit Now</span>
+                      <span class="m-auto">Submit Now</span>
                       <span
                         *ngIf="isLoading"
                         class="spinner-border spinner-border-sm mx-2"
