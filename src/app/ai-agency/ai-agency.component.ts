@@ -9,6 +9,15 @@ import { TestimonialCardComponent } from '../common/testimonial-card/testimonial
 import { CommonService } from '../services/common.service';
 import { HomeService } from '../services/home.service';
 import { TestimonialService } from '../services/testimonial.service';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { ContactService } from '../services/contact.service';
+import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 declare var Swiper: any;
 @Component({
   selector: 'app-ai-agency',
@@ -16,42 +25,51 @@ declare var Swiper: any;
   templateUrl: './ai-agency.component.html',
   styleUrl: './ai-agency.component.scss',
   imports: [
-    TestimonialCardComponent,
+    ReactiveFormsModule,
+    CommonModule,
+    // TestimonialCardComponent,
     HomeTestimonialsComponent,
     RouterModule,
-    EngagementModelsComponent,
+    // EngagementModelsComponent,
     ScheduleCallCTAComponent,
     HiringProcessComponent,
   ],
 })
 export class AIAgencyComponent implements OnInit {
+  contactForm!: FormGroup;
+  isLoading: boolean = false;
   constructor(
+    private fb: FormBuilder,
+    private toastr: ToastrService,
+    private contactService: ContactService,
     private testimonialService: TestimonialService,
     private homeService: HomeService,
     private common: CommonService,
     private meta: Meta,
     private title: Title
   ) {
-    this.title.setTitle("Distinct Cloud Labs | Empower Your Business with AI and ML ");
+    this.title.setTitle(
+      'Distinct Cloud Labs | Empower Your Business with AI and ML '
+    );
 
     this.meta.addTags([
       {
-        name: "description",
+        name: 'description',
         content:
           "Transform your business with Distinct Cloud Labs' AI enablement services. From tailored AI strategies to custom development, seamless integration, and expert training, we help you unlock growth and innovation with cutting-edge AI solutions.",
       },
-      { property: "og:title", content: "Home" },
+      { property: 'og:title', content: 'Home' },
       {
-        property: "og:description",
+        property: 'og:description',
         content:
           "Transform your business with Distinct Cloud Labs' AI enablement services. From tailored AI strategies to custom development, seamless integration, and expert training, we help you unlock growth and innovation with cutting-edge AI solutions.",
       },
       {
-        property: "twitter:title",
-        content: "Distinct Cloud Labs | Empower Your Business with AI and ML",
+        property: 'twitter:title',
+        content: 'Distinct Cloud Labs | Empower Your Business with AI and ML',
       },
       {
-        property: "twitter:description",
+        property: 'twitter:description',
         content:
           "Transform your business with Distinct Cloud Labs' AI enablement services. From tailored AI strategies to custom development, seamless integration, and expert training, we help you unlock growth and innovation with cutting-edge AI solutions.",
       },
@@ -65,6 +83,14 @@ export class AIAgencyComponent implements OnInit {
   engagementModels: any = [];
 
   ngOnInit(): void {
+    this.contactForm = this.fb.group({
+      name: ['', Validators.required],
+      company: ['', Validators.required],
+      phone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      // subject: ['', Validators.required],
+      message: ['', Validators.required],
+    });
     this.testimonialService.fetchTestimonials().subscribe((res: any) => {
       this.testimonials = res.items;
       this.swiperinitTestimonial();
@@ -79,6 +105,44 @@ export class AIAgencyComponent implements OnInit {
       });
     }
   }
+
+  hasError(controlName: keyof typeof this.contactForm.controls) {
+    const control = this.contactForm.controls[controlName];
+    return control.invalid && control.touched;
+  }
+  hasEmailFormatError() {
+    return (
+      this.contactForm.controls['email'].hasError('email') &&
+      this.contactForm.controls['email'].touched
+    );
+  }
+
+  onSubmit() {
+    this.isLoading = true;
+
+    this.contactForm.markAllAsTouched();
+    if (this.contactForm.invalid) {
+      this.isLoading = false;
+      this.toastr.error('Please provide all the details');
+      return;
+    }
+
+    this.contactService.postContact(this.contactForm.value).subscribe(
+      (res: any) => {
+        this.isLoading = false;
+        if (res.success) {
+          this.toastr.success('Thanks for submitting');
+          this.contactForm.reset();
+        } else this.toastr.error('An error occurred while submitting');
+      },
+      (error) => {
+        this.isLoading = false;
+        console.error('Error occurred:', error);
+        this.toastr.error('An error occurred while submitting');
+      }
+    );
+  }
+
   swiperinitTestimonial() {
     if (this.common.isBrowser()) {
       window.setTimeout(() => {

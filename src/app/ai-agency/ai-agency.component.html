@@ -1,6 +1,6 @@
 <div class="home3-banner-section">
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center align-items-center">
       <div class="col-lg-6">
         <div class="banner-content">
           <h1 class="">Transform your Business with AI and ML</h1>
@@ -40,21 +40,43 @@
           </div>
 
           <div class="row">
-            <div class="col-6 col-xl-3 offset-xl-3 col-md-5 offset-md-1">
-              <div class="rating-area">
-                <div class="clutch-widget single-rating clutch" 
-                     data-url="https://widget.clutch.co" 
-                     data-widget-type="1" 
-                     data-height="40"
-                     data-nofollow="true" 
-                     data-expandifr="true" 
-                     data-clutchcompany-id="1965852">
-                     <div class="review">
-                      <span>Reviews On</span><img src="assets/img/home1/icon/clutch-logo-white.svg" width="90" height="25" alt=" clutch-logo" 
-                        style="width: 90px" />
+           
+              <div class="col-6 col-xl-6 col-md-6">
+                <div class="rating-area">
+                  <div class="clutch-widget single-rating clutch" 
+                       data-url="https://widget.clutch.co" 
+                       data-widget-type="1" 
+                       data-height="40"
+                       data-nofollow="true" 
+                       data-expandifr="true" 
+                       data-clutchcompany-id="1965852">
+                       <div class="review">
+                        <span>Reviews On</span><img src="assets/img/home1/icon/clutch-logo-white.svg" width="90" height="25" alt=" clutch-logo" 
+                          style="width: 90px" />
+                      </div>
+                      <div class="rating">
+                        <ul class="star clutch-star">
+                          <li><i class="bi bi-star-fill"></i></li>
+                          <li><i class="bi bi-star-fill"></i></li>
+                          <li><i class="bi bi-star-fill"></i></li>
+                          <li><i class="bi bi-star-fill"></i></li>
+                          <li><i class="bi bi-star-fill"></i></li>
+                        </ul>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              
+              
+              <div class="col-6 col-xl-6 col-md-6 ">
+                <div class="rating-area">
+                  <a target="_blank" href="https://www.goodfirms.co/company/distinct-cloud-labs"
+                    class="single-rating google">
+                    <div class="review">
+                      <span>Reviews On</span><img src="assets/img/goodfirms.svg" style="width: 142px" width="142" height="2" alt="Goodfirms Logo" />
                     </div>
                     <div class="rating">
-                      <ul class="star clutch-star">
+                      <ul class="star goodfirms-star">
                         <li><i class="bi bi-star-fill"></i></li>
                         <li><i class="bi bi-star-fill"></i></li>
                         <li><i class="bi bi-star-fill"></i></li>
@@ -62,53 +84,132 @@
                         <li><i class="bi bi-star-fill"></i></li>
                       </ul>
                     </div>
+                  </a>
                 </div>
               </div>
-            </div>
+          
             
-            <!-- <div class="col-6 col-xl-3 offset-xl-3 col-md-5 offset-md-1">
-              <div class="rating-area">
-                <a target="_blank" href="https://clutch.co/profile/distinct-cloud-labs" class="single-rating clutch">
-                  <div class="review">
-                    <span>Reviews On</span><img src="assets/img/home1/icon/clutch-logo-white.svg" width="90" height="25" alt=" clutch-logo" 
-                      style="width: 90px" />
-                  </div>
-                  <div class="rating">
-                    <ul class="star clutch-star">
-                      <li><i class="bi bi-star-fill"></i></li>
-                      <li><i class="bi bi-star-fill"></i></li>
-                      <li><i class="bi bi-star-fill"></i></li>
-                      <li><i class="bi bi-star-fill"></i></li>
-                      <li><i class="bi bi-star-fill"></i></li>
-                    </ul>
-                  </div>
-                </a>
-              </div>
-            </div> -->
-            <div class="col-6 col-xl-6 col-md-6">
-              <div class="rating-area">
-                <a target="_blank" href="https://www.goodfirms.co/company/distinct-cloud-labs"
-                  class="single-rating google">
-                  <div class="review">
-                    <span>Reviews On</span><img src="assets/img/goodfirms.svg" style="width: 142px" width="142" height="2" alt="Goodfirms Logo" />
-                  </div>
-                  <div class="rating">
-                    <ul class="star goodfirms-star">
-                      <li><i class="bi bi-star-fill"></i></li>
-                      <li><i class="bi bi-star-fill"></i></li>
-                      <li><i class="bi bi-star-fill"></i></li>
-                      <li><i class="bi bi-star-fill"></i></li>
-                      <li><i class="bi bi-star-fill"></i></li>
-                    </ul>
-                  </div>
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-6">
-      
+      <div
+        class="col-lg-6 wow animate fadeInUp"
+        data-wow-delay="200ms"
+        data-wow-duration="1500ms"
+      >
+        <div class="contact-form-wrap">
+          <div class="contact-form-area">
+            <h3>Your Success Starts Here!</h3>
+            <form [formGroup]="contactForm">
+              <div class="row">
+                <div class="col-lg-6 mb-20">
+                  <div class="form-inner">
+                    <label for="name">Full Name</label>
+                    <input
+                      type="text"
+                      formControlName="name"
+                      id="name"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': hasError('name') }"
+                    />
+                    <div class="invalid-feedback">Name is required</div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-20">
+                  <div class="form-inner">
+                    <label for="company">Company / Organization *</label>
+                    <input
+                      type="text"
+                      formControlName="company"
+                      id="company"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': hasError('company') }"
+                    />
+                    <div class="invalid-feedback">Company is required</div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-20">
+                  <div class="form-inner">
+                    <label for="phone">Phone *</label>
+                    <input
+                      type="text"
+                      formControlName="phone"
+                      id="phone"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': hasError('phone') }"
+                    />
+                    <div class="invalid-feedback">Phone is required</div>
+                  </div>
+                </div>
+                <div class="col-lg-6 mb-20">
+                  <div class="form-inner">
+                    <label for="email">Company email *</label>
+                    <input
+                      type="email"
+                      formControlName="email"
+                      id="email"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid': hasError('email') || hasEmailFormatError()
+                      }"
+                    />
+                    <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
+                      Invalid email format
+                    </div>
+                    <div
+                      *ngIf="hasError('email') && !hasEmailFormatError()"
+                      class="invalid-feedback"
+                    >
+                      Email is required
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="col-lg-12 mb-20">
+                  <div class="form-inner">
+                    <label for="subject">Your Subject *</label>
+                    <input
+                      type="text"
+                      formControlName="subject"
+                      id="subject"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': hasError('subject') }"
+                    />
+                    <div class="invalid-feedback">Subject is required</div>
+                  </div>
+                </div> -->
+                <div class="col-lg-12 mb-30">
+                  <div class="form-inner">
+                    <label for="message">Message *</label>
+                    <textarea
+                      formControlName="message"
+                      id="message"
+                      class="form-control"
+                      [ngClass]="{ 'is-invalid': hasError('message') }"
+                    ></textarea>
+                    <div class="invalid-feedback">Message is required</div>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="form-inner">
+                    <button
+                      class="primary-btn2"
+                      type="submit"
+                      data-text="Submit Now"
+                      (click)="onSubmit()"
+                    >
+                      <span>Submit Now</span>
+                      <span
+                        *ngIf="isLoading"
+                        class="spinner-border spinner-border-sm mx-2"
+                        role="status"
+                      ></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
