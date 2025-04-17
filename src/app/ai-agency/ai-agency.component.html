@@ -131,16 +131,25 @@
                 <div class="col-lg-6 mb-20">
                   <div class="form-inner">
                     <label for="phone">Phone *</label>
-                    <input
-                      type="text"
-                      formControlName="phone"
-                      id="phone"
-                      class="form-control"
-                      [ngClass]="{ 'is-invalid': hasError('phone') }"
-                    />
-                    <div class="invalid-feedback">Phone is required</div>
+                    <div class="d-flex align-items-start gap-0">
+                    <app-phone-dropdown
+                      (countrySelected)="onCountrySelected($event)"
+                    ></app-phone-dropdown>
+                    <div class="w-100">
+                      <input
+                        id="phone"
+                        type="text"
+                        
+                        formControlName="phone"
+                        [ngClass]="{ 'is-invalid': hasError('phone') }"
+                        class="form-control phone-input"
+                      />
+                      <div class="invalid-feedback">Phone is required</div>
+                    </div>
                   </div>
+                  </div> 
                 </div>
+                
                 <div class="col-lg-6 mb-20">
                   <div class="form-inner">
                     <label for="email">Company email *</label>
@@ -213,11 +222,6 @@
       </div>
     </div>
   </div>
-  <!-- <img src="assets/img/1.jpg" alt="" class="bottom-img1 wow animate fadeInUp" data-wow-delay="200ms"
-    data-wow-duration="1500ms" />
-  <img src="assets/img/2.jpg" alt="" class="bottom-img2" />
-  <img src="assets/img/3.jpg" alt="" class="bottom-img3 wow animate fadeInUp" data-wow-delay="600ms"
-    data-wow-duration="1500ms" /> -->
 
 </div> 
 

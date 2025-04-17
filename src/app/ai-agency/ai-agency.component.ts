@@ -9,6 +9,7 @@ import { TestimonialCardComponent } from '../common/testimonial-card/testimonial
 import { CommonService } from '../services/common.service';
 import { HomeService } from '../services/home.service';
 import { TestimonialService } from '../services/testimonial.service';
+
 import {
   FormBuilder,
   FormGroup,
@@ -18,6 +19,7 @@ import {
 import { ContactService } from '../services/contact.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { PhoneDropdownComponent } from '../common/phone-dropdown/phone-dropdown.component';
 declare var Swiper: any;
 @Component({
   selector: 'app-ai-agency',
@@ -25,6 +27,7 @@ declare var Swiper: any;
   templateUrl: './ai-agency.component.html',
   styleUrl: './ai-agency.component.scss',
   imports: [
+    PhoneDropdownComponent,
     ReactiveFormsModule,
     CommonModule,
     // TestimonialCardComponent,
@@ -37,6 +40,7 @@ declare var Swiper: any;
 })
 export class AIAgencyComponent implements OnInit {
   contactForm!: FormGroup;
+  selectedCountry: any;
   isLoading: boolean = false;
   constructor(
     private fb: FormBuilder,
@@ -169,5 +173,9 @@ export class AIAgencyComponent implements OnInit {
     this.homeService.getEngagementModels().then((res) => {
       this.engagementModels = res.items;
     });
+  }
+
+  onCountrySelected(country: any) {
+    this.selectedCountry = country;
   }
 }
