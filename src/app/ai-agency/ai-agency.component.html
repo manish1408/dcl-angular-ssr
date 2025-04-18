@@ -2,15 +2,14 @@
   <div class="container">
     <div class="row justify-content-center align-items-center">
       <div class="col-lg-7">
-        <div class="banner-content">
-          <h1 class="">Transform your Business with AI and ML</h1>
+        <div class="banner-content mb-30 mb-md-0">
+          <h1 class="">Trusted by businesses to build <br> Game-Changing AI</h1>
           <p>
-            Discover the transformative power of AI enablement. Distinct Cloud
-            Labs empowers your business with strategies for successful AI
-            integration, unlocking its full potential to drive growth and
-            innovation. We provide customer-centric services that assist
-            business leaders in achieving new levels of competitive advantage.
+            Partner with Distinct Clould Labs to launch intelligent, scalable solutions that streamline operations and boost performance - all backed by industry leaders-leading AI expertise.
           </p>
+          <div class="banner-content-tag">
+            RATED TOP AI DEVELOPMENT COMPANY ON CLUTCH 
+          </div>
 
           <div class="row">
             <div class="logo-grid">
@@ -39,57 +38,7 @@
             
           </div>
 
-          <div class="row">
-           
-              <div class="col-6 col-xl-6 col-md-6">
-                <div class="rating-area">
-                  <div class="clutch-widget single-rating clutch" 
-                       data-url="https://widget.clutch.co" 
-                       data-widget-type="1" 
-                       data-height="40"
-                       data-nofollow="true" 
-                       data-expandifr="true" 
-                       data-clutchcompany-id="1965852">
-                       <div class="review">
-                        <span>Reviews On</span><img src="assets/img/home1/icon/clutch-logo-white.svg" width="90" height="25" alt=" clutch-logo" 
-                          style="width: 90px" />
-                      </div>
-                      <div class="rating">
-                        <ul class="star clutch-star">
-                          <li><i class="bi bi-star-fill"></i></li>
-                          <li><i class="bi bi-star-fill"></i></li>
-                          <li><i class="bi bi-star-fill"></i></li>
-                          <li><i class="bi bi-star-fill"></i></li>
-                          <li><i class="bi bi-star-fill"></i></li>
-                        </ul>
-                      </div>
-                  </div>
-                </div>
-              </div>
-              
-              
-              <div class="col-6 col-xl-6 col-md-6 ">
-                <div class="rating-area">
-                  <a target="_blank" href="https://www.goodfirms.co/company/distinct-cloud-labs"
-                    class="single-rating google">
-                    <div class="review">
-                      <span>Reviews On</span><img src="assets/img/goodfirms.svg" style="width: 142px" width="142" height="2" alt="Goodfirms Logo" />
-                    </div>
-                    <div class="rating">
-                      <ul class="star goodfirms-star">
-                        <li><i class="bi bi-star-fill"></i></li>
-                        <li><i class="bi bi-star-fill"></i></li>
-                        <li><i class="bi bi-star-fill"></i></li>
-                        <li><i class="bi bi-star-fill"></i></li>
-                        <li><i class="bi bi-star-fill"></i></li>
-                      </ul>
-                    </div>
-                  </a>
-                </div>
-              </div>
-          
-            
-          </div>
+         
         </div>
       </div>
       <div
@@ -109,25 +58,16 @@
                       type="text"
                       formControlName="name"
                       id="name"
+                      maxlength="100"
                       class="form-control"
                       [ngClass]="{ 'is-invalid': hasError('name') }"
+                      (keypress)="allowOnlyAlphabets($event)"
+      (paste)="sanitizeAlphabetPaste($event)"
                     />
                     <div class="invalid-feedback">Name is required</div>
                   </div>
                 </div>
-                <!-- <div class="col-lg-6 mb-20">
-                  <div class="form-inner">
-                    <label for="company">Company / Organization *</label>
-                    <input
-                      type="text"
-                      formControlName="company"
-                      id="company"
-                      class="form-control"
-                      [ngClass]="{ 'is-invalid': hasError('company') }"
-                    />
-                    <div class="invalid-feedback">Company is required</div>
-                  </div>
-                </div> -->
+               
                 <div class="col-lg-12 mb-20">
                   <div class="form-inner">
                     <label for="phone">Phone *</label>
@@ -137,12 +77,15 @@
                     ></app-phone-dropdown>
                     <div class="w-100">
                       <input
-                        id="phone"
-                        type="text"
-                        
-                        formControlName="phone"
-                        [ngClass]="{ 'is-invalid': hasError('phone') }"
-                        class="form-control phone-input"
+                      id="phone"
+                      type="text"
+                      maxlength="20"
+                      inputmode="numeric"
+                      pattern="[0-9]*"
+                      formControlName="phone"
+                      class="form-control phone-input"
+                      [ngClass]="{ 'is-invalid': hasError('phone') }"
+                      (keypress)="allowOnlyNumbers($event)"
                       />
                       <div class="invalid-feedback">Phone is required</div>
                     </div>
@@ -157,6 +100,7 @@
                       type="email"
                       formControlName="email"
                       id="email"
+                      maxlength="100"
                       class="form-control"
                       [ngClass]="{
                         'is-invalid': hasError('email') || hasEmailFormatError()
@@ -173,19 +117,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- <div class="col-lg-12 mb-20">
-                  <div class="form-inner">
-                    <label for="subject">Your Subject *</label>
-                    <input
-                      type="text"
-                      formControlName="subject"
-                      id="subject"
-                      class="form-control"
-                      [ngClass]="{ 'is-invalid': hasError('subject') }"
-                    />
-                    <div class="invalid-feedback">Subject is required</div>
-                  </div>
-                </div> -->
+                
                 <div class="col-lg-12 mb-30">
                   <div class="form-inner">
                     <label for="message">Message *</label>
@@ -193,6 +125,7 @@
                       formControlName="message"
                       id="message"
                       class="form-control"
+                      maxlength="600"
                       [ngClass]="{ 'is-invalid': hasError('message') }"
                     ></textarea>
                     <div class="invalid-feedback">Message is required</div>

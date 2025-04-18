@@ -149,7 +149,7 @@
   // margin: 3rem auto;
   margin-top: 30px;
   gap: 10px;
-  max-width: 400px;
+  max-width: 600px;
 }
 
 .logo-item {
@@ -163,7 +163,7 @@
 .logo-img {
   max-width: 100%;
   height: auto;
-  max-height: 80px;
+  // max-height: 80px;
 
   transition: all 0.3s ease;
 }
@@ -241,4 +241,12 @@ text-align: center;
 }
 .m-auto{
   margin:auto;
+}
+.banner-content-tag{
+  display: inline-block;
+      background-color: #00a359;
+      padding: 2px 12px;
+      border-radius: 20px;
+      color: white;
+      font-weight: 500;
 }

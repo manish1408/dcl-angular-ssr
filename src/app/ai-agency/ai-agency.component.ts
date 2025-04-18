@@ -175,7 +175,42 @@ export class AIAgencyComponent implements OnInit {
     });
   }
 
+  allowOnlyNumbers(event: KeyboardEvent): void {
+    const charCode = event.key;
+    if (!/^[0-9]$/.test(charCode)) {
+      event.preventDefault();
+    }
+  }
+
   onCountrySelected(country: any) {
     this.selectedCountry = country;
   }
+  allowOnlyAlphabets(event: KeyboardEvent): void {
+    const char = event.key;
+    const regex = /^[a-zA-Z\s]*$/;
+    if (!regex.test(char)) {
+      event.preventDefault();
+    }
+  }
+  
+  sanitizeAlphabetPaste(event: ClipboardEvent): void {
+    event.preventDefault();
+    const pastedInput: string = event.clipboardData
+      ?.getData('text')
+      .replace(/[^a-zA-Z\s]/g, '') || '';
+  
+    const input = event.target as HTMLInputElement;
+    const start = input.selectionStart || 0;
+    const end = input.selectionEnd || 0;
+    const value = input.value;
+  
+    input.value =
+      value.substring(0, start) + pastedInput + value.substring(end);
+    input.setSelectionRange(start + pastedInput.length, start + pastedInput.length);
+  
+    // Also update form control if needed
+    this.contactForm?.get('name')?.setValue(input.value);
+  }
+    
+  
 }
