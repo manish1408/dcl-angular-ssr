@@ -72,26 +72,30 @@
                   <div class="form-inner">
                     <label for="phone">Phone *</label>
                     <div class="d-flex align-items-start gap-0">
-                    <app-phone-dropdown
-                      (countrySelected)="onCountrySelected($event)"
-                    ></app-phone-dropdown>
-                    <div class="w-100">
-                      <input
-                      id="phone"
-                      type="text"
-                      maxlength="20"
-                      inputmode="numeric"
-                      pattern="[0-9]*"
-                      formControlName="phone"
-                      class="form-control phone-input"
-                      [ngClass]="{ 'is-invalid': hasError('phone') }"
-                      (keypress)="allowOnlyNumbers($event)"
-                      />
-                      <div class="invalid-feedback">Phone is required</div>
+                      <app-phone-dropdown
+                        (countrySelected)="onCountrySelected($event)"
+                      ></app-phone-dropdown>
+                      <div class="w-100">
+                        <input
+                          id="phone"
+                          type="text"
+                          maxlength="20"
+                          inputmode="numeric"
+                          pattern="[0-9]*"
+                          formControlName="phone"
+                          class="form-control phone-input"
+                          [ngClass]="{ 'is-invalid': hasError('phone') }"
+                          (keypress)="allowOnlyNumbers($event)"
+                        />
+                      </div>
+                    </div>
+                    <!-- Move the error message outside the flexbox -->
+                    <div class="invalid-feedback d-block" *ngIf="hasError('phone')">
+                      Phone is required
                     </div>
                   </div>
-                  </div> 
                 </div>
+                
                 
                 <div class="col-lg-12 mb-20">
                   <div class="form-inner">
