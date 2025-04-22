@@ -5,47 +5,44 @@
         <div class="banner-content mb-30 mb-md-0">
           <h1 class="">Trusted by businesses to build <br> Game-Changing AI</h1>
           <p>
-            Partner with Distinct Clould Labs to launch intelligent, scalable solutions that streamline operations and boost performance - all backed by industry leaders-leading AI expertise.
+            Partner with Distinct Clould Labs to launch intelligent, scalable solutions that streamline operations and
+            boost performance - all backed by industry leaders-leading AI expertise.
           </p>
-          <div class="banner-content-tag">
-            RATED TOP AI DEVELOPMENT COMPANY ON CLUTCH 
+          
+          <div class="badge bg-success">
+            RATED TOP AI DEVELOPMENT COMPANY ON CLUTCH
           </div>
-
           <div class="row">
             <div class="logo-grid">
               <!-- Logo 1 -->
               <div class="logo-item">
                 <img src="assets/img/clutchLogo1.png" alt="Partner Company 1" class="logo-img">
               </div>
-              
-             
-              
+
+
+
               <!-- Logo 3 -->
               <div class="logo-item">
                 <img src="assets/img/clutchLogo3.png" alt="Partner Company 3" class="logo-img">
               </div>
-              
+
               <!-- Logo 4 -->
               <div class="logo-item">
                 <img src="assets/img/clutchLogo4.png" alt="Partner Company 4" class="logo-img">
               </div>
 
-               <!-- Logo 2 -->
-               <div class="logo-item">
-                <img src="assets/img/clutchLogo2.png" alt="Partner Company 2" class="logo-img">
+              <!-- Logo 2 -->
+              <div class="logo-item">
+                <img src="assets/img/clutchLogo2.png" style="height: 147px;" alt="Partner Company 2" class="logo-img">
               </div>
             </div>
-            
+
           </div>
 
-         
+
         </div>
       </div>
-      <div
-        class="col-lg-5 wow animate fadeInUp"
-        data-wow-delay="200ms"
-        data-wow-duration="1500ms"
-      >
+      <div class="col-lg-5">
         <div class="contact-form-wrap">
           <div class="contact-form-area">
             <h3>Your Success Starts Here!</h3>
@@ -54,39 +51,22 @@
                 <div class="col-lg-12 mb-20">
                   <div class="form-inner">
                     <label for="name">Full Name</label>
-                    <input
-                      type="text"
-                      formControlName="name"
-                      id="name"
-                      maxlength="100"
-                      class="form-control"
-                      [ngClass]="{ 'is-invalid': hasError('name') }"
-                      (keypress)="allowOnlyAlphabets($event)"
-      (paste)="sanitizeAlphabetPaste($event)"
-                    />
+                    <input type="text" formControlName="name" id="name" maxlength="100" class="form-control"
+                      [ngClass]="{ 'is-invalid': hasError('name') }" (keypress)="allowOnlyAlphabets($event)"
+                      (paste)="sanitizeAlphabetPaste($event)" />
                     <div class="invalid-feedback">Name is required</div>
                   </div>
                 </div>
-               
+
                 <div class="col-lg-12 mb-20">
                   <div class="form-inner">
                     <label for="phone">Phone *</label>
                     <div class="d-flex align-items-start gap-0">
-                      <app-phone-dropdown
-                        (countrySelected)="onCountrySelected($event)"
-                      ></app-phone-dropdown>
+                      <app-phone-dropdown (countrySelected)="onCountrySelected($event)"></app-phone-dropdown>
                       <div class="w-100">
-                        <input
-                          id="phone"
-                          type="text"
-                          maxlength="20"
-                          inputmode="numeric"
-                          pattern="[0-9]*"
-                          formControlName="phone"
-                          class="form-control phone-input"
-                          [ngClass]="{ 'is-invalid': hasError('phone') }"
-                          (keypress)="allowOnlyNumbers($event)"
-                        />
+                        <input id="phone" type="text" maxlength="20" inputmode="numeric" pattern="[0-9]*"
+                          formControlName="phone" class="form-control phone-input"
+                          [ngClass]="{ 'is-invalid': hasError('phone') }" (keypress)="allowOnlyNumbers($event)" />
                       </div>
                     </div>
                     <!-- Move the error message outside the flexbox -->
@@ -95,60 +75,37 @@
                     </div>
                   </div>
                 </div>
-                
-                
+
+
                 <div class="col-lg-12 mb-20">
                   <div class="form-inner">
                     <label for="email">Company email *</label>
-                    <input
-                      type="email"
-                      formControlName="email"
-                      id="email"
-                      maxlength="100"
-                      class="form-control"
+                    <input type="email" formControlName="email" id="email" maxlength="100" class="form-control"
                       [ngClass]="{
                         'is-invalid': hasError('email') || hasEmailFormatError()
-                      }"
-                    />
+                      }" />
                     <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
                       Invalid email format
                     </div>
-                    <div
-                      *ngIf="hasError('email') && !hasEmailFormatError()"
-                      class="invalid-feedback"
-                    >
+                    <div *ngIf="hasError('email') && !hasEmailFormatError()" class="invalid-feedback">
                       Email is required
                     </div>
                   </div>
                 </div>
-                
+
                 <div class="col-lg-12 mb-30">
                   <div class="form-inner">
                     <label for="message">Message *</label>
-                    <textarea
-                      formControlName="message"
-                      id="message"
-                      class="form-control"
-                      maxlength="600"
-                      [ngClass]="{ 'is-invalid': hasError('message') }"
-                    ></textarea>
+                    <textarea formControlName="message" id="message" class="form-control" maxlength="600"
+                      [ngClass]="{ 'is-invalid': hasError('message') }"></textarea>
                     <div class="invalid-feedback">Message is required</div>
                   </div>
                 </div>
                 <div class="col-lg-12">
                   <div class="form-inner">
-                    <button
-                      class="primary-btn2"
-                      type="submit"
-                      data-text="Submit Now"
-                      (click)="onSubmit()"
-                    >
+                    <button class="primary-btn2" type="submit" data-text="Submit Now" (click)="onSubmit()">
                       <span class="m-auto">Submit Now</span>
-                      <span
-                        *ngIf="isLoading"
-                        class="spinner-border spinner-border-sm mx-2"
-                        role="status"
-                      ></span>
+                      <span *ngIf="isLoading" class="spinner-border spinner-border-sm mx-2" role="status"></span>
                     </button>
                   </div>
                 </div>
@@ -160,7 +117,7 @@
     </div>
   </div>
 
-</div> 
+</div>
 
 <!-- <div class="banner-bottom">
   <div class="container">
@@ -392,7 +349,8 @@
       </div>
 
       <div class="col-12 col-md-6">
-        <img src="../../assets/img/Dalle.a15ca1a1.svg" width="598" height="272" class="gen-ai-img" alt="AI at Distinct Cloud Labs" />
+        <img src="../../assets/img/Dalle.a15ca1a1.svg" width="598" height="272" class="gen-ai-img"
+          alt="AI at Distinct Cloud Labs" />
       </div>
     </div>
     <div class="row g-lg-4 gy-5">
