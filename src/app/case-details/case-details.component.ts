@@ -5,7 +5,7 @@ import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 import { CommonService } from '../services/common.service';
 import { Meta, Title } from '@angular/platform-browser';
-
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-case-details',
   standalone: true,
@@ -100,4 +100,32 @@ export class CaseDetailsComponent implements OnInit {
   stripHtmlTags(content: string): string {
     return content.replace(/<\/?[^>]+(>|$)/g, "");
   }
+
+  // downloadPdf() {
+  //   const fileUrl = 'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/e45ced4c-794d-48fd-bda7-94c1ff001cfa';
+  //   const fileName = 'document.pdf';
+  // fetch(fileUrl)
+  //   .then(response => response.blob())
+  //   .then(blob => {
+  //     saveAs(blob, fileName);
+  //   })
+  //   .catch(err => console.error('Download failed', err));
+  // }
+  downloadPdf() {
+    const fileId = this.post?.thumbnail?.iv?.[0]; 
+    const fileName = this.post?.slug?.iv + '.pdf'; 
+  
+    if (fileId && fileName) {
+      const fileUrl = `https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/${fileId}`;
+  
+      fetch(fileUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          saveAs(blob, fileName);
+        })
+        .catch(err => console.error('Download failed', err));
+    } else {
+      console.error('Missing fileId or fileName');
+    }
+}
 }

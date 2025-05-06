@@ -16,8 +16,12 @@
               {{ post?.projectName?.iv }}
             </h1>
             <p class="text-white">{{ post?.projectSubheading?.iv }}</p>
-            <a target="_blank" href="{{ post?.DownloadPDF?.iv }}" class="btn btn-success btn-lg"><i
-                class="bi bi-file-pdf-fill"></i> Download in PDF</a>
+            <!-- <button (click)="downloadPdf()"> <a target="_blank" href="{{ post?.DownloadPDF?.iv }}" class="btn btn-success btn-lg"><i
+              class="bi bi-file-pdf-fill"></i> Download in PDF</a></button> -->
+              <button (click)="downloadPdf()" class="btn btn-success btn-lg">
+                <i class="bi bi-file-pdf-fill"></i> Download in PDF
+              </button>
+              
             <a target="_blank" href="https://distinctcloud.io/assessment/basic-details"
               class="btn btn btn-outline-light btn-lg mx-4"><i class="bi bi-kanban"></i> Start a similiar project</a>
           </div>
@@ -43,9 +47,15 @@
   <div class="container">
     <div class="row g-lg-4 gy-5 mb-60">
       <div class="col-lg-8">
+        <div class="image-frame-container">
         <div class="case-thumb" *ngIf="post?.logo?.iv[0]">
           <img [src]="imgCDN + post?.logo?.iv[0]" alt="" />
         </div>
+        <div class="left-frame">
+          <img src="assets/img/logo_light.svg" alt="Logo" class="logo" />
+          <div class="template-name">{{ post?.projectName?.iv }}</div>
+        </div>
+      </div>
 
 
         <div class="mt-4 ">

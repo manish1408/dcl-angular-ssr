@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
 
+
 @Component({
   selector: 'app-case-studies',
   standalone: true,
@@ -25,6 +26,9 @@ export class CaseStudiesComponent implements OnInit {
   async ngOnInit() {
     this.isLoading = true;
     this.caseStudyService.fetchPosts().subscribe((resp: any) => { 
+      console.log("res", resp)
+      const d = resp.items.filter((ele:any)=>ele?.data.slug.iv === 'mvp-development-for-software-company')
+      console.log('D',d)
       this.posts = resp?.items;
       this.clientServices = this.posts[0].data?.ClientServices.iv.split(',')
       console.log(this.clientServices);
@@ -60,4 +64,6 @@ export class CaseStudiesComponent implements OnInit {
       section.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  
 }
