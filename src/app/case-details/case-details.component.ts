@@ -101,16 +101,6 @@ export class CaseDetailsComponent implements OnInit {
     return content.replace(/<\/?[^>]+(>|$)/g, "");
   }
 
-  // downloadPdf() {
-  //   const fileUrl = 'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/e45ced4c-794d-48fd-bda7-94c1ff001cfa';
-  //   const fileName = 'document.pdf';
-  // fetch(fileUrl)
-  //   .then(response => response.blob())
-  //   .then(blob => {
-  //     saveAs(blob, fileName);
-  //   })
-  //   .catch(err => console.error('Download failed', err));
-  // }
   downloadPdf() {
     const fileId = this.post?.PDF?.iv?.[0]; 
     const fileName = this.post?.slug?.iv + '.pdf'; 
