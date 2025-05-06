@@ -112,7 +112,7 @@ export class CaseDetailsComponent implements OnInit {
   //   .catch(err => console.error('Download failed', err));
   // }
   downloadPdf() {
-    const fileId = this.post?.thumbnail?.iv?.[0]; 
+    const fileId = this.post?.PDF?.iv?.[0]; 
     const fileName = this.post?.slug?.iv + '.pdf'; 
   
     if (fileId && fileName) {
