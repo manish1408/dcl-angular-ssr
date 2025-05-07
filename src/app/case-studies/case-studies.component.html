@@ -41,12 +41,26 @@
       @for (post of posts; track post) {
       <div class="col-xl-4 col-md-6 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
         <div class="case-study-card2">
-          <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="card-img" [attr.aria-label]="'View case study: ' + post.data?.slug?.iv">
+          <!-- <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="card-img" [attr.aria-label]="'View case study: ' + post.data?.slug?.iv">
             <img width="354" height="239" [src]="
                 'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + 
                 post?.data?.thumbnail?.iv[0]
               " alt="Image" />
-          </a>
+          </a> -->
+          <div class="thumbnail-wrapper position-relative">
+            <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="card-img" [attr.aria-label]="'View case study: ' + post.data?.slug?.iv">
+              <img width="354" height="239" [src]="
+                  'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + 
+                  post?.data?.thumbnail?.iv[0]
+                " alt="Image" />
+            </a>
+          
+            <div class="verified-badge">
+              <span>Verified by</span>
+              <img src="assets/img/home1/icon/clutch-logo-white.svg" alt="Clutch Logo" />
+
+            </div>
+          </div>          
           <div class="card-content">
             <h2>
               <a [routerLink]="['/case-study/', post.data?.slug?.iv]">{{ post.data?.projectName?.iv }}
@@ -56,13 +70,18 @@
               {{ post.data?.projectSubheading?.iv }}
             </p>
 
-
-            <button [routerLink]="['/case-study/', post.data?.slug?.iv]" class="clear-btn">Read More
-              <div class="btn-icon-wrapper">
-
-                <img src="assets/icons/sm-arrow-upright.svg" class="" alt="arrow-upright" />
-              </div>
-            </button>
+            <div class="d-flex justify-content-between align-items-center">
+              <button (click)="downloadPdf(post)" class="btn btn-success btn-lg">
+                <i class="bi bi-file-pdf-fill"></i> Download in PDF
+              </button>
+              <button [routerLink]="['/case-study/', post.data?.slug?.iv]" class="clear-btn">Read More
+                <div class="btn-icon-wrapper">
+  
+                  <img src="assets/icons/sm-arrow-upright.svg" class="" alt="arrow-upright" />
+                </div>
+              </button>
+            </div>
+           
           </div>
         </div>
       </div>

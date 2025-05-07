@@ -3,7 +3,7 @@ import { CaseStudyService } from '../services/case-study.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { Meta, Title } from '@angular/platform-browser';
-
+import { saveAs } from 'file-saver';
 
 @Component({
   selector: 'app-case-studies',
@@ -19,6 +19,7 @@ export class CaseStudiesComponent implements OnInit {
     private meta: Meta,
     private title: Title
   ) {}
+
   posts: any[] = [];
   isLoading: boolean = false;
   clientServices:any;
@@ -63,6 +64,23 @@ export class CaseStudiesComponent implements OnInit {
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+   downloadPdf(post: any) {
+      const fileId = post?.data?.PDF?.iv?.[0];
+      const fileName = post?.data?.slug?.iv + '.pdf';
+    
+      if (fileId && fileName) {
+        const fileUrl = `https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/${fileId}`;
+    
+        fetch(fileUrl)
+          .then(response => response.blob())
+          .then(blob => {
+            saveAs(blob, fileName);
+          })
+          .catch(err => console.error('Download failed', err));
+      } else {
+        console.error('Missing fileId or fileName');
+      }
   }
 
   
