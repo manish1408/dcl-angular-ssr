@@ -98,3 +98,75 @@
   --swiper-pagination-color: #6be3aa !important;
 
 }
+/* In your component's .scss or .css file */
+.formatted-content {
+  margin-top: 50px;
+  h2 {
+    
+    color: var(--title-color);
+    font-family: var(--font-hankenGrotesk);
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-top: 35px;
+    margin-bottom: unset;
+  }
+
+  h3{
+    color: var(--title-color);
+    font-family: var(--font-hankenGrotesk);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    margin-top: 15px;
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 1rem;
+  }
+
+  li {
+    margin-bottom: 6px;
+    // color: #555;
+    color: var(--text-color);
+    font-family: var(--font-inter);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    // margin-bottom: 0;
+    strong{
+      color: var(--title-color);
+    font-family: var(--font-hankenGrotesk);
+    // font-size: 22px;
+    font-weight: 600;
+    line-height: 1.2;
+    }
+  }
+
+  p {
+    color: var(--text-color);
+    font-family: var(--font-inter);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+    padding-top: 20px;
+  
+  }
+
+  p:last-of-type {
+    margin-bottom: 2rem; 
+  }
+  
+
+  a {
+    color: #007bff;
+    text-decoration: underline;
+
+    &:hover {
+      color: #0056b3;
+    }
+  }
+}
