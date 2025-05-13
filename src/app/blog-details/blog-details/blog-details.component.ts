@@ -104,29 +104,69 @@ export class BlogDetailsComponent implements OnInit {
     }
   }
 
+  // updateMetaTags(blog: any) {
+  //   const sanitizedContent = this.stripHtmlTags(blog.text.iv);
+  //   this.title.setTitle(`Distinct Cloud Labs |  ${blog.pageTitle.iv}`);
+  //   this.meta.addTags([
+  //     {
+  //       name: "meta:title",
+  //       content: `Distinct Cloud Labs | ${blog.metaTitle.iv}`
+  //     },
+  //     {
+  //       name: "description",
+  //       content: sanitizedContent.substring(0, 160),
+  //     },
+  //     { property: "og:title", content: `Distinct Cloud Labs | ${blog.ogTitle.iv}` },
+  //     {
+  //       property: "og:description",
+  //       content: sanitizedContent.substring(0, 160),
+  //     },
+  //     {
+  //       property: "twitter:title",
+  //       content: `Distinct Cloud Labs | ${blog.twtTitle.iv}`,
+  //       // content: `Distinct Cloud Labs | ${blog.title.iv}`,
+  //     },
+  //     {
+  //       property: "twitter:description",
+  //       content: sanitizedContent.substring(0, 160),
+  //     },
+  //   ]);
+  // }
+
   updateMetaTags(blog: any) {
-    const sanitizedContent = this.stripHtmlTags(blog.text.iv);
-    this.title.setTitle(`Distinct Cloud Labs |  ${blog.title.iv}`);
+    const fallbackDescription = this.stripHtmlTags(blog.text?.iv || '').substring(0, 160);
+  
+    const metaTitle = blog.metaTitle?.iv || blog.pageTitle?.iv || 'Distinct Cloud Labs';
+    const metaDescription = blog.metaDesc?.iv || fallbackDescription;
+    const ogTitle = blog.ogTitle?.iv || metaTitle;
+    const ogDescription = blog.ogDesc?.iv || metaDescription;
+    const twitterTitle = blog.twtTitle?.iv || metaTitle;
+    const twitterDescription = blog.twtDesc?.iv || metaDescription;
+    const keywords = blog.keywords?.iv || '';
+  
+    // Set page title
+    this.title.setTitle(`Distinct Cloud Labs | ${blog.pageTitle?.iv || metaTitle}`);
+  
+    // Clear old tags to avoid duplicates
+    this.meta.removeTag("name='description'");
+    this.meta.removeTag("name='meta:description'");
+    this.meta.removeTag("name='keywords'");
+  
+    // Add new meta tags
     this.meta.addTags([
-      {
-        name: "description",
-        content: sanitizedContent.substring(0, 160),
-      },
-      { property: "og:title", content: `Distinct Cloud Labs | ${blog.title.iv}` },
-      {
-        property: "og:description",
-        content: sanitizedContent.substring(0, 160),
-      },
-      {
-        property: "twitter:title",
-        content: `Distinct Cloud Labs | ${blog.title.iv}`,
-      },
-      {
-        property: "twitter:description",
-        content: sanitizedContent.substring(0, 160),
-      },
+      { name: 'meta:title', content: `Distinct Cloud Labs | ${metaTitle}` },
+      { name: 'description', content: metaDescription },
+      { name: 'meta:description', content: metaDescription },
+      { name: 'keywords', content: keywords },
+  
+      { property: 'og:title', content: `Distinct Cloud Labs | ${ogTitle}` },
+      { property: 'og:description', content: ogDescription },
+  
+      { property: 'twitter:title', content: `Distinct Cloud Labs | ${twitterTitle}` },
+      { property: 'twitter:description', content: twitterDescription },
     ]);
   }
+  
 
   stripHtmlTags(content: string): string {
     return content.replace(/<\/?[^>]+(>|$)/g, "");
