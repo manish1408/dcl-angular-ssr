@@ -35,19 +35,19 @@ export class BlogDetailsComponent implements OnInit {
     this.route.params.subscribe((param) => {
       this.isLoading = true;
       this.slugName = param['type'];
-   
-    this.blogService.getBlogBySlug(this.slugName).subscribe((resp: any) => {
-      console.log(resp);
-      this.post = resp?.items[0].data;
-      this.updateMetaTags(resp?.items[0].data)
-      this.isLoading = false;
 
-      this.date = resp.items[0].created;
-      console.log(this.post);
-      this.formatDate(this.date);
-      this.getAllBlogs();
-    }); 
-   });
+      this.blogService.getBlogBySlug(this.slugName).subscribe((resp: any) => {
+        console.log(resp);
+        this.post = resp?.items[0].data;
+        this.updateMetaTags(resp?.items[0].data);
+        this.isLoading = false;
+
+        this.date = resp.items[0].created;
+        console.log(this.post);
+        this.formatDate(this.date);
+        this.getAllBlogs();
+      });
+    });
   }
 
   getAllBlogs() {
@@ -134,41 +134,48 @@ export class BlogDetailsComponent implements OnInit {
   // }
 
   updateMetaTags(blog: any) {
-    const fallbackDescription = this.stripHtmlTags(blog.text?.iv || '').substring(0, 160);
-  
-    const metaTitle = blog.metaTitle?.iv || blog.pageTitle?.iv || 'Distinct Cloud Labs';
+    const fallbackDescription = this.stripHtmlTags(
+      blog.text?.iv || ''
+    ).substring(0, 160);
+    const pageTitle = blog.pageTitle?.iv || 'Distinct Cloud Labs';
+    const metaTitle = blog.metaTitle?.iv || 'Distinct Cloud Labs';
     const metaDescription = blog.metaDesc?.iv || fallbackDescription;
     const ogTitle = blog.ogTitle?.iv || metaTitle;
     const ogDescription = blog.ogDesc?.iv || metaDescription;
     const twitterTitle = blog.twtTitle?.iv || metaTitle;
     const twitterDescription = blog.twtDesc?.iv || metaDescription;
     const keywords = blog.keywords?.iv || '';
-  
+
     // Set page title
-    this.title.setTitle(`Distinct Cloud Labs | ${blog.pageTitle?.iv || metaTitle}`);
-  
+    this.title.setTitle(
+      `Distinct Cloud Labs | ${blog.pageTitle?.iv || metaTitle}`
+    );
+
     // Clear old tags to avoid duplicates
     this.meta.removeTag("name='description'");
     this.meta.removeTag("name='meta:description'");
     this.meta.removeTag("name='keywords'");
-  
+
     // Add new meta tags
     this.meta.addTags([
+      { name: 'page:title', content: `Distinct Cloud Labs | ${pageTitle}` },
       { name: 'meta:title', content: `Distinct Cloud Labs | ${metaTitle}` },
       { name: 'description', content: metaDescription },
       { name: 'meta:description', content: metaDescription },
       { name: 'keywords', content: keywords },
-  
+
       { property: 'og:title', content: `Distinct Cloud Labs | ${ogTitle}` },
       { property: 'og:description', content: ogDescription },
-  
-      { property: 'twitter:title', content: `Distinct Cloud Labs | ${twitterTitle}` },
+
+      {
+        property: 'twitter:title',
+        content: `Distinct Cloud Labs | ${twitterTitle}`,
+      },
       { property: 'twitter:description', content: twitterDescription },
     ]);
   }
-  
 
   stripHtmlTags(content: string): string {
-    return content.replace(/<\/?[^>]+(>|$)/g, "");
+    return content.replace(/<\/?[^>]+(>|$)/g, '');
   }
 }
