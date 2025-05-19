@@ -2,10 +2,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { PHONE_BOOK } from './phone-codes';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ClickOutsideDirective } from '../../_directives/click-outside.directive';
 
 @Component({
   standalone: true,
-  imports: [CommonModule,FormsModule],
+  imports: [CommonModule,FormsModule,ClickOutsideDirective],
   selector: 'app-phone-dropdown',
   templateUrl: './phone-dropdown.component.html',
   styleUrl: './phone-dropdown.component.scss',
