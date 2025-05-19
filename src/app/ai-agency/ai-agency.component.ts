@@ -89,7 +89,7 @@ export class AIAgencyComponent implements OnInit {
   ngOnInit(): void {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
-      company: ['', Validators.required],
+      company: [''],
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       // subject: ['', Validators.required],
@@ -122,6 +122,7 @@ export class AIAgencyComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(  this.selectedCountry)
     this.isLoading = true;
 
     this.contactForm.markAllAsTouched();
@@ -130,8 +131,12 @@ export class AIAgencyComponent implements OnInit {
       this.toastr.error('Please provide all the details');
       return;
     }
-
-    this.contactService.postContact(this.contactForm.value).subscribe(
+    const reqObj={
+      ...this.contactForm.value,
+      phone: this.selectedCountry?.phone[0] + ' ' + this.contactForm.value.phone,
+      subject:''
+    }
+    this.contactService.postContact(reqObj).subscribe(
       (res: any) => {
         this.isLoading = false;
         if (res.success) {
