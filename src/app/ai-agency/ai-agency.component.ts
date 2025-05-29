@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { EngagementModelsComponent } from '../common/engagement-models/engagement-models.component';
 import { HiringProcessComponent } from '../common/hiring-process/hiring-process.component';
 import { HomeTestimonialsComponent } from '../common/home-testimonials/home-testimonials.component';
@@ -42,6 +42,8 @@ export class AIAgencyComponent implements OnInit {
   contactForm!: FormGroup;
   selectedCountry: any;
   isLoading: boolean = false;
+  pageTitle: string = 'Trusted by businesses to build <br> Game-Changing AI';
+  pageDescription: string = "Partner with Distinct Clould Labs to launch intelligent, scalable solutions that streamline operations and boost performance - all backed by industry leaders-leading AI expertise.";
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
@@ -50,7 +52,9 @@ export class AIAgencyComponent implements OnInit {
     private homeService: HomeService,
     private common: CommonService,
     private meta: Meta,
-    private title: Title
+    private title: Title,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.title.setTitle(
       'Distinct Cloud Labs | Empower Your Business with AI and ML '
@@ -87,6 +91,18 @@ export class AIAgencyComponent implements OnInit {
   engagementModels: any = [];
 
   ngOnInit(): void {
+    const currentUrl = this.router.url;
+    if (currentUrl.includes('n8n')) {
+      this.pageTitle = 'Trusted n8n automation experts.';
+      this.pageDescription = 'We build n8n automations for your business that works flawless for years. Contact us if you are looking to automate your business using n8n.';
+      this.meta.updateTag({ name: 'description', content: this.pageDescription });
+      this.meta.updateTag({ property: 'og:description', content: this.pageDescription });
+      this.meta.updateTag({ property: 'twitter:description', content: this.pageDescription });
+      this.meta.updateTag({ property: 'og:title', content: "Distinct Cloud Labs: " + this.pageTitle });
+      this.meta.updateTag({ property: 'twitter:title', content: this.pageTitle });
+      this.title.setTitle("Distinct Cloud Labs: " + this.pageTitle.replace(/<br>/g, ' '));
+    }
+
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       company: [''],
