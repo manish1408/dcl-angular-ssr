@@ -250,3 +250,17 @@ text-align: center;
       color: white;
       font-weight: 500;
 }
+
+@media (max-width: 576px) {
+  .home3-banner-section .banner-content h1 {
+    text-align: center !important;
+    font-size: 48px;
+  }
+  .home3-banner-section .banner-content p {
+    text-align: center !important;
+    font-size: 14px;
+  }
+  .home3-banner-section .banner-content {
+  text-align: center !important;
+  }
+}

@@ -45,7 +45,7 @@
       <div class="col-lg-5">
         <div class="contact-form-wrap">
           <div class="contact-form-area">
-            <h3>Your Success Starts Here!</h3>
+            <h3>Get Free Consultation</h3>
             <form [formGroup]="contactForm">
               <div class="row">
                 <div class="col-lg-12 mb-20">
@@ -64,7 +64,7 @@
                     <div class="d-flex align-items-start gap-0">
                       <app-phone-dropdown (countrySelected)="onCountrySelected($event)"></app-phone-dropdown>
                       <div class="w-100">
-                        <input id="phone" type="text" maxlength="20" inputmode="numeric" pattern="[0-9]*"
+                        <input id="phone" type="text" maxlength="11" inputmode="numeric" pattern="[0-9]*"
                           formControlName="phone" class="form-control phone-input"
                           [ngClass]="{ 'is-invalid': hasError('phone') }" (keypress)="allowOnlyNumbers($event)" />
                       </div>
@@ -84,10 +84,13 @@
                       [ngClass]="{
                         'is-invalid': hasError('email') || hasEmailFormatError()
                       }" />
-                    <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
+                    <div *ngIf="contactForm.controls['email'].hasError('personalEmail') && contactForm.controls['email'].touched" class="invalid-feedback">
+                      Please use your company email address
+                    </div>
+                    <div *ngIf="contactForm.controls['email'].hasError('email') && contactForm.controls['email'].touched" class="invalid-feedback">
                       Invalid email format
                     </div>
-                    <div *ngIf="hasError('email') && !hasEmailFormatError()" class="invalid-feedback">
+                    <div *ngIf="hasError('email') && !hasEmailFormatError() && !contactForm.controls['email'].hasError('personalEmail')" class="invalid-feedback">
                       Email is required
                     </div>
                   </div>

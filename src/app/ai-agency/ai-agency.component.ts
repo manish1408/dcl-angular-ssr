@@ -15,6 +15,8 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators,
+  AbstractControl,
+  ValidationErrors
 } from '@angular/forms';
 import { ContactService } from '../services/contact.service';
 import { ToastrService } from 'ngx-toastr';
@@ -42,7 +44,7 @@ export class AIAgencyComponent implements OnInit {
   contactForm!: FormGroup;
   selectedCountry: any;
   isLoading: boolean = false;
-  pageTitle: string = 'AI development services';
+  pageTitle: string = 'AI Development Services';
   pageDescription: string = "Partner with Distinct Clould Labs to launch intelligent, scalable solutions that streamline operations and boost performance - all backed by industry leaders-leading AI expertise.";
   constructor(
     private fb: FormBuilder,
@@ -90,6 +92,37 @@ export class AIAgencyComponent implements OnInit {
   ctaDetails: any = [];
   engagementModels: any = [];
 
+  // Custom validator for business email
+  private businessEmailValidator(control: AbstractControl): ValidationErrors | null {
+    if (!control.value) {
+      return null;
+    }
+
+    const email = control.value.toLowerCase();
+    const commonPersonalDomains = [
+      'gmail.com',
+      'yahoo.com',
+      'hotmail.com',
+      'outlook.com',
+      'aol.com',
+      'icloud.com',
+      'mail.com',
+      'protonmail.com',
+      'zoho.com',
+      'yandex.com',
+      'live.com',
+      'inbox.com',
+      'gmx.com'
+    ];
+
+    const domain = email.split('@')[1];
+    if (domain && commonPersonalDomains.includes(domain)) {
+      return { personalEmail: true };
+    }
+
+    return null;
+  }
+
   ngOnInit(): void {
     const currentUrl = this.router.url;
     if (currentUrl.includes('n8n')) {
@@ -107,8 +140,7 @@ export class AIAgencyComponent implements OnInit {
       name: ['', Validators.required],
       company: [''],
       phone: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      // subject: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email, this.businessEmailValidator.bind(this)]],
       message: ['', Validators.required],
     });
     this.testimonialService.fetchTestimonials().subscribe((res: any) => {
@@ -131,9 +163,10 @@ export class AIAgencyComponent implements OnInit {
     return control.invalid && control.touched;
   }
   hasEmailFormatError() {
+    const emailControl = this.contactForm.controls['email'];
     return (
-      this.contactForm.controls['email'].hasError('email') &&
-      this.contactForm.controls['email'].touched
+      (emailControl.hasError('email') || emailControl.hasError('personalEmail')) &&
+      emailControl.touched
     );
   }
 
