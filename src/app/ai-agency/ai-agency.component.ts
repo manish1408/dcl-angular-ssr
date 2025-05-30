@@ -189,8 +189,9 @@ export class AIAgencyComponent implements OnInit {
       (res: any) => {
         this.isLoading = false;
         if (res.success) {
-          this.toastr.success('Thanks for submitting');
-          this.contactForm.reset();
+          this.router.navigate(['/thank-you']);
+          // this.toastr.success('Thanks for submitting');
+          // this.contactForm.reset();
         } else this.toastr.error('An error occurred while submitting');
       },
       (error) => {

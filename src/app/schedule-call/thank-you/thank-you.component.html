@@ -1,70 +1,26 @@
-<div class="container-fluid overflow-x-hidden">
-  <div class="row justify-content-end overflow-hidden">
-    <div class="col-lg-9">
-      <div class="col-lg-6 offset-lg-3" style="margin-top: 10%">
-        <a href="/" class="logo-dark"
-          ><img
-            alt="image"
-            class="img-fluid mb-5"
-            style="height: 50px"
-            src="assets/img/logo_dark.svg"
-        /></a>
-        <p class="fs-6">Thank you! We'll be in contact soon.</p>
-        <p class="fs-6">
-          In the meantime, you can visit the
-          <a [routerLink]="['/blog']" class="text-decoration-underline"
-            >Distinct Cloud Labs Blog</a
-          >
-          to read about the AI developments.
-        </p>
-        <p class="fs-6">
-          You'll be automatically redirected to our blog in
-          <span>{{ countdownText }}</span
-          >.
-        </p>
-        <div class="row"></div>
-      </div>
-    </div>
-    <div class="col-lg-2 vh-100 client-section">
-      <div class="" style="margin-top: 150px">
-        <p class="text-white text-center mb-4 fs-5">
-          Amazing clients who trust us
-        </p>
-        <div class="d-flex flex-column align-items-center">
-          <img alt="image" class="my-2" src="assets/img/polyone-logo.png" />
-
-          <img
-            alt="image"
-            class="my-3"
-            src="assets/img/diywork-logo.png"
-            style="height: 50px"
-          />
-          <img
-            alt="image"
-            class="my-3 custom-img"
-            src="assets/img/upmatch-logo.png"
-            style="height: 50px"
-          />
-          <img
-            alt="image"
-            class="my-3"
-            src="assets/img/ezaccess-logo.png"
-            style="height: 80px"
-          />
-          <img
-            alt="image"
-            class="my-3"
-            src="assets/img/eazynft-logo.png"
-            style="height: 40px"
-          />
-          <img
-            alt="image"
-            class="my-3 custom-img"
-            src="assets/img/signet-logo.svg"
-            style="height: 50px"
-          />
-        </div>
-      </div>
+<div class="container-fluid overflow-x-hidden d-flex justify-content-center align-items-center min-vh-100">
+  <div class="row justify-content-center w-100">
+    <div class="col-md-6 text-center">
+      <a href="/" class="logo-dark">
+        <img
+          alt="image"
+          class="img-fluid mb-5"
+          style="height: 50px"
+          src="assets/img/logo_dark.svg"
+        />
+      </a>
+      <p class="fs-6">Thank you! We'll be in contact soon.</p>
+      <p class="fs-6">
+        In the meantime, you can visit the
+        <a [routerLink]="['/blog']" class="text-decoration-underline">
+          Distinct Cloud Labs Blog
+        </a>
+        to read about the AI developments.
+      </p>
+      <p class="fs-6">
+        You'll be automatically redirected to our blog in
+        <span>{{ countdownText }}</span>.
+      </p>
     </div>
   </div>
 </div>

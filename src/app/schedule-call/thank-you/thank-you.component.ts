@@ -13,20 +13,7 @@ export class ThankYouComponent implements OnInit {
   countdown: number = 10;
   countdownText: string = `${this.countdown} seconds`;
   ngOnInit(): void {
-    this.startCountdown();
   }
 
-  startCountdown(): void {
-    const countdownInterval = setInterval(() => {
-      this.countdown--;
-      this.countdownText = `${this.countdown} second${
-        this.countdown !== 1 ? 's' : ''
-      }`;
 
-      if (this.countdown <= 0) {
-        clearInterval(countdownInterval);
-        this.router.navigate(['/blog']);
-      }
-    }, 1000);
-  }
 }
