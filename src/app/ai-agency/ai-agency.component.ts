@@ -42,7 +42,7 @@ export class AIAgencyComponent implements OnInit {
   contactForm!: FormGroup;
   selectedCountry: any;
   isLoading: boolean = false;
-  pageTitle: string = 'Trusted by businesses to build <br> Game-Changing AI';
+  pageTitle: string = 'AI development services';
   pageDescription: string = "Partner with Distinct Clould Labs to launch intelligent, scalable solutions that streamline operations and boost performance - all backed by industry leaders-leading AI expertise.";
   constructor(
     private fb: FormBuilder,
@@ -57,7 +57,7 @@ export class AIAgencyComponent implements OnInit {
     private router: Router
   ) {
     this.title.setTitle(
-      'Distinct Cloud Labs | Empower Your Business with AI and ML '
+      'Distinct Cloud Labs | AI development services '
     );
 
     this.meta.addTags([
@@ -74,7 +74,7 @@ export class AIAgencyComponent implements OnInit {
       },
       {
         property: 'twitter:title',
-        content: 'Distinct Cloud Labs | Empower Your Business with AI and ML',
+        content: 'Distinct Cloud Labs | AI development services',
       },
       {
         property: 'twitter:description',
