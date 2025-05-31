@@ -17,19 +17,6 @@
       </div>
     </div>
     <div class="col-lg-9 col-xxl-10">
-      <div class="">
-        <!-- <a href="/" class="logo-dark"
-          ><img
-            alt="image"
-            class="img-fluid mb-5"
-            style="height: 40px"
-            src="assets/img/logo_dark.svg"
-        /></a> -->
-
-        <!-- <h3 class="site-paragraph-l text-site-neutrals-500">
-          Thanks for your interest. Enter the details below to get started.
-        </h3> -->
-
         <div class="row">
 
           <div class="container">
@@ -40,104 +27,13 @@
               display: block;
               margin-left: auto;
               margin-right: auto;
-              max-width: 100%;
+              width: 100%;
               height: 100vh;
             "></iframe>
               </div>
             </div>
           </div>
-
-          <!-- <form [formGroup]="basicDetailsForm">
-            <div class="form-group">
-              <label for="name">Your name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="name"
-                aria-describedby="name"
-                [placeholder]="isLoading ? '' : 'Your name'"
-                formControlName="name"
-                [ngClass]="{ 'is-invalid': hasError('name') }"
-                [disabled]="isLoading"
-              />
-              <div class="invalid-feedback">Name is required</div>
-            </div>
-            <div class="form-group my-2">
-              <label for="email">Your work email</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                aria-describedby="emailHelp"
-                placeholder="Enter email"
-                formControlName="email"
-                [ngClass]="{
-                  'is-invalid': hasError('email') || hasEmailFormatError()
-                }"
-              />
-              <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
-                Invalid email format
-              </div>
-              <div
-                *ngIf="hasError('email') && !hasEmailFormatError()"
-                class="invalid-feedback"
-              >
-                Email is required
-              </div>
-            </div>
-
-            <div class="form-group my-2">
-              <label for="industry">Your work industry</label>
-              <select type="industry" class="form-control" id="industry" aria-describedby="industryHelp" placeholder="Enter industry"
-                formControlName="industry" [ngClass]="{
-                  'is-invalid': hasError('industry')
-                }" >
-
-                <option *ngFor="let item of industryList" [value]="item.Description">{{item.Description}}</option>
-
-              </select>
-              
-              <div *ngIf="hasError('industry')" class="invalid-feedback">
-                Industry is required
-              </div>
-            </div>
-
-            <div>
-              <label class="" for="serviceMessage"
-                >Tell us about your business.</label
-              >
-              <textarea
-                class="form-control"
-                aria-label="With textarea"
-                style="height: 100px"
-                id="serviceMessage"
-                placeholder="Explain in detail what your business does"
-                formControlName="serviceMessage"
-                [ngClass]="{ 'is-invalid': hasError('name') }"
-              ></textarea>
-              <div class="invalid-feedback">
-                Business information is required
-              </div>
-            </div>
-
-            <div>
-              <label class="" for="challenges">Challenges</label>
-              <textarea
-                class="form-control"
-                aria-label="With textarea"
-                style="height: 100px"
-                id="challenges"
-                placeholder="Highlight the Challenges that you want to solve with AI"
-                formControlName="challenges"
-              ></textarea>
-            </div>
-
-            <div class="d-flex justify-content-end my-5">
-              <a class="btn btn-success px-3" (click)="onSubmit()">Submit </a>
-            </div>
-          </form> -->
         </div>
-      </div>
     </div>
 
   </div>
