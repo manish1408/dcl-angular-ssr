@@ -24,8 +24,11 @@ export class HeaderComponent {
   }
 
   ngOnInit() {
-    this.getServices();
-    this.getProducts();
+    this.serviceNav = [{"title":"Large Language Model & GPT Integration Services","slug":"llm-integration"},{"title":"AI-Powered App and Web Development Services","slug":"ai-app-development"},{"title":"Machine Learning Product Development Services","slug":"machine-learning"},{"title":"Agentic AI Development Services","slug":"agentic-ai"},{"title":"Generative AI Development Services","slug":"generative-ai"}];
+    this.productNav = [{"title":"Milo Assistant","slug":"milo"}]; 
+
+    // this.getServices();
+    // this.getProducts();
   }
 
   getServices() {
@@ -34,7 +37,7 @@ export class HeaderComponent {
         title: item.data.pageTitle.iv,
         slug: item.data.slug.iv,
       }));
-      this.serviceNav = res;
+      
     });
   }
   getProducts() {
@@ -43,7 +46,10 @@ export class HeaderComponent {
         title: item.data.productName.iv,
         slug: item.data.slug.iv,
       }));
-      this.productNav = res;
+      this.productNav = [{"title":"Milo Assistant","slug":"milo"}]; 
+      debugger
+      console.log(JSON.stringify(res));
+
     });
   }
 }
