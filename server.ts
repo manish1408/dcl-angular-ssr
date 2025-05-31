@@ -14,6 +14,9 @@ export function app(): express.Express {
 
   const commonEngine = new CommonEngine();
 
+  // Disable Express's default redirect behavior for trailing slashes
+  server.set('strict routing', true);
+
   server.use(express.static(browserDistFolder, {
     maxAge: '1y',
     index: false // Ensure it doesn't serve index.html automatically
@@ -31,15 +34,17 @@ export function app(): express.Express {
   // }));
 
   // All regular routes use the Angular engine
-  server.get('**', (req, res, next) => {
-    console.log("New Request ", req)
+  server.get('*', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
+
+    // Remove trailing slash if present (except for root path)
+    const normalizedUrl = originalUrl === '/' ? originalUrl : originalUrl.replace(/\/$/, '');
 
     commonEngine
       .render({
         bootstrap,
         documentFilePath: indexHtml,
-        url: `${protocol}://${headers.host}${originalUrl}`,
+        url: `${protocol}://${headers.host}${normalizedUrl}`,
         publicPath: browserDistFolder,
         providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
       })
