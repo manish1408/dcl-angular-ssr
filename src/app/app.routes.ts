@@ -34,12 +34,10 @@ export const routes: Routes = [
   { 
     path: 'ai-development-services', 
     component: AIAgencyComponent,
-    pathMatch: 'full'
   },
   { 
     path: 'ai-development-services/', 
     component: AIAgencyComponent,
-    pathMatch: 'full'
   },
   { path: 'n8n-agency', component: AIAgencyComponent },
   { path: 'dcl-sprint', component: DclSprintComponent },
