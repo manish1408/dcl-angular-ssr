@@ -22,17 +22,11 @@ export class CaseStudiesComponent implements OnInit {
 
   posts: any[] = [];
   isLoading: boolean = false;
-  clientServices:any;
 
   async ngOnInit() {
     this.isLoading = true;
     this.caseStudyService.fetchPosts().subscribe((resp: any) => { 
-      console.log("res", resp)
-      const d = resp.items.filter((ele:any)=>ele?.data.slug.iv === 'mvp-development-for-software-company')
-      console.log('D',d)
       this.posts = resp?.items;
-      this.clientServices = this.posts[0].data?.ClientServices.iv.split(',')
-      console.log(this.clientServices);
       this.isLoading = false;
     });
 

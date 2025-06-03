@@ -9,6 +9,8 @@ import { TestimonialCardComponent } from '../common/testimonial-card/testimonial
 import { CommonService } from '../services/common.service';
 import { HomeService } from '../services/home.service';
 import { TestimonialService } from '../services/testimonial.service';
+import { CaseStudyService } from '../services/case-study.service';
+import { SummaryPipe } from '../_pipes/summary.pipe';
 
 import {
   FormBuilder,
@@ -22,6 +24,7 @@ import { ContactService } from '../services/contact.service';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { PhoneDropdownComponent } from '../common/phone-dropdown/phone-dropdown.component';
+import { saveAs } from 'file-saver';
 declare var Swiper: any;
 @Component({
   selector: 'app-ai-agency',
@@ -38,6 +41,7 @@ declare var Swiper: any;
     // EngagementModelsComponent,
     ScheduleCallCTAComponent,
     HiringProcessComponent,
+    SummaryPipe
   ],
 })
 export class AIAgencyComponent implements OnInit {
@@ -46,6 +50,7 @@ export class AIAgencyComponent implements OnInit {
   isLoading: boolean = false;
   pageTitle: string = 'AI Development Services';
   pageDescription: string = "Partner with Distinct Clould Labs to launch intelligent, scalable solutions that streamline operations and boost performance - all backed by industry leaders-leading AI expertise.";
+  posts: any[] = [];
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,
@@ -56,7 +61,8 @@ export class AIAgencyComponent implements OnInit {
     private meta: Meta,
     private title: Title,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private caseStudyService: CaseStudyService
   ) {
     this.title.setTitle(
       'Distinct Cloud Labs | AI development services '
@@ -156,6 +162,11 @@ export class AIAgencyComponent implements OnInit {
         behavior: 'smooth',
       });
     }
+
+    this.caseStudyService.fetchPosts().subscribe((resp: any) => { 
+      this.posts = resp?.items.slice(0, 6);
+      this.isLoading = false;
+    });
   }
 
   hasError(controlName: keyof typeof this.contactForm.controls) {
@@ -267,5 +278,21 @@ export class AIAgencyComponent implements OnInit {
     this.contactForm?.get('name')?.setValue(input.value);
   }
     
+  downloadPdf(post: any) {
+    const fileId = post?.data?.PDF?.iv?.[0];
+    const fileName = post?.data?.slug?.iv + '.pdf';
   
+    if (fileId && fileName) {
+      const fileUrl = `https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/${fileId}`;
+  
+      fetch(fileUrl)
+        .then(response => response.blob())
+        .then(blob => {
+          saveAs(blob, fileName);
+        })
+        .catch(err => console.error('Download failed', err));
+    } else {
+      console.error('Missing fileId or fileName');
+    }
+  }
 }

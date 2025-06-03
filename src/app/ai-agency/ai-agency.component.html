@@ -85,7 +85,7 @@
         <div class="contact-form-wrap">
           <div class="contact-form-area">
             <h3>Get Free Consultation</h3>
-            <form [formGroup]="contactForm">
+            <form [formGroup]="contactForm"> 
               <div class="row">
                 <div class="col-lg-12 mb-20">
                   <div class="form-inner">
@@ -161,34 +161,6 @@
 
 </div>
 
-<!-- <div class="banner-bottom">
-  <div class="container">
-    <div
-      class="row wow animate zoomIn"
-      data-wow-delay="0ms"
-      data-wow-duration="1500ms"
-    >
-      <div class="col-12 col-md-9">
-        <h3>Explore how AI can help</h3>
-        <p>
-          Distinct Cloud Labs offers a free assessment of your business for AI
-          enablement. Our assessment can help you analyze how AI can transform
-          your business.
-        </p>
-      </div>
-      <div class="col-12 col-md-3">
-        <div class="banner-content-bottom">
-          <a
-            [routerLink]="['/assessment/basic-details']"
-            class="primary-btn2"
-            data-text="Get Free Assesment"
-            ><span>Free Consultation</span></a
-          >
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <!-- Start Process section -->
 <div class="home3-process-section mb-110 pt-60">
@@ -501,11 +473,92 @@
 </div>
 <!-- End Coundown section -->
 
+<!-- Start Case Studies section -->
+<div class="d-flex justify-content-center">
+  <span *ngIf="isLoading" class="spinner-border spinner-border-sm mt-5" role="status"></span>
+</div>
+
+<div id="case-studies">
+  <div class="case-study-card-section scroll-margin " id="case-study-card-section">
+    <div class="container">
+      <div class="row justify-content-center mb-60">
+        <div class="col-lg-8">
+          <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                <g>
+                  <circle cx="5" cy="5" r="5" />
+                </g>
+              </svg>
+              Case Studies
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                <g>
+                  <circle cx="5" cy="5" r="5" />
+                </g>
+              </svg>
+            </span>
+            <h2>Our Success Stories</h2>
+            <p>
+              Explore our portfolio of successful AI implementations and transformations across various industries.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4 mb-50">
+        @for (post of posts; track post) {
+        <div class="col-xl-4 col-md-6 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
+          <div class="case-study-card2">
+            <div class="thumbnail-wrapper position-relative">
+              <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="card-img" [attr.aria-label]="'View case study: ' + post.data?.slug?.iv">
+                <img width="354" height="239" [src]="
+                    'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + 
+                    post?.data?.thumbnail?.iv[0]
+                  " alt="Image" />
+              </a>
+            
+              <div class="verified-badge">
+                <span>Verified by</span>
+                <img src="assets/img/home1/icon/clutch-logo-white.svg" alt="Clutch Logo" />
+              </div>
+            </div>          
+            <div class="card-content">
+              <h2>
+                <a [routerLink]="['/case-study/', post.data?.slug?.iv]">{{ post.data?.projectName?.iv }}
+                </a>
+              </h2>
+              <p class="mb-4">
+                {{ post.data?.projectSubheading?.iv | summary:70 }}
+              </p>
+  
+              <div class="d-flex justify-content-between align-items-center">
+                <button (click)="downloadPdf(post)" class="btn btn-success btn-lg">
+                  <i class="bi bi-file-pdf-fill"></i> Download in PDF
+                </button>
+                <button [routerLink]="['/case-study/', post.data?.slug?.iv]" class="clear-btn">Read More
+                  <div class="btn-icon-wrapper">
+                    <img src="assets/icons/sm-arrow-upright.svg" class="" alt="arrow-upright" />
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End Case Studies section -->
+
+
 <app-hiring-process></app-hiring-process>
 
 <!-- Start Testimonial section -->
 
-<app-home-testimonials [testimonials]="testimonials"></app-home-testimonials>
+<div id="testimonials">
+  <app-home-testimonials [testimonials]="testimonials"></app-home-testimonials>
+</div>
 
 <!-- End Testimonial section -->
 

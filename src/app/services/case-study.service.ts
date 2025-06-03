@@ -17,7 +17,7 @@ export class CaseStudyService {
       'Content-Type',
       'application/x-www-form-urlencoded'
     );
-    return this.http.get(this.caseStudyApiUrl, {
+    return this.http.get(`${this.caseStudyApiUrl}?$orderby=created desc`, {
       headers,
     });
   }

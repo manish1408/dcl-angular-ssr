@@ -264,3 +264,49 @@ text-align: center;
   text-align: center !important;
   }
 }
+.case-study-card2 .card-img img {
+  width: 100%;
+}
+
+.case-study-card2 .card-content h2 {
+  margin-bottom: 8px;
+  min-height: 65px;
+  line-height: 32px;
+  font-size: 32px;
+  a{
+      color: #232323;
+      font-family: Inter;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+  }
+}
+
+.thumbnail-wrapper {
+  position: relative;
+  display: inline-block;
+
+  .verified-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #000;
+    border: 1px solid #000;
+    border-radius: 4px;
+    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #fff;
+    z-index: 2;
+  //   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+
+    img {
+      width: 50px;
+  height: 20px;
+    }
+  }
+}

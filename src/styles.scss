@@ -170,3 +170,17 @@
     }
   }
 }
+
+a {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 17px;
+  &:hover {
+    color: var(--primary-color1);
+  }
+}
+.pt-60 {
+  padding-top: 60px;
+}
+.pb-60 {
+  padding-bottom: 60px; 
+}
