@@ -5,7 +5,7 @@
   </svg>
 </div>
 <!-- Start Sidebar section -->
-<div class="sidebar-menu">
+<div class="sidebar-menu" [ngClass]="{'active': isSidebarVisible}">
   <div class="sidebar-menu-top-area">
     <div class="container d-flex align-items-center justify-content-between">
       <div class="sidebar-menu-logo">
@@ -14,7 +14,7 @@
         <!-- <a class="logo-light" [routerLink]="['/home']"><img alt="image" class="img-fluid"
             src="assets/img/logo_dark.svg" /></a> -->
       </div>
-      <div class="sidebar-menu-close">
+      <div class="sidebar-menu-close" (click)="hideSidebar()">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 18">
           <path fill-rule="evenodd" clip-rule="evenodd"
             d="M18 0L11.1686 8.99601L18 18L9.0041 11.1605L0 18L6.83156 8.99601L0 0L9.0041 6.83156L18 0Z"></path>
@@ -54,13 +54,16 @@
            
             @if(serviceNav.length > 0){
               <li>
-                <div>Services </div>
-                <!-- <button class="dropdown-toggle">Services</button> -->
-                <span class="dropdown-icon2"><i class="bi bi-plus"></i></span>
-                <ul class="submenu-list">
+                <div class="d-flex align-items-center justify-content-between" (click)="toggleServices()">
+                  <div>Services</div>
+                  <span class="dropdown-icon2">
+                    <i class="bi" [ngClass]="{'bi-dash': isServiceExpanded, 'bi-plus': !isServiceExpanded}"></i>
+                  </span>
+                </div>
+                <ul class="submenu-list" [ngClass]="{'show': isServiceExpanded}">
                   @for(sNav of serviceNav;track sNav){
                   <li>
-                    <a class="fs-6" [routerLink]="['/services/',sNav.slug]">{{sNav?.title}}</a>
+                    <a class="fs-6" [routerLink]="['/services/',sNav.slug]" (click)="hideSidebar()">{{sNav?.title}}</a>
                     <!-- <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span> -->
                   </li>
                   }
@@ -70,12 +73,16 @@
   
               @if(productNav.length > 0){
               <li>
-                <div>Products </div>
-                <span class="dropdown-icon2"><i class="bi bi-plus"></i></span>
-                <ul class="submenu-list">
+                <div class="d-flex align-items-center justify-content-between" (click)="toggleProducts()">
+                  <div>Products</div>
+                  <span class="dropdown-icon2">
+                    <i class="bi" [ngClass]="{'bi-dash': isProductExpanded, 'bi-plus': !isProductExpanded}"></i>
+                  </span>
+                </div>
+                <ul class="submenu-list" [ngClass]="{'show': isProductExpanded}">
                   @for(pNav of productNav;track pNav){
                   <li>
-                    <a class="fs-6" [routerLink]="['/product/',pNav.slug]">{{pNav?.title}}</a>
+                    <a class="fs-6" [routerLink]="['/product/',pNav.slug]" (click)="hideSidebar()">{{pNav?.title}}</a>
   
                   </li>
                   }
@@ -176,7 +183,7 @@
     </div>
     <div class="nav-right d-flex jsutify-content-end align-items-center">
       <div class="sidebar-and-btn">
-        <div class="sidebar-btn d-lg-none">
+        <div class="sidebar-btn d-lg-none" (click)="toggleSidebar()">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
             <g>
               <path

@@ -11,6 +11,7 @@ import { HomeService } from '../services/home.service';
 import { TestimonialService } from '../services/testimonial.service';
 import { CaseStudyService } from '../services/case-study.service';
 import { SummaryPipe } from '../_pipes/summary.pipe';
+import { LandingHeaderComponent } from '../common/landing-header/landing-header.component';
 
 import {
   FormBuilder,
@@ -41,7 +42,8 @@ declare var Swiper: any;
     // EngagementModelsComponent,
     ScheduleCallCTAComponent,
     HiringProcessComponent,
-    SummaryPipe
+    SummaryPipe,
+    LandingHeaderComponent,
   ],
 })
 export class AIAgencyComponent implements OnInit {
@@ -51,6 +53,20 @@ export class AIAgencyComponent implements OnInit {
   pageTitle: string = 'AI Development Services';
   pageDescription: string = "Partner with Distinct Clould Labs to launch intelligent, scalable solutions that streamline operations and boost performance - all backed by industry leaders-leading AI expertise.";
   posts: any[] = [];
+
+  // Add FAQ accordion state variables
+  activeFaqId: string | null = 'faqcollapseOne'; // Default open accordion
+
+  // Add FAQ toggle method
+  toggleFaq(faqId: string): void {
+    this.activeFaqId = this.activeFaqId === faqId ? null : faqId;
+  }
+
+  // Add FAQ check method
+  isFaqOpen(faqId: string): boolean {
+    return this.activeFaqId === faqId;
+  }
+
   constructor(
     private fb: FormBuilder,
     private toastr: ToastrService,

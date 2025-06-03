@@ -1,3 +1,7 @@
+<!-- Header start -->
+<app-landing-header></app-landing-header>
+<!-- Header end -->
+
 <div class="home3-banner-section">
   <div class="container">
     <div class="row justify-content-center align-items-center">
@@ -163,7 +167,7 @@
 
 
 <!-- Start Process section -->
-<div class="home3-process-section mb-110 pt-60">
+<div class="home3-process-section mb-110 pt-60" id="ai-integration">
   <div class="container">
     <div class="row justify-content-center mb-60">
       <div class="col-lg-8">
@@ -594,63 +598,44 @@
             <div class="col-lg-6 wow animate fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqheadingOne">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faqcollapseOne" aria-expanded="true" aria-controls="faqcollapseOne">
-                    What is Generative AI and how is it transforming industries?
+                  <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseOne')" type="button"
+                    (click)="toggleFaq('faqcollapseOne')">
+                    What types of AI development services do you offer?
                   </button>
                 </h2>
-                <div id="faqcollapseOne" class="accordion-collapse collapse show" aria-labelledby="faqheadingOne"
-                  data-bs-parent="#accordionTravel">
+                <div id="faqcollapseOne" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseOne')"
+                  [class.collapse]="!isFaqOpen('faqcollapseOne')">
                   <div class="accordion-body">
-                    Generative AI refers to algorithms capable of generating new
-                    content, including text, images, and music, by learning from
-                    vast datasets. It's revolutionising industries by automating
-                    creative processes, enhancing personalisation, and improving
-                    decision-making. From marketing and entertainment to
-                    healthcare and finance, Generative AI's impact is
-                    widespread, driving innovation and efficiency.
+                    We offer comprehensive AI development services including custom AI solution development, machine learning model development, natural language processing, computer vision systems, AI integration with existing systems, AI consulting, and AI-powered automation solutions. Our expertise spans across various industries, and we tailor our services to meet specific business requirements and objectives.
                   </div>
                 </div>
               </div>
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqheadingTwo">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faqcollapseTwo" aria-expanded="false" aria-controls="faqcollapseTwo">
-                    How do Retrieval-Augmented Generation (RAG) models work?
+                  <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseTwo')" type="button"
+                    (click)="toggleFaq('faqcollapseTwo')">
+                    How long does it typically take to develop an AI solution?
                   </button>
                 </h2>
-                <div id="faqcollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqheadingTwo"
-                  data-bs-parent="#accordionTravel">
+                <div id="faqcollapseTwo" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseTwo')"
+                  [class.collapse]="!isFaqOpen('faqcollapseTwo')">
                   <div class="accordion-body">
-                    RAG models enhance the capabilities of traditional
-                    generative AI by integrating a retrieval component. When
-                    generating content, these models first search a large
-                    database of information to find relevant content. This
-                    retrieved information is then combined with the generative
-                    model's knowledge to produce more accurate, informative, and
-                    contextually relevant responses.
+                    The development timeline varies depending on the complexity of your project. Simple AI integrations can take 2-3 months, while more complex custom solutions might require 4-6 months or more. We follow an agile development approach, delivering incremental value throughout the project lifecycle. During our initial consultation, we'll provide a detailed timeline based on your specific requirements.
                   </div>
                 </div>
               </div>
 
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqheadingFour">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faqcollapseFour" aria-expanded="false" aria-controls="faqcollapseFour">
-                    What are Large Language Models (LLMs) and their
-                    significance?
+                  <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseFour')" type="button"
+                    (click)="toggleFaq('faqcollapseFour')">
+                    What industries do you serve with your AI development services?
                   </button>
                 </h2>
-                <div id="faqcollapseFour" class="accordion-collapse collapse" aria-labelledby="faqheadingFour"
-                  data-bs-parent="#accordionTravel">
+                <div id="faqcollapseFour" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseFour')"
+                  [class.collapse]="!isFaqOpen('faqcollapseFour')">
                   <div class="accordion-body">
-                    LLMs are advanced AI models trained on extensive text data,
-                    enabling them to understand and generate human-like text.
-                    Their significance lies in their ability to perform a wide
-                    range of language tasks, from translation and summarization
-                    to question-answering and content creation, with remarkable
-                    accuracy and coherence, paving the way for next-generation
-                    AI applications.
+                    We have extensive experience developing AI solutions across various industries including healthcare, finance, retail, manufacturing, logistics, and technology sectors. Our team has successfully delivered AI projects for startups, mid-sized companies, and enterprise clients, adapting our approach to meet industry-specific requirements and compliance standards.
                   </div>
                 </div>
               </div>
@@ -658,59 +643,43 @@
             <div class="col-lg-6 wow animate fadeInRight" data-wow-delay="200ms" data-wow-duration="1500ms">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqheadingFive">
-                  <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faqcollapseFive" aria-expanded="true" aria-controls="faqcollapseFive">
-                    Can Generative AI models be fine-tuned for specific
-                    industries or tasks?
+                  <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseFive')" type="button"
+                    (click)="toggleFaq('faqcollapseFive')">
+                    What makes your AI development services unique?
                   </button>
                 </h2>
-                <div id="faqcollapseFive" class="accordion-collapse collapse" aria-labelledby="faqheadingFive"
-                  data-bs-parent="#accordionTravel">
+                <div id="faqcollapseFive" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseFive')"
+                  [class.collapse]="!isFaqOpen('faqcollapseFive')">
                   <div class="accordion-body">
-                    Yes, Generative AI models can be fine-tuned on specialized
-                    datasets to cater to specific industries or tasks. This
-                    process involves additional training that adjusts the
-                    model's weights to better reflect the nuances of the target
-                    domain, enhancing performance in areas like legal analysis,
-                    medical advice, or targeted marketing campaigns.
+                    Our AI development services stand out through our experienced team of AI specialists, proven track record of successful implementations, and commitment to delivering scalable, production-ready solutions. We focus on creating custom AI solutions that directly address your business challenges while ensuring seamless integration with your existing systems. Our approach combines technical excellence with practical business value.
                   </div>
                 </div>
               </div>
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqheadingSix">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faqcollapseSix" aria-expanded="false" aria-controls="faqcollapseSix">
-                    What are the ethical considerations in using Generative AI?
+                  <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseSix')" type="button"
+                    (click)="toggleFaq('faqcollapseSix')">
+                    How do you ensure the quality and reliability of AI solutions?
                   </button>
                 </h2>
-                <div id="faqcollapseSix" class="accordion-collapse collapse" aria-labelledby="faqheadingSix"
-                  data-bs-parent="#accordionTravel">
+                <div id="faqcollapseSix" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseSix')"
+                  [class.collapse]="!isFaqOpen('faqcollapseSix')">
                   <div class="accordion-body">
-                    Ethical considerations include ensuring data privacy,
-                    preventing the creation and spread of misinformation, and
-                    avoiding bias. It's crucial to implement robust guidelines
-                    and monitoring to ensure Generative AI is used responsibly,
-                    promoting transparency, fairness, and accountability in
-                    AI-generated content.
+                    We implement rigorous quality assurance processes throughout the development lifecycle. This includes extensive testing of AI models, validation with real-world data, performance optimization, and continuous monitoring systems. We also ensure our solutions are scalable, maintainable, and follow best practices for AI development, including regular updates and improvements based on performance metrics.
                   </div>
                 </div>
               </div>
               <div class="accordion-item">
                 <h2 class="accordion-header" id="faqheadingThree">
-                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#faqcollapseThree" aria-expanded="false" aria-controls="faqcollapseThree">
-                    How can businesses leverage Generative AI for growth?
+                  <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseThree')" type="button"
+                    (click)="toggleFaq('faqcollapseThree')">
+                    What is your approach to data security and privacy in AI development?
                   </button>
                 </h2>
-                <div id="faqcollapseThree" class="accordion-collapse collapse" aria-labelledby="faqheadingThree"
-                  data-bs-parent="#accordionTravel">
+                <div id="faqcollapseThree" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseThree')"
+                  [class.collapse]="!isFaqOpen('faqcollapseThree')">
                   <div class="accordion-body">
-                    Businesses can leverage Generative AI to automate content
-                    creation, enhance customer service through chatbots, improve
-                    product recommendations, and streamline operations. By
-                    adopting Generative AI, companies can boost efficiency,
-                    drive innovation, and offer personalized experiences,
-                    gaining a competitive edge in their markets.
+                    We prioritize data security and privacy in all our AI development projects. Our development processes adhere to industry standards and regulations such as GDPR, HIPAA, and other relevant compliance requirements. We implement robust security measures including data encryption, secure access controls, and regular security audits. Additionally, we provide comprehensive documentation and training for proper data handling procedures.
                   </div>
                 </div>
               </div>

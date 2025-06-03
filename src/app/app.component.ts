@@ -29,9 +29,9 @@ export class AppComponent {
         if (
           event['url'].startsWith('/dcl-sprint') ||
           event['url'].startsWith('/assessment') ||
+          event['url'].includes('/ai-development-services') ||
           event['url'] === '/thank-you' ||
-          event['url'] === '/page-not-found' ||
-          event['url'] === '/ai-development'
+          event['url'] === '/page-not-found' 
         ) {
           this.showHead = false;
         } else {

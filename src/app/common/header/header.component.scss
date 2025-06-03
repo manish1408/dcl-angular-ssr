@@ -43,3 +43,40 @@ transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 }
 
+.submenu-list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding-left: 15px;
+
+  &.show {
+    max-height: 500px; // Adjust this value based on your content
+    transition: max-height 0.5s ease-in;
+  }
+}
+
+.dropdown-icon2 {
+  cursor: pointer;
+  i {
+    transition: transform 0.3s ease;
+    display: inline-block;
+  }
+}
+
+// Make the parent div clickable
+.d-flex {
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+// Ensure icons are properly aligned
+.bi-plus, .bi-dash {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+ul.submenu-list.show {
+  display: block !important;
+}

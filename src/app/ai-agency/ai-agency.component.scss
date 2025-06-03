@@ -1,6 +1,10 @@
 .process-card {
   .content {
     height: 300px;
+
+    @media (max-width: 767px) {
+      height: auto;
+    }
   }
 }
 .home3-banner-section .banner-content {
@@ -150,6 +154,10 @@
   margin-top: 30px;
   gap: 10px;
   max-width: 400px;
+
+  @media (max-width: 767px) {
+    max-width: 100%;
+  }
 }
 
 .logo-item {

@@ -24,6 +24,7 @@ import { AiProjectsComponent } from '../common/ai-projects/ai-projects.component
 import { AiDemosComponent } from '../common/ai-demos/ai-demos.component';
 import { AiTestimonialsComponent } from '../common/ai-testimonials/ai-testimonials.component';
 import { AiFooterComponent } from '../common/ai-footer/ai-footer.component';
+import { LandingHeaderComponent } from '../common/landing-header/landing-header.component';
 declare var Swiper: any;
 @Component({
   selector: 'app-ai-development',
@@ -38,6 +39,7 @@ declare var Swiper: any;
     AiDemosComponent,
     AiTestimonialsComponent,
     AiFooterComponent,
+    LandingHeaderComponent,
   ],
   templateUrl: './ai-development.component.html',
   styleUrl: './ai-development.component.scss',
