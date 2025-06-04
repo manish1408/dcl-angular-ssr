@@ -40,4 +40,22 @@ header.style-2 .main-menu > ul > li > div {
     .sidebar-menu .sidebar-menu-wrap .main-menu > li .dropdown-icon2 {
         top: 20px;
     }
+}
+
+header.style-2 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background-color: #000000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+:host {
+  display: block;
+  height: 75px; // This reserves space for the header
 } 
