@@ -5,7 +5,7 @@
 <div class="home3-banner-section">
   <div class="container">
     <div class="row justify-content-center align-items-center">
-      <div class="col-lg-7">
+      <div class="col-lg-6">
         <div class="banner-content mb-30 mb-md-0">
           <h1 [innerHTML]="pageTitle">
           </h1>
@@ -13,7 +13,7 @@
             
           </p>
           
-          <div class="badge bg-success">
+          <div class="badge bg-light text-dark">
             RATED TOP AI DEVELOPMENT COMPANY ON CLUTCH
           </div>
           <div class="row">
@@ -39,8 +39,8 @@
             </div>
 
           </div>
-<!--           
-          <div class="row">
+          
+          <!-- <div class="row">
             <div class="col-6">
               <div class="rating-area">
                 <a target="_blank" href="https://clutch.co/profile/distinct-cloud-labs" class="single-rating clutch">
@@ -79,17 +79,17 @@
                 </a>
               </div>
             </div>
-          </div> 
- -->
+          </div>  -->
+
 
 
         </div>
       </div>
-      <div class="col-lg-5" id="book-a-call">
+      <div class="col-lg-6" id="book-a-call">
         <div class="contact-form-wrap">
           <div class="contact-form-area">
-            <h3>Book a call with our AI experts</h3>
-            <form [formGroup]="contactForm"> 
+          <iframe src="https://www.loom.com/embed/f4a07d91c79e4475a4bcca9708bcff46" frameborder="0" style=" width: 100%; height: 100%;"></iframe>
+            <!-- <form [formGroup]="contactForm"> 
               <div class="row">
                 <div class="col-lg-12 mb-20">
                   <div class="form-inner">
@@ -112,7 +112,6 @@
                           [ngClass]="{ 'is-invalid': hasError('phone') }" (keypress)="allowOnlyNumbers($event)" />
                       </div>
                     </div>
-                    <!-- Move the error message outside the flexbox -->
                     <div class="invalid-feedback d-block" *ngIf="hasError('phone')">
                       Phone is required
                     </div>
@@ -156,9 +155,12 @@
                   </div>
                 </div>
               </div>
-            </form>
+            </form> -->
           </div>
         </div>
+        
+        <a href="https://calendly.com/distinctcloudlabs/30min" class="btn btn-success animated-button btn-lg w-100 mt-5 p-4" target="_blank">Book a call with our CTO</a>
+
       </div>
     </div>
   </div>
@@ -340,9 +342,110 @@
         </div>
       </div>
     </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-12 text-center">
+        <a href="https://calendly.com/distinctcloudlabs/30min"  class="btn btn-success animated-button btn-lg mt-5 p-4" target="_blank">Book a call with our CTO</a>
+      </div>
+    </div>
   </div>
 </div>
 <!-- End Process section -->
+
+
+<!-- Start Testimonial section -->
+
+<div id="testimonials">
+  <app-home-testimonials [testimonials]="testimonials"></app-home-testimonials>
+</div>
+
+<!-- End Testimonial section -->
+
+
+
+<div class="row justify-content-center">
+  <div class="col-lg-12 text-center">
+    <a href="https://calendly.com/distinctcloudlabs/30min"  class="btn btn-success animated-button btn-lg mb-5 p-4" target="_blank">Book a call with our CTO</a>
+  </div>
+</div>
+<!-- Start Case Studies section -->
+<div class="d-flex justify-content-center">
+  <span *ngIf="isLoading" class="spinner-border spinner-border-sm mt-5" role="status"></span>
+</div>
+
+<div id="case-studies">
+  <div class="case-study-card-section scroll-margin " id="case-study-card-section">
+    <div class="container">
+      <div class="row justify-content-center mb-60">
+        <div class="col-lg-8">
+          <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                <g>
+                  <circle cx="5" cy="5" r="5" />
+                </g>
+              </svg>
+              Case Studies
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                <g>
+                  <circle cx="5" cy="5" r="5" />
+                </g>
+              </svg>
+            </span>
+            <h2>Real Results, Real Impact</h2>
+            <p>
+              Discover how we've transformed businesses with AI solutions that deliver measurable ROI, increased efficiency, and competitive advantages. See the numbers that prove our expertise.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4 mb-50">
+        @for (post of posts; track post) {
+        <div class="col-xl-4 col-md-6 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
+          <div class="case-study-card2">
+            <div class="thumbnail-wrapper position-relative">
+              <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="card-img" [attr.aria-label]="'View case study: ' + post.data?.slug?.iv">
+                <img width="354" height="239" [src]="
+                    'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + 
+                    post?.data?.thumbnail?.iv[0]
+                  " alt="Image" />
+              </a>
+            
+              <div class="verified-badge">
+                <span>Verified by</span>
+                <img src="assets/img/home1/icon/clutch-logo-white.svg" alt="Clutch Logo" />
+              </div>
+            </div>          
+            <div class="card-content">
+              <h2>
+                <a [routerLink]="['/case-study/', post.data?.slug?.iv]">{{ post.data?.projectName?.iv }}
+                </a>
+              </h2>
+              <p class="mb-4">
+                {{ post.data?.projectSubheading?.iv | summary:70 }}
+              </p>
+  
+              <div class="d-flex justify-content-between align-items-center">
+                <button (click)="downloadPdf(post)" class="btn btn-success btn-lg">
+                  <i class="bi bi-file-pdf-fill"></i> Download in PDF
+                </button>
+                <button [routerLink]="['/case-study/', post.data?.slug?.iv]" class="clear-btn">Read More
+                  <div class="btn-icon-wrapper">
+                    <img src="assets/icons/sm-arrow-upright.svg" class="" alt="arrow-upright" />
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- End Case Studies section -->
+
+
 
 <!-- Start Countdown section -->
 <div class="home3-countdown-section mb-110">
@@ -477,94 +580,10 @@
 </div>
 <!-- End Coundown section -->
 
-<!-- Start Case Studies section -->
-<div class="d-flex justify-content-center">
-  <span *ngIf="isLoading" class="spinner-border spinner-border-sm mt-5" role="status"></span>
-</div>
-
-<div id="case-studies">
-  <div class="case-study-card-section scroll-margin " id="case-study-card-section">
-    <div class="container">
-      <div class="row justify-content-center mb-60">
-        <div class="col-lg-8">
-          <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
-            <span>
-              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-                <g>
-                  <circle cx="5" cy="5" r="5" />
-                </g>
-              </svg>
-              Case Studies
-              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-                <g>
-                  <circle cx="5" cy="5" r="5" />
-                </g>
-              </svg>
-            </span>
-            <h2>Our Success Stories</h2>
-            <p>
-              Explore our portfolio of successful AI implementations and transformations across various industries.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="row g-4 mb-50">
-        @for (post of posts; track post) {
-        <div class="col-xl-4 col-md-6 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
-          <div class="case-study-card2">
-            <div class="thumbnail-wrapper position-relative">
-              <a [routerLink]="['/case-study/', post.data?.slug?.iv]" class="card-img" [attr.aria-label]="'View case study: ' + post.data?.slug?.iv">
-                <img width="354" height="239" [src]="
-                    'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + 
-                    post?.data?.thumbnail?.iv[0]
-                  " alt="Image" />
-              </a>
-            
-              <div class="verified-badge">
-                <span>Verified by</span>
-                <img src="assets/img/home1/icon/clutch-logo-white.svg" alt="Clutch Logo" />
-              </div>
-            </div>          
-            <div class="card-content">
-              <h2>
-                <a [routerLink]="['/case-study/', post.data?.slug?.iv]">{{ post.data?.projectName?.iv }}
-                </a>
-              </h2>
-              <p class="mb-4">
-                {{ post.data?.projectSubheading?.iv | summary:70 }}
-              </p>
-  
-              <div class="d-flex justify-content-between align-items-center">
-                <button (click)="downloadPdf(post)" class="btn btn-success btn-lg">
-                  <i class="bi bi-file-pdf-fill"></i> Download in PDF
-                </button>
-                <button [routerLink]="['/case-study/', post.data?.slug?.iv]" class="clear-btn">Read More
-                  <div class="btn-icon-wrapper">
-                    <img src="assets/icons/sm-arrow-upright.svg" class="" alt="arrow-upright" />
-                  </div>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        }
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- End Case Studies section -->
-
 
 <app-hiring-process></app-hiring-process>
 
-<!-- Start Testimonial section -->
 
-<div id="testimonials">
-  <app-home-testimonials [testimonials]="testimonials"></app-home-testimonials>
-</div>
-
-<!-- End Testimonial section -->
 
 <app-schedule-call-cta [services]="ctaDetails"></app-schedule-call-cta>
 
