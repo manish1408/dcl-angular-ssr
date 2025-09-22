@@ -27,6 +27,7 @@ import { PortfolioDetailsComponent } from './portfolio-details/portfolio-details
 import { AiDevelopmentComponent } from './ai-development/ai-development.component';
 import { ServicePageComponent } from './service-page/service-page.component';
 import { ProductComponent } from './product/product.component';
+import { ProductPageComponent } from './product-page/product-page.cpmponent';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -78,6 +79,7 @@ export const routes: Routes = [
   { path: 'ai-development', component: AiDevelopmentComponent },
   { path: 'services/:slug', component: ServicePageComponent },
   { path: 'product/:slug', component: ProductComponent },
+  { path: 'product-page', component: ProductPageComponent },
   {
     path: '**',
     redirectTo: 'page-not-found',
@@ -119,4 +121,5 @@ export const ssrTracking: Routes = [
   { path: 'ai-development', component: AiDevelopmentComponent },
   { path: 'services/:slug', component: ServicePageComponent },
   { path: 'product/:slug', component: ProductComponent },
+  { path: 'product-page', component: ProductPageComponent },
 ];

@@ -8,5 +8,4 @@ export const environment = {
      squidexApiUrlMilo: 'https://cms.distinctcloud.io/api/content/milo/',
      squidexClientIdMilo: 'milo:dcl-cms',
      squidexAssetsMilo: 'https://cms.distinctcloud.io/api/assets/'
-     
 };
