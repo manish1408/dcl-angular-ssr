@@ -19,6 +19,7 @@ export class ProductPageService {
       headers,
     });
   }
+  
   getProductByProductName(productName: string) {
     var headers = new HttpHeaders().set(
       'Content-Type',

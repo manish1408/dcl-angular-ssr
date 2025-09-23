@@ -45,6 +45,10 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
   blogsSection: any = null;
   projectManagementSection: any = null;
 
+  // Processed pricing data
+  monthlyPlans: any[] = [];
+  yearlyPlans: any[] = [];
+
   constructor(
     private testimonialService: TestimonialService,
     private common: CommonService,
@@ -191,11 +195,13 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private processPricingData(): void {
     if (!this.pricingSection || !this.pricingSection['pricing-plan']) {
+      console.log('No pricing data found:', this.pricingSection);
       return;
     }
 
     const allPlans = this.pricingSection['pricing-plan'];
-    
+    console.log('All plans from API:', allPlans);
+
     // Separate plans by billing cycle
     const monthlyPlans = allPlans.filter((plan: any) => 
       plan['billing-cycle']?.toLowerCase() === 'monthly'
@@ -205,29 +211,51 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
       plan['billing-cycle']?.toLowerCase() === 'yearly'
     );
 
-    // Process features for each plan to handle isEnabled properly
-    const processPlanFeatures = (plans: any[]) => {
-      return plans.map(plan => ({
-        ...plan,
-        features: plan.features?.map((feature: any) => ({
-          ...feature,
-          isEnabled: feature.isEnabled === null ? true : feature.isEnabled
-        })) || []
-      }));
-    };
+    console.log('Filtered plans:', { monthlyPlans, yearlyPlans });
 
-    // Update pricingSection with organized data
-    this.pricingSection = {
-      ...this.pricingSection,
-      monthlyPlans: processPlanFeatures(monthlyPlans),
-      yearlyPlans: processPlanFeatures(yearlyPlans)
-    };
+    // Sort monthly plans by index and process them
+    this.monthlyPlans = monthlyPlans
+      .sort((a: any, b: any) => a.index - b.index)
+      .map((plan: any) => ({
+        name: plan['plan-name'],
+        price: parseInt(plan['plan-amount']),
+        period: plan['billing-cycle'],
+        features: plan.features?.map((feature: any) => {
+          console.log('Monthly plan feature data:', feature);
+          return {
+            name: feature.feature,
+            included: feature.isEnabled === true || feature.isEnabled === 'true'
+          };
+        }) || [],
+        ctaText: plan['CTA-label'],
+        ctaLink: plan['CTA-url'],
+        isPopular: plan['plan-name'] === 'Standard Plan', // Mark Standard as popular
+        discountValue: plan['discounted-value'] || null
+      }));
+
+    // Sort yearly plans by index and process them
+    this.yearlyPlans = yearlyPlans
+      .sort((a: any, b: any) => a.index - b.index)
+      .map((plan: any) => ({
+        name: plan['plan-name'],
+        price: parseInt(plan['plan-amount']),
+        period: plan['billing-cycle'],
+        features: plan.features?.map((feature: any) => {
+          console.log('Yearly plan feature data:', feature);
+          return {
+            name: feature.feature,
+            included: feature.isEnabled === true || feature.isEnabled === 'true'
+          };
+        }) || [],
+        ctaText: plan['CTA-label'],
+        ctaLink: plan['CTA-url'],
+        isPopular: plan['plan-name'] === 'Standard Plan', // Mark Standard as popular
+        discountValue: plan['discounted-value'] || null
+      }));
 
     console.log('Pricing data processed:', {
-      monthlyPlans: this.pricingSection.monthlyPlans.length,
-      yearlyPlans: this.pricingSection.yearlyPlans.length,
-      monthlyPlansData: this.pricingSection.monthlyPlans,
-      yearlyPlansData: this.pricingSection.yearlyPlans
+      monthlyPlans: this.monthlyPlans,
+      yearlyPlans: this.yearlyPlans
     });
   }
 
