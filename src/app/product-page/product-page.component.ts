@@ -6,6 +6,7 @@ import { CommonService } from '../services/common.service';
 import { Meta, Title } from '@angular/platform-browser';
 import { HomeService } from '../services/home.service';
 import { ProductPageService } from '../services/product-page.service';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 declare var Swiper: any;
 
@@ -43,11 +44,22 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
   faqSection: any = null;
   integrationSection: any = null;
   blogsSection: any = null;
-  projectManagementSection: any = null;
+
 
   // Processed pricing data
   monthlyPlans: any[] = [];
   yearlyPlans: any[] = [];
+
+  // Active tab tracking
+  activeTabIndex: number = 0;
+
+  // Video modal
+  videoUrl: string = '';
+
+  setActiveTab(index: number): void {
+    this.activeTabIndex = index;
+    console.log('Active tab set to:', index);
+  }
 
   constructor(
     private testimonialService: TestimonialService,
@@ -56,7 +68,8 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     private title: Title,
     private homeService: HomeService,
     private route: ActivatedRoute,
-    private productPageService: ProductPageService
+    private productPageService: ProductPageService,
+    private sanitizer: DomSanitizer
   ) {
     this.meta.addTag({ name: 'title', content: 'Product page' });
   }
@@ -95,6 +108,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     // Additional initialization after view is ready
     if (this.common.isBrowser()) {
       this.initializeSwiper();
+      this.initializeBootstrapTabs();
     }
   }
 
@@ -147,10 +161,83 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     }, 200);
   }
 
+  private initializeBootstrapTabs(): void {
+    if (!this.common.isBrowser()) return;
+    
+    // Wait for DOM to be ready and data to be loaded
+    setTimeout(() => {
+      try {
+        const tabElements = document.querySelectorAll('[data-bs-toggle="tab"]');
+        tabElements.forEach(tab => {
+          tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = tab.getAttribute('data-bs-target');
+            if (targetId) {
+              this.showTab(targetId);
+            }
+          });
+        });
+        console.log('Bootstrap tabs initialized successfully');
+      } catch (error) {
+        console.error('Error initializing Bootstrap tabs:', error);
+      }
+    }, 300);
+  }
+
+  private showTab(targetId: string): void {
+    // Hide all tab panes
+    const allTabPanes = document.querySelectorAll('.tab-pane');
+    allTabPanes.forEach(pane => {
+      pane.classList.remove('show', 'active');
+    });
+
+    // Remove active class from all tab buttons
+    const allTabButtons = document.querySelectorAll('.nav-link');
+    allTabButtons.forEach(button => {
+      button.classList.remove('active');
+      button.setAttribute('aria-selected', 'false');
+    });
+
+    // Show the target tab pane
+    const targetPane = document.querySelector(targetId);
+    if (targetPane) {
+      targetPane.classList.add('show', 'active');
+    }
+
+    // Activate the clicked tab button
+    const activeButton = document.querySelector(`[data-bs-target="${targetId}"]`);
+    if (activeButton) {
+      activeButton.classList.add('active');
+      activeButton.setAttribute('aria-selected', 'true');
+    }
+  }
+
   private bindProductData(): void {
     if (this.productData) {
       // Extract all sections from the API response
       this.heroSection = this.productData['hero-section']?.iv || null;
+      
+      // Debug video data
+      console.log('Hero Section:', this.heroSection);
+      console.log('Videos Array:', this.heroSection?.videos);
+      if (this.heroSection?.videos) {
+        console.log('First Video URL:', this.heroSection.videos[0]?.url);
+        // Test thumbnail generation
+        const testUrl = this.heroSection.videos[0]?.url;
+        if (testUrl) {
+          console.log('Testing thumbnail generation for:', testUrl);
+          const thumbnail = this.getVideoThumbnail(testUrl);
+          console.log('Generated thumbnail URL:', thumbnail);
+        }
+      }
+      
+      // Debug features data
+      console.log('Features Array:', this.heroSection?.features);
+      if (this.heroSection?.features) {
+        console.log('First Feature:', this.heroSection.features[0]);
+        console.log('Feature Title:', this.heroSection.features[0]?.title);
+        console.log('Feature Icon:', this.heroSection.features[0]?.icon);
+      }
       this.featuresSection = this.productData['features-section']?.iv || null;
       this.statsSection = this.productData['stats-section']?.iv || null;
       this.servicesSection = this.productData['services-section']?.iv || null;
@@ -163,7 +250,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
       this.integrationSection = this.productData['integration-section']?.iv || null;
       this.blogsSection = this.productData['blogs-section']?.iv || null;
       
-      this.projectManagementSection = this.productData['project-management-section']?.iv || null;
+      
 
       // Process pricing section to separate monthly and yearly plans
       if (this.pricingSection) {
@@ -190,17 +277,22 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
         integration: !!this.integrationSection,
         blogs: !!this.blogsSection
       });
+
+      // Reinitialize Bootstrap tabs after data is loaded
+      if (this.common.isBrowser()) {
+        setTimeout(() => {
+          this.initializeBootstrapTabs();
+        }, 100);
+      }
     }
   }
 
   private processPricingData(): void {
     if (!this.pricingSection || !this.pricingSection['pricing-plan']) {
-      console.log('No pricing data found:', this.pricingSection);
       return;
     }
 
     const allPlans = this.pricingSection['pricing-plan'];
-    console.log('All plans from API:', allPlans);
 
     // Separate plans by billing cycle
     const monthlyPlans = allPlans.filter((plan: any) => 
@@ -211,8 +303,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
       plan['billing-cycle']?.toLowerCase() === 'yearly'
     );
 
-    console.log('Filtered plans:', { monthlyPlans, yearlyPlans });
-
     // Sort monthly plans by index and process them
     this.monthlyPlans = monthlyPlans
       .sort((a: any, b: any) => a.index - b.index)
@@ -220,13 +310,10 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
         name: plan['plan-name'],
         price: parseInt(plan['plan-amount']),
         period: plan['billing-cycle'],
-        features: plan.features?.map((feature: any) => {
-          console.log('Monthly plan feature data:', feature);
-          return {
-            name: feature.feature,
-            included: feature.isEnabled === true || feature.isEnabled === 'true'
-          };
-        }) || [],
+        features: plan.features?.map((feature: any) => ({
+          name: feature.feature,
+          included: feature.isEnabled === true || feature.isEnabled === 'true'
+        })) || [],
         ctaText: plan['CTA-label'],
         ctaLink: plan['CTA-url'],
         isPopular: plan['plan-name'] === 'Standard Plan', // Mark Standard as popular
@@ -240,23 +327,16 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
         name: plan['plan-name'],
         price: parseInt(plan['plan-amount']),
         period: plan['billing-cycle'],
-        features: plan.features?.map((feature: any) => {
-          console.log('Yearly plan feature data:', feature);
-          return {
-            name: feature.feature,
-            included: feature.isEnabled === true || feature.isEnabled === 'true'
-          };
-        }) || [],
+        features: plan.features?.map((feature: any) => ({
+          name: feature.feature,
+          included: feature.isEnabled === true || feature.isEnabled === 'true'
+        })) || [],
         ctaText: plan['CTA-label'],
         ctaLink: plan['CTA-url'],
         isPopular: plan['plan-name'] === 'Standard Plan', // Mark Standard as popular
         discountValue: plan['discounted-value'] || null
       }));
 
-    console.log('Pricing data processed:', {
-      monthlyPlans: this.monthlyPlans,
-      yearlyPlans: this.yearlyPlans
-    });
   }
 
   getCTA() {
@@ -367,5 +447,75 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
+  // Video modal methods
+  openVideoModal(videoUrl: string): void {
+    if (videoUrl) {
+      this.videoUrl = videoUrl;
+      // Open Bootstrap modal
+      const modalElement = document.getElementById('videoModal');
+      if (modalElement) {
+        const modal = new (window as any).bootstrap.Modal(modalElement);
+        modal.show();
+      }
+    }
+  }
+
+  getSafeVideoUrl(url: string): SafeResourceUrl {
+    if (!url) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl('');
+    }
+
+    // Clean URL from HTML entities
+    const cleanUrl = url.replace(/&amp;/g, '&');
+    
+    // Convert YouTube URL to embed format if needed
+    let embedUrl = cleanUrl;
+    if (cleanUrl.includes('youtube.com/watch')) {
+      const videoId = cleanUrl.split('v=')[1]?.split('&')[0];
+      if (videoId) {
+        embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      }
+    } else if (cleanUrl.includes('youtu.be/')) {
+      const videoId = cleanUrl.split('youtu.be/')[1]?.split('?')[0];
+      if (videoId) {
+        embedUrl = `https://www.youtube.com/embed/${videoId}`;
+      }
+    }
+    
+    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+  }
+
+  getVideoThumbnail(videoUrl: string): string {
+    console.log('getVideoThumbnail called with:', videoUrl);
+    
+    if (!videoUrl) {
+      console.log('No video URL provided, using fallback image');
+      return 'assets/img/home3/banner-bottom-img1.png';
+    }
+
+    // Clean URL from HTML entities
+    const cleanUrl = videoUrl.replace(/&amp;/g, '&');
+    
+    // Generate YouTube thumbnail URL
+    if (cleanUrl.includes('youtube.com/watch')) {
+      const videoId = cleanUrl.split('v=')[1]?.split('&')[0];
+      if (videoId) {
+        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+        console.log('Generated YouTube thumbnail URL:', thumbnailUrl);
+        return thumbnailUrl;
+      }
+    } else if (cleanUrl.includes('youtu.be/')) {
+      const videoId = cleanUrl.split('youtu.be/')[1]?.split('?')[0];
+      if (videoId) {
+        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+        console.log('Generated YouTube thumbnail URL:', thumbnailUrl);
+        return thumbnailUrl;
+      }
+    }
+    
+    // Fallback to default image if not YouTube or invalid URL
+    console.log('Using fallback image - URL not recognized as YouTube');
+    return 'assets/img/home3/banner-bottom-img1.png';
+  }
 
 }

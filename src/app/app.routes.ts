@@ -27,7 +27,7 @@ import { PortfolioDetailsComponent } from './portfolio-details/portfolio-details
 import { AiDevelopmentComponent } from './ai-development/ai-development.component';
 import { ServicePageComponent } from './service-page/service-page.component';
 import { ProductComponent } from './product/product.component';
-import { ProductPageComponent } from './product-page/product-page.cpmponent';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },

@@ -8972,6 +8972,7 @@ header.style-3 {
     }
   }
   .bottom-img1, .bottom-img2, .bottom-img3{
+    max-width: 500px !important;
     border-radius: 10px;
     box-shadow: 0px 6px 25px 0px rgba(63, 68, 75, 0.10);
     @include xl-down-device(){
@@ -19180,4 +19181,6 @@ body:not(.is-mobile) .tt-style-switch:hover {
       -webkit-transform: none;
       transform: none;
   }
+
+  
 }
