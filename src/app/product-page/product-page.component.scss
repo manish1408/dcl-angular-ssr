@@ -211,3 +211,100 @@
    
 }
 
+// Video Modal Styles
+.modal {
+    z-index: 1055;
+}
+
+.video-modal-dialog {
+    max-width: 70vw;
+    max-height: 70vh;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.video-modal-content {
+    position: relative;
+    width: 70vw;
+    height: 70vh;
+    background: #000;
+    border: none;
+    border-radius: 8px;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.video-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1060;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    
+    &:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: scale(1.1);
+    }
+    
+    i {
+        font-size: 24px;
+    }
+}
+
+.video-container-70 {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    
+    .video-iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+        background: #000;
+        border-radius: 8px;
+    }
+}
+
+// Responsive adjustments for video modal
+@media (max-width: 768px) {
+    .video-modal-dialog {
+        max-width: 90vw;
+        max-height: 60vh;
+    }
+    
+    .video-modal-content {
+        width: 90vw;
+        height: 60vh;
+    }
+    
+    .video-close-btn {
+        top: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        
+        i {
+            font-size: 18px;
+        }
+    }
+}
+

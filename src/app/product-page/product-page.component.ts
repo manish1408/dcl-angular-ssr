@@ -15,16 +15,12 @@ declare var Swiper: any;
   standalone: true,
   templateUrl: './product-page.component.html',
   styleUrl: './product-page.component.scss',
-  imports: [
-    CommonModule,
-    RouterModule,
-  ],
+  imports: [CommonModule, RouterModule],
   host: {
-    'ngSkipHydration': 'true'
-  }
+    ngSkipHydration: 'true',
+  },
 })
 export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
-
   testimonials: any = [];
   ctaDetails: any = [];
   productName: string = '';
@@ -45,7 +41,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
   integrationSection: any = null;
   blogsSection: any = null;
 
-
   // Processed pricing data
   monthlyPlans: any[] = [];
   yearlyPlans: any[] = [];
@@ -56,9 +51,13 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
   // Video modal
   videoUrl: string = '';
 
+  // Feature image modal
+  selectedFeatureImage: string = '';
+  isFeatureImageModalOpen: boolean = false;
+  selectedFeature: any = null;
+
   setActiveTab(index: number): void {
     this.activeTabIndex = index;
-    console.log('Active tab set to:', index);
   }
 
   constructor(
@@ -78,21 +77,19 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     this.route.params.subscribe((param) => {
       this.productName = param['productName'];
     });
-    
+
     this.productPageService.getProduct().subscribe((res: any) => {
       this.productData = res.items[0].data;
-      console.log("Page data", this.productData);
-      
       // Bind all sections from the API response
       this.bindProductData();
     });
-    
+
     this.testimonialService.fetchTestimonials().subscribe((res: any) => {
       this.testimonials = res.items;
       // Initialize Swiper after data is loaded
       this.initializeSwiper();
     });
-    
+
     this.getCTA();
 
     if (this.common.isBrowser()) {
@@ -114,7 +111,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private initializeSwiper(): void {
     if (!this.common.isBrowser()) return;
-    
+
     // Wait for DOM to be ready and data to be loaded
     setTimeout(() => {
       try {
@@ -124,10 +121,12 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
         }
 
         // Check if the element exists before initializing
-        const swiperElement = document.querySelector('.home3-testimonial-slider');
+        const swiperElement = document.querySelector(
+          '.home3-testimonial-slider'
+        );
         if (swiperElement && typeof Swiper !== 'undefined') {
           this.swiperInstance = new Swiper('.home3-testimonial-slider', {
-            slidesPerView: 1,
+            slidesPerView: 3,
             speed: 1500,
             spaceBetween: 30,
             loop: true,
@@ -144,16 +143,11 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
               clickable: true,
             },
             on: {
-              init: function () {
-                console.log('Swiper initialized successfully');
-              },
               error: function (error: any) {
                 console.error('Swiper initialization error:', error);
-              }
-            }
+              },
+            },
           });
-        } else {
-          console.warn('Swiper element not found or Swiper not loaded');
         }
       } catch (error) {
         console.error('Error initializing Swiper:', error);
@@ -163,12 +157,12 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private initializeBootstrapTabs(): void {
     if (!this.common.isBrowser()) return;
-    
+
     // Wait for DOM to be ready and data to be loaded
     setTimeout(() => {
       try {
         const tabElements = document.querySelectorAll('[data-bs-toggle="tab"]');
-        tabElements.forEach(tab => {
+        tabElements.forEach((tab) => {
           tab.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = tab.getAttribute('data-bs-target');
@@ -177,7 +171,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
             }
           });
         });
-        console.log('Bootstrap tabs initialized successfully');
       } catch (error) {
         console.error('Error initializing Bootstrap tabs:', error);
       }
@@ -187,13 +180,13 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
   private showTab(targetId: string): void {
     // Hide all tab panes
     const allTabPanes = document.querySelectorAll('.tab-pane');
-    allTabPanes.forEach(pane => {
+    allTabPanes.forEach((pane) => {
       pane.classList.remove('show', 'active');
     });
 
     // Remove active class from all tab buttons
     const allTabButtons = document.querySelectorAll('.nav-link');
-    allTabButtons.forEach(button => {
+    allTabButtons.forEach((button) => {
       button.classList.remove('active');
       button.setAttribute('aria-selected', 'false');
     });
@@ -205,7 +198,9 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     // Activate the clicked tab button
-    const activeButton = document.querySelector(`[data-bs-target="${targetId}"]`);
+    const activeButton = document.querySelector(
+      `[data-bs-target="${targetId}"]`
+    );
     if (activeButton) {
       activeButton.classList.add('active');
       activeButton.setAttribute('aria-selected', 'true');
@@ -216,41 +211,19 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.productData) {
       // Extract all sections from the API response
       this.heroSection = this.productData['hero-section']?.iv || null;
-      
-      // Debug video data
-      console.log('Hero Section:', this.heroSection);
-      console.log('Videos Array:', this.heroSection?.videos);
-      if (this.heroSection?.videos) {
-        console.log('First Video URL:', this.heroSection.videos[0]?.url);
-        // Test thumbnail generation
-        const testUrl = this.heroSection.videos[0]?.url;
-        if (testUrl) {
-          console.log('Testing thumbnail generation for:', testUrl);
-          const thumbnail = this.getVideoThumbnail(testUrl);
-          console.log('Generated thumbnail URL:', thumbnail);
-        }
-      }
-      
-      // Debug features data
-      console.log('Features Array:', this.heroSection?.features);
-      if (this.heroSection?.features) {
-        console.log('First Feature:', this.heroSection.features[0]);
-        console.log('Feature Title:', this.heroSection.features[0]?.title);
-        console.log('Feature Icon:', this.heroSection.features[0]?.icon);
-      }
       this.featuresSection = this.productData['features-section']?.iv || null;
       this.statsSection = this.productData['stats-section']?.iv || null;
       this.servicesSection = this.productData['services-section']?.iv || null;
       this.clientsSection = this.productData['clients-section']?.iv || null;
-      this.testimonialsSection = this.productData['testimonials-section']?.iv || null;
-      this.whyUsSection = this.productData['why-us']?.iv || null;
+        this.testimonialsSection =
+          this.productData['testimonials-section']?.iv || null;
+        this.whyUsSection = this.productData['why-us']?.iv || null;
       this.pricingSection = this.productData['pricing-section']?.iv || null;
       this.ctaSection = this.productData['CTA-section']?.iv || null;
       this.faqSection = this.productData['faq-section']?.iv || null;
-      this.integrationSection = this.productData['integration-section']?.iv || null;
+      this.integrationSection =
+        this.productData['integration-section']?.iv || null;
       this.blogsSection = this.productData['blogs-section']?.iv || null;
-      
-      
 
       // Process pricing section to separate monthly and yearly plans
       if (this.pricingSection) {
@@ -260,29 +233,28 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
       // Update page title and meta if hero section exists
       if (this.heroSection?.title) {
         this.title.setTitle(this.heroSection.title.title || 'Product Page');
-        this.meta.updateTag({ name: 'description', content: this.heroSection.title.subtitle || '' });
+        this.meta.updateTag({
+          name: 'description',
+          content: this.heroSection.title.subtitle || '',
+        });
       }
-
-      console.log('All sections bound successfully:', {
-        hero: !!this.heroSection,
-        features: !!this.featuresSection,
-        stats: !!this.statsSection,
-        services: !!this.servicesSection,
-        clients: !!this.clientsSection,
-        testimonials: !!this.testimonialsSection,
-        whyUs: !!this.whyUsSection,
-        pricing: !!this.pricingSection,
-        cta: !!this.ctaSection,
-        faq: !!this.faqSection,
-        integration: !!this.integrationSection,
-        blogs: !!this.blogsSection
-      });
 
       // Reinitialize Bootstrap tabs after data is loaded
       if (this.common.isBrowser()) {
         setTimeout(() => {
           this.initializeBootstrapTabs();
         }, 100);
+      }
+
+      // Auto-select first feature if available
+      if (
+        this.whyUsSection &&
+        this.whyUsSection['more-features'] &&
+        this.whyUsSection['more-features'].length > 0
+      ) {
+        setTimeout(() => {
+          this.selectFirstFeature();
+        }, 200);
       }
     }
   }
@@ -295,12 +267,12 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     const allPlans = this.pricingSection['pricing-plan'];
 
     // Separate plans by billing cycle
-    const monthlyPlans = allPlans.filter((plan: any) => 
-      plan['billing-cycle']?.toLowerCase() === 'monthly'
+    const monthlyPlans = allPlans.filter(
+      (plan: any) => plan['billing-cycle']?.toLowerCase() === 'monthly'
     );
-    
-    const yearlyPlans = allPlans.filter((plan: any) => 
-      plan['billing-cycle']?.toLowerCase() === 'yearly'
+
+    const yearlyPlans = allPlans.filter(
+      (plan: any) => plan['billing-cycle']?.toLowerCase() === 'yearly'
     );
 
     // Sort monthly plans by index and process them
@@ -310,14 +282,16 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
         name: plan['plan-name'],
         price: parseInt(plan['plan-amount']),
         period: plan['billing-cycle'],
-        features: plan.features?.map((feature: any) => ({
-          name: feature.feature,
-          included: feature.isEnabled === true || feature.isEnabled === 'true'
-        })) || [],
+        features:
+          plan.features?.map((feature: any) => ({
+            name: feature.feature,
+            included:
+              feature.isEnabled === true || feature.isEnabled === 'true',
+          })) || [],
         ctaText: plan['CTA-label'],
         ctaLink: plan['CTA-url'],
         isPopular: plan['plan-name'] === 'Standard Plan', // Mark Standard as popular
-        discountValue: plan['discounted-value'] || null
+        discountValue: plan['discounted-value'] || null,
       }));
 
     // Sort yearly plans by index and process them
@@ -327,16 +301,17 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
         name: plan['plan-name'],
         price: parseInt(plan['plan-amount']),
         period: plan['billing-cycle'],
-        features: plan.features?.map((feature: any) => ({
-          name: feature.feature,
-          included: feature.isEnabled === true || feature.isEnabled === 'true'
-        })) || [],
+        features:
+          plan.features?.map((feature: any) => ({
+            name: feature.feature,
+            included:
+              feature.isEnabled === true || feature.isEnabled === 'true',
+          })) || [],
         ctaText: plan['CTA-label'],
         ctaLink: plan['CTA-url'],
         isPopular: plan['plan-name'] === 'Standard Plan', // Mark Standard as popular
-        discountValue: plan['discounted-value'] || null
+        discountValue: plan['discounted-value'] || null,
       }));
-
   }
 
   getCTA() {
@@ -351,8 +326,6 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
       this.swiperInstance.destroy(true, true);
     }
   }
-
- 
 
   // Method to get plan amount display
   getPlanAmount(plan: any): string {
@@ -389,27 +362,37 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   // Method to format date from ISO string to readable format
-  formatDate(isoDateString: string): { date: string, month: string } {
+  formatDate(isoDateString: string): { date: string; month: string } {
     if (!isoDateString) {
       return { date: '', month: '' };
     }
 
     try {
       const date = new Date(isoDateString);
-      
+
       // Get day of month
       const day = date.getDate();
-      
+
       // Get month name
       const monthNames = [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
       ];
       const month = monthNames[date.getMonth()];
-      
+
       return {
         date: day.toString(),
-        month: month
+        month: month,
       };
     } catch (error) {
       console.error('Error formatting date:', error);
@@ -420,7 +403,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
   // Alternative method to get just the day
   getBlogDate(isoDateString: string): string {
     if (!isoDateString) return '';
-    
+
     try {
       const date = new Date(isoDateString);
       return date.getDate().toString();
@@ -433,12 +416,22 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
   // Alternative method to get just the month
   getBlogMonth(isoDateString: string): string {
     if (!isoDateString) return '';
-    
+
     try {
       const date = new Date(isoDateString);
       const monthNames = [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
       ];
       return monthNames[date.getMonth()];
     } catch (error) {
@@ -451,12 +444,56 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
   openVideoModal(videoUrl: string): void {
     if (videoUrl) {
       this.videoUrl = videoUrl;
-      // Open Bootstrap modal
-      const modalElement = document.getElementById('videoModal');
-      if (modalElement) {
-        const modal = new (window as any).bootstrap.Modal(modalElement);
-        modal.show();
+      console.log('Opening video modal with URL:', videoUrl);
+      
+      // Wait for DOM to be ready
+      setTimeout(() => {
+        const modalElement = document.getElementById('videoModal');
+        console.log('Modal element found:', modalElement);
+        
+        if (modalElement) {
+          // Check if Bootstrap is available
+          if (typeof (window as any).bootstrap !== 'undefined') {
+            const modal = new (window as any).bootstrap.Modal(modalElement);
+            modal.show();
+            console.log('Bootstrap modal opened');
+          } else {
+            console.error('Bootstrap is not available');
+            // Fallback: show modal manually
+            modalElement.style.display = 'block';
+            modalElement.classList.add('show');
+            document.body.classList.add('modal-open');
+          }
+        } else {
+          console.error('Video modal element not found');
+        }
+      }, 100);
+    }
+  }
+
+  // Close video modal
+  closeVideoModal(): void {
+    const modalElement = document.getElementById('videoModal');
+    if (modalElement) {
+      if (typeof (window as any).bootstrap !== 'undefined') {
+        const modal = (window as any).bootstrap.Modal.getInstance(modalElement);
+        if (modal) {
+          modal.hide();
+        }
+      } else {
+        // Fallback: hide modal manually
+        modalElement.style.display = 'none';
+        modalElement.classList.remove('show');
+        document.body.classList.remove('modal-open');
       }
+    }
+    this.videoUrl = '';
+  }
+
+  // Handle modal backdrop click
+  onModalBackdropClick(event: Event): void {
+    if (event.target === event.currentTarget) {
+      this.closeVideoModal();
     }
   }
 
@@ -465,57 +502,122 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
       return this.sanitizer.bypassSecurityTrustResourceUrl('');
     }
 
+    console.log('Original video URL:', url);
+
     // Clean URL from HTML entities
     const cleanUrl = url.replace(/&amp;/g, '&');
-    
+    console.log('Cleaned URL:', cleanUrl);
+
     // Convert YouTube URL to embed format if needed
     let embedUrl = cleanUrl;
+    
+    // Handle YouTube watch URLs
     if (cleanUrl.includes('youtube.com/watch')) {
       const videoId = cleanUrl.split('v=')[1]?.split('&')[0];
       if (videoId) {
-        embedUrl = `https://www.youtube.com/embed/${videoId}`;
+        embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        console.log('YouTube embed URL:', embedUrl);
       }
-    } else if (cleanUrl.includes('youtu.be/')) {
+    } 
+    // Handle YouTube short URLs
+    else if (cleanUrl.includes('youtu.be/')) {
       const videoId = cleanUrl.split('youtu.be/')[1]?.split('?')[0];
       if (videoId) {
-        embedUrl = `https://www.youtube.com/embed/${videoId}`;
+        embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        console.log('YouTube short embed URL:', embedUrl);
       }
     }
-    
+    // Handle Vimeo URLs
+    else if (cleanUrl.includes('vimeo.com/')) {
+      const videoId = cleanUrl.split('vimeo.com/')[1]?.split('?')[0];
+      if (videoId) {
+        embedUrl = `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+        console.log('Vimeo embed URL:', embedUrl);
+      }
+    }
+    // If it's already an embed URL, use it as is
+    else if (cleanUrl.includes('embed') || cleanUrl.includes('player')) {
+      embedUrl = cleanUrl;
+      console.log('Using existing embed URL:', embedUrl);
+    }
+
+    console.log('Final embed URL:', embedUrl);
     return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
   }
 
   getVideoThumbnail(videoUrl: string): string {
-    console.log('getVideoThumbnail called with:', videoUrl);
-    
     if (!videoUrl) {
-      console.log('No video URL provided, using fallback image');
       return 'assets/img/home3/banner-bottom-img1.png';
     }
 
     // Clean URL from HTML entities
     const cleanUrl = videoUrl.replace(/&amp;/g, '&');
-    
+
     // Generate YouTube thumbnail URL
     if (cleanUrl.includes('youtube.com/watch')) {
       const videoId = cleanUrl.split('v=')[1]?.split('&')[0];
       if (videoId) {
         const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-        console.log('Generated YouTube thumbnail URL:', thumbnailUrl);
         return thumbnailUrl;
       }
     } else if (cleanUrl.includes('youtu.be/')) {
       const videoId = cleanUrl.split('youtu.be/')[1]?.split('?')[0];
       if (videoId) {
         const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-        console.log('Generated YouTube thumbnail URL:', thumbnailUrl);
         return thumbnailUrl;
       }
     }
-    
+
     // Fallback to default image if not YouTube or invalid URL
-    console.log('Using fallback image - URL not recognized as YouTube');
     return 'assets/img/home3/banner-bottom-img1.png';
   }
 
+  // Method to get image URL from UUID
+  getImageUrl(uuid: string): string {
+    if (!uuid) {
+      return 'assets/img/home3/banner-bottom-img1.png';
+    }
+
+    // If it's already a full URL, return as is
+    if (uuid.startsWith('http://') || uuid.startsWith('https://')) {
+      return uuid;
+    }
+
+    // If it's a UUID, construct the image URL using the correct Squidex assets endpoint
+    return `https://cms.distinctcloud.io/api/assets/${uuid}`;
+  }
+
+  // Feature image modal methods
+  openFeatureImageModal(feature: any): void {
+    this.selectedFeature = feature;
+    if (feature.image && feature.image.length > 0) {
+      this.selectedFeatureImage = this.getImageUrl(feature.image[0]);
+      this.isFeatureImageModalOpen = true;
+    }
+  }
+
+  closeFeatureImageModal(): void {
+    this.isFeatureImageModalOpen = false;
+    this.selectedFeatureImage = '';
+    this.selectedFeature = null;
+  }
+
+  // Auto-select first feature
+  selectFirstFeature(): void {
+    if (
+      this.whyUsSection &&
+      this.whyUsSection['more-features'] &&
+      this.whyUsSection['more-features'].length > 0
+    ) {
+      const firstFeature = this.whyUsSection['more-features'][0];
+      this.openFeatureImageModal(firstFeature);
+    }
+  }
+
+  // Handle CTA form submission
+  handleCtaSubmit(): void {
+    if (this.ctaSection && this.ctaSection['CTA-url']) {
+      window.open(this.ctaSection['CTA-url'], '_blank');
+    }
+  }
 }
