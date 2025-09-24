@@ -106,6 +106,14 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.common.isBrowser()) {
       this.initializeSwiper();
       this.initializeBootstrapTabs();
+      
+      // Ensure pricing data is processed after view is ready
+      setTimeout(() => {
+        if (this.pricingSection && (this.monthlyPlans.length === 0 && this.yearlyPlans.length === 0)) {
+          console.log('Re-processing pricing data after view init');
+          this.processPricingData();
+        }
+      }, 500);
     }
   }
 
@@ -219,6 +227,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
           this.productData['testimonials-section']?.iv || null;
         this.whyUsSection = this.productData['why-us']?.iv || null;
       this.pricingSection = this.productData['pricing-section']?.iv || null;
+      console.log('Pricing section loaded:', this.pricingSection);
       this.ctaSection = this.productData['CTA-section']?.iv || null;
       this.faqSection = this.productData['faq-section']?.iv || null;
       this.integrationSection =
@@ -228,6 +237,10 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
       // Process pricing section to separate monthly and yearly plans
       if (this.pricingSection) {
         this.processPricingData();
+      } else {
+        console.log('No pricing section found, initializing empty arrays');
+        this.monthlyPlans = [];
+        this.yearlyPlans = [];
       }
 
       // Update page title and meta if hero section exists
@@ -261,10 +274,12 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private processPricingData(): void {
     if (!this.pricingSection || !this.pricingSection['pricing-plan']) {
+      console.log('Pricing section or pricing-plan not found:', this.pricingSection);
       return;
     }
 
     const allPlans = this.pricingSection['pricing-plan'];
+    console.log('All plans found:', allPlans);
 
     // Separate plans by billing cycle
     const monthlyPlans = allPlans.filter(
@@ -293,6 +308,9 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
         isPopular: plan['plan-name'] === 'Standard Plan', // Mark Standard as popular
         discountValue: plan['discounted-value'] || null,
       }));
+
+    console.log('Processed monthly plans:', this.monthlyPlans);
+    console.log('Processed yearly plans:', this.yearlyPlans);
 
     // Sort yearly plans by index and process them
     this.yearlyPlans = yearlyPlans
@@ -618,6 +636,14 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
   handleCtaSubmit(): void {
     if (this.ctaSection && this.ctaSection['CTA-url']) {
       window.open(this.ctaSection['CTA-url'], '_blank');
+    }
+  }
+
+  // Method to manually trigger pricing data processing
+  public refreshPricingData(): void {
+    console.log('Manually refreshing pricing data');
+    if (this.pricingSection) {
+      this.processPricingData();
     }
   }
 }

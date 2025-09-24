@@ -22,7 +22,9 @@
     width: 500px;
     
     // Add original styling properties
-   
+    &.bottom-img2 {
+        animation-fill-mode: both;
+    }
 
     // Video thumbnail image
     .video-thumbnail-img {
