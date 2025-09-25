@@ -86,6 +86,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.testimonialService.fetchTestimonials().subscribe((res: any) => {
       this.testimonials = res.items;
+      console.log('testimonials', this.testimonials);
       // Initialize Swiper after data is loaded
       this.initializeSwiper();
     });
@@ -134,7 +135,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
         );
         if (swiperElement && typeof Swiper !== 'undefined') {
           this.swiperInstance = new Swiper('.home3-testimonial-slider', {
-            slidesPerView: 3,
+            slidesPerView: 2,
             speed: 1500,
             spaceBetween: 30,
             loop: true,
@@ -611,7 +612,45 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     if (feature.image && feature.image.length > 0) {
       this.selectedFeatureImage = this.getImageUrl(feature.image[0]);
       this.isFeatureImageModalOpen = true;
+      
+      // Trigger animation after image loads
+      setTimeout(() => {
+        this.triggerImageAnimation();
+      }, 100);
     }
+  }
+
+  // Method to trigger image animation
+  private triggerImageAnimation(): void {
+    if (this.common.isBrowser()) {
+      // Find the image element and trigger animation
+      const imageElement = document.querySelector('.feature-image') as HTMLImageElement;
+      if (imageElement) {
+        // Set initial state to prevent flicker
+        imageElement.style.opacity = '0';
+        imageElement.classList.remove('animate-zoom-in');
+        
+        // Wait for image to load before animating
+        if (imageElement.complete) {
+          this.startImageAnimation(imageElement);
+        } else {
+          imageElement.onload = () => {
+            this.startImageAnimation(imageElement);
+          };
+        }
+      }
+    }
+  }
+
+  private startImageAnimation(imageElement: HTMLImageElement): void {
+    // Force a reflow to ensure the class removal is processed
+    imageElement.offsetHeight;
+    
+    // Add the animation class and show image simultaneously
+    setTimeout(() => {
+      imageElement.style.opacity = '1';
+      imageElement.classList.add('animate-zoom-in');
+    }, 50);
   }
 
   closeFeatureImageModal(): void {
@@ -645,5 +684,17 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.pricingSection) {
       this.processPricingData();
     }
+  }
+
+  // Method to get initials for avatar placeholder
+  getInitials(name: string): string {
+    if (!name) return '?';
+    
+    const names = name.trim().split(' ');
+    if (names.length === 1) {
+      return names[0].charAt(0).toUpperCase();
+    }
+    
+    return (names[0].charAt(0) + names[names.length - 1].charAt(0)).toUpperCase();
   }
 }

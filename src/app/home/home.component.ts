@@ -83,7 +83,7 @@ export class HomeComponent implements OnInit {
     if (this.common.isBrowser()) {
       window.setTimeout(() => {
         var swiper = new Swiper('.home3-testimonial-slider', {
-          slidesPerView: 1,
+          slidesPerView: 2,
           speed: 1500,
           spaceBetween: 30,
           navigation: {

@@ -35,11 +35,12 @@
                 <div class="testimonial-card3">
                   <div class="author-area">
                     <div class="author-img">
-                      <img [src]="
-                          item?.data.profileImage.iv
-                            ? item?.data.profileImage.iv
-                            : 'assets/img/person-circle.svg'
-                        " alt="profileImage" />
+                      <img *ngIf="item?.data?.profileImage?.iv" 
+                          [src]="item?.data?.profileImage?.iv" 
+                          alt="{{ item?.data?.customerName?.iv }}">
+                      <div *ngIf="!item?.data?.profileImage?.iv" class="avatar-placeholder">
+                          {{ getInitials(item?.data?.customerName?.iv) }}
+                      </div>
                     </div>
                     <div class="content">
                       <h6>{{ item?.data?.customerName?.iv }}</h6>
