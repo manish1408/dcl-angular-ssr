@@ -9198,7 +9198,7 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
 }
 .home3-banner-section .bottom-img2 {
   position: absolute;
-  left: 36%;
+  left: 36% !important;
   transform: translateX(-50%);
   bottom: -22%;
 }
