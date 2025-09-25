@@ -427,11 +427,11 @@
                                     <p>{{ testimonial?.data?.testimonialText?.iv }}</p>
                                     
                                     <!-- Review Platform Links -->
-                                    <a *ngIf="testimonial?.data?.reviewPlatform?.iv === 'goodfirms'" [href]="testimonial?.data?.ctaLink?.iv"
-                                        class="read-more-btn" target="_blank"><span>Read complete review on Goodfirms</span></a>
-                                    
-                                    <a *ngIf="testimonial?.data?.reviewPlatform?.iv === 'clutch'" [href]="testimonial?.data?.ctaLink?.iv"
-                                        class="read-more-btn" target="_blank"><span>Read complete review on Clutch</span></a>
+                                    <a *ngIf="shouldShowReviewLink(testimonial)" 
+                                        [href]="testimonial?.data?.ctaLink?.iv"
+                                        class="read-more-btn" target="_blank">
+                                        <span>{{ getReviewLinkText(testimonial) }}</span>
+                                    </a>
                                     
                                     <div class="logo-and-rating mt-2">
                                         <div class="logo">

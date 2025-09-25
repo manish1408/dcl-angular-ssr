@@ -87,6 +87,17 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     this.testimonialService.fetchTestimonials().subscribe((res: any) => {
       this.testimonials = res.items;
       console.log('testimonials', this.testimonials);
+      
+      // Debug each testimonial's link data
+      this.testimonials.forEach((testimonial: any, index: number) => {
+        console.log(`Testimonial ${index + 1}:`, {
+          customerName: testimonial?.data?.customerName?.iv,
+          reviewPlatform: testimonial?.data?.reviewPlatform?.iv,
+          ctaLink: testimonial?.data?.ctaLink?.iv,
+          hasLink: !!(testimonial?.data?.ctaLink?.iv)
+        });
+      });
+      
       // Initialize Swiper after data is loaded
       this.initializeSwiper();
     });
@@ -135,7 +146,7 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
         );
         if (swiperElement && typeof Swiper !== 'undefined') {
           this.swiperInstance = new Swiper('.home3-testimonial-slider', {
-            slidesPerView: 2,
+            slidesPerView: 3,
             speed: 1500,
             spaceBetween: 30,
             loop: true,
@@ -696,5 +707,22 @@ export class ProductPageComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     
     return (names[0].charAt(0) + names[names.length - 1].charAt(0)).toUpperCase();
+  }
+
+  // Method to check if testimonial should show review link
+  shouldShowReviewLink(testimonial: any): boolean {
+    return !!(testimonial?.data?.ctaLink?.iv);
+  }
+
+  // Method to get review link text
+  getReviewLinkText(testimonial: any): string {
+    const platform = testimonial?.data?.reviewPlatform?.iv;
+    if (platform === 'goodfirms') {
+      return 'Read complete review on Goodfirms';
+    } else if (platform === 'clutch') {
+      return 'Read complete review on Clutch';
+    } else {
+      return 'Read complete review';
+    }
   }
 }
