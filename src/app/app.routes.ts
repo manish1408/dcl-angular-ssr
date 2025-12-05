@@ -5,6 +5,7 @@ import { SolutionComponent } from './solutions/solution/solution.component';
 import { CaseStudiesComponent } from './case-studies/case-studies.component';
 import { CaseDetailsComponent } from './case-details/case-details.component';
 import { ContactComponent } from './contact/contact.component';
+import { ScheduleComponent } from './schedule-call/schedule/schedule.component';
 import { BasicDetailsComponent } from './schedule-call/basic-details/basic-details.component';
 import { BudgetComponent } from './schedule-call/budget/budget.component';
 import { ContactInformationComponent } from './schedule-call/contact-information/contact-information.component';
@@ -62,6 +63,7 @@ export const routes: Routes = [
     path: 'schedule-call/it-professionals/:id',
     component: ItProfessionalsComponent,
   },
+  { path: 'schedule-call/schedule', component: ScheduleComponent },
   { path: 'schedule-call/start-date/:id', component: StartDateComponent },
   { path: 'schedule-call/technologies/:id', component: TechnologiesComponent },
   { path: 'thank-you', component: ThankYouComponent },
@@ -111,6 +113,7 @@ export const ssrTracking: Routes = [
     path: 'schedule-call/it-professionals/:id',
     component: ItProfessionalsComponent,
   },
+  { path: 'schedule-call/schedule', component: ScheduleComponent },
   { path: 'schedule-call/start-date/:id', component: StartDateComponent },
   { path: 'schedule-call/technologies/:id', component: TechnologiesComponent },
   { path: 'thank-you', component: ThankYouComponent },
