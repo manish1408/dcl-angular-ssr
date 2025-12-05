@@ -1,0 +1,65 @@
+<!-- Start Home3 Faq section -->
+<div class="home3-faq-section">
+  <div class="container">
+    <div class="row justify-content-center mb-70">
+      <div class="col-lg-8">
+        <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+              <g>
+                <circle cx="5" cy="5" r="5" />
+              </g>
+            </svg>
+            Frequently asked questions
+            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+              <g>
+                <circle cx="5" cy="5" r="5" />
+              </g>
+            </svg>
+          </span>
+          <h2>Common questions about our services</h2>
+        </div>
+      </div>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-content">
+        <div class="accordion" id="accordionTravel">
+          <div class="row g-lg-5 g-4">
+            @if (faqs && faqs.length > 0) {
+              @for (faq of faqs; track $index) {
+                <div class="col-lg-6 wow animate fadeInLeft" [attr.data-wow-delay]="$index % 2 === 0 ? '200ms' : '400ms'" data-wow-duration="1500ms">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" [id]="'faqheading' + $index">
+                      <button 
+                        class="accordion-button" 
+                        [class.collapsed]="!faq.isOpen"
+                        type="button" 
+                        data-bs-toggle="collapse"
+                        [attr.data-bs-target]="'#faqcollapse' + $index" 
+                        [attr.aria-expanded]="faq.isOpen"
+                        [attr.aria-controls]="'faqcollapse' + $index"
+                        (click)="toggleFaq($index)">
+                        {{ faq.data?.question?.iv || faq.question }}
+                      </button>
+                    </h2>
+                    <div 
+                      [id]="'faqcollapse' + $index" 
+                      class="accordion-collapse collapse" 
+                      [class.show]="faq.isOpen"
+                      [attr.aria-labelledby]="'faqheading' + $index"
+                      data-bs-parent="#accordionTravel">
+                      <div class="accordion-body" [innerHTML]="faq.data?.answer?.iv || faq.answer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Home3 Faq section -->
+

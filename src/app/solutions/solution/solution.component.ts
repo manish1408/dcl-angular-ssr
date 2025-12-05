@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { TestimonialCardComponent } from '../../common/testimonial-card/testimonial-card.component';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
@@ -12,8 +12,13 @@ import { HiringProcessComponent } from '../../common/hiring-process/hiring-proce
 import { SolutionsService } from '../../services/solutions.service';
 import { CommonModule } from '@angular/common';
 import { CommonService } from '../../services/common.service';
+import { HomeTestimonialsComponent } from '../../common/home-testimonials/home-testimonials.component';
+import { HomeFaqComponent } from '../../common/home-faq/home-faq.component';
+import { HomeService } from '../../services/home.service';
+import { FaqService } from '../../services/faq.service';
 
 declare var Swiper: any;
+declare var jQuery: any;
 
 @Component({
   selector: 'app-solution',
@@ -27,11 +32,13 @@ declare var Swiper: any;
     ScheduleCallCTAComponent,
     HiringProcessComponent,
     CommonModule,
+    HomeTestimonialsComponent,
+    HomeFaqComponent,
   ],
   templateUrl: './solution.component.html',
   styleUrl: './solution.component.scss',
 })
-export class SolutionComponent {
+export class SolutionComponent implements AfterViewInit {
   constructor(
     private meta: Meta,
     private route: ActivatedRoute,
@@ -40,7 +47,9 @@ export class SolutionComponent {
     private toastr: ToastrService,
     private solutionsService: SolutionsService,
     private title: Title,
-    private common: CommonService
+    private common: CommonService,
+    private homeService: HomeService,
+    private faqService: FaqService
   ) {
     this.meta.addTag({ name: 'title', content: 'Home page' });
   }
@@ -58,6 +67,8 @@ export class SolutionComponent {
   loading: boolean = true;
   testimonialsArray: any = [];
   reversedTestimonials: any = [];
+  ctaDetails: any = [];
+  faqs: any = [];
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -138,6 +149,8 @@ export class SolutionComponent {
       }
 
       this.getSolutions();
+      this.getCTA();
+      this.getFAQs();
       // this.getCaseStudies();
       if (this.common.isBrowser()) {
         window.scroll({
@@ -220,6 +233,7 @@ export class SolutionComponent {
         this.loading = false;
         this.swiperinitTestimonial();
         this.swiperinit();
+        this.initializeMarquee();
         this.solutions = res?.items.filter((item: any) => {
           if (
             item.data.testimonials &&
@@ -239,26 +253,76 @@ export class SolutionComponent {
       });
   }
 
+  getCTA() {
+    this.homeService.getCTA().then((res) => {
+      this.ctaDetails = res.items;
+    });
+  }
+
+  getFAQs() {
+    this.faqService.getFAQ().subscribe((response: any) => {
+      this.faqs = (response?.items || []).map((faq: any, index: number) => ({
+        ...faq,
+        isOpen: index === 0 // First FAQ open by default
+      }));
+    });
+  }
+
+  ngAfterViewInit(): void {
+    if (this.common.isBrowser()) {
+      // Initialize marquee after view is ready
+      setTimeout(() => {
+        this.initializeMarquee();
+      }, 100);
+    }
+  }
+
+  initializeMarquee(): void {
+    if (this.common.isBrowser() && typeof jQuery !== 'undefined' && jQuery.fn.marquee) {
+      const marqueeElement = jQuery('app-solution .marquee_text');
+      if (marqueeElement.length > 0) {
+        // Destroy existing marquee if it exists
+        try {
+          marqueeElement.marquee('destroy');
+        } catch (e) {
+          // Ignore if marquee is not initialized
+        }
+        
+        // Initialize marquee with options
+        marqueeElement.marquee({
+          duration: 20000,
+          gap: 50,
+          duplicated: true,
+          direction: 'left',
+          pauseOnHover: true,
+          startVisible: true
+        });
+      }
+    }
+  }
+
   onSubmit(formValues: any) {
     if (formValues.valid) {
       this.isLoading = true;
       this.formDataService
         .saveScheduleCall(formValues.value)
-        .subscribe((res) => {
-          this.isLoading = false;
-          if (res.result === 1) {
-            this.id = res.data._id;
-            this.router.navigate(
-              ['/schedule-call/contact-information', this.id],
-              { queryParams: { services: 'true' } }
-            );
+        .subscribe({
+          next: (res) => {
+            this.isLoading = false;
+            if (res.result === 1) {
+              this.id = res.data._id;
+              this.router.navigate(
+                ['/schedule-call/contact-information', this.id],
+                { queryParams: { services: 'true' } }
+              );
+            }
+          },
+          error: (error: any) => {
+            this.isLoading = false;
+            console.error('Error occurred:', error);
+            this.toastr.error('Something went wrong. Please try again.');
           }
-        }),
-        (error: any) => {
-          this.isLoading = false;
-          console.error('Error occurred:', error);
-          this.toastr.error('Something went wrong. Please try again.');
-        };
+        });
     }
   }
 }
