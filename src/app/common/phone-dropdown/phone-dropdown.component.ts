@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PHONE_BOOK } from './phone-codes';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -11,16 +11,24 @@ import { ClickOutsideDirective } from '../../_directives/click-outside.directive
   templateUrl: './phone-dropdown.component.html',
   styleUrl: './phone-dropdown.component.scss',
 })
-export class PhoneDropdownComponent {
+export class PhoneDropdownComponent implements OnInit {
   countries: any = PHONE_BOOK;
   filteredCountries: any = PHONE_BOOK;
   searchTerm = '';
   dropdownOpen = false;
+  @Input() defaultCountryCode: string = '+44'; // Default to UK
   selectedCountry: any = PHONE_BOOK[231];
   @Output() countrySelected = new EventEmitter<any>();
   constructor() {}
 
   ngOnInit() {
+    // Find the country with the default code
+    const defaultCountry = PHONE_BOOK.find((country: any) => 
+      country.phone[0] === this.defaultCountryCode
+    );
+    if (defaultCountry) {
+      this.selectedCountry = defaultCountry;
+    }
     this.countrySelected.emit(this.selectedCountry);
   }
   toggleDropdown() {

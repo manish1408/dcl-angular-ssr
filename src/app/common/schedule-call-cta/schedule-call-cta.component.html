@@ -52,7 +52,7 @@
                               </g>
                           </svg>
                       </span>
-                      <h2>Connect with Zenfy</h2>
+                      <h2>Connect with Distinct Cloud Labs</h2>
                       <p>Ready to take the first step towards unlocking opportunities, realizing goals, and embracing innovation? We're here and eager to connect.</p>
                   </div>
                   <div class="contact-area wow animate fadeInUp animated" data-wow-delay="300ms" data-wow-duration="1000ms" style="visibility: visible; animation-duration: 1000ms; animation-delay: 300ms;">
@@ -66,7 +66,7 @@
                           </div>
                           <div class="content">
                               <span>To More Inquiry</span>
-                              <h6><a href="tel:+990737621432">+990-737 621 432</a></h6>
+                              <h6><a href="tel:+447404139874">+44 7404139874</a></h6>
                           </div>
                       </div>
                       <div class="hotline-area">
@@ -81,7 +81,7 @@
                           </div>
                           <div class="content">
                               <span>To Send Mail</span>
-                              <h6><a href="mailto:info@example.com">info gmail.com</a></h6>
+                              <h6><a href="mailto:contact@distinctcloud.io">contact&#64;distinctcloud.io</a></h6>
                           </div>
                       </div>
                   </div>
@@ -89,19 +89,19 @@
                       <h6>Social Just You Connected Us!</h6>
                       <ul class="social-list">
                           <li>
-                              <a href="https://www.linkedin.com/">
+                              <a href="https://in.linkedin.com/company/distinct-cloud-labs">
                                   <i class="bi bi-linkedin"></i>
                                   <span>LinkedIn</span>
                               </a>
                           </li>
                           <li>
-                              <a href="https://www.facebook.com/">
+                              <a href="https://www.facebook.com/distinctcloudlabs/">
                                   <i class="bi bi-facebook"></i>
                                   <span>Facebook</span>
                               </a>
                           </li>
                           <li>
-                              <a href="https://twitter.com/">
+                              <a href="https://twitter.com/distinct_cloud">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
                                       <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"></path>
                                     </svg>
@@ -109,7 +109,7 @@
                               </a>
                           </li>
                           <li>
-                              <a href="https://www.instagram.com/">
+                              <a href="https://www.instagram.com/distinctcloudlabs">
                                   <i class="bi bi-instagram"></i>
                                   <span>Instagram</span>
                               </a>
@@ -122,47 +122,120 @@
               <div class="contact-form-wrap">
                   <div class="contact-form-area">
                       <h3>Your Success Starts Here!</h3>
-                      <form>
+                      <form [formGroup]="contactForm">
                           <div class="row">
                               <div class="col-lg-6 mb-20">
                                   <div class="form-inner">
-                                      <label>Full Name</label>
-                                      <input type="text">
+                                      <label for="name">Full Name</label>
+                                      <input
+                                        type="text"
+                                        formControlName="name"
+                                        id="name"
+                                        class="form-control"
+                                        [ngClass]="{ 'is-invalid': hasError('name') }"
+                                      />
+                                      <div class="invalid-feedback">Name is required</div>
                                   </div>
                               </div>
                               <div class="col-lg-6 mb-20">
                                   <div class="form-inner">
-                                      <label>Company / Organization *</label>
-                                      <input type="text">
+                                      <label for="company">Company / Organization *</label>
+                                      <input
+                                        type="text"
+                                        formControlName="company"
+                                        id="company"
+                                        class="form-control"
+                                        [ngClass]="{ 'is-invalid': hasError('company') }"
+                                      />
+                                      <div class="invalid-feedback">Company is required</div>
                                   </div>
                               </div>
                               <div class="col-lg-6 mb-20">
                                   <div class="form-inner">
-                                      <label>Phone *</label>
-                                      <input type="text">
+                                      <label for="phone">Phone *</label>
+                                      <div class="d-flex align-items-start gap-0">
+                                          <app-phone-dropdown [defaultCountryCode]="'+44'" (countrySelected)="onCountrySelected($event)"></app-phone-dropdown>
+                                          <div class="w-100">
+                                              <input
+                                                id="phone"
+                                                type="text"
+                                                maxlength="11"
+                                                inputmode="numeric"
+                                                pattern="[0-9]*"
+                                                formControlName="phone"
+                                                class="form-control phone-input"
+                                                [ngClass]="{ 'is-invalid': hasError('phone') }"
+                                                (keypress)="allowOnlyNumbers($event)"
+                                              />
+                                          </div>
+                                      </div>
+                                      <div class="invalid-feedback d-block" *ngIf="hasError('phone')">
+                                          Phone is required
+                                      </div>
                                   </div>
                               </div>
                               <div class="col-lg-6 mb-20">
                                   <div class="form-inner">
-                                      <label>Company email *</label>
-                                      <input type="email">
+                                      <label for="email">Company email *</label>
+                                      <input
+                                        type="email"
+                                        formControlName="email"
+                                        id="email"
+                                        class="form-control"
+                                        [ngClass]="{
+                                          'is-invalid': hasError('email') || hasEmailFormatError()
+                                        }"
+                                      />
+                                      <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
+                                        Invalid email format
+                                      </div>
+                                      <div
+                                        *ngIf="hasError('email') && !hasEmailFormatError()"
+                                        class="invalid-feedback"
+                                      >
+                                        Email is required
+                                      </div>
                                   </div>
                               </div>
                               <div class="col-lg-12 mb-20">
                                   <div class="form-inner">
-                                      <label>Your Subject *</label>
-                                      <input type="text">
+                                      <label for="subject">Your Subject *</label>
+                                      <input
+                                        type="text"
+                                        formControlName="subject"
+                                        id="subject"
+                                        class="form-control"
+                                        [ngClass]="{ 'is-invalid': hasError('subject') }"
+                                      />
+                                      <div class="invalid-feedback">Subject is required</div>
                                   </div>
                               </div>
                               <div class="col-lg-12 mb-30">
                                   <div class="form-inner">
-                                      <label>Message *</label>
-                                      <textarea></textarea>
+                                      <label for="message">Message *</label>
+                                      <textarea
+                                        formControlName="message"
+                                        id="message"
+                                        class="form-control"
+                                        [ngClass]="{ 'is-invalid': hasError('message') }"
+                                      ></textarea>
+                                      <div class="invalid-feedback">Message is required</div>
                                   </div>
                               </div>
                               <div class="col-lg-12">
                                   <div class="form-inner">
-                                      <button class="primary-btn2" type="submit" data-text="Submit Now"><span>Submit Now</span>
+                                      <button
+                                        class="primary-btn2"
+                                        type="submit"
+                                        data-text="Submit Now"
+                                        (click)="onSubmit()"
+                                      >
+                                        <span>Submit Now</span>
+                                        <span
+                                          *ngIf="isLoading"
+                                          class="spinner-border spinner-border-sm mx-2"
+                                          role="status"
+                                        ></span>
                                       </button>
                                   </div>
                               </div>

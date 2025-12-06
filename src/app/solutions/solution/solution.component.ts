@@ -16,6 +16,8 @@ import { HomeTestimonialsComponent } from '../../common/home-testimonials/home-t
 import { HomeFaqComponent } from '../../common/home-faq/home-faq.component';
 import { HomeService } from '../../services/home.service';
 import { FaqService } from '../../services/faq.service';
+import { FaqComponent } from "../../faq/faq.component";
+import { TestimonialService } from '../../services/testimonial.service';
 
 declare var Swiper: any;
 declare var jQuery: any;
@@ -34,7 +36,8 @@ declare var jQuery: any;
     CommonModule,
     HomeTestimonialsComponent,
     HomeFaqComponent,
-  ],
+    FaqComponent
+],
   templateUrl: './solution.component.html',
   styleUrl: './solution.component.scss',
 })
@@ -49,7 +52,8 @@ export class SolutionComponent implements AfterViewInit {
     private title: Title,
     private common: CommonService,
     private homeService: HomeService,
-    private faqService: FaqService
+    private faqService: FaqService,
+    private testimonialService: TestimonialService
   ) {
     this.meta.addTag({ name: 'title', content: 'Home page' });
   }
@@ -65,10 +69,22 @@ export class SolutionComponent implements AfterViewInit {
   buttonCta: string = '';
   solutions: any = [];
   loading: boolean = true;
-  testimonialsArray: any = [];
-  reversedTestimonials: any = [];
+  testimonials: any = [];
   ctaDetails: any = [];
   faqs: any = [];
+  
+  // FAQ accordion state
+  activeFaqId: string | null = 'faqcollapseOne'; // Default open accordion
+
+  // FAQ toggle method
+  toggleFaq(faqId: string): void {
+    this.activeFaqId = this.activeFaqId === faqId ? null : faqId;
+  }
+
+  // FAQ check method
+  isFaqOpen(faqId: string): boolean {
+    return this.activeFaqId === faqId;
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -151,6 +167,7 @@ export class SolutionComponent implements AfterViewInit {
       this.getSolutions();
       this.getCTA();
       this.getFAQs();
+      this.getTestimonials();
       // this.getCaseStudies();
       if (this.common.isBrowser()) {
         window.scroll({
@@ -214,7 +231,7 @@ export class SolutionComponent implements AfterViewInit {
     if (this.common.isBrowser()) {
       window.setTimeout(() => {
         var swiper = new Swiper('.home3-testimonial-slider', {
-          slidesPerView: 1,
+          slidesPerView: 3,
           speed: 1500,
           spaceBetween: 30,
           navigation: {
@@ -231,19 +248,9 @@ export class SolutionComponent implements AfterViewInit {
       .getSolutions()
       .then((res) => {
         this.loading = false;
-        this.swiperinitTestimonial();
         this.swiperinit();
         this.initializeMarquee();
         this.solutions = res?.items.filter((item: any) => {
-          if (
-            item.data.testimonials &&
-            item.data['identifier-slug'].iv === this.pageType
-          ) {
-            this.testimonialsArray.push(item.data);
-            for (let i = item.data.testimonials.iv.length - 1; i >= 0; i--) {
-              this.reversedTestimonials.push(item.data.testimonials.iv[i]);
-            }
-          }
           return item.data['identifier-slug'].iv === this.pageType;
         });
       })
@@ -251,6 +258,13 @@ export class SolutionComponent implements AfterViewInit {
         console.log(err);
         this.loading = false;
       });
+  }
+
+  getTestimonials() {
+    this.testimonialService.fetchTestimonials().subscribe((res: any) => {
+      this.testimonials = res.items;
+      this.swiperinitTestimonial();
+    });
   }
 
   getCTA() {

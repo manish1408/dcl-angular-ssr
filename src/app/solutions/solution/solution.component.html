@@ -541,7 +541,7 @@
   </div>
 </div>
 
-<app-home-testimonials [testimonials]="reversedTestimonials"></app-home-testimonials> 
+<app-home-testimonials [testimonials]="testimonials"></app-home-testimonials> 
 
 
 <div class="home1-solution-section mb-110">
@@ -694,3 +694,127 @@
 </div>
 
 <app-schedule-call-cta [services]="ctaDetails"></app-schedule-call-cta>
+
+<!-- Start Home3 Faq section -->
+<div class="home3-faq-section">
+    <div class="container">
+      <div class="row justify-content-center mb-70">
+        <div class="col-lg-8">
+          <div class="section-title text-center wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms">
+            <span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                <g>
+                  <circle cx="5" cy="5" r="5" />
+                </g>
+              </svg>
+              Frequently asked questions
+              <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+                <g>
+                  <circle cx="5" cy="5" r="5" />
+                </g>
+              </svg>
+            </span>
+            <h2>Common questions about AI-Driven MVP Development</h2>
+          </div>
+        </div>
+      </div>
+      <div class="faq-wrap">
+        <div class="faq-content">
+          <div class="accordion" id="accordionTravel">
+            <div class="row g-lg-5 g-4">
+              <div class="col-lg-6 wow animate fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="faqheadingOne">
+                    <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseOne')" type="button"
+                      (click)="toggleFaq('faqcollapseOne')">
+                      What is AI-Driven MVP Development and how does it work?
+                    </button>
+                  </h2>
+                  <div id="faqcollapseOne" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseOne')"
+                    [class.collapse]="!isFaqOpen('faqcollapseOne')" aria-labelledby="faqheadingOne">
+                    <div class="accordion-body">
+                      AI-Driven MVP Development leverages artificial intelligence tools and automation to accelerate the creation of Minimum Viable Products. Our process uses AI for code generation, automated testing, intelligent design suggestions, and rapid prototyping. This approach allows us to deliver a fully functional MVP in just 3-4 weeks within a budget of $5K-$10K, significantly faster than traditional development methods.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="faqheadingTwo">
+                    <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseTwo')" type="button"
+                      (click)="toggleFaq('faqcollapseTwo')">
+                      How can you deliver an MVP in just 3-4 weeks?
+                    </button>
+                  </h2>
+                  <div id="faqcollapseTwo" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseTwo')"
+                    [class.collapse]="!isFaqOpen('faqcollapseTwo')" aria-labelledby="faqheadingTwo">
+                    <div class="accordion-body">
+                      Our accelerated timeline is achieved through AI-powered development tools, pre-built components, and streamlined processes. We use intelligent automation for repetitive tasks, leverage proven frameworks, and focus on core features that deliver value. With AI-assisted coding, automated testing, and efficient project management, we can build and deploy your MVP quickly without compromising quality.
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="faqheadingFour">
+                    <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseFour')" type="button"
+                      (click)="toggleFaq('faqcollapseFour')">
+                      What's included in the $5K-$10K budget?
+                    </button>
+                  </h2>
+                  <div id="faqcollapseFour" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseFour')"
+                    [class.collapse]="!isFaqOpen('faqcollapseFour')" aria-labelledby="faqheadingFour">
+                    <div class="accordion-body">
+                      Our budget includes complete MVP development with core features, AI integration, responsive design, basic testing, and deployment. This covers project planning, development, quality assurance, and initial launch support. Additional features, advanced AI capabilities, or extended support can be discussed based on your specific needs. We ensure transparency with no hidden costs.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 wow animate fadeInRight" data-wow-delay="200ms" data-wow-duration="1500ms">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="faqheadingFive">
+                    <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseFive')" type="button"
+                      (click)="toggleFaq('faqcollapseFive')">
+                      What technologies and AI tools do you use for MVP development?
+                    </button>
+                  </h2>
+                  <div id="faqcollapseFive" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseFive')"
+                    [class.collapse]="!isFaqOpen('faqcollapseFive')" aria-labelledby="faqheadingFive">
+                    <div class="accordion-body">
+                      We utilize modern frameworks like React, Angular, or Vue for frontend, Node.js or Python for backend, and AI tools including GPT models, automated code generators, and intelligent testing frameworks. Our stack also includes cloud services for deployment, AI-powered design tools, and automated CI/CD pipelines. The specific technologies are chosen based on your project requirements to ensure optimal performance and scalability.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="faqheadingSix">
+                    <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseSix')" type="button"
+                      (click)="toggleFaq('faqcollapseSix')">
+                      Can I add more features after the MVP is launched?
+                    </button>
+                  </h2>
+                  <div id="faqcollapseSix" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseSix')"
+                    [class.collapse]="!isFaqOpen('faqcollapseSix')" aria-labelledby="faqheadingSix">
+                    <div class="accordion-body">
+                      Absolutely! Our MVP is built with scalability in mind. After launch, you can add features, enhance AI capabilities, or expand functionality based on user feedback and market demands. We offer flexible post-launch support packages and can help you iterate and grow your product. The MVP serves as a solid foundation that can evolve into a full-featured application.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="faqheadingThree">
+                    <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseThree')" type="button"
+                      (click)="toggleFaq('faqcollapseThree')">
+                      What makes your AI-Driven MVP different from traditional development?
+                    </button>
+                  </h2>
+                  <div id="faqcollapseThree" class="accordion-collapse" [class.show]="isFaqOpen('faqcollapseThree')"
+                    [class.collapse]="!isFaqOpen('faqcollapseThree')" aria-labelledby="faqheadingThree">
+                    <div class="accordion-body">
+                      Our AI-Driven approach significantly reduces development time and costs while maintaining quality. We use AI for intelligent code generation, automated testing, smart design suggestions, and rapid iteration. This means faster time-to-market, lower costs, and the ability to validate your idea quickly. Traditional development typically takes 3-6 months and costs $30K-$100K+, while we deliver in 3-4 weeks for $5K-$10K.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End Home3 Faq section -->
