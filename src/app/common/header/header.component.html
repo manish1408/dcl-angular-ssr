@@ -27,7 +27,7 @@
   <div class="container">
     <div class="row g-lg-4 gy-5">
       <div class="col-lg-8">
-        <div class="sidebar-menu-wrap">
+        <div class="sidebar-menu-wrap"> 
           <ul class="main-menu align-items-center">
             <li class="fs-6">
               <a [routerLink]="['/home']" (click)="hideSidebar()">Home</a>
@@ -61,21 +61,21 @@
                                   }
                                   <div class="flex-grow-1">
                                     @if (link.routerLink) {
-                                      <a class="fs-6 d-block mb-1 fw-semibold text-decoration-none" 
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none" 
                                          [routerLink]="link.routerLink" 
                                          (click)="hideSidebar()"
                                          style="color: #111827;">
                                         {{ link.title }}
                                       </a>
                                     } @else if (link.link) {
-                                      <a class="fs-6 d-block mb-1 fw-semibold text-decoration-none" 
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none" 
                                          [href]="link.link" 
                                          (click)="hideSidebar()"
                                          style="color: #111827;">
                                         {{ link.title }}
                                       </a>
                                     } @else {
-                                      <span class="fs-6 d-block mb-1 fw-semibold" style="color: #111827;">
+                                      <span class="fs-6 d-block fw-semibold" style="color: #111827;">
                                         {{ link.title }}
                                       </span>
                                     }
@@ -150,21 +150,21 @@
                                     }
                                     <div class="flex-grow-1">
                                       @if (link.routerLink) {
-                                        <a class="fs-6 d-block mb-1 fw-semibold text-decoration-none" 
+                                        <a class="fs-6 d-block fw-semibold text-decoration-none" 
                                            [routerLink]="link.routerLink" 
                                            (click)="hideSidebar()"
                                            style="color: #111827;">
                                           {{ link.title }}
                                         </a>
                                       } @else if (link.link) {
-                                        <a class="fs-6 d-block mb-1 fw-semibold text-decoration-none" 
+                                        <a class="fs-6 d-block fw-semibold text-decoration-none" 
                                            [href]="link.link" 
                                            (click)="hideSidebar()"
                                            style="color: #111827;">
                                           {{ link.title }}
                                         </a>
                                       } @else {
-                                        <span class="fs-6 d-block mb-1 fw-semibold" style="color: #111827;">
+                                        <span class="fs-6 d-block fw-semibold" style="color: #111827;">
                                           {{ link.title }}
                                         </span>
                                       }
@@ -239,21 +239,21 @@
                                   }
                                   <div class="flex-grow-1">
                                     @if (link.routerLink) {
-                                      <a class="fs-6 d-block mb-1 fw-semibold text-decoration-none" 
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none" 
                                          [routerLink]="link.routerLink" 
                                          (click)="hideSidebar()"
                                          style="color: #111827;">
                                         {{ link.title }}
                                       </a>
                                     } @else if (link.link) {
-                                      <a class="fs-6 d-block mb-1 fw-semibold text-decoration-none" 
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none" 
                                          [href]="link.link" 
                                          (click)="hideSidebar()"
                                          style="color: #111827;">
                                         {{ link.title }}
                                       </a>
                                     } @else {
-                                      <span class="fs-6 d-block mb-1 fw-semibold" style="color: #111827;">
+                                      <span class="fs-6 d-block fw-semibold" style="color: #111827;">
                                         {{ link.title }}
                                       </span>
                                     }
@@ -327,21 +327,21 @@
                                   }
                                   <div class="flex-grow-1">
                                     @if (link.routerLink) {
-                                      <a class="fs-6 d-block mb-1 fw-semibold text-decoration-none" 
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none"
                                          [routerLink]="link.routerLink" 
                                          (click)="hideSidebar()"
                                          style="color: #111827;">
                                         {{ link.title }}
                                       </a>
                                     } @else if (link.link) {
-                                      <a class="fs-6 d-block mb-1 fw-semibold text-decoration-none" 
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none"
                                          [href]="link.link" 
                                          (click)="hideSidebar()"
                                          style="color: #111827;">
                                         {{ link.title }}
                                       </a>
                                     } @else {
-                                      <span class="fs-6 d-block mb-1 fw-semibold" style="color: #111827;">
+                                      <span class="fs-6 d-block fw-semibold" style="color: #111827;">
                                         {{ link.title }}
                                       </span>
                                     }
@@ -411,27 +411,31 @@
         </li>
         <li class="menu-item-has-children"
             (mouseenter)="showMegamenu('services')"
-            (mouseleave)="hideMegamenu()">
+            (mouseleave)="hideMegamenu()"
+            (click)="handleMenuClick('services', $event)">
           <div class="drop-down">Services</div>
           <i class="bi bi-plus dropdown-icon"></i>
         </li>
         @if(productNav.length > 0){
         <li class="menu-item-has-children"
             (mouseenter)="showMegamenu('products')"
-            (mouseleave)="hideMegamenu()">
+            (mouseleave)="hideMegamenu()"
+            (click)="handleMenuClick('products', $event)">
           <div class="drop-down">Products</div>
           <i class="bi bi-plus dropdown-icon"></i>
         </li>
         }
         <li class="menu-item-has-children"
             (mouseenter)="showMegamenu('case-studies')"
-            (mouseleave)="hideMegamenu()">
+            (mouseleave)="hideMegamenu()"
+            (click)="handleMenuClick('case-studies', $event)">
           <div class="drop-down">Case studies</div>
           <i class="bi bi-plus dropdown-icon"></i>
         </li>
         <li class="menu-item-has-children"
             (mouseenter)="showMegamenu('blog')"
-            (mouseleave)="hideMegamenu()">
+            (mouseleave)="hideMegamenu()"
+            (click)="handleMenuClick('blog', $event)">
           <div class="drop-down">Blog</div>
           <i class="bi bi-plus dropdown-icon"></i>
         </li>
@@ -461,5 +465,6 @@
   [isOpen]="isMegamenuOpen"
   (closeMenu)="hideMegamenu()"
   (mouseEnter)="keepMegamenuOpen()"
-  (mouseLeave)="hideMegamenu()">
+  (mouseLeave)="hideMegamenu()"
+  (linkClick)="closeMegamenuImmediately()">
 </app-megamenu>

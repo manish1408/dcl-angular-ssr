@@ -24,7 +24,9 @@ export class HeaderComponent implements OnInit {
   menuItems: MegaMenuItem[] = [];
   isMegamenuOpen = false;
   activeMenuType: string | null = null;
-  megamenuCloseTimer: any = null; 
+  megamenuCloseTimer: any = null;
+  isTouchDevice: boolean = false;
+  menuJustOpened: boolean = false; 
 
   constructor(
     private ourServicesService: OurServicesService,
@@ -87,6 +89,9 @@ export class HeaderComponent implements OnInit {
     this.serviceNav = [{"title":"Large Language Model & GPT Integration Services","slug":"llm-integration"},{"title":"AI-Powered App and Web Development Services","slug":"ai-app-development"},{"title":"Machine Learning Product Development Services","slug":"machine-learning"},{"title":"Agentic AI Development Services","slug":"agentic-ai"},{"title":"Generative AI Development Services","slug":"generative-ai"}];
     this.productNav = [{"title":"Milo Assistant","slug":"milo"}]; 
 
+    // Detect touch device
+    this.isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
     // this.getServices();
     // this.getProducts();
   }
@@ -107,15 +112,31 @@ export class HeaderComponent implements OnInit {
     this.activeMenuType = menuType;
     this.buildMenuItems(menuType);
     this.isMegamenuOpen = true;
+    
+    // On touch devices, set a flag to prevent immediate closing
+    if (this.isTouchDevice) {
+      this.menuJustOpened = true;
+      setTimeout(() => {
+        this.menuJustOpened = false;
+      }, 300);
+    }
   }
 
   hideMegamenu() {
-    // Add a small delay before closing to allow mouse movement
+    // On touch devices, don't close immediately if menu was just opened
+    if (this.isTouchDevice && this.menuJustOpened) {
+      return;
+    }
+    
+    // On touch devices, use a longer delay to prevent flickering
+    const delay = this.isTouchDevice ? 300 : 150;
+    
+    // Add a delay before closing to allow mouse movement or touch interaction
     this.megamenuCloseTimer = setTimeout(() => {
       this.isMegamenuOpen = false;
       this.activeMenuType = null;
       this.megamenuCloseTimer = null;
-    }, 150);
+    }, delay);
   }
 
   keepMegamenuOpen() {
@@ -124,6 +145,37 @@ export class HeaderComponent implements OnInit {
       clearTimeout(this.megamenuCloseTimer);
       this.megamenuCloseTimer = null;
     }
+  }
+
+  closeMegamenuImmediately() {
+    // Immediately close the menu (used when clicking links)
+    if (this.megamenuCloseTimer) {
+      clearTimeout(this.megamenuCloseTimer);
+      this.megamenuCloseTimer = null;
+    }
+    this.isMegamenuOpen = false;
+    this.activeMenuType = null;
+  }
+
+  handleMenuClick(menuType: string, event: Event) {
+    // On touch devices, toggle menu on click
+    if (this.isTouchDevice) {
+      // Only prevent default if clicking on the menu header itself, not links
+      const target = event.target as HTMLElement;
+      if (target.closest('a') === null) {
+        event.preventDefault();
+        event.stopPropagation();
+        
+        if (this.activeMenuType === menuType && this.isMegamenuOpen) {
+          // If same menu is open, close it
+          this.closeMegamenuImmediately();
+        } else {
+          // Open the menu
+          this.showMegamenu(menuType);
+        }
+      }
+    }
+    // On non-touch devices, mouseenter/mouseleave handle it
   }
 
   buildMenuItems(menuType: string) {
@@ -145,7 +197,7 @@ export class HeaderComponent implements OnInit {
                   icon: 'bi bi-puzzle',
                   iconColor: '#10b981',
                   routerLink: ['/solutions/ai-integration'],
-                  imageUrl: 'assets/img/services/1.jpg'
+                  imageUrl: 'assets/img/dcl-services.jpg'
                 },
                 {
                   title: 'AI powered Product Development',
@@ -153,7 +205,7 @@ export class HeaderComponent implements OnInit {
                   icon: 'bi bi-code-slash',
                   iconColor: '#8b5cf6',
                   routerLink: ['/solutions/custom-ai'],
-                  imageUrl: 'assets/img/services/2.jpg'
+                  imageUrl: 'assets/img/dcl-services.jpg'
                 },
                 {
                   title: 'Rescue stuck projects',
@@ -161,7 +213,7 @@ export class HeaderComponent implements OnInit {
                   icon: 'bi bi-gear',
                   iconColor: '#f59e0b',
                   routerLink: ['/solutions/automation'],
-                  imageUrl: 'assets/img/services/3.jpg'
+                  imageUrl: 'assets/img/dcl-services.jpg'
                 }
               ]
             },
@@ -174,7 +226,7 @@ export class HeaderComponent implements OnInit {
                   icon: 'bi bi-puzzle',
                   iconColor: '#10b981',
                   routerLink: ['/solutions/ai-integration'],
-                  imageUrl: 'assets/img/users/user_image1.webp'
+                  imageUrl: 'assets/img/dcl-services.jpg'
                 },
                 {
                   title: 'Hire Fractional CTO',
@@ -182,7 +234,7 @@ export class HeaderComponent implements OnInit {
                   icon: 'bi bi-code-slash',
                   iconColor: '#8b5cf6',
                   routerLink: ['/solutions/custom-ai'],
-                  imageUrl: 'assets/img/users/user_image2.webp'
+                  imageUrl: 'assets/img/dcl-services.jpg'
                 },
                 {
                   title: 'Hire AI and ML experts',
@@ -190,7 +242,7 @@ export class HeaderComponent implements OnInit {
                   icon: 'bi bi-gear',
                   iconColor: '#f59e0b',
                   routerLink: ['/solutions/automation'],
-                  imageUrl: 'assets/img/users/user_image3.webp'
+                  imageUrl: 'assets/img/dcl-services.jpg'
                 }
               ]
             },
@@ -203,7 +255,7 @@ export class HeaderComponent implements OnInit {
                   icon: 'bi bi-file-earmark-text',
                   iconColor: '#ef4444',
                   routerLink: ['/case-studies'],
-                  imageUrl: 'assets/img/automation.webp'
+                  imageUrl: 'assets/img/dcl-services.jpg'
                 },
                 {
                   title: 'Enterprise AI Automation with Distributed Systems',
@@ -211,16 +263,16 @@ export class HeaderComponent implements OnInit {
                   icon: 'bi bi-play-circle',
                   iconColor: '#06b6d4',
                   routerLink: ['/portfolios'],
-                  imageUrl: 'assets/img/omnichannel.webp'
+                  imageUrl: 'assets/img/dcl-services.jpg'
                 }
               ]
             }
           ],
-          guide: {
-            question: 'What is AI Development?',
-            linkText: 'Read more',
-            routerLink: ['/ai-development']
-          }
+          // guide: {
+          //   question: 'What is AI Development?',
+          //   linkText: 'Read more',
+          //   routerLink: ['/ai-development']
+          // }
         }
       ];
 
@@ -228,7 +280,7 @@ export class HeaderComponent implements OnInit {
       menuItem.rightPanel = {
         title: 'AI Development Services',
         description: 'Transform your business with cutting-edge AI solutions tailored to your needs.',
-        imageUrl: 'assets/img/automation.webp',
+        imageUrl: 'assets/img/dcl-services.jpg',
         notifications: []
       };
     } else if (menuType.toLowerCase() === 'products') {
@@ -315,11 +367,11 @@ export class HeaderComponent implements OnInit {
               ]
             }
           ],
-          guide: {
-            question: 'How do our products work?',
-            linkText: 'Learn more',
-            routerLink: ['/products/guide']
-          }
+          // guide: {
+          //   question: 'How do our products work?',
+          //   linkText: 'Learn more',
+          //   routerLink: ['/products/guide']
+          // }
         }
       ];
 
@@ -422,11 +474,11 @@ export class HeaderComponent implements OnInit {
               ]
             }
           ],
-          guide: {
-            question: 'Want to see your success story here?',
-            linkText: 'Get started',
-            routerLink: ['/contact']
-          }
+          // guide: {
+          //   question: 'Want to see your success story here?',
+          //   linkText: 'Get started',
+          //   routerLink: ['/contact']
+          // }
         }
       ];
 
@@ -530,11 +582,11 @@ export class HeaderComponent implements OnInit {
               ]
             }
           ],
-          guide: {
-            question: 'Have a topic you\'d like us to cover?',
-            linkText: 'Suggest an article',
-            routerLink: ['/contact']
-          }
+          // guide: {
+          //   question: 'Have a topic you\'d like us to cover?',
+          //   linkText: 'Suggest an article',
+          //   routerLink: ['/contact']
+          // }
         }
       ];
 
@@ -566,8 +618,6 @@ export class HeaderComponent implements OnInit {
         slug: item.data.slug.iv,
       }));
       this.productNav = [{"title":"Milo Assistant","slug":"milo"}]; 
-      debugger
-      console.log(JSON.stringify(res));
     });
   }
 }

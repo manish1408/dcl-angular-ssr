@@ -243,6 +243,119 @@ export class SolutionComponent implements AfterViewInit {
     }
   }
 
+  swiperinitProcessSlider() {
+    if (this.common.isBrowser()) {
+      window.setTimeout(() => {
+        try {
+          // Check if the element exists before initializing
+          const swiperElement = document.querySelector('.process-slider');
+          if (swiperElement && typeof Swiper !== 'undefined') {
+            // Destroy existing instance if it exists
+            const existingSwiper = (swiperElement as any).swiper;
+            if (existingSwiper) {
+              existingSwiper.destroy(true, true);
+            }
+            
+            var swiper = new Swiper('.process-slider', {
+              slidesPerView: 1,
+              speed: 1500,
+              spaceBetween: 25,
+              loop: true,
+              navigation: {
+                nextEl: '.process-slider-next',
+                prevEl: '.process-slider-prev',
+              },
+              breakpoints: {
+                280: {
+                  slidesPerView: 1,
+                },
+                576: {
+                  slidesPerView: 1,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+                },
+                992: {
+                  slidesPerView: 3,
+                  spaceBetween: 25,
+                },
+                1200: {
+                  slidesPerView: 3,
+                  spaceBetween: 25,
+                },
+              },
+            });
+          }
+        } catch (error) {
+          console.error('Error initializing process slider:', error);
+        }
+      }, 200);
+    }
+  }
+
+  swiperinitPortfolioSlider() {
+    if (this.common.isBrowser()) {
+      window.setTimeout(() => {
+        try {
+          // Check if the element exists before initializing
+          const swiperElement = document.querySelector('.portfolio-slider');
+          if (swiperElement && typeof Swiper !== 'undefined') {
+            // Destroy existing instance if it exists
+            const existingSwiper = (swiperElement as any).swiper;
+            if (existingSwiper) {
+              existingSwiper.destroy(true, true);
+            }
+            
+            var swiper = new Swiper('.portfolio-slider', {
+              slidesPerView: 1,
+              speed: 1500,
+              spaceBetween: 25,
+              loop: true,
+              autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+              },
+              pagination: {
+                el: '.pagination1',
+                clickable: true,
+              },
+              breakpoints: {
+                280: {
+                  slidesPerView: 1,
+                },
+                386: {
+                  slidesPerView: 1,
+                },
+                576: {
+                  slidesPerView: 1,
+                  spaceBetween: 15,
+                },
+                768: {
+                  slidesPerView: 2,
+                  spaceBetween: 15,
+                },
+                992: {
+                  slidesPerView: 3,
+                  spaceBetween: 15,
+                },
+                1200: {
+                  slidesPerView: 3,
+                  spaceBetween: 15,
+                },
+                1400: {
+                  slidesPerView: 3,
+                },
+              },
+            });
+          }
+        } catch (error) {
+          console.error('Error initializing portfolio slider:', error);
+        }
+      }, 200);
+    }
+  }
+
   getSolutions() {
     this.solutionsService
       .getSolutions()
@@ -287,6 +400,8 @@ export class SolutionComponent implements AfterViewInit {
       // Initialize marquee after view is ready
       setTimeout(() => {
         this.initializeMarquee();
+        this.swiperinitProcessSlider();
+        this.swiperinitPortfolioSlider();
       }, 100);
     }
   }

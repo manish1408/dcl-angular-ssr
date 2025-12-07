@@ -61,6 +61,7 @@ export class MegamenuComponent implements OnInit, OnChanges {
   @Output() menuItemClick = new EventEmitter<MegaMenuItem>();
   @Output() mouseEnter = new EventEmitter<void>();
   @Output() mouseLeave = new EventEmitter<void>();
+  @Output() linkClick = new EventEmitter<void>();
 
   activeItem: number | null = null;
   hoveredImageUrl: string | null = null;
@@ -85,6 +86,7 @@ export class MegamenuComponent implements OnInit, OnChanges {
 
   @HostListener('document:click', ['$event'])
   onClickOutside(event: Event) {
+    // Don't close if clicking inside the megamenu
     if (this.isOpen && !this.elementRef.nativeElement.contains(event.target)) {
       this.closeMenu.emit();
     }
@@ -109,8 +111,11 @@ export class MegamenuComponent implements OnInit, OnChanges {
     }
   }
 
-  onLinkClick() {
-    this.closeMenu.emit();
+  onLinkClick(event: Event) {
+    // Prevent the click from bubbling up to document click handler
+    event.stopPropagation();
+    // Emit link click event to parent (this will close the menu immediately)
+    this.linkClick.emit();
   }
 
   onMenuItemHover(imageUrl: string | undefined) {

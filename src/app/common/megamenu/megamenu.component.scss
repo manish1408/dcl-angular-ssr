@@ -8,6 +8,9 @@
   visibility: hidden;
   pointer-events: none;
   transition: opacity 0.3s ease, visibility 0.3s ease;
+  // Improve touch handling
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 
   &.open {
     opacity: 1;
@@ -151,6 +154,10 @@ body.dark {
 }
 
 .guide-link {
+  // Improve touch handling for links
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+  
   &:hover {
     background-color: #3b82f6;
     color: #ffffff !important;
@@ -165,6 +172,14 @@ body.dark {
   }
 }
 
+// Ensure all links in megamenu are properly touchable
+.megamenu-content a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+  cursor: pointer;
+  line-height: 15px;
+}
+
 // Responsive design
 @media (max-width: 991px) {
   .megamenu-content {
@@ -177,3 +192,4 @@ body.dark {
     margin-top: 50px;
   }
 }
+

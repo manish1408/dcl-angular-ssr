@@ -1,6 +1,7 @@
 <div class="megamenu-container d-lg-block d-none" [class.open]="isOpen" *ngIf="isOpen" 
      (mouseenter)="onMouseEnter()"
-     (mouseleave)="onMouseLeave()">
+     (mouseleave)="onMouseLeave()"
+     (click)="$event.stopPropagation()">
   <div class="megamenu-overlay" (click)="closeMenu.emit()"></div>
   <div class="megamenu-content">
     <div class="container">
@@ -20,7 +21,7 @@
                           </h6>
                           <ul class="list-unstyled mb-4">
                             @for (link of section.items; track $index) {
-                              <li class="mb-3 d-flex align-items-start"
+                              <li class="mb-4 d-flex align-items-start"
                                   (mouseenter)="onMenuItemHover(link.imageUrl)"
                                   (mouseleave)="onMenuItemLeave()">
                                 @if (link.icon) {
@@ -30,7 +31,7 @@
                                 }
                                 <div class="flex-grow-1">
                                   @if (link.routerLink) {
-                                    <a [routerLink]="link.routerLink" (click)="onLinkClick()" 
+                                    <a [routerLink]="link.routerLink" (click)="onLinkClick($event)" 
                                        class="text-decoration-none d-block mb-1 fw-semibold" 
                                        style="color: #111827; font-size: 14px;">
                                       {{ link.title }}
@@ -39,7 +40,7 @@
                                       }
                                     </a>
                                   } @else if (link.link) {
-                                    <a [href]="link.link" (click)="onLinkClick()" 
+                                    <a [href]="link.link" (click)="onLinkClick($event)" 
                                        class="text-decoration-none d-block mb-1 fw-semibold" 
                                        style="color: #111827; font-size: 14px;">
                                       {{ link.title }}
@@ -100,14 +101,14 @@
                             {{ column.guide.question }}
                           </p>
                           @if (column.guide.routerLink) {
-                            <a [routerLink]="column.guide.routerLink" (click)="onLinkClick()"
+                            <a [routerLink]="column.guide.routerLink" (click)="onLinkClick($event)"
                                class="text-decoration-none d-inline-flex align-items-center fw-semibold px-3 py-2 guide-link"
                                style="color: #3b82f6; font-size: 14px; border: 1px solid #3b82f6; border-radius: 6px; transition: all 0.3s ease;">
                               {{ column.guide.linkText }}
                               <i class="bi bi-arrow-right ms-2" style="font-size: 12px;"></i>
                             </a>
                           } @else if (column.guide.link) {
-                            <a [href]="column.guide.link" (click)="onLinkClick()"
+                            <a [href]="column.guide.link" (click)="onLinkClick($event)"
                                class="text-decoration-none d-inline-flex align-items-center fw-semibold px-3 py-2 guide-link"
                                style="color: #3b82f6; font-size: 14px; border: 1px solid #3b82f6; border-radius: 6px; transition: all 0.3s ease;">
                               {{ column.guide.linkText }}

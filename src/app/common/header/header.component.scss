@@ -48,10 +48,41 @@ transition: transform 0.4s ease, box-shadow 0.4s ease;
   overflow: hidden;
   transition: max-height 0.3s ease-out;
   padding-left: 15px;
+  list-style: none !important;
 
   &.show {
     max-height: 500px; // Adjust this value based on your content
     transition: max-height 0.5s ease-in;
+    overflow-y: scroll;
+  }
+
+  // Remove default list bullets from top-level li elements
+  > li {
+    list-style: none !important;
+    
+    &::before,
+    &::after,
+    &::marker {
+      display: none !important;
+      content: none !important;
+    }
+  }
+
+  // Remove default list bullets from all nested lists
+  ul {
+    list-style: none !important;
+    padding-left: 0 !important;
+    
+    li {
+      list-style: none !important;
+      
+      &::before,
+      &::after,
+      &::marker {
+        display: none !important;
+        content: none !important;
+      }
+    }
   }
 }
 
@@ -79,4 +110,22 @@ transition: transform 0.4s ease, box-shadow 0.4s ease;
 
 ul.submenu-list.show {
   display: block !important;
+}
+
+// Improve touch handling for menu items
+.menu-item-has-children {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  
+  .drop-down {
+    touch-action: manipulation;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar-menu .sidebar-menu-wrap .main-menu > li .submenu-list li a {
+    font-size: 14px !important;
+    line-height: 15px;
+  }
 }
