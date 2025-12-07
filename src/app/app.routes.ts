@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AIAgencyComponent } from './ai-agency/ai-agency.component';
-import { SolutionComponent } from './solutions/solution/solution.component';
+import { AiPoweredMvpDevelopmentComponent } from './solutions/ai-powered-mvp-development/ai-powered-mvp-development.component';
 import { CaseStudiesComponent } from './case-studies/case-studies.component';
 import { CaseDetailsComponent } from './case-details/case-details.component';
 import { ContactComponent } from './contact/contact.component';
@@ -41,7 +41,7 @@ export const routes: Routes = [
   },
   { path: 'n8n-agency', component: AIAgencyComponent },
   { path: 'dcl-sprint', component: DclSprintComponent },
-  { path: 'solutions/:type', component: SolutionComponent },
+  { path: 'solutions/:type', component: AiPoweredMvpDevelopmentComponent },
   { path: 'expertise/:type', component: ExperiseComponent },
   { path: 'case-studies', component: CaseStudiesComponent },
   { path: 'case-study/:type', component: CaseDetailsComponent },
@@ -90,7 +90,7 @@ export const routes: Routes = [
 ];
 
 export const ssrTracking: Routes = [
-  { path: 'solutions/:type', component: SolutionComponent },
+  { path: 'solutions/:type', component: AiPoweredMvpDevelopmentComponent },
   { path: 'expertise/:type', component: ExperiseComponent },
   { path: 'case-studies', component: CaseStudiesComponent },
   { path: 'case-study/:type', component: CaseDetailsComponent },

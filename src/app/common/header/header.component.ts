@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { OurServicesService } from '../../services/our-services.service';
 import { ProductsService } from '../../services/products.service';
 import { MegamenuComponent, MegaMenuItem, MegaMenuSection, MegaMenuGuide, MegaMenuRightPanel } from '../megamenu/megamenu.component';
@@ -30,7 +30,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private ourServicesService: OurServicesService,
-    private productService: ProductsService
+    private productService: ProductsService,
+    @Inject(PLATFORM_ID) private platformId: object
   ) {}
 
   showSidebar() {
@@ -89,8 +90,10 @@ export class HeaderComponent implements OnInit {
     this.serviceNav = [{"title":"Large Language Model & GPT Integration Services","slug":"llm-integration"},{"title":"AI-Powered App and Web Development Services","slug":"ai-app-development"},{"title":"Machine Learning Product Development Services","slug":"machine-learning"},{"title":"Agentic AI Development Services","slug":"agentic-ai"},{"title":"Generative AI Development Services","slug":"generative-ai"}];
     this.productNav = [{"title":"Milo Assistant","slug":"milo"}]; 
 
-    // Detect touch device
-    this.isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    // Detect touch device (only in browser)
+    if (isPlatformBrowser(this.platformId)) {
+      this.isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    }
 
     // this.getServices();
     // this.getProducts();
@@ -196,7 +199,7 @@ export class HeaderComponent implements OnInit {
                   description: 'Within a budget of 5K - 10K, we launch your MVP in 3-4 weeks.',
                   icon: 'bi bi-puzzle',
                   iconColor: '#10b981',
-                  routerLink: ['/solutions/ai-integration'],
+                  routerLink: ['/solutions/ai-powered-mvp-development'],
                   imageUrl: 'assets/img/dcl-services.jpg'
                 },
                 {
