@@ -54,9 +54,25 @@
                                     </span>
                                   }
                                   @if (link.description) {
-                                    <p class="mb-0" style="color: #6b7280; font-size: 13px; line-height: 1.5;">
-                                      {{ link.description }}
-                                    </p>
+                                    @if (link.routerLink) {
+                                      <a [routerLink]="link.routerLink" 
+                                         (click)="onLinkClick($event)" 
+                                         class="mb-0 text-decoration-none d-block" 
+                                         style="color: #6b7280; font-size: 13px; line-height: 1.5;">
+                                        {{ link.description }}
+                                      </a>
+                                    } @else if (link.link) {
+                                      <a [href]="link.link" 
+                                         (click)="onLinkClick($event)" 
+                                         class="mb-0 text-decoration-none d-block" 
+                                         style="color: #6b7280; font-size: 13px; line-height: 1.5;">
+                                        {{ link.description }}
+                                      </a>
+                                    } @else {
+                                      <p class="mb-0" style="color: #6b7280; font-size: 13px; line-height: 1.5;">
+                                        {{ link.description }}
+                                      </p>
+                                    }
                                   }
                                 </div>
                               </li>

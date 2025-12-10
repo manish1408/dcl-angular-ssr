@@ -207,7 +207,7 @@ export class HeaderComponent implements OnInit {
                   description: 'Within a budget of 10K - 50K, we launch your product in 3-4 months.',
                   icon: 'bi bi-code-slash',
                   iconColor: '#8b5cf6',
-                  routerLink: ['/solutions/custom-ai'],
+                  routerLink: ['/solutions/ai-powered-product-development'],
                   imageUrl: 'assets/img/dcl-services.jpg'
                 },
                 {
@@ -215,7 +215,7 @@ export class HeaderComponent implements OnInit {
                   description: 'You start the vibe, we finish it.',
                   icon: 'bi bi-gear',
                   iconColor: '#f59e0b',
-                  routerLink: ['/solutions/automation'],
+                  routerLink: ['/solutions/rescue-stuck-projects'],
                   imageUrl: 'assets/img/dcl-services.jpg'
                 }
               ]
@@ -228,7 +228,7 @@ export class HeaderComponent implements OnInit {
                   description: 'Experienced Engineers who have mastered AI driven development.',
                   icon: 'bi bi-puzzle',
                   iconColor: '#10b981',
-                  routerLink: ['/solutions/ai-integration'],
+                  routerLink: ['/solutions/hire-vibe-coders'],
                   imageUrl: 'assets/img/dcl-services.jpg'
                 },
                 {
@@ -236,7 +236,7 @@ export class HeaderComponent implements OnInit {
                   description: 'Tailored AI solutions for your specific needs.',
                   icon: 'bi bi-code-slash',
                   iconColor: '#8b5cf6',
-                  routerLink: ['/solutions/custom-ai'],
+                  routerLink: ['/solutions/hire-fractional-cto'],
                   imageUrl: 'assets/img/dcl-services.jpg'
                 },
                 {
@@ -244,7 +244,7 @@ export class HeaderComponent implements OnInit {
                   description: 'Automate workflows with intelligent AI agents.',
                   icon: 'bi bi-gear',
                   iconColor: '#f59e0b',
-                  routerLink: ['/solutions/automation'],
+                  routerLink: ['/solutions/hire-ai-ml-experts'],
                   imageUrl: 'assets/img/dcl-services.jpg'
                 }
               ]
@@ -257,7 +257,7 @@ export class HeaderComponent implements OnInit {
                   description: 'Explore successful AI implementations.',
                   icon: 'bi bi-file-earmark-text',
                   iconColor: '#ef4444',
-                  routerLink: ['/case-studies'],
+                  routerLink: ['/solutions/n8n-make-automation'],
                   imageUrl: 'assets/img/dcl-services.jpg'
                 },
                 {
@@ -265,7 +265,7 @@ export class HeaderComponent implements OnInit {
                   description: 'RPA and AI Automation for Enterprise',
                   icon: 'bi bi-play-circle',
                   iconColor: '#06b6d4',
-                  routerLink: ['/portfolios'],
+                  routerLink: ['/solutions/enterprise-ai-automation'],
                   imageUrl: 'assets/img/dcl-services.jpg'
                 }
               ]
@@ -292,96 +292,57 @@ export class HeaderComponent implements OnInit {
           sections: [
             {
               title: 'OUR PRODUCTS',
-              items: this.productNav.length > 0 ? this.productNav.map((product, index) => ({
-                title: product.title,
-                description: `Explore ${product.title} and its powerful features.`,
-                icon: 'bi bi-box-seam',
-                iconColor: '#3b82f6',
-                routerLink: ['/product', product.slug],
-                imageUrl: index === 0 ? 'assets/img/chatbot.webp' : 'assets/img/product/product-img1.jpg'
-              })) : [
+              items: [
                 {
-                  title: 'Milo Assistant',
-                  description: 'AI-powered assistant for your business needs.',
-                  icon: 'bi bi-robot',
+                  title: 'RAG as a Service',
+                  description: 'Build your RAG in minutes and deploy in your own cloud.',
+                  icon: 'bi bi-database',
+                  iconColor: '#3b82f6',
+                  routerLink: ['/product/rag-as-a-service'],
+                  imageUrl: 'assets/img/chatbot.webp'
+                },
+                {
+                  title: 'AI Voice calling Agents',
+                  description: 'Setup your voice calling Agents in cloud in 3~5 days.',
+                  icon: 'bi bi-telephone',
                   iconColor: '#10b981',
-                  routerLink: ['/product/milo'],
+                  routerLink: ['/product/ai-voice-calling-agents'],
+                  imageUrl: 'assets/img/chatbot.webp'
+                },
+                {
+                  title: 'AI Search Implementation',
+                  description: 'Connect your data, and get AI search up and running',
+                  icon: 'bi bi-search',
+                  iconColor: '#8b5cf6',
+                  routerLink: ['/product/ai-search-implementation'],
+                  imageUrl: 'assets/img/chatbot.webp'
+                },
+                {
+                  title: 'AI Customer Support',
+                  description: 'Implement AI auto replies in your existing stack using APIs',
+                  icon: 'bi bi-headset',
+                  iconColor: '#f59e0b',
+                  routerLink: ['/product/ai-customer-support'],
+                  imageUrl: 'assets/img/chatbot.webp'
+                },
+                {
+                  title: 'Whatsapp Business AI Agent',
+                  description: 'Grow your business on WhatsApp',
+                  icon: 'bi bi-whatsapp',
+                  iconColor: '#25d366',
+                  routerLink: ['/product/whatsapp-business-ai-agent'],
                   imageUrl: 'assets/img/chatbot.webp'
                 }
               ]
-            },
-            {
-              title: 'FEATURES',
-              items: [
-                {
-                  title: 'AI Integration',
-                  description: 'Seamless integration with your existing tools.',
-                  icon: 'bi bi-plug',
-                  iconColor: '#8b5cf6',
-                  routerLink: ['/products/features'],
-                  imageUrl: 'assets/img/innerpage/product-img1.jpg'
-                },
-                {
-                  title: 'Automation',
-                  description: 'Automate repetitive tasks with AI.',
-                  icon: 'bi bi-lightning',
-                  iconColor: '#f59e0b',
-                  routerLink: ['/products/automation'],
-                  imageUrl: 'assets/img/innerpage/product-img2.jpg'
-                },
-                {
-                  title: 'Analytics',
-                  description: 'Get insights from your data.',
-                  icon: 'bi bi-graph-up',
-                  iconColor: '#ef4444',
-                  routerLink: ['/products/analytics'],
-                  imageUrl: 'assets/img/innerpage/product-img3.jpg'
-                }
-              ]
-            },
-            {
-              title: 'RESOURCES',
-              items: [
-                {
-                  title: 'Product Demos',
-                  description: 'See our products in action.',
-                  icon: 'bi bi-play-btn',
-                  iconColor: '#06b6d4',
-                  routerLink: ['/portfolios'],
-                  imageUrl: 'assets/img/innerpage/portfolio-list-img1.jpg'
-                },
-                {
-                  title: 'Documentation',
-                  description: 'Learn how to use our products.',
-                  icon: 'bi bi-book',
-                  iconColor: '#6366f1',
-                  routerLink: ['/docs'],
-                  showExternalIcon: true,
-                  imageUrl: 'assets/img/innerpage/blog-img1.jpg'
-                },
-                {
-                  title: 'Support',
-                  description: 'Get help when you need it.',
-                  icon: 'bi bi-headset',
-                  iconColor: '#10b981',
-                  routerLink: ['/contact'],
-                  imageUrl: 'assets/img/innerpage/blog-img2.jpg'
-                }
-              ]
             }
-          ],
-          // guide: {
-          //   question: 'How do our products work?',
-          //   linkText: 'Learn more',
-          //   routerLink: ['/products/guide']
-          // }
+          ]
         }
       ];
 
       // Right Panel
       menuItem.rightPanel = {
-        title: 'Milo Assistant',
-        description: 'Experience the power of AI with our intelligent assistant that learns and adapts to your needs.',
+        title: 'AI Products & Services',
+        description: 'Transform your business with our cutting-edge AI products and services designed for modern enterprises.',
         imageUrl: 'assets/img/chatbot.webp',
         notifications: []
       };

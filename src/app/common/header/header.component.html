@@ -80,9 +80,25 @@
                                       </span>
                                     }
                                     @if (link.description) {
-                                      <p class="mb-0 small" style="color: #6b7280; font-size: 12px; line-height: 1.5;">
-                                        {{ link.description }}
-                                      </p>
+                                      @if (link.routerLink) {
+                                        <a [routerLink]="link.routerLink" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else if (link.link) {
+                                        <a [href]="link.link" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else {
+                                        <p class="mb-0 small" style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </p>
+                                      }
                                     }
                                   </div>
                                 </li>
@@ -258,9 +274,25 @@
                                       </span>
                                     }
                                     @if (link.description) {
-                                      <p class="mb-0 small" style="color: #6b7280; font-size: 12px; line-height: 1.5;">
-                                        {{ link.description }}
-                                      </p>
+                                      @if (link.routerLink) {
+                                        <a [routerLink]="link.routerLink" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else if (link.link) {
+                                        <a [href]="link.link" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else {
+                                        <p class="mb-0 small" style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </p>
+                                      }
                                     }
                                   </div>
                                 </li>
@@ -346,9 +378,25 @@
                                       </span>
                                     }
                                     @if (link.description) {
-                                      <p class="mb-0 small" style="color: #6b7280; font-size: 12px; line-height: 1.5;">
-                                        {{ link.description }}
-                                      </p>
+                                      @if (link.routerLink) {
+                                        <a [routerLink]="link.routerLink" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else if (link.link) {
+                                        <a [href]="link.link" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else {
+                                        <p class="mb-0 small" style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </p>
+                                      }
                                     }
                                   </div>
                                 </li>
