@@ -1,9 +1,11 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { Router, RouterModule, NavigationEnd } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { OurServicesService } from '../../services/our-services.service';
 import { ProductsService } from '../../services/products.service';
 import { MegamenuComponent, MegaMenuItem, MegaMenuSection, MegaMenuGuide, MegaMenuRightPanel } from '../megamenu/megamenu.component';
+import { filter, map } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,7 @@ import { MegamenuComponent, MegaMenuItem, MegaMenuSection, MegaMenuGuide, MegaMe
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   serviceNav: any[] = [];
   productNav: any[] = [];
   isSidebarVisible = false;
@@ -28,9 +30,14 @@ export class HeaderComponent implements OnInit {
   isTouchDevice: boolean = false;
   menuJustOpened: boolean = false; 
 
+  // Route tracking
+  isProductPage: boolean = false;
+  private routerSubscription?: Subscription;
+
   constructor(
     private ourServicesService: OurServicesService,
     private productService: ProductsService,
+    private router: Router,
     @Inject(PLATFORM_ID) private platformId: object
   ) {}
 
@@ -95,8 +102,31 @@ export class HeaderComponent implements OnInit {
       this.isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     }
 
+    // Check initial route
+    this.checkProductRoute(this.router.url);
+
+    // Subscribe to route changes
+    this.routerSubscription = this.router.events
+      .pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(event => event as NavigationEnd)
+      )
+      .subscribe((event: NavigationEnd) => {
+        this.checkProductRoute(event.urlAfterRedirects);
+      });
+
     // this.getServices();
     // this.getProducts();
+  }
+
+  ngOnDestroy() {
+    if (this.routerSubscription) {
+      this.routerSubscription.unsubscribe();
+    }
+  }
+
+  checkProductRoute(url: string): void {
+    this.isProductPage = url.includes('/product');
   }
 
   // Megamenu methods

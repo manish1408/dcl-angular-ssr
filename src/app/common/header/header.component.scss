@@ -132,3 +132,9 @@ ul.submenu-list.show {
     line-height: 15px;
   }
 }
+
+// Black background for product pages
+.header-area.header-black-bg {
+  background-color: #1E1F1F;
+  transition: background-color 0.3s ease;
+}
