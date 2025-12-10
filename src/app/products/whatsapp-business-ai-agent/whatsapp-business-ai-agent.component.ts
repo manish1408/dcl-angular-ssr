@@ -47,7 +47,7 @@ export class WhatsappBusinessAiAgentComponent implements AfterViewInit {
     private faqService: FaqService,
     private testimonialService: TestimonialService
   ) {
-    this.meta.addTag({ name: 'title', content: 'RAG as a Service - Distinct Cloud Labs' });
+    this.meta.addTag({ name: 'title', content: 'WhatsApp Business AI Agent - Automated Customer Support | Distinct Cloud Labs' });
   }
 
   posts: any = [];
@@ -79,11 +79,11 @@ export class WhatsappBusinessAiAgentComponent implements AfterViewInit {
   ngOnInit(): void {
     this.meta.updateTag({
       name: 'title',
-      content: 'RAG as a Service - Build Your RAG in Minutes | Distinct Cloud Labs',
+      content: 'WhatsApp Business AI Agent - Automated Customer Support | Distinct Cloud Labs',
     });
     this.meta.updateTag({
       name: 'description',
-      content: 'Build your RAG in minutes and deploy in your own cloud. Get enterprise-grade Retrieval-Augmented Generation infrastructure with our RAG as a Service solution.',
+      content: 'Integrate AI with WhatsApp Business to send automatic messages and respond to customers intelligently. Transform your customer support with AI-powered WhatsApp automation that understands context and provides accurate responses.',
     });
 
     this.getTestimonials();
@@ -204,7 +204,7 @@ export class WhatsappBusinessAiAgentComponent implements AfterViewInit {
       return;
     }
 
-    const textTypeElement = document.querySelector('app-ai-customer-support .text-type');
+    const textTypeElement = document.querySelector('app-whatsapp-business-ai-agent .text-type');
     if (!textTypeElement) {
       return;
     }
@@ -220,7 +220,7 @@ export class WhatsappBusinessAiAgentComponent implements AfterViewInit {
         // Initialize Typed.js animation with the specific element
         const TypedClass = (window as any).Typed || Typed;
         const typing = new TypedClass(textTypeElement, {
-          strings: ['for Your Business', 'Solutions', 'Automation'],
+          strings: ['for WhatsApp', 'Customer Support', 'Automation'],
           typeSpeed: 120,
           backSpeed: 70,
           loop: true,
@@ -297,7 +297,7 @@ export class WhatsappBusinessAiAgentComponent implements AfterViewInit {
 
   initializeMarquee(): void {
     if (this.common.isBrowser() && typeof jQuery !== 'undefined' && jQuery.fn.marquee) {
-      const marqueeElement = jQuery('app-ai-customer-support .marquee_text');
+      const marqueeElement = jQuery('app-whatsapp-business-ai-agent .marquee_text');
       if (marqueeElement.length > 0) {
         try {
           marqueeElement.marquee('destroy');
@@ -325,7 +325,7 @@ export class WhatsappBusinessAiAgentComponent implements AfterViewInit {
       return;
     }
 
-    const workflowSection = document.querySelector('app-ai-customer-support .horizontal-scrolling-wrapper');
+    const workflowSection = document.querySelector('app-whatsapp-business-ai-agent .horizontal-scrolling-wrapper');
     if (!workflowSection) {
       return;
     }
@@ -356,10 +356,10 @@ export class WhatsappBusinessAiAgentComponent implements AfterViewInit {
 
         let duration = 1;
         // Find sections within the component
-        const componentElement = document.querySelector('app-ai-customer-support');
+        const componentElement = document.querySelector('app-whatsapp-business-ai-agent');
         const sections = componentElement 
           ? gsapLib.utils.toArray('.single-scroll', componentElement)
-          : gsapLib.utils.toArray('app-ai-customer-support .single-scroll');
+          : gsapLib.utils.toArray('app-whatsapp-business-ai-agent .single-scroll');
         
         if (sections.length === 0) {
           console.warn('No .single-scroll sections found');
@@ -542,7 +542,7 @@ export class WhatsappBusinessAiAgentComponent implements AfterViewInit {
   ngOnDestroy(): void {
     if (this.common.isBrowser()) {
       // Cleanup Typed animation
-      const textTypeElement = document.querySelector('app-ai-customer-support .text-type');
+      const textTypeElement = document.querySelector('app-whatsapp-business-ai-agent .text-type');
       if (textTypeElement && (textTypeElement as any).typed) {
         try {
           (textTypeElement as any).typed.destroy();
@@ -556,7 +556,7 @@ export class WhatsappBusinessAiAgentComponent implements AfterViewInit {
       if (typeof (window as any).ScrollTrigger !== 'undefined') {
         try {
           (window as any).ScrollTrigger.getAll().forEach((st: any) => {
-            if (st.trigger && st.trigger.closest('app-ai-customer-support')) {
+            if (st.trigger && st.trigger.closest('app-whatsapp-business-ai-agent')) {
               st.kill();
             }
           });

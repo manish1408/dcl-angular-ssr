@@ -204,7 +204,7 @@ export class RagAsAServiceComponent implements AfterViewInit {
       return;
     }
 
-    const textTypeElement = document.querySelector('app-ai-customer-support .text-type');
+    const textTypeElement = document.querySelector('app-rag-as-a-service .text-type');
     if (!textTypeElement) {
       return;
     }
@@ -297,7 +297,7 @@ export class RagAsAServiceComponent implements AfterViewInit {
 
   initializeMarquee(): void {
     if (this.common.isBrowser() && typeof jQuery !== 'undefined' && jQuery.fn.marquee) {
-      const marqueeElement = jQuery('app-ai-customer-support .marquee_text');
+      const marqueeElement = jQuery('app-rag-as-a-service .marquee_text');
       if (marqueeElement.length > 0) {
         try {
           marqueeElement.marquee('destroy');
@@ -325,7 +325,7 @@ export class RagAsAServiceComponent implements AfterViewInit {
       return;
     }
 
-    const workflowSection = document.querySelector('app-ai-customer-support .horizontal-scrolling-wrapper');
+    const workflowSection = document.querySelector('app-rag-as-a-service .horizontal-scrolling-wrapper');
     if (!workflowSection) {
       return;
     }
@@ -356,10 +356,10 @@ export class RagAsAServiceComponent implements AfterViewInit {
 
         let duration = 1;
         // Find sections within the component
-        const componentElement = document.querySelector('app-ai-customer-support');
+        const componentElement = document.querySelector('app-rag-as-a-service');
         const sections = componentElement 
           ? gsapLib.utils.toArray('.single-scroll', componentElement)
-          : gsapLib.utils.toArray('app-ai-customer-support .single-scroll');
+          : gsapLib.utils.toArray('app-rag-as-a-service .single-scroll');
         
         if (sections.length === 0) {
           console.warn('No .single-scroll sections found');
@@ -542,7 +542,7 @@ export class RagAsAServiceComponent implements AfterViewInit {
   ngOnDestroy(): void {
     if (this.common.isBrowser()) {
       // Cleanup Typed animation
-      const textTypeElement = document.querySelector('app-ai-customer-support .text-type');
+      const textTypeElement = document.querySelector('app-rag-as-a-service .text-type');
       if (textTypeElement && (textTypeElement as any).typed) {
         try {
           (textTypeElement as any).typed.destroy();
@@ -556,7 +556,7 @@ export class RagAsAServiceComponent implements AfterViewInit {
       if (typeof (window as any).ScrollTrigger !== 'undefined') {
         try {
           (window as any).ScrollTrigger.getAll().forEach((st: any) => {
-            if (st.trigger && st.trigger.closest('app-ai-customer-support')) {
+            if (st.trigger && st.trigger.closest('app-rag-as-a-service')) {
               st.kill();
             }
           });
