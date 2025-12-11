@@ -14,6 +14,7 @@ import { MvpPortfolioComponent } from '../../common/mvp-portfolio/mvp-portfolio.
 
 declare var Swiper: any;
 declare var jQuery: any;
+declare var Typed: any;
 
 @Component({
   selector: 'app-ai-search-implementation',
@@ -183,13 +184,14 @@ export class AiSearchImplementationComponent implements AfterViewInit {
       setTimeout(() => {
         this.initializeMarquee();
         this.swiperinitProcessSlider();
+        this.initializeTypedAnimation();
       }, 100);
     }
   }
 
   initializeMarquee(): void {
     if (this.common.isBrowser() && typeof jQuery !== 'undefined' && jQuery.fn.marquee) {
-      const marqueeElement = jQuery('app-rag-as-a-service .marquee_text');
+      const marqueeElement = jQuery('app-ai-search-implementation .marquee_text');
       if (marqueeElement.length > 0) {
         try {
           marqueeElement.marquee('destroy');
@@ -204,6 +206,102 @@ export class AiSearchImplementationComponent implements AfterViewInit {
         });
       }
     }
+  }
+
+  initializeTypedAnimation(): void {
+    if (!this.common.isBrowser()) {
+      return;
+    }
+
+    const textTypeElement = document.querySelector('app-ai-search-implementation .text-type');
+    if (!textTypeElement) {
+      return;
+    }
+
+    // Function to initialize Typed after library is loaded
+    const initTyped = () => {
+      try {
+        // Destroy existing instance if any
+        if ((textTypeElement as any).typed) {
+          (textTypeElement as any).typed.destroy();
+        }
+        
+        // Initialize Typed.js animation with the specific element
+        const TypedClass = (window as any).Typed || Typed;
+        const typing = new TypedClass(textTypeElement, {
+          strings: ['for Your Platform', 'Search Solutions', 'AI-Powered'],
+          typeSpeed: 120,
+          backSpeed: 70,
+          loop: true,
+          showCursor: false, // We have our own cursor
+        });
+        
+        // Store reference for cleanup
+        (textTypeElement as any).typed = typing;
+      } catch (error) {
+        console.error('Error initializing Typed animation:', error);
+      }
+    };
+
+    // Check if Typed is already available
+    if (typeof (window as any).Typed !== 'undefined') {
+      initTyped();
+      return;
+    }
+
+    // Try to load Typed.js dynamically
+    const loadTypedScript = () => {
+      return new Promise<void>((resolve, reject) => {
+        // Check if script is already being loaded
+        if (document.querySelector('script[src*="type.js"]')) {
+          // Wait for it to load
+          let attempts = 0;
+          const checkTyped = setInterval(() => {
+            attempts++;
+            if (typeof (window as any).Typed !== 'undefined') {
+              clearInterval(checkTyped);
+              resolve();
+            } else if (attempts > 50) { // 5 seconds max wait
+              clearInterval(checkTyped);
+              reject(new Error('Typed.js failed to load'));
+            }
+          }, 100);
+          return;
+        }
+
+        // Create and load the script
+        const script = document.createElement('script');
+        script.src = 'assets/js/type.js';
+        script.async = true;
+        script.onload = () => {
+          // Wait a bit for Typed to be available
+          setTimeout(() => {
+            if (typeof (window as any).Typed !== 'undefined') {
+              resolve();
+            } else {
+              reject(new Error('Typed.js not available after script load'));
+            }
+          }, 100);
+        };
+        script.onerror = () => reject(new Error('Failed to load Typed.js script'));
+        document.head.appendChild(script);
+      });
+    };
+
+    // Load script and initialize
+    loadTypedScript()
+      .then(() => {
+        initTyped();
+      })
+      .catch((error) => {
+        console.error('Failed to load Typed.js:', error);
+        // Fallback: try one more time after a delay in case it loads later
+        setTimeout(() => {
+          if (typeof (window as any).Typed !== 'undefined') {
+            initTyped();
+          }
+        }, 1000);
+      });
   }
 }
 
