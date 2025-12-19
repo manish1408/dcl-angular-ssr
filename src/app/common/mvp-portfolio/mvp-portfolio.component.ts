@@ -1,9 +1,19 @@
-import { Component, Input, AfterViewInit, OnDestroy, ElementRef } from '@angular/core';
+import { Component, Input, AfterViewInit, OnDestroy, ElementRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { CommonService } from '../../services/common.service';
 
 declare var Swiper: any;
+
+interface PortfolioItem {
+  id: number;
+  slug: string;
+  title: string;
+  category: string;
+  image: string;
+  alt: string;
+}
 
 @Component({
   selector: 'app-mvp-portfolio',
@@ -12,21 +22,36 @@ declare var Swiper: any;
   templateUrl: './mvp-portfolio.component.html',
   styleUrl: './mvp-portfolio.component.scss',
 })
-export class MvpPortfolioComponent implements AfterViewInit, OnDestroy {
+export class MvpPortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() heading: string = 'Our MVP Portfolio';
+  portfolioItems: PortfolioItem[] = [];
   private swiperInstance: any;
 
   constructor(
     private common: CommonService,
-    private el: ElementRef
+    private el: ElementRef,
+    private http: HttpClient
   ) {}
 
+  ngOnInit(): void {
+    this.http.get<PortfolioItem[]>('assets/mvp-portfolio.data.json').subscribe({
+      next: (data) => {
+        this.portfolioItems = data;
+        // Reinitialize Swiper after data loads
+        if (this.common.isBrowser()) {
+          setTimeout(() => {
+            this.swiperinitPortfolioSlider();
+          }, 300);
+        }
+      },
+      error: (error) => {
+        console.error('Error loading portfolio data:', error);
+      }
+    });
+  }
+
   ngAfterViewInit(): void {
-    if (this.common.isBrowser()) {
-      setTimeout(() => {
-        this.swiperinitPortfolioSlider();
-      }, 300);
-    }
+    // Swiper initialization is now handled in ngOnInit after data loads
   }
 
   swiperinitPortfolioSlider() {
