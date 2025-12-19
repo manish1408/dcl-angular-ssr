@@ -43,7 +43,7 @@ export class RescueStuckProjectsComponent implements AfterViewInit {
     private faqService: FaqService,
     private testimonialService: TestimonialService
   ) {
-    this.meta.addTag({ name: 'title', content: 'Rescue Stuck Projects - Distinct Cloud Labs' });
+    this.meta.addTag({ name: 'title', content: 'AI Agent Development - Distinct Cloud Labs' });
   }
 
   posts: any = [];
@@ -75,12 +75,12 @@ export class RescueStuckProjectsComponent implements AfterViewInit {
   ngOnInit(): void {
     this.meta.updateTag({
       name: 'title',
-      content: 'Rescue Stuck Projects - Distinct Cloud Labs',
+      content: 'AI Agent Development - Distinct Cloud Labs',
     });
     this.meta.updateTag({
       name: 'description',
       content:
-        'You start the vibe, we finish it. Rescue your stuck projects with our expert team and get them back on track.',
+        'Build intelligent AI agents that automate workflows, enhance customer experiences, and drive business growth. Expert AI agent development services.',
     });
 
     this.getTestimonials();

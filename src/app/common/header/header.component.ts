@@ -230,7 +230,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                   icon: 'bi bi-puzzle',
                   iconColor: '#10b981',
                   routerLink: ['/solutions/ai-powered-mvp-development'],
-                  imageUrl: 'assets/img/dcl-services.jpg'
+                  imageUrl: 'assets/img/mvp-dev-header-dcl.jpg'
                 },
                 {
                   title: 'AI powered Product Development',
