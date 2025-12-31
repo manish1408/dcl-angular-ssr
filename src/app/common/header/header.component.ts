@@ -3,6 +3,8 @@ import { Router, RouterModule, NavigationEnd } from '@angular/router';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { OurServicesService } from '../../services/our-services.service';
 import { ProductsService } from '../../services/products.service';
+import { CaseStudyService } from '../../services/case-study.service';
+import { BlogService } from '../../services/blog.service';
 import { MegamenuComponent, MegaMenuItem, MegaMenuSection, MegaMenuGuide, MegaMenuRightPanel } from '../megamenu/megamenu.component';
 import { filter, map } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
@@ -33,10 +35,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // Route tracking
   isProductPage: boolean = false;
   private routerSubscription?: Subscription;
+  
+  // Case studies for header menu
+  caseStudies: any[] = [];
+  
+  // Blogs for header menu
+  blogs: any[] = [];
 
   constructor(
     private ourServicesService: OurServicesService,
     private productService: ProductsService,
+    private caseStudyService: CaseStudyService,
+    private blogService: BlogService,
     private router: Router,
     @Inject(PLATFORM_ID) private platformId: object
   ) {}
@@ -97,6 +107,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.serviceNav = [{"title":"Large Language Model & GPT Integration Services","slug":"llm-integration"},{"title":"AI-Powered App and Web Development Services","slug":"ai-app-development"},{"title":"Machine Learning Product Development Services","slug":"machine-learning"},{"title":"Agentic AI Development Services","slug":"agentic-ai"},{"title":"Generative AI Development Services","slug":"generative-ai"}];
     this.productNav = [{"title":"Milo Assistant","slug":"milo"}]; 
 
+    // Fetch first 4 case studies for header menu
+    this.fetchCaseStudies();
+    
+    // Fetch first 4 blogs for header menu
+    this.fetchBlogs();
+
     // Detect touch device (only in browser)
     if (isPlatformBrowser(this.platformId)) {
       this.isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -117,6 +133,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     // this.getServices();
     // this.getProducts();
+  }
+  
+  fetchCaseStudies() {
+    this.caseStudyService.fetchPosts().subscribe((resp: any) => {
+      // Get first 4 case studies
+      this.caseStudies = resp?.items?.slice(0, 4) || [];
+    });
+  }
+  
+  fetchBlogs() {
+    this.blogService.fetchPosts().subscribe((resp: any) => {
+      // Get first 4 blogs
+      this.blogs = resp?.items?.slice(0, 4) || [];
+    });
+  }
+  
+  truncateDescription(text: string, maxWords: number = 6): string {
+    if (!text) return '';
+    const words = text.trim().split(/\s+/);
+    if (words.length <= maxWords) {
+      return text;
+    }
+    return words.slice(0, maxWords).join(' ') + '...';
   }
 
   ngOnDestroy() {
@@ -377,95 +416,65 @@ export class HeaderComponent implements OnInit, OnDestroy {
         notifications: []
       };
     } else if (menuType.toLowerCase() === 'case-studies') {
+      // Build case study items from fetched data (first 4 case studies)
+      const caseStudyItems = this.caseStudies.slice(0, 4).map((caseStudy, index) => {
+        const icons = ['bi bi-folder2-open', 'bi bi-cpu', 'bi bi-building', 'bi bi-lightbulb'];
+        const iconColors = ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b'];
+        const defaultImages = [
+          'assets/img/innerpage/case-study-img1.jpg',
+          'assets/img/innerpage/case-study-img2.jpg',
+          'assets/img/innerpage/case-study-img3.jpg',
+          'assets/img/innerpage/case-study-img4.jpg'
+        ];
+        
+        // Get thumbnail if available
+        let imageUrl = defaultImages[index] || 'assets/img/innerpage/case-study-img1.jpg';
+        if (caseStudy?.data?.thumbnail?.iv && Array.isArray(caseStudy.data.thumbnail.iv) && caseStudy.data.thumbnail.iv.length > 0) {
+          imageUrl = `https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/${caseStudy.data.thumbnail.iv[0]}`;
+        }
+        
+        const subheading = caseStudy?.data?.projectSubheading?.iv || 'Explore our successful implementation.';
+        return {
+          title: caseStudy?.data?.projectName?.iv || 'Case Study',
+          description: this.truncateDescription(subheading, 6),
+          icon: icons[index] || 'bi bi-file-earmark-text',
+          iconColor: iconColors[index] || '#3b82f6',
+          routerLink: ['/case-study', caseStudy?.data?.slug?.iv],
+          imageUrl: imageUrl
+        };
+      });
+      
+      // Add "All Case Studies" as first item
+      caseStudyItems.unshift({
+        title: 'All Case Studies',
+        description: 'Browse all our successful client implementations.',
+        icon: 'bi bi-folder2-open',
+        iconColor: '#3b82f6',
+        routerLink: ['/case-studies'],
+        imageUrl: 'assets/img/innerpage/case-study-img1.jpg'
+      });
+      
+      // Fallback if no case studies are loaded yet
+      if (caseStudyItems.length === 1) {
+        // Only "All Case Studies" is present, add placeholder items
+        for (let i = 0; i < 3; i++) {
+          caseStudyItems.push({
+            title: 'AI Solutions',
+            description: 'See how AI transformed businesses.',
+            icon: 'bi bi-cpu',
+            iconColor: '#10b981',
+            routerLink: ['/case-studies'],
+            imageUrl: 'assets/img/innerpage/case-study-img2.jpg'
+          });
+        }
+      }
+      
       menuItem.children = [
         {
           sections: [
             {
               title: 'FEATURED',
-              items: [
-                {
-                  title: 'All Case Studies',
-                  description: 'Browse all our successful client implementations.',
-                  icon: 'bi bi-folder2-open',
-                  iconColor: '#3b82f6',
-                  routerLink: ['/case-studies'],
-                  imageUrl: 'assets/img/innerpage/case-study-img1.jpg'
-                },
-                {
-                  title: 'AI Solutions',
-                  description: 'See how AI transformed businesses.',
-                  icon: 'bi bi-cpu',
-                  iconColor: '#10b981',
-                  routerLink: ['/case-studies'],
-                  imageUrl: 'assets/img/innerpage/case-study-img2.jpg'
-                },
-                {
-                  title: 'Enterprise',
-                  description: 'Large-scale implementations and results.',
-                  icon: 'bi bi-building',
-                  iconColor: '#8b5cf6',
-                  routerLink: ['/case-studies'],
-                  imageUrl: 'assets/img/innerpage/case-study-img3.jpg'
-                }
-              ]
-            },
-            {
-              title: 'INDUSTRIES',
-              items: [
-                {
-                  title: 'Healthcare',
-                  description: 'AI solutions for healthcare organizations.',
-                  icon: 'bi bi-heart-pulse',
-                  iconColor: '#ef4444',
-                  routerLink: ['/case-studies'],
-                  imageUrl: 'assets/img/innerpage/case-study-img4.jpg'
-                },
-                {
-                  title: 'Finance',
-                  description: 'Financial services and fintech solutions.',
-                  icon: 'bi bi-bank',
-                  iconColor: '#f59e0b',
-                  routerLink: ['/case-studies'],
-                  imageUrl: 'assets/img/innerpage/case-study-img5.jpg'
-                },
-                {
-                  title: 'E-commerce',
-                  description: 'E-commerce and retail transformations.',
-                  icon: 'bi bi-cart',
-                  iconColor: '#06b6d4',
-                  routerLink: ['/case-studies'],
-                  imageUrl: 'assets/img/innerpage/case-img-01.jpg'
-                }
-              ]
-            },
-            {
-              title: 'RESOURCES',
-              items: [
-                {
-                  title: 'Testimonials',
-                  description: 'What our clients say about us.',
-                  icon: 'bi bi-quote',
-                  iconColor: '#6366f1',
-                  routerLink: ['/case-studies'],
-                  imageUrl: 'assets/img/innerpage/case-img-02.jpg'
-                },
-                {
-                  title: 'Success Metrics',
-                  description: 'See the impact of our solutions.',
-                  icon: 'bi bi-graph-up-arrow',
-                  iconColor: '#10b981',
-                  routerLink: ['/case-studies'],
-                  imageUrl: 'assets/img/innerpage/portfolio-list-img2.jpg'
-                },
-                {
-                  title: 'Contact Sales',
-                  description: 'Discuss your project with us.',
-                  icon: 'bi bi-person-workspace',
-                  iconColor: '#3b82f6',
-                  routerLink: ['/contact'],
-                  imageUrl: 'assets/img/innerpage/portfolio-list-img3.jpg'
-                }
-              ]
+              items: caseStudyItems
             }
           ],
           // guide: {
@@ -484,96 +493,65 @@ export class HeaderComponent implements OnInit, OnDestroy {
         notifications: []
       };
     } else if (menuType.toLowerCase() === 'blog') {
+      // Build blog items from fetched data (first 4 blogs)
+      const blogItems = this.blogs.slice(0, 4).map((blog, index) => {
+        const icons = ['bi bi-journal-text', 'bi bi-cpu', 'bi bi-laptop', 'bi bi-lightbulb'];
+        const iconColors = ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b'];
+        const defaultImages = [
+          'assets/img/innerpage/blog-img1.jpg',
+          'assets/img/innerpage/blog-img2.jpg',
+          'assets/img/innerpage/blog-img3.jpg',
+          'assets/img/innerpage/blog-details-img1.jpg'
+        ];
+        
+        // Get thumbnail if available
+        let imageUrl = defaultImages[index] || 'assets/img/innerpage/blog-img1.jpg';
+        if (blog?.data?.thumbnail?.iv && Array.isArray(blog.data.thumbnail.iv) && blog.data.thumbnail.iv.length > 0) {
+          imageUrl = `https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/${blog.data.thumbnail.iv[0]}`;
+        }
+        
+        const metaDesc = blog?.data?.metaDesc?.iv || 'Read our latest insights and updates.';
+        return {
+          title: blog?.data?.title?.iv || 'Blog Post',
+          description: this.truncateDescription(metaDesc, 6),
+          icon: icons[index] || 'bi bi-journal-text',
+          iconColor: iconColors[index] || '#3b82f6',
+          routerLink: ['/blog', blog?.data?.slug?.iv],
+          imageUrl: imageUrl
+        };
+      });
+      
+      // Add "All Articles" as first item
+      blogItems.unshift({
+        title: 'All Articles',
+        description: 'Browse all our blog posts and insights.',
+        icon: 'bi bi-journal-text',
+        iconColor: '#3b82f6',
+        routerLink: ['/blog'],
+        imageUrl: 'assets/img/innerpage/blog-img1.jpg'
+      });
+      
+      // Fallback if no blogs are loaded yet
+      if (blogItems.length === 1) {
+        // Only "All Articles" is present, add placeholder items
+        for (let i = 0; i < 3; i++) {
+          blogItems.push({
+            title: 'Latest Posts',
+            description: 'Read our most recent articles.',
+            icon: 'bi bi-clock-history',
+            iconColor: '#ef4444',
+            routerLink: ['/blog'],
+            imageUrl: 'assets/img/innerpage/blog-details-img2.jpg'
+          });
+        }
+      }
+      
       menuItem.children = [
         {
           sections: [
             {
-              title: 'CATEGORIES',
-              items: [
-                {
-                  title: 'All Articles',
-                  description: 'Browse all our blog posts and insights.',
-                  icon: 'bi bi-journal-text',
-                  iconColor: '#3b82f6',
-                  routerLink: ['/blog'],
-                  imageUrl: 'assets/img/innerpage/blog-img1.jpg'
-                },
-                {
-                  title: 'AI & Machine Learning',
-                  description: 'Latest trends and insights in AI.',
-                  icon: 'bi bi-cpu',
-                  iconColor: '#10b981',
-                  routerLink: ['/blog'],
-                  imageUrl: 'assets/img/innerpage/blog-img2.jpg'
-                },
-                {
-                  title: 'Technology',
-                  description: 'Technology news and updates.',
-                  icon: 'bi bi-laptop',
-                  iconColor: '#8b5cf6',
-                  routerLink: ['/blog'],
-                  imageUrl: 'assets/img/innerpage/blog-img3.jpg'
-                },
-                {
-                  title: 'Best Practices',
-                  description: 'Tips and best practices for success.',
-                  icon: 'bi bi-lightbulb',
-                  iconColor: '#f59e0b',
-                  routerLink: ['/blog'],
-                  imageUrl: 'assets/img/innerpage/blog-details-img1.jpg'
-                }
-              ]
-            },
-            {
               title: 'FEATURED',
-              items: [
-                {
-                  title: 'Latest Posts',
-                  description: 'Read our most recent articles.',
-                  icon: 'bi bi-clock-history',
-                  iconColor: '#ef4444',
-                  routerLink: ['/blog'],
-                  imageUrl: 'assets/img/innerpage/blog-details-img2.jpg'
-                },
-                {
-                  title: 'Popular',
-                  description: 'Most read articles this month.',
-                  icon: 'bi bi-fire',
-                  iconColor: '#06b6d4',
-                  routerLink: ['/blog'],
-                  imageUrl: 'assets/img/innerpage/blog-details-img3.jpg'
-                },
-                {
-                  title: 'Tutorials',
-                  description: 'Step-by-step guides and tutorials.',
-                  icon: 'bi bi-book-half',
-                  iconColor: '#6366f1',
-                  routerLink: ['/blog'],
-                  imageUrl: 'assets/img/innerpage/popular-post-img1.png'
-                }
-              ]
-            },
-            {
-              title: 'NEWSLETTER',
-              items: [
-                {
-                  title: 'Subscribe',
-                  description: 'Get the latest articles delivered to your inbox.',
-                  icon: 'bi bi-envelope-open',
-                  iconColor: '#10b981',
-                  routerLink: ['/contact'],
-                  imageUrl: 'assets/img/innerpage/popular-post-img2.png'
-                },
-                {
-                  title: 'RSS Feed',
-                  description: 'Stay updated with RSS feeds.',
-                  icon: 'bi bi-rss',
-                  iconColor: '#3b82f6',
-                  routerLink: ['/blog'],
-                  showExternalIcon: true,
-                  imageUrl: 'assets/img/innerpage/popular-post-img3.png'
-                }
-              ]
+              items: blogItems
             }
           ],
           // guide: {
