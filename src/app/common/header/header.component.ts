@@ -241,11 +241,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
                   imageUrl: 'assets/img/dcl-services.jpg'
                 },
                 {
-                  title: 'Rescue stuck projects',
+                  title: 'AI Agents Development',
                   description: 'You start the vibe, we finish it.',
                   icon: 'bi bi-gear',
                   iconColor: '#f59e0b',
-                  routerLink: ['/solutions/rescue-stuck-projects'],
+                  routerLink: ['/solutions/ai-agents-development'],
                   imageUrl: 'assets/img/dcl-services.jpg'
                 }
               ]

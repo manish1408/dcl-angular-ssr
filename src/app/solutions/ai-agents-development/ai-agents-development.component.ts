@@ -17,7 +17,7 @@ declare var Swiper: any;
 declare var jQuery: any;
 
 @Component({
-  selector: 'app-rescue-stuck-projects',
+  selector: 'app-ai-agents-development',
   standalone: true,
   imports: [
     RouterModule,
@@ -26,10 +26,10 @@ declare var jQuery: any;
     HomeTestimonialsComponent,
     MvpPortfolioComponent
   ],
-  templateUrl: './rescue-stuck-projects.component.html',
-  styleUrl: './rescue-stuck-projects.component.scss',
+  templateUrl: './ai-agents-development.component.html',
+  styleUrl: './ai-agents-development.component.scss',
 })
-export class RescueStuckProjectsComponent implements AfterViewInit { 
+export class AiAgentsDevelopmentComponent implements AfterViewInit { 
   constructor(
     private meta: Meta,
     private route: ActivatedRoute,
@@ -192,7 +192,7 @@ export class RescueStuckProjectsComponent implements AfterViewInit {
 
   initializeMarquee(): void {
     if (this.common.isBrowser() && typeof jQuery !== 'undefined' && jQuery.fn.marquee) {
-      const marqueeElement = jQuery('app-rescue-stuck-projects .marquee_text');
+      const marqueeElement = jQuery('app-ai-agents-development .marquee_text');
       if (marqueeElement.length > 0) {
         try {
           marqueeElement.marquee('destroy');
@@ -209,3 +209,4 @@ export class RescueStuckProjectsComponent implements AfterViewInit {
     }
   }
 }
+
