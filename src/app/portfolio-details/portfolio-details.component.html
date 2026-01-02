@@ -1,3 +1,73 @@
+<!-- Lead Collection Modal -->
+<div *ngIf="showLeadModal" class="lead-modal-overlay">
+  <div class="lead-modal-container">
+    <div class="contact-section">
+      <div class="contact-form-wrap">
+        <div class="contact-form-area">
+          <h3>Get access to Portfolio Details</h3>
+          <p style="text-align: center; color: #666; margin-bottom: 2rem;">Please provide your details to continue
+            viewing our portfolio</p>
+          <form [formGroup]="leadForm" (ngSubmit)="onSubmitLead()">
+            <div class="row">
+              <div class="col-lg-6 mb-20">
+                <div class="form-inner">
+                  <label for="leadName">Full Name *</label>
+                  <input type="text" formControlName="name" id="leadName" class="form-control"
+                    [ngClass]="{ 'is-invalid': hasError('name') }" />
+                  <div *ngIf="hasError('name')" class="invalid-feedback">Full name is required</div>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-20">
+                <div class="form-inner">
+                  <label for="leadCompany">Company / Organization *</label>
+                  <input type="text" formControlName="company" id="leadCompany" class="form-control"
+                    [ngClass]="{ 'is-invalid': hasError('company') }" />
+                  <div *ngIf="hasError('company')" class="invalid-feedback">Company is required</div>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-20">
+                <div class="form-inner">
+                  <label for="leadPhone">Phone *</label>
+                  <input type="text" formControlName="phone" id="leadPhone" class="form-control"
+                    [ngClass]="{ 'is-invalid': hasError('phone') }" />
+                  <div *ngIf="hasError('phone')" class="invalid-feedback">Phone is required</div>
+                </div>
+              </div>
+              <div class="col-lg-6 mb-20">
+                <div class="form-inner">
+                  <label for="leadEmail">Company email *</label>
+                  <input type="email" formControlName="email" id="leadEmail" class="form-control" [ngClass]="{
+                      'is-invalid': hasError('email') || hasEmailFormatError()
+                    }" />
+                  <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
+                    Invalid email format
+                  </div>
+                  <div *ngIf="hasError('email') && !hasEmailFormatError()" class="invalid-feedback">
+                    Email is required
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <div class="form-inner">
+                  <button class="primary-btn2" type="submit" data-text="Continue" [disabled]="isSubmittingLead">
+                    <span>Continue</span>
+                    <span *ngIf="isSubmittingLead" class="spinner-border spinner-border-sm mx-2" role="status"></span>
+                  </button>
+                  <button type="button" class="primary-btn2 ms-3" style="background: transparent; color: #000;" (click)="onGoBack()"
+                    [disabled]="isSubmittingLead">
+                    Go Back
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- Start Breadcrumb section -->
 <div class="breadcrumb-section" style="
     background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
@@ -16,8 +86,10 @@
               {{ post?.title?.iv }}
             </h1>
             <p class="text-white">{{ post?.projectSubheading?.iv }}</p>
-            <a target="_blank" href="{{ post?.DownloadPDF?.iv }}" class="btn btn-success btn-lg"><i class="bi bi-file-pdf-fill"></i> Download in PDF</a>
-            <a target="_blank" href="https://distinctcloud.io/assessment/basic-details" class="btn btn btn-outline-light btn-lg mx-4"><i class="bi bi-kanban"></i> Start a similiar project</a>
+            <a target="_blank" href="{{ post?.DownloadPDF?.iv }}" class="btn btn-success btn-lg"><i
+                class="bi bi-file-pdf-fill"></i> Download in PDF</a>
+            <a target="_blank" href="https://distinctcloud.io/assessment/basic-details"
+              class="btn btn btn-outline-light btn-lg mx-4"><i class="bi bi-kanban"></i> Start a similiar project</a>
           </div>
           <div class="scroll-down-btn">
             <a (click)="scrollToSection()" role="button">
@@ -66,7 +138,7 @@
         </div>
 
 
-        
+
         <div class="mt-4 ">
           <div class="section-title5 two">
             <span class="sub-title5 two">
@@ -105,8 +177,8 @@
           <div [innerHTML]="post?.projectGoals?.iv"></div>
         </div>
       </div>
-     
+
     </div>
-  
+
   </div>
 </div>

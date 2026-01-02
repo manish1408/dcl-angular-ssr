@@ -1,15 +1,19 @@
 import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
 import { CaseStudyService } from '../services/case-study.service';
-import { ActivatedRoute, RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
+import { Location } from '@angular/common';
 import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 import { CommonService } from '../services/common.service';
 import { Meta, Title } from '@angular/platform-browser';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ContactService } from '../services/contact.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-portfolio-details',
   standalone: true,
-  imports: [RouterModule, RouterOutlet, CommonModule],
+  imports: [RouterModule, RouterOutlet, CommonModule, ReactiveFormsModule],
   templateUrl: './portfolio-details.component.html',
   styleUrl: './portfolio-details.component.scss'
 })
@@ -21,7 +25,12 @@ export class PortfolioDetailsComponent {
     private el: ElementRef,
     private common: CommonService,
     private meta: Meta,
-    private title: Title
+    private title: Title,
+    private fb: FormBuilder,
+    private contactService: ContactService,
+    private toastr: ToastrService,
+    private router: Router,
+    private location: Location
   ) {}
   post: any;
   posts: any = [];
@@ -29,7 +38,23 @@ export class PortfolioDetailsComponent {
   imgCDN: string = environment.squidexAssets;
   isLoading: boolean = false;
   timeline:any;
+  showLeadModal: boolean = false;
+  leadForm!: FormGroup;
+  isSubmittingLead: boolean = false;
+  readonly LEAD_STORAGE_KEY = 'portfolio_lead_submitted';
+
   async ngOnInit() {
+    // Initialize the form
+    this.initLeadForm();
+    
+    // Check if lead information has already been collected
+    if (this.common.isBrowser()) {
+      const leadSubmitted = localStorage.getItem(this.LEAD_STORAGE_KEY);
+      if (!leadSubmitted) {
+        this.showLeadModal = true;
+      }
+    }
+
     this.route.params.subscribe((param) => {
       this.isLoading = true;
       this.slugName = param['type'];
@@ -49,6 +74,99 @@ export class PortfolioDetailsComponent {
         });
       }
     });
+  }
+
+  initLeadForm() {
+    this.leadForm = this.fb.group({
+      name: ['', Validators.required],
+      company: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', Validators.required],
+    });
+  }
+
+  hasError(controlName: keyof typeof this.leadForm.controls) {
+    const control = this.leadForm.controls[controlName];
+    return control.invalid && control.touched;
+  }
+
+  hasEmailFormatError() {
+    return (
+      this.leadForm.controls['email'].hasError('email') &&
+      this.leadForm.controls['email'].touched
+    );
+  }
+
+  onSubmitLead() {
+    this.isSubmittingLead = true;
+    this.leadForm.markAllAsTouched();
+
+    if (this.leadForm.invalid) {
+      this.isSubmittingLead = false;
+      this.toastr.error('Please provide all the details');
+      return;
+    }
+
+    const leadData = {
+      ...this.leadForm.value,
+      subject: 'Portfolio Details Lead',
+      message: 'User viewed portfolio details page'
+    };
+
+    this.contactService.postContact(leadData).subscribe(
+      (res: any) => {
+        this.isSubmittingLead = false;
+        if (res.success) {
+          // Store in localStorage to prevent showing modal again
+          if (this.common.isBrowser()) {
+            localStorage.setItem(this.LEAD_STORAGE_KEY, 'true');
+          }
+          this.showLeadModal = false;
+          this.toastr.success('Thank you for your interest!');
+        } else {
+          this.toastr.error('An error occurred while submitting');
+        }
+      },
+      (error) => {
+        this.isSubmittingLead = false;
+        console.error('Error occurred:', error);
+        this.toastr.error('An error occurred while submitting');
+      }
+    );
+  }
+
+  onGoBack() {
+    this.showLeadModal = false;
+    
+    if (this.common.isBrowser()) {
+      const currentUrl = window.location.pathname;
+      
+      // Check if there's history to go back to
+      if (window.history.length > 1) {
+        // Try to get referrer URL
+        try {
+          const referrer = document.referrer;
+          if (referrer) {
+            const referrerUrl = new URL(referrer);
+            const referrerPath = referrerUrl.pathname;
+            
+            // If referrer path is different from current path, go back
+            if (referrerPath !== currentUrl && referrerPath !== '') {
+              this.location.back();
+              return;
+            }
+          }
+        } catch (e) {
+          // If URL parsing fails, try going back anyway
+          this.location.back();
+          return;
+        }
+      }
+      
+      // If we reach here, either no history or previous route is same as current
+      // Navigate to portfolios page
+      this.router.navigate(['/portfolios']);
+    }
   }
 
 
