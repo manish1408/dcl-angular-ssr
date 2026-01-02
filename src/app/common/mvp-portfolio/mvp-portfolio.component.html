@@ -37,16 +37,16 @@
                         <div class="swiper-slide" *ngFor="let item of portfolioItems">
                             <div class="eg-card">
                                 <div class="card-img">
-                                    <img [src]="item.image" [alt]="item.alt">
+                                    <img [src]="item.image" style="height: 380px; object-fit: cover;" [alt]="item.alt">
                                 </div>
                                 <div class="card-content">
                                     <a [routerLink]="['/portfolio', item.slug]">
-                                        <a class="view-btn" [routerLink]="['/demo', item.slug]">
+                                        <span class="view-btn">
                                             <img src="assets/img/home1/right-arrow.png" alt="">
-                                        </a>
+                                        </span>
                                         <div class="catgory-and-title">
                                             {{ item.category }}
-                                            <h5>{{ item.title }}</h5>
+                                            <h5 style="color: #fff;">{{ item.title }}</h5>
                                         </div>
                                     </a>
                                 </div>
@@ -58,9 +58,9 @@
             </div>
         </div>
     </div>
-    <div c ss="portfolio-bottom-area">
+    <div class="portfolio-bottom-area">
         <div class="container-fluid">
-            <div class="pagina  on-area">
+            <div class="pagination-area">
                 <div class="swiper-pagination pagination1"></div>
             </div>
         </div>

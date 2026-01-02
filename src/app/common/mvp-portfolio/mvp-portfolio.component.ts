@@ -1,8 +1,9 @@
 import { Component, Input, AfterViewInit, OnDestroy, ElementRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { CommonService } from '../../services/common.service';
+import { CaseStudyService } from '../../services/case-study.service';
+import { environment } from '../../environments/environment';
 
 declare var Swiper: any;
 
@@ -30,13 +31,29 @@ export class MvpPortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private common: CommonService,
     private el: ElementRef,
-    private http: HttpClient
+    private caseStudyService: CaseStudyService
   ) {}
 
   ngOnInit(): void {
-    this.http.get<PortfolioItem[]>('assets/mvp-portfolio.data.json').subscribe({
-      next: (data) => {
-        this.portfolioItems = data;
+    this.caseStudyService.fetchPortfolio().subscribe({
+      next: (resp: any) => {
+        // Map API response to PortfolioItem structure
+        this.portfolioItems = (resp?.items || []).map((item: any, index: number) => {
+          const imageId = item?.data?.image?.iv?.[0];
+          const imageUrl = imageId 
+            ? `${environment.squidexAssets}distinct-cloud-labs/${imageId}`
+            : '';
+          
+          return {
+            id: index + 1,
+            slug: item?.data?.slug?.iv || '',
+            title: item?.data?.title?.iv || '',
+            category: item?.data?.category?.iv || '',
+            image: imageUrl,
+            alt: item?.data?.title?.iv || 'Portfolio Image'
+          };
+        });
+        
         // Reinitialize Swiper after data loads
         if (this.common.isBrowser()) {
           setTimeout(() => {
