@@ -1,89 +1,93 @@
 <!-- Lead Collection Modal -->
-<div *ngIf="showLeadModal" class="lead-modal-overlay">
-  <div class="lead-modal-container">
-    <div class="contact-section">
-      <div class="contact-form-wrap">
-        <div class="contact-form-area">
-          <h3>Get access to Portfolio Details</h3>
-          <p style="text-align: center; color: #666; margin-bottom: 2rem;">Please provide your details to continue
-            viewing our portfolio</p>
-          <form [formGroup]="leadForm" (ngSubmit)="onSubmitLead()">
-            <div class="row">
-              <div class="col-lg-6 mb-20">
-                <div class="form-inner">
-                  <label for="leadName">Full Name *</label>
-                  <input type="text" formControlName="name" id="leadName" class="form-control"
-                    [ngClass]="{ 'is-invalid': hasError('name') }" />
-                  <div *ngIf="hasError('name')" class="invalid-feedback">Full name is required</div>
-                </div>
-              </div>
-              <div class="col-lg-6 mb-20">
-                <div class="form-inner">
-                  <label for="leadCompany">Company / Organization *</label>
-                  <input type="text" formControlName="company" id="leadCompany" class="form-control"
-                    [ngClass]="{ 'is-invalid': hasError('company') }" />
-                  <div *ngIf="hasError('company')" class="invalid-feedback">Company is required</div>
-                </div>
-              </div>
-              <div class="col-lg-6 mb-20">
-                <div class="form-inner">
-                  <label for="leadPhone">Phone *</label>
-                  <div class="d-flex align-items-start gap-0">
-                    <app-phone-dropdown (countrySelected)="onCountrySelected($event)"></app-phone-dropdown>
-                    <div class="w-100">
-                      <input
-                        id="leadPhone"
-                        type="text"
-                        formControlName="phone"
-                        maxlength="10"
-                        inputmode="numeric"
-                        pattern="[0-9]*"
-                        class="form-control phone-input"
-                        [ngClass]="{ 'is-invalid': hasError('phone') }"
-                        (keypress)="allowOnlyNumbers($event)"
-                        placeholder="Enter 10-digit number"
-                      />
+<div class="modal fade" id="leadModal" tabindex="-1" aria-labelledby="leadModalLabel" aria-hidden="true" [class.show]="showLeadModal" [style.display]="showLeadModal ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="contact-section">
+          <div class="contact-form-wrap">
+            <div class="contact-form-area">
+              <h3>Get access to Portfolio Details</h3>
+              <p style="text-align: center; color: #666; margin-bottom: 2rem;">Please provide your details to continue
+                viewing our portfolio</p>
+              <form [formGroup]="leadForm" (ngSubmit)="onSubmitLead()">
+                <div class="row">
+                  <div class="col-lg-6 mb-20">
+                    <div class="form-inner">
+                      <label for="leadName">Full Name *</label>
+                      <input type="text" formControlName="name" id="leadName" class="form-control"
+                        [ngClass]="{ 'is-invalid': hasError('name') }" />
+                      <div *ngIf="hasError('name')" class="invalid-feedback">Full name is required</div>
                     </div>
                   </div>
-                  <div *ngIf="hasError('phone')" class="invalid-feedback d-block">
-                    Phone number is required (10 digits)
+                  <div class="col-lg-6 mb-20">
+                    <div class="form-inner">
+                      <label for="leadCompany">Company / Organization *</label>
+                      <input type="text" formControlName="company" id="leadCompany" class="form-control"
+                        [ngClass]="{ 'is-invalid': hasError('company') }" />
+                      <div *ngIf="hasError('company')" class="invalid-feedback">Company is required</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 mb-20">
+                    <div class="form-inner">
+                      <label for="leadPhone">Phone *</label>
+                      <div class="d-flex align-items-start gap-0">
+                        <app-phone-dropdown (countrySelected)="onCountrySelected($event)"></app-phone-dropdown>
+                        <div class="w-100">
+                          <input
+                            id="leadPhone"
+                            type="text"
+                            formControlName="phone"
+                            maxlength="10"
+                            inputmode="numeric"
+                            pattern="[0-9]*"
+                            class="form-control phone-input"
+                            [ngClass]="{ 'is-invalid': hasError('phone') }"
+                            (keypress)="allowOnlyNumbers($event)"
+                            placeholder="Enter 10-digit number"
+                          />
+                        </div>
+                      </div>
+                      <div *ngIf="hasError('phone')" class="invalid-feedback d-block">
+                        Phone number is required 
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 mb-20">
+                    <div class="form-inner">
+                      <label for="leadEmail">Company email *</label>
+                      <input type="email" formControlName="email" id="leadEmail" class="form-control" [ngClass]="{
+                          'is-invalid': hasError('email') || hasEmailFormatError()
+                        }" />
+                      <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
+                        Invalid email format
+                      </div>
+                      <div *ngIf="hasError('email') && !hasEmailFormatError()" class="invalid-feedback">
+                        Email is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12" style="margin-top: 24px;">
+                    <div class="form-inner">
+                      <button class="primary-btn2" type="submit" data-text="Continue" [disabled]="isSubmittingLead">
+                        <span>Continue</span>
+                        <span *ngIf="isSubmittingLead" class="spinner-border spinner-border-sm mx-2" role="status"></span>
+                      </button>
+                      <button type="button" class="primary-btn2 ms-3" style="background: transparent; color: #000;" (click)="onGoBack()"
+                        [disabled]="isSubmittingLead">
+                        Go Back
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-lg-6 mb-20">
-                <div class="form-inner">
-                  <label for="leadEmail">Company email *</label>
-                  <input type="email" formControlName="email" id="leadEmail" class="form-control" [ngClass]="{
-                      'is-invalid': hasError('email') || hasEmailFormatError()
-                    }" />
-                  <div *ngIf="hasEmailFormatError()" class="invalid-feedback">
-                    Invalid email format
-                  </div>
-                  <div *ngIf="hasError('email') && !hasEmailFormatError()" class="invalid-feedback">
-                    Email is required
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-12">
-                <div class="form-inner">
-                  <button class="primary-btn2" type="submit" data-text="Continue" [disabled]="isSubmittingLead">
-                    <span>Continue</span>
-                    <span *ngIf="isSubmittingLead" class="spinner-border spinner-border-sm mx-2" role="status"></span>
-                  </button>
-                  <button type="button" class="primary-btn2 ms-3" style="background: transparent; color: #000;" (click)="onGoBack()"
-                    [disabled]="isSubmittingLead">
-                    Go Back
-                  </button>
-                </div>
-              </div>
+              </form>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
+<div *ngIf="showLeadModal" class="modal-backdrop fade show"></div>
 
 <!-- Start Breadcrumb section -->
 <div class="breadcrumb-section" style="

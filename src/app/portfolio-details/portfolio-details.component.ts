@@ -54,6 +54,7 @@ export class PortfolioDetailsComponent {
       const leadSubmitted = localStorage.getItem(this.LEAD_STORAGE_KEY);
       if (!leadSubmitted) {
         this.showLeadModal = true;
+        this.updateModalState();
       }
     }
 
@@ -83,7 +84,7 @@ export class PortfolioDetailsComponent {
       name: ['', Validators.required],
       company: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{1,10}$/)]],
     });
   }
 
@@ -125,6 +126,7 @@ export class PortfolioDetailsComponent {
             localStorage.setItem(this.LEAD_STORAGE_KEY, 'true');
           }
           this.showLeadModal = false;
+          this.updateModalState();
           this.toastr.success('Thank you for your interest!');
         } else {
           this.toastr.error('An error occurred while submitting');
@@ -149,8 +151,21 @@ export class PortfolioDetailsComponent {
     }
   }
 
+  updateModalState() {
+    if (this.common.isBrowser()) {
+      if (this.showLeadModal) {
+        document.body.classList.add('modal-open');
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+      }
+    }
+  }
+
   onGoBack() {
     this.showLeadModal = false;
+    this.updateModalState();
     
     if (this.common.isBrowser()) {
       const currentUrl = window.location.pathname;
