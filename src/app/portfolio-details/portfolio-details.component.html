@@ -28,9 +28,26 @@
               <div class="col-lg-6 mb-20">
                 <div class="form-inner">
                   <label for="leadPhone">Phone *</label>
-                  <input type="text" formControlName="phone" id="leadPhone" class="form-control"
-                    [ngClass]="{ 'is-invalid': hasError('phone') }" />
-                  <div *ngIf="hasError('phone')" class="invalid-feedback">Phone is required</div>
+                  <div class="d-flex align-items-start gap-0">
+                    <app-phone-dropdown (countrySelected)="onCountrySelected($event)"></app-phone-dropdown>
+                    <div class="w-100">
+                      <input
+                        id="leadPhone"
+                        type="text"
+                        formControlName="phone"
+                        maxlength="10"
+                        inputmode="numeric"
+                        pattern="[0-9]*"
+                        class="form-control phone-input"
+                        [ngClass]="{ 'is-invalid': hasError('phone') }"
+                        (keypress)="allowOnlyNumbers($event)"
+                        placeholder="Enter 10-digit number"
+                      />
+                    </div>
+                  </div>
+                  <div *ngIf="hasError('phone')" class="invalid-feedback d-block">
+                    Phone number is required (10 digits)
+                  </div>
                 </div>
               </div>
               <div class="col-lg-6 mb-20">

@@ -9,11 +9,12 @@ import { Meta, Title } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ContactService } from '../services/contact.service';
 import { ToastrService } from 'ngx-toastr';
+import { PhoneDropdownComponent } from '../common/phone-dropdown/phone-dropdown.component';
 
 @Component({
   selector: 'app-portfolio-details',
   standalone: true,
-  imports: [RouterModule, RouterOutlet, CommonModule, ReactiveFormsModule],
+  imports: [RouterModule, RouterOutlet, CommonModule, ReactiveFormsModule, PhoneDropdownComponent],
   templateUrl: './portfolio-details.component.html',
   styleUrl: './portfolio-details.component.scss'
 })
@@ -41,6 +42,7 @@ export class PortfolioDetailsComponent {
   showLeadModal: boolean = false;
   leadForm!: FormGroup;
   isSubmittingLead: boolean = false;
+  selectedCountry: any;
   readonly LEAD_STORAGE_KEY = 'portfolio_lead_submitted';
 
   async ngOnInit() {
@@ -81,7 +83,7 @@ export class PortfolioDetailsComponent {
       name: ['', Validators.required],
       company: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
     });
   }
 
@@ -101,7 +103,7 @@ export class PortfolioDetailsComponent {
     this.isSubmittingLead = true;
     this.leadForm.markAllAsTouched();
 
-    if (this.leadForm.invalid) {
+    if (this.leadForm.invalid || !this.selectedCountry) {
       this.isSubmittingLead = false;
       this.toastr.error('Please provide all the details');
       return;
@@ -109,6 +111,7 @@ export class PortfolioDetailsComponent {
 
     const leadData = {
       ...this.leadForm.value,
+      phone: this.selectedCountry?.phone[0] + ' ' + this.leadForm.value.phone,
       subject: 'Portfolio Details Lead',
       message: 'User viewed portfolio details page'
     };
@@ -133,6 +136,17 @@ export class PortfolioDetailsComponent {
         this.toastr.error('An error occurred while submitting');
       }
     );
+  }
+
+  onCountrySelected(country: any) {
+    this.selectedCountry = country;
+  }
+
+  allowOnlyNumbers(event: KeyboardEvent): void {
+    const charCode = event.key;
+    if (!/^[0-9]$/.test(charCode)) {
+      event.preventDefault();
+    }
   }
 
   onGoBack() {
