@@ -19184,3 +19184,11 @@ body:not(.is-mobile) .tt-style-switch:hover {
 
   
 }
+
+// Target paragraphs inside service-details-top-content (including innerHTML content)
+.service-details-page .service-details-top-area .service-details-top-content {
+  p {
+    margin-bottom: 0px !important; 
+    padding-bottom: 0px !important; 
+  }
+}

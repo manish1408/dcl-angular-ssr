@@ -112,12 +112,17 @@
             <h1>
               {{ post?.title?.iv }}
             </h1>
-            <p class="text-white">{{ post?.client?.iv }}</p>
-            <div class="d-flex flex-wrap gap-3">
-              <a target="_blank" href="{{ post?.DownloadPDF?.iv }}" class="btn btn-success btn-lg"><i
-                  class="bi bi-file-pdf-fill"></i> Download in PDF</a>
-              <a target="_blank" href="https://distinctcloud.io/assessment/basic-details"
-                class="btn btn btn-outline-light btn-lg"><i class="bi bi-kanban"></i> Start a similiar project</a>
+            <p class="text-white mt-2">{{ post?.shortDescription?.iv }}</p>
+            <div class="d-flex flex-wrap gap-3 mt-5">
+              <a *ngIf="post?.pdfLink?.iv" target="_blank" [href]="post?.pdfLink?.iv" class="btn btn-success btn-lg">
+                <i class="bi bi-file-pdf-fill"></i> Project Details
+              </a>
+              <a *ngIf="post?.demoLink?.iv" target="_blank" [href]="post?.demoLink?.iv" class="btn btn-primary btn-lg">
+                <i class="bi bi-play-circle-fill"></i> View Demo
+              </a>
+              <a *ngIf="post?.projectLink?.iv" target="_blank" [href]="post?.projectLink?.iv" class="btn btn-info btn-lg">
+                <i class="bi bi-box-arrow-up-right"></i> View Project
+              </a>
             </div>
           </div>
           <div class="scroll-down-btn">
@@ -152,11 +157,10 @@
 
 <div class="service-details-page pt-120 mb-120" id="service-details-section">
   <div class="container">
-      <div class="service-details-top-area mb-80">
+      <div class="mb-80">
           <div class="row g-lg-4 gy-5 align-items-center">
               <div class="col-lg-6 order-lg-1 order-2 wow animate fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
                   <div class="service-details-top-content">
-                      <h2>{{ post?.title?.iv }}</h2>
                       <div [innerHTML]="post?.description?.iv"></div>
                   </div>
               </div>
@@ -167,7 +171,7 @@
               </div>
           </div>
       </div>
-      <div class="service-details-faq-area wow animate fadeInDown" data-wow-delay="400ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 400ms;">
+      <div class="mb-80 wow animate fadeInDown" data-wow-delay="400ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 400ms;">
           <div class="row g-lg-4 gy-5 align-items-xl-center">
               <div class="col-lg-6">
                   <div class="service-details-faq-img">
@@ -175,7 +179,7 @@
                   </div>
               </div>
               <div class="col-lg-6">
-                  <div class="faq-content">
+                  <div class="service-details-top-content">
                       <div [innerHTML]="post?.features?.iv"></div>
                   </div>
               </div>
@@ -201,86 +205,22 @@
                 </div>
             </div>
             <div class="row g-4">
-                <div class="col-lg-3 col-md-4 col-sm-6 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
+                @for (tech of getTechnologies(); track tech; let i = $index) {
+                <div class="col-lg-3 col-md-4 col-sm-6 wow animate fadeInDown" 
+                     [attr.data-wow-delay]="(200 + (i * 200)) + 'ms'" 
+                     data-wow-duration="1500ms" 
+                     style="visibility: visible; animation-duration: 1500ms;" 
+                     [style.animation-delay]="(200 + (i * 200)) + 'ms'">
                     <div class="tools-card">
                         <div class="tools-icon">
-                            <img src="assets/img/innerpage/icon/figma-icon.svg" alt="">
+                            <img *ngIf="getTechnologyIconUrl(tech)" [src]="getTechnologyIconUrl(tech)" [alt]="tech?.title || 'Technology icon'">
                         </div>
                         <div class="tools-name">
-                            <span>Figma</span>
+                            <span>{{ tech?.title }}</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 wow animate fadeInDown" data-wow-delay="400ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 400ms;">
-                    <div class="tools-card">
-                        <div class="tools-icon">
-                            <img src="assets/img/innerpage/icon/vs-icon.svg" alt="">
-                        </div>
-                        <div class="tools-name">
-                            <span>Visual Studio</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 wow animate fadeInDown" data-wow-delay="600ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 600ms;">
-                    <div class="tools-card">
-                        <div class="tools-icon">
-                            <img src="assets/img/innerpage/icon/git-icon.svg" alt="">
-                        </div>
-                        <div class="tools-name">
-                            <span>Git</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 wow animate fadeInDown" data-wow-delay="800ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 800ms;">
-                    <div class="tools-card">
-                        <div class="tools-icon">
-                            <img src="assets/img/innerpage/icon/react-icon.svg" alt="">
-                        </div>
-                        <div class="tools-name">
-                            <span>React</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 wow animate fadeInDown" data-wow-delay="800ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 800ms;">
-                    <div class="tools-card">
-                        <div class="tools-icon">
-                            <img src="assets/img/innerpage/icon/php-icon.svg" alt="">
-                        </div>
-                        <div class="tools-name">
-                            <span>Php</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 wow animate fadeInDown" data-wow-delay="600ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 600ms;">
-                    <div class="tools-card">
-                        <div class="tools-icon">
-                            <img src="assets/img/innerpage/icon/mysql-icon.svg" alt="">
-                        </div>
-                        <div class="tools-name">
-                            <span>MySQL</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 wow animate fadeInDown" data-wow-delay="400ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 400ms;">
-                    <div class="tools-card">
-                        <div class="tools-icon">
-                            <img src="assets/img/innerpage/icon/gitlab-icon.svg" alt="">
-                        </div>
-                        <div class="tools-name">
-                            <span>Gitlab</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
-                    <div class="tools-card">
-                        <div class="tools-icon">
-                            <img src="assets/img/innerpage/icon/aws-icon.svg" alt="">
-                        </div>
-                        <div class="tools-name">
-                            <span>AWS</span>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>

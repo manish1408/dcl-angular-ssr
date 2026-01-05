@@ -315,5 +315,27 @@ export class PortfolioDetailsComponent implements OnInit {
       }
     }
   }
+
+  getTechnologies(): any[] {
+    if (!this.post?.technologies?.iv) {
+      return [];
+    }
+    
+    // Handle both array and single object cases
+    const technologies = this.post.technologies.iv;
+    if (Array.isArray(technologies)) {
+      return technologies;
+    } else {
+      // If it's a single object, wrap it in an array
+      return [technologies];
+    }
+  }
+
+  getTechnologyIconUrl(technology: any): string {
+    if (technology?.icon && Array.isArray(technology.icon) && technology.icon.length > 0) {
+      return this.imgCDN + technology.icon[0];
+    }
+    return '';
+  }
  
 }
