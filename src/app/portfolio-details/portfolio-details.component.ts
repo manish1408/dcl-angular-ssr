@@ -10,17 +10,19 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ContactService } from '../services/contact.service';
 import { ToastrService } from 'ngx-toastr';
 import { PhoneDropdownComponent } from '../common/phone-dropdown/phone-dropdown.component';
+import { ScheduleCallCTAComponent } from '../common/schedule-call-cta/schedule-call-cta.component';
+import { HomeService } from '../services/home.service';
 
 declare var Swiper: any;
 
 @Component({
   selector: 'app-portfolio-details',
   standalone: true,
-  imports: [RouterModule, RouterOutlet, CommonModule, ReactiveFormsModule, PhoneDropdownComponent],
+  imports: [RouterModule, RouterOutlet, CommonModule, ReactiveFormsModule, PhoneDropdownComponent, ScheduleCallCTAComponent],
   templateUrl: './portfolio-details.component.html',
   styleUrl: './portfolio-details.component.scss'
 })
-export class PortfolioDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
+export class PortfolioDetailsComponent implements OnInit {
   constructor(
     private caseStudyService: CaseStudyService,
     private route: ActivatedRoute,
@@ -33,7 +35,8 @@ export class PortfolioDetailsComponent implements OnInit, AfterViewInit, OnDestr
     private contactService: ContactService,
     private toastr: ToastrService,
     private router: Router,
-    private location: Location
+    private location: Location,
+    private homeService: HomeService
   ) {}
   post: any;
   posts: any = [];
@@ -46,10 +49,9 @@ export class PortfolioDetailsComponent implements OnInit, AfterViewInit, OnDestr
   isSubmittingLead: boolean = false;
   selectedCountry: any;
   readonly LEAD_STORAGE_KEY = 'portfolio_lead_submitted';
-  sliderItems: any[] = [];
-  private swiperInstance: any;
   showVideoModal: boolean = false;
   videoUrl: string = '';
+  ctaDetails: any = [];
 
   async ngOnInit() {
     // Initialize the form
@@ -64,6 +66,8 @@ export class PortfolioDetailsComponent implements OnInit, AfterViewInit, OnDestr
       }
     }
 
+    this.getCTA();
+
     this.route.params.subscribe((param) => {
       this.isLoading = true;
       this.slugName = param['type'];
@@ -73,13 +77,8 @@ export class PortfolioDetailsComponent implements OnInit, AfterViewInit, OnDestr
         .subscribe((resp: any) => {
           this.post = resp?.items[0].data;
           this.updateMetaTags(resp?.items[0].data);
-          this.buildSliderItems();
           this.isLoading = false;
-          if (this.common.isBrowser()) {
-            setTimeout(() => {
-              this.initSlider();
-            }, 300);
-          }
+          
         });
       if (this.common.isBrowser()) {
         window.scroll({
@@ -88,6 +87,12 @@ export class PortfolioDetailsComponent implements OnInit, AfterViewInit, OnDestr
           behavior: 'smooth',
         });
       }
+    });
+  }
+
+  getCTA() {
+    this.homeService.getCTA().then((res) => {
+      this.ctaDetails = res.items;
     });
   }
 
@@ -248,19 +253,6 @@ export class PortfolioDetailsComponent implements OnInit, AfterViewInit, OnDestr
     return content.replace(/<\/?[^>]+(>|$)/g, "");
   }
 
-  buildSliderItems() {
-    this.sliderItems = [];
-    
-    // Only add images to slider (video is shown separately)
-    if (this.post?.image?.iv && this.post.image.iv.length > 0) {
-      this.post.image.iv.forEach((imageId: string) => {
-        this.sliderItems.push({
-          type: 'image',
-          url: 'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + imageId
-        });
-      });
-    }
-  }
 
   getThumbnailImageUrl(): string {
     if (this.post?.thumbnailImage?.iv && this.post.thumbnailImage.iv.length > 0) {
@@ -272,6 +264,13 @@ export class PortfolioDetailsComponent implements OnInit, AfterViewInit, OnDestr
   getVideoUrl(): string {
     if (this.post?.video?.iv && this.post.video.iv.length > 0) {
       return this.imgCDN + this.post.video.iv[0];
+    }
+    return '';
+  }
+
+  getImageUrl(index: number): string {
+    if (this.post?.image?.iv && this.post.image.iv.length > index) {
+      return 'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + this.post.image.iv[index];
     }
     return '';
   }
@@ -316,60 +315,5 @@ export class PortfolioDetailsComponent implements OnInit, AfterViewInit, OnDestr
       }
     }
   }
-
-  ngAfterViewInit(): void {
-    // Slider initialization is handled after data loads in ngOnInit
-  }
-
-  initSlider() {
-    if (this.common.isBrowser()) {
-      window.setTimeout(() => {
-        try {
-          const swiperElement = this.el.nativeElement.querySelector('.portfolio-media-slider');
-          if (swiperElement && typeof Swiper !== 'undefined' && this.sliderItems.length > 0) {
-            // Destroy existing instance if it exists
-            if (this.swiperInstance) {
-              this.swiperInstance.destroy(true, true);
-              this.swiperInstance = null;
-            }
-            
-            // Also check if Swiper already initialized on this element
-            const existingSwiper = (swiperElement as any).swiper;
-            if (existingSwiper) {
-              existingSwiper.destroy(true, true);
-            }
-            
-            this.swiperInstance = new Swiper(swiperElement, {
-              slidesPerView: 1,
-              speed: 800,
-              spaceBetween: 0,
-              loop: false,
-              autoplay: false,
-              pagination: {
-                el: this.el.nativeElement.querySelector('.portfolio-media-pagination'),
-                clickable: true,
-              },
-              navigation: {
-                nextEl: this.el.nativeElement.querySelector('.portfolio-media-next'),
-                prevEl: this.el.nativeElement.querySelector('.portfolio-media-prev'),
-              },
-            });
-          }
-        } catch (error) {
-          console.error('Error initializing portfolio media slider:', error);
-        }
-      }, 200);
-    }
-  }
-
-  ngOnDestroy(): void {
-    if (this.swiperInstance) {
-      try {
-        this.swiperInstance.destroy(true, true);
-      } catch (error) {
-        // Ignore errors during cleanup
-      }
-      this.swiperInstance = null;
-    }
-  }
+ 
 }

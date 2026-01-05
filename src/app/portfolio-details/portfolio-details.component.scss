@@ -29,64 +29,6 @@
   }
 }
 
-.portfolio-media-slider-wrapper {
-  position: relative;
-  
-  .portfolio-media-slider {
-    position: relative;
-    
-    .swiper-slide {
-      video, img {
-        width: 100%;
-        border-radius: 10px;
-        display: block;
-      }
-      
-      video {
-        height: auto;
-      }
-      
-      img {
-        height: auto;
-        object-fit: contain;
-      }
-    }
-    
-    .portfolio-media-pagination {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
-    }
-    
-    .portfolio-media-nav {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      transform: translateY(-50%);
-      display: flex;
-      justify-content: space-between;
-      padding: 0 15px;
-      pointer-events: none;
-      z-index: 10;
-      
-      .slider-btn {
-        pointer-events: all;
-        position: static;
-        transform: none;
-        margin: 0;
-        
-        svg {
-          stroke: currentColor;
-          fill: none;
-        }
-      }
-    }
-  }
-}
-
 .portfolio-video-thumbnail {
   height: 100%;
   display: flex;
