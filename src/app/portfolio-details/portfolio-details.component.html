@@ -1,5 +1,6 @@
 <!-- Lead Collection Modal -->
-<div class="modal fade" id="leadModal" tabindex="-1" aria-labelledby="leadModalLabel" aria-hidden="true" [class.show]="showLeadModal" [style.display]="showLeadModal ? 'block' : 'none'">
+<div class="modal fade" id="leadModal" tabindex="-1" aria-labelledby="leadModalLabel" aria-hidden="true"
+  [class.show]="showLeadModal" [style.display]="showLeadModal ? 'block' : 'none'">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-body">
@@ -33,22 +34,14 @@
                       <div class="d-flex align-items-start gap-0">
                         <app-phone-dropdown (countrySelected)="onCountrySelected($event)"></app-phone-dropdown>
                         <div class="w-100">
-                          <input
-                            id="leadPhone"
-                            type="text"
-                            formControlName="phone"
-                            maxlength="10"
-                            inputmode="numeric"
-                            pattern="[0-9]*"
-                            class="form-control phone-input"
-                            [ngClass]="{ 'is-invalid': hasError('phone') }"
-                            (keypress)="allowOnlyNumbers($event)"
-                            placeholder="Enter 10-digit number"
-                          />
+                          <input id="leadPhone" type="text" formControlName="phone" maxlength="10" inputmode="numeric"
+                            pattern="[0-9]*" class="form-control phone-input"
+                            [ngClass]="{ 'is-invalid': hasError('phone') }" (keypress)="allowOnlyNumbers($event)"
+                            placeholder="Enter 10-digit number" />
                         </div>
                       </div>
                       <div *ngIf="hasError('phone')" class="invalid-feedback d-block">
-                        Phone number is required 
+                        Phone number is required
                       </div>
                     </div>
                   </div>
@@ -70,10 +63,11 @@
                     <div class="form-inner">
                       <button class="primary-btn2" type="submit" data-text="Continue" [disabled]="isSubmittingLead">
                         <span>Continue</span>
-                        <span *ngIf="isSubmittingLead" class="spinner-border spinner-border-sm mx-2" role="status"></span>
+                        <span *ngIf="isSubmittingLead" class="spinner-border spinner-border-sm mx-2"
+                          role="status"></span>
                       </button>
-                      <button type="button" class="primary-btn2 ms-3" style="background: transparent; color: #000;" (click)="onGoBack()"
-                        [disabled]="isSubmittingLead">
+                      <button type="button" class="primary-btn2 ms-3" style="background: transparent; color: #000;"
+                        (click)="onGoBack()" [disabled]="isSubmittingLead">
                         Go Back
                       </button>
                     </div>
@@ -89,6 +83,22 @@
 </div>
 <div *ngIf="showLeadModal" class="modal-backdrop fade show"></div>
 
+<!-- Video Modal -->
+<div class="modal fade video-modal" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true"
+  [class.show]="showVideoModal" [style.display]="showVideoModal ? 'flex' : 'none'">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close btn-close-white" (click)="closeVideoModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <video id="portfolio-video-player" controls autoplay [src]="videoUrl" style="width: 100%; height: 100%;"></video>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showVideoModal" class="modal-backdrop fade show"></div>
+
 <!-- Start Breadcrumb section -->
 <div class="breadcrumb-section" style="
     background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
@@ -96,21 +106,19 @@
   ">
   <div class="container">
     <div class="row">
-      <div class="col-lg-12">
+      <div class="col-lg-8">
         <div class="banner-wrapper">
           <div class="banner-content">
-            <ul class="breadcrumb-list">
-              <li><a [routerLink]="['/home']">Home</a></li>
-              <li>Portfolio</li>
-            </ul>
             <h1>
               {{ post?.title?.iv }}
             </h1>
-            <p class="text-white">{{ post?.projectSubheading?.iv }}</p>
-            <a target="_blank" href="{{ post?.DownloadPDF?.iv }}" class="btn btn-success btn-lg"><i
-                class="bi bi-file-pdf-fill"></i> Download in PDF</a>
-            <a target="_blank" href="https://distinctcloud.io/assessment/basic-details"
-              class="btn btn btn-outline-light btn-lg mx-4"><i class="bi bi-kanban"></i> Start a similiar project</a>
+            <p class="text-white">{{ post?.client?.iv }}</p>
+            <div class="d-flex flex-wrap gap-3">
+              <a target="_blank" href="{{ post?.DownloadPDF?.iv }}" class="btn btn-success btn-lg"><i
+                  class="bi bi-file-pdf-fill"></i> Download in PDF</a>
+              <a target="_blank" href="https://distinctcloud.io/assessment/basic-details"
+                class="btn btn btn-outline-light btn-lg"><i class="bi bi-kanban"></i> Start a similiar project</a>
+            </div>
           </div>
           <div class="scroll-down-btn">
             <a (click)="scrollToSection()" role="button">
@@ -118,6 +126,17 @@
                 <path d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5" />
               </svg>
             </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="portfolio-video-thumbnail" *ngIf="post?.video?.iv && post.video.iv.length > 0">
+          <div class="video-thumbnail-wrapper" [style.background-image]="'url(' + getThumbnailImageUrl() + ')'" (click)="openVideoModal()">
+            <div class="play-button-overlay">
+              <div class="play-button-circle">
+                <i class="bi bi-play-fill"></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -132,10 +151,34 @@
 <!-- Start Case Study Details Section -->
 <div class="case-study-details-page mt-60" id="case-details-section1">
   <div class="container">
-    <div class="row justify-content-center g-4 mb-60">
-      <div class="col-lg-8">
-        <div class="case-thumb">
-          <video style="width: 100%;" controls [src]="imgCDN + post?.video?.iv[0]" alt=""> </video>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="case-thumb portfolio-media-slider-wrapper">
+          <div class="swiper portfolio-media-slider">
+            <div class="swiper-wrapper">
+              @for (item of sliderItems; track $index) {
+              <div class="swiper-slide">
+                <img [src]="item.url" alt="Portfolio image" style="width: 100%; height: auto; display: block;">
+              </div>
+              }
+            </div>
+            <div class="swiper-pagination portfolio-media-pagination"></div>
+            <div class="slider-btn-group portfolio-media-nav">
+              <div class="slider-btn portfolio-media-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+              </div>
+              <div class="slider-btn portfolio-media-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m9 18 6-6-6-6" />
+                </svg>
+              </div>
+            </div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+          </div>
         </div>
 
 

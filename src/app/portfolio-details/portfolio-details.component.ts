@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, AfterViewInit, OnDestroy } from '@angular/core';
 import { CaseStudyService } from '../services/case-study.service';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { Location } from '@angular/common';
@@ -11,6 +11,8 @@ import { ContactService } from '../services/contact.service';
 import { ToastrService } from 'ngx-toastr';
 import { PhoneDropdownComponent } from '../common/phone-dropdown/phone-dropdown.component';
 
+declare var Swiper: any;
+
 @Component({
   selector: 'app-portfolio-details',
   standalone: true,
@@ -18,7 +20,7 @@ import { PhoneDropdownComponent } from '../common/phone-dropdown/phone-dropdown.
   templateUrl: './portfolio-details.component.html',
   styleUrl: './portfolio-details.component.scss'
 })
-export class PortfolioDetailsComponent {
+export class PortfolioDetailsComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(
     private caseStudyService: CaseStudyService,
     private route: ActivatedRoute,
@@ -44,6 +46,10 @@ export class PortfolioDetailsComponent {
   isSubmittingLead: boolean = false;
   selectedCountry: any;
   readonly LEAD_STORAGE_KEY = 'portfolio_lead_submitted';
+  sliderItems: any[] = [];
+  private swiperInstance: any;
+  showVideoModal: boolean = false;
+  videoUrl: string = '';
 
   async ngOnInit() {
     // Initialize the form
@@ -67,7 +73,13 @@ export class PortfolioDetailsComponent {
         .subscribe((resp: any) => {
           this.post = resp?.items[0].data;
           this.updateMetaTags(resp?.items[0].data);
+          this.buildSliderItems();
           this.isLoading = false;
+          if (this.common.isBrowser()) {
+            setTimeout(() => {
+              this.initSlider();
+            }, 300);
+          }
         });
       if (this.common.isBrowser()) {
         window.scroll({
@@ -234,5 +246,130 @@ export class PortfolioDetailsComponent {
 
   stripHtmlTags(content: string): string {
     return content.replace(/<\/?[^>]+(>|$)/g, "");
+  }
+
+  buildSliderItems() {
+    this.sliderItems = [];
+    
+    // Only add images to slider (video is shown separately)
+    if (this.post?.image?.iv && this.post.image.iv.length > 0) {
+      this.post.image.iv.forEach((imageId: string) => {
+        this.sliderItems.push({
+          type: 'image',
+          url: 'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + imageId
+        });
+      });
+    }
+  }
+
+  getThumbnailImageUrl(): string {
+    if (this.post?.thumbnailImage?.iv && this.post.thumbnailImage.iv.length > 0) {
+      return 'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + this.post.thumbnailImage.iv[0];
+    }
+    return '';
+  }
+
+  getVideoUrl(): string {
+    if (this.post?.video?.iv && this.post.video.iv.length > 0) {
+      return this.imgCDN + this.post.video.iv[0];
+    }
+    return '';
+  }
+
+  openVideoModal() {
+    this.videoUrl = this.getVideoUrl();
+    if (this.videoUrl) {
+      this.showVideoModal = true;
+      this.updateVideoModalState();
+      if (this.common.isBrowser()) {
+        // Small delay to ensure modal is rendered before loading video
+        setTimeout(() => {
+          const videoElement = document.getElementById('portfolio-video-player') as HTMLVideoElement;
+          if (videoElement) {
+            videoElement.load();
+          }
+        }, 100);
+      }
+    }
+  }
+
+  closeVideoModal() {
+    this.showVideoModal = false;
+    this.updateVideoModalState();
+    if (this.common.isBrowser()) {
+      const videoElement = document.getElementById('portfolio-video-player') as HTMLVideoElement;
+      if (videoElement) {
+        videoElement.pause();
+        videoElement.currentTime = 0;
+      }
+    }
+  }
+
+  updateVideoModalState() {
+    if (this.common.isBrowser()) {
+      if (this.showVideoModal) {
+        document.body.classList.add('modal-open');
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+      }
+    }
+  }
+
+  ngAfterViewInit(): void {
+    // Slider initialization is handled after data loads in ngOnInit
+  }
+
+  initSlider() {
+    if (this.common.isBrowser()) {
+      window.setTimeout(() => {
+        try {
+          const swiperElement = this.el.nativeElement.querySelector('.portfolio-media-slider');
+          if (swiperElement && typeof Swiper !== 'undefined' && this.sliderItems.length > 0) {
+            // Destroy existing instance if it exists
+            if (this.swiperInstance) {
+              this.swiperInstance.destroy(true, true);
+              this.swiperInstance = null;
+            }
+            
+            // Also check if Swiper already initialized on this element
+            const existingSwiper = (swiperElement as any).swiper;
+            if (existingSwiper) {
+              existingSwiper.destroy(true, true);
+            }
+            
+            this.swiperInstance = new Swiper(swiperElement, {
+              slidesPerView: 1,
+              speed: 800,
+              spaceBetween: 0,
+              loop: false,
+              autoplay: false,
+              pagination: {
+                el: this.el.nativeElement.querySelector('.portfolio-media-pagination'),
+                clickable: true,
+              },
+              navigation: {
+                nextEl: this.el.nativeElement.querySelector('.portfolio-media-next'),
+                prevEl: this.el.nativeElement.querySelector('.portfolio-media-prev'),
+              },
+            });
+          }
+        } catch (error) {
+          console.error('Error initializing portfolio media slider:', error);
+        }
+      }, 200);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.swiperInstance) {
+      try {
+        this.swiperInstance.destroy(true, true);
+      } catch (error) {
+        // Ignore errors during cleanup
+      }
+      this.swiperInstance = null;
+    }
   }
 }
