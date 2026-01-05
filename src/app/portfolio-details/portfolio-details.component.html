@@ -212,7 +212,7 @@
                      style="visibility: visible; animation-duration: 1500ms;" 
                      [style.animation-delay]="(200 + (i * 200)) + 'ms'">
                     <div class="tools-card">
-                        <div class="tools-icon">
+                        <div class="tools-icon" style="width: 22px; height: 22px;">
                             <img *ngIf="getTechnologyIconUrl(tech)" [src]="getTechnologyIconUrl(tech)" [alt]="tech?.title || 'Technology icon'">
                         </div>
                         <div class="tools-name">
