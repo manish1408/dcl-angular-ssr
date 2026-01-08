@@ -7,14 +7,6 @@ import { environment } from '../../environments/environment';
 
 declare var Swiper: any;
 
-interface PortfolioItem {
-  id: number;
-  slug: string;
-  title: string;
-  category: string;
-  image: string;
-  alt: string;
-}
 
 @Component({
   selector: 'app-mvp-portfolio',
@@ -25,7 +17,7 @@ interface PortfolioItem {
 })
 export class MvpPortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() heading: string = 'Our MVP Portfolio';
-  portfolioItems: PortfolioItem[] = [];
+  portfolioItems: any[] = [];
   private swiperInstance: any;
 
   constructor(
@@ -39,7 +31,7 @@ export class MvpPortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
       next: (resp: any) => {
         // Map API response to PortfolioItem structure
         this.portfolioItems = (resp?.items || []).map((item: any, index: number) => {
-          const imageId = item?.data?.image?.iv?.[0];
+          const imageId = item?.data?.thumbnailImage?.iv?.[0];
           const imageUrl = imageId 
             ? `${environment.squidexAssets}distinct-cloud-labs/${imageId}`
             : '';
@@ -48,7 +40,7 @@ export class MvpPortfolioComponent implements OnInit, AfterViewInit, OnDestroy {
             id: index + 1,
             slug: item?.data?.slug?.iv || '',
             title: item?.data?.title?.iv || '',
-            category: item?.data?.category?.iv || '',
+            industry: item?.data?.industry?.iv || '',
             image: imageUrl,
             alt: item?.data?.title?.iv || 'Portfolio Image'
           };

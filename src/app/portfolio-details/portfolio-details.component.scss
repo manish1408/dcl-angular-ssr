@@ -181,6 +181,15 @@
   }
 }
 
+.service-details-faq-img {
+  display: flex;
+  align-items: flex-start;
+  
+  img {
+    vertical-align: top;
+  }
+}
+
 .video-modal {
   z-index: 9999;
   

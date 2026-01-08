@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, Renderer2, AfterViewInit, OnDestroy } from '@angular/core';
 import { CaseStudyService } from '../services/case-study.service';
-import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Location } from '@angular/common';
 import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
@@ -14,15 +14,22 @@ import { ScheduleCallCTAComponent } from '../common/schedule-call-cta/schedule-c
 import { HomeService } from '../services/home.service';
 
 declare var Swiper: any;
+declare var WOW: any;
+
+declare global {
+  interface Window {
+    wow?: any;
+  }
+}
 
 @Component({
   selector: 'app-portfolio-details',
   standalone: true,
-  imports: [RouterModule, RouterOutlet, CommonModule, ReactiveFormsModule, PhoneDropdownComponent, ScheduleCallCTAComponent],
+  imports: [RouterModule, CommonModule, ReactiveFormsModule, PhoneDropdownComponent, ScheduleCallCTAComponent],
   templateUrl: './portfolio-details.component.html',
   styleUrl: './portfolio-details.component.scss'
 })
-export class PortfolioDetailsComponent implements OnInit {
+export class PortfolioDetailsComponent implements OnInit, AfterViewInit {
   constructor(
     private caseStudyService: CaseStudyService,
     private route: ActivatedRoute,
@@ -78,7 +85,7 @@ export class PortfolioDetailsComponent implements OnInit {
           this.post = resp?.items[0].data;
           this.updateMetaTags(resp?.items[0].data);
           this.isLoading = false;
-          
+          this.initWOW();
         });
       if (this.common.isBrowser()) {
         window.scroll({
@@ -336,6 +343,31 @@ export class PortfolioDetailsComponent implements OnInit {
       return this.imgCDN + technology.icon[0];
     }
     return '';
+  }
+
+  ngAfterViewInit() {
+    if (this.common.isBrowser()) {
+      this.initWOW();
+    }
+  }
+
+  initWOW() {
+    if (this.common.isBrowser() && typeof WOW !== 'undefined') {
+      setTimeout(() => {
+        if (window.wow) {
+          window.wow.sync();
+        } else {
+          window.wow = new WOW({
+            boxClass: 'wow',
+            animateClass: 'animated',
+            offset: 0,
+            mobile: true,
+            live: true
+          });
+          window.wow.init();
+        }
+      }, 100);
+    }
   }
  
 }

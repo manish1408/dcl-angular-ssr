@@ -92,7 +92,8 @@
         <button type="button" class="btn-close btn-close-white" (click)="closeVideoModal()" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <video id="portfolio-video-player" controls autoplay [src]="videoUrl" style="width: 100%; height: 100%;"></video>
+        <video id="portfolio-video-player" controls autoplay [src]="videoUrl"
+          style="width: 100%; height: 100%;"></video>
       </div>
     </div>
   </div>
@@ -120,7 +121,8 @@
               <a *ngIf="post?.demoLink?.iv" target="_blank" [href]="post?.demoLink?.iv" class="btn btn-primary btn-lg">
                 <i class="bi bi-play-circle-fill"></i> View Demo
               </a>
-              <a *ngIf="post?.projectLink?.iv" target="_blank" [href]="post?.projectLink?.iv" class="btn btn-info btn-lg">
+              <a *ngIf="post?.projectLink?.iv" target="_blank" [href]="post?.projectLink?.iv"
+                class="btn btn-info btn-lg">
                 <i class="bi bi-box-arrow-up-right"></i> View Project
               </a>
             </div>
@@ -136,7 +138,8 @@
       </div>
       <div class="col-lg-4">
         <div class="portfolio-video-thumbnail" *ngIf="post?.video?.iv && post.video.iv.length > 0">
-          <div class="video-thumbnail-wrapper" [style.background-image]="'url(' + getThumbnailImageUrl() + ')'" (click)="openVideoModal()">
+          <div class="video-thumbnail-wrapper" [style.background-image]="'url(' + getThumbnailImageUrl() + ')'"
+            (click)="openVideoModal()">
             <div class="play-button-overlay">
               <div class="play-button-circle">
                 <i class="bi bi-play-fill"></i>
@@ -157,74 +160,89 @@
 
 <div class="service-details-page pt-120 mb-120" id="service-details-section">
   <div class="container">
-      <div class="mb-80">
-          <div class="row g-lg-4 gy-5 align-items-center">
-              <div class="col-lg-6 order-lg-1 order-2 wow animate fadeInLeft" data-wow-delay="200ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
-                  <div class="service-details-top-content">
-                      <div [innerHTML]="post?.description?.iv"></div>
-                  </div>
-              </div>
-              <div class="col-lg-6 order-lg-2 order-1 wow animate fadeInRight" data-wow-delay="200ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
-                  <div class="service-details-img">
-                      <img *ngIf="getImageUrl(0)" [src]="getImageUrl(0)" [alt]="post?.title?.iv">
-                  </div>
-              </div>
+    <div class="mb-80">
+      <div class="row g-lg-4 gy-5 align-items-center">
+        <div class="col-lg-6 order-lg-1 order-2 wow animate fadeInLeft" data-wow-delay="200ms"
+          data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
+          <div class="service-details-top-content">
+            <div [innerHTML]="post?.description?.iv"></div>
           </div>
-      </div>
-      <div class="mb-80 wow animate fadeInDown" data-wow-delay="400ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 400ms;">
-          <div class="row g-lg-4 gy-5 align-items-xl-center">
-              <div class="col-lg-6">
-                  <div class="service-details-faq-img">
-                      <img *ngIf="getImageUrl(1)" [src]="getImageUrl(1)" [alt]="post?.title?.iv">
-                  </div>
-              </div>
-              <div class="col-lg-6">
-                  <div class="service-details-top-content">
-                      <div [innerHTML]="post?.features?.iv"></div>
-                  </div>
-              </div>
-          </div>
-      </div>
-
-      <div class="service-details-tools-section mb-120">
-        <div class="container">
-            <div class="row mb-60">
-                <div class="col-lg-12 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
-                    <div class="section-title5">
-                        <span class="sub-title5 two">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
-                                <path d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z"></path>
-                            </svg>
-                            Our Tools
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
-                                <path d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z"></path>
-                            </svg>
-                        </span>
-                        <h2>Our Design Technology <span>Tools Stack.</span></h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row g-4">
-                @for (tech of getTechnologies(); track tech; let i = $index) {
-                <div class="col-lg-3 col-md-4 col-sm-6 wow animate fadeInDown" 
-                     [attr.data-wow-delay]="(200 + (i * 200)) + 'ms'" 
-                     data-wow-duration="1500ms" 
-                     style="visibility: visible; animation-duration: 1500ms;" 
-                     [style.animation-delay]="(200 + (i * 200)) + 'ms'">
-                    <div class="tools-card">
-                        <div class="tools-icon" style="width: 22px; height: 22px;">
-                            <img *ngIf="getTechnologyIconUrl(tech)" [src]="getTechnologyIconUrl(tech)" [alt]="tech?.title || 'Technology icon'">
-                        </div>
-                        <div class="tools-name">
-                            <span>{{ tech?.title }}</span>
-                        </div>
-                    </div>
-                </div>
-                }
-            </div>
         </div>
+        <div class="col-lg-6 order-lg-2 order-1 wow animate fadeInRight" data-wow-delay="200ms"
+          data-wow-duration="1500ms" style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
+          <div class="service-details-img">
+            <img *ngIf="getImageUrl(0)" [src]="getImageUrl(0)" [alt]="post?.title?.iv">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background-color:#EBF2F6;" class="pt-120 pb-120">
+    <div class="container">
+      <div class="wow animate fadeInDown" data-wow-delay="400ms" data-wow-duration="1500ms"
+        style="background-color:#EBF2F6; visibility: visible; animation-duration: 1500ms; animation-delay: 400ms;">
+        <div class="row g-lg-4 gy-5 align-items-xl-start">
+          <div class="col-lg-6">
+            <div class="service-details-faq-img">
+              <img *ngIf="getImageUrl(1)" [src]="getImageUrl(1)" [alt]="post?.title?.iv">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="service-details-top-content">
+              <div [innerHTML]="post?.features?.iv"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    
+    </div>
+  
+    </div>
+ 
+  
+  <div class="service-details-tools-section mt-120 mb-120">
+    <div class="container">
+      <div class="row mb-60">
+        <div class="col-lg-12 wow animate fadeInDown" data-wow-delay="200ms" data-wow-duration="1500ms"
+          style="visibility: visible; animation-duration: 1500ms; animation-delay: 200ms;">
+          <div class="section-title5">
+            <span class="sub-title5 two">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                <path
+                  d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z">
+                </path>
+              </svg>
+              Our Tools
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                <path
+                  d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z">
+                </path>
+              </svg>
+            </span>
+            <h2>Our Development <span>Stack.</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="row g-4">
+        @for (tech of getTechnologies(); track tech; let i = $index) {
+        <div class="col-lg-3 col-md-4 col-sm-6 wow animate fadeInDown"
+          [attr.data-wow-delay]="(200 + (i * 200)) + 'ms'" data-wow-duration="1500ms"
+          style="visibility: visible; animation-duration: 1500ms;" [style.animation-delay]="(200 + (i * 200)) + 'ms'">
+          <div class="tools-card">
+            <div class="tools-icon" style="width: 22px; height: 22px;">
+              <img *ngIf="getTechnologyIconUrl(tech)" [src]="getTechnologyIconUrl(tech)"
+                [alt]="tech?.title || 'Technology icon'">
+            </div>
+            <div class="tools-name">
+              <span>{{ tech?.title }}</span>
+            </div>
+          </div>
+        </div>
+        }
+      </div>
     </div>
   </div>
 </div>
 <app-schedule-call-cta [services]="ctaDetails"></app-schedule-call-cta>
-
