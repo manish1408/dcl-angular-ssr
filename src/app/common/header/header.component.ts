@@ -281,7 +281,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 },
                 {
                   title: 'AI Agents Development',
-                  description: 'You start the vibe, we finish it.',
+                  description: 'Tailored AI agents for your specific needs.',
                   icon: 'bi bi-gear',
                   iconColor: '#f59e0b',
                   routerLink: ['/solutions/ai-agents-development'],
@@ -293,12 +293,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
               title: 'Staff Augmentation',
               items: [
                 {
-                  title: 'Hire Vibe Coders',
+                  title: 'Hire AI Engineers',
                   description: 'Experienced Engineers who have mastered AI driven development.',
                   icon: 'bi bi-puzzle',
                   iconColor: '#10b981',
-                  routerLink: ['/solutions/hire-vibe-coders'],
-                  imageUrl: 'assets/img/dcl-services.jpg'
+                  routerLink: ['/solutions/hire-ai-engineers'],
+                  imageUrl: 'assets/img/hire-ai-engineers.jpg'
                 },
                 {
                   title: 'Hire Fractional CTO',

@@ -17,7 +17,7 @@ declare var Swiper: any;
 declare var jQuery: any;
 
 @Component({
-  selector: 'app-hire-vibe-coders',
+  selector: 'app-hire-ai-engineers',
   standalone: true,
   imports: [
     RouterModule,
@@ -26,10 +26,10 @@ declare var jQuery: any;
     HomeTestimonialsComponent,
     MvpPortfolioComponent
   ],
-  templateUrl: './hire-vibe-coders.component.html',
-  styleUrl: './hire-vibe-coders.component.scss',
+  templateUrl: './hire-ai-engineers.component.html',
+  styleUrl: './hire-ai-engineers.component.scss',
 })
-export class HireVibeCodersComponent implements AfterViewInit { 
+export class HireAiEngineersComponent implements AfterViewInit { 
   constructor(
     private meta: Meta,
     private route: ActivatedRoute,
@@ -43,7 +43,7 @@ export class HireVibeCodersComponent implements AfterViewInit {
     private faqService: FaqService,
     private testimonialService: TestimonialService
   ) {
-    this.meta.addTag({ name: 'title', content: 'Hire Vibe Coders - Distinct Cloud Labs' });
+    this.meta.addTag({ name: 'title', content: 'Hire AI Engineers - Distinct Cloud Labs' });
   }
 
   posts: any = [];
@@ -74,11 +74,11 @@ export class HireVibeCodersComponent implements AfterViewInit {
   ngOnInit(): void {
     this.meta.updateTag({
       name: 'title',
-      content: 'Hire Vibe Coders - Distinct Cloud Labs',
+      content: 'Hire AI Engineers - Distinct Cloud Labs',
     });
     this.meta.updateTag({
       name: 'description',
-      content: 'Experienced Engineers who have mastered AI driven development.',
+      content: 'Top 1% Pre-vetted AI Engineers specializing in machine learning, deep learning, NLP, and predictive analytics. No freelancers, production-grade AI solutions.',
     });
 
     this.getTestimonials();
@@ -186,7 +186,7 @@ export class HireVibeCodersComponent implements AfterViewInit {
 
   initializeMarquee(): void {
     if (this.common.isBrowser() && typeof jQuery !== 'undefined' && jQuery.fn.marquee) {
-      const marqueeElement = jQuery('app-hire-vibe-coders .marquee_text');
+      const marqueeElement = jQuery('app-hire-ai-engineers .marquee_text');
       if (marqueeElement.length > 0) {
         try {
           marqueeElement.marquee('destroy');

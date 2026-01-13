@@ -4,7 +4,7 @@ import { AIAgencyComponent } from './ai-agency/ai-agency.component';
 import { AiPoweredMvpDevelopmentComponent } from './solutions/ai-powered-mvp-development/ai-powered-mvp-development.component';
 import { AiPoweredProductDevelopmentComponent } from './solutions/ai-powered-product-development/ai-powered-product-development.component';
 import { AiAgentsDevelopmentComponent } from './solutions/ai-agents-development/ai-agents-development.component';
-import { HireVibeCodersComponent } from './solutions/hire-vibe-coders/hire-vibe-coders.component';
+import { HireAiEngineersComponent } from './solutions/hire-ai-engineers/hire-ai-engineers.component';
 import { HireFractionalCtoComponent } from './solutions/hire-fractional-cto/hire-fractional-cto.component';
 import { HireAiMlExpertsComponent } from './solutions/hire-ai-ml-experts/hire-ai-ml-experts.component';
 import { N8nMakeAutomationComponent } from './solutions/n8n-make-automation/n8n-make-automation.component';
@@ -53,7 +53,7 @@ export const routes: Routes = [
   { path: 'dcl-sprint', component: DclSprintComponent },
   { path: 'solutions/ai-powered-product-development', component: AiPoweredProductDevelopmentComponent },
   { path: 'solutions/ai-agents-development', component: AiAgentsDevelopmentComponent },
-  { path: 'solutions/hire-vibe-coders', component: HireVibeCodersComponent },
+  { path: 'solutions/hire-ai-engineers', component: HireAiEngineersComponent },
   { path: 'solutions/hire-fractional-cto', component: HireFractionalCtoComponent },
   { path: 'solutions/hire-ai-ml-experts', component: HireAiMlExpertsComponent },
   { path: 'solutions/n8n-make-automation', component: N8nMakeAutomationComponent },
@@ -112,7 +112,7 @@ export const routes: Routes = [
 export const ssrTracking: Routes = [
   { path: 'solutions/ai-powered-product-development', component: AiPoweredProductDevelopmentComponent },
   { path: 'solutions/ai-agents-development', component: AiAgentsDevelopmentComponent },
-  { path: 'solutions/hire-vibe-coders', component: HireVibeCodersComponent },
+  { path: 'solutions/hire-ai-engineers', component: HireAiEngineersComponent },
   { path: 'solutions/hire-fractional-cto', component: HireFractionalCtoComponent },
   { path: 'solutions/hire-ai-ml-experts', component: HireAiMlExpertsComponent },
   { path: 'solutions/n8n-make-automation', component: N8nMakeAutomationComponent },
