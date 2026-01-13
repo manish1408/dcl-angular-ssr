@@ -285,7 +285,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                   icon: 'bi bi-gear',
                   iconColor: '#f59e0b',
                   routerLink: ['/solutions/ai-agents-development'],
-                  imageUrl: 'assets/img/dcl-services.jpg'
+                  imageUrl: 'assets/img/product-development.jpg'
                 }
               ]
             },
