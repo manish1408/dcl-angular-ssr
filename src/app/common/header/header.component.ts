@@ -319,7 +319,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                   icon: 'bi bi-file-earmark-text',
                   iconColor: '#ef4444',
                   routerLink: ['/solutions/n8n-make-automation'],
-                  imageUrl: 'assets/img/dcl-services.jpg'
+                  imageUrl: 'assets/img/n8n-automation.jpg'
                 },
                 {
                   title: 'Enterprise AI Automation with Distributed Systems',
