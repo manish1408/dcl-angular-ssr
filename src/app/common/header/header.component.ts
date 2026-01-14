@@ -306,15 +306,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                   icon: 'bi bi-code-slash',
                   iconColor: '#8b5cf6',
                   routerLink: ['/solutions/hire-fractional-cto'],
-                  imageUrl: 'assets/img/dcl-services.jpg'
-                },
-                {
-                  title: 'Hire AI and ML experts',
-                  description: 'Automate workflows with intelligent AI agents.',
-                  icon: 'bi bi-gear',
-                  iconColor: '#f59e0b',
-                  routerLink: ['/solutions/hire-ai-ml-experts'],
-                  imageUrl: 'assets/img/dcl-services.jpg'
+                  imageUrl: 'assets/img/hire-a-cto.jpg'
                 }
               ]
             },

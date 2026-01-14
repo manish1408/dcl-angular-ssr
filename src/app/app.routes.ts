@@ -6,7 +6,6 @@ import { AiPoweredProductDevelopmentComponent } from './solutions/ai-powered-pro
 import { AiAgentsDevelopmentComponent } from './solutions/ai-agents-development/ai-agents-development.component';
 import { HireAiEngineersComponent } from './solutions/hire-ai-engineers/hire-ai-engineers.component';
 import { HireFractionalCtoComponent } from './solutions/hire-fractional-cto/hire-fractional-cto.component';
-import { HireAiMlExpertsComponent } from './solutions/hire-ai-ml-experts/hire-ai-ml-experts.component';
 import { N8nMakeAutomationComponent } from './solutions/n8n-make-automation/n8n-make-automation.component';
 import { EnterpriseAiAutomationComponent } from './solutions/enterprise-ai-automation/enterprise-ai-automation.component';
 import { CaseStudiesComponent } from './case-studies/case-studies.component';
@@ -55,7 +54,6 @@ export const routes: Routes = [
   { path: 'solutions/ai-agents-development', component: AiAgentsDevelopmentComponent },
   { path: 'solutions/hire-ai-engineers', component: HireAiEngineersComponent },
   { path: 'solutions/hire-fractional-cto', component: HireFractionalCtoComponent },
-  { path: 'solutions/hire-ai-ml-experts', component: HireAiMlExpertsComponent },
   { path: 'solutions/n8n-make-automation', component: N8nMakeAutomationComponent },
   { path: 'solutions/enterprise-ai-automation', component: EnterpriseAiAutomationComponent }, 
   { path: 'solutions/:type', component: AiPoweredMvpDevelopmentComponent },
@@ -114,7 +112,6 @@ export const ssrTracking: Routes = [
   { path: 'solutions/ai-agents-development', component: AiAgentsDevelopmentComponent },
   { path: 'solutions/hire-ai-engineers', component: HireAiEngineersComponent },
   { path: 'solutions/hire-fractional-cto', component: HireFractionalCtoComponent },
-  { path: 'solutions/hire-ai-ml-experts', component: HireAiMlExpertsComponent },
   { path: 'solutions/n8n-make-automation', component: N8nMakeAutomationComponent },
   { path: 'solutions/enterprise-ai-automation', component: EnterpriseAiAutomationComponent },
   { path: 'solutions/:type', component: AiPoweredMvpDevelopmentComponent },
