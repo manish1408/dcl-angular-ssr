@@ -18105,12 +18105,10 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.9;
-  margin-bottom: 40px;
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .service-details-page .service-details-top-area .service-details-top-content p {
     font-size: 15px;
-    margin-bottom: 30px;
   }
 }
 @media (max-width: 767px) {

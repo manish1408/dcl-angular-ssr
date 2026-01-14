@@ -44,7 +44,7 @@
           <img alt="image" src="assets/icons/diamond-square.svg" class="diamond-icon">
           <div class="case-study-card3">
 
-            <img [routerLink]="['/demo/', post.data?.slug?.iv]" class="card-top-img" [src]="
+            <img [routerLink]="['/portfolio/', post.data?.slug?.iv]" class="card-top-img" [src]="
                   'https://cms.distinctcloud.io/api/assets/distinct-cloud-labs/' + 
                   post?.data?.image?.iv[0]
                 " alt="{{ post.data?.title?.iv }}" width="351" height="240" />
@@ -52,13 +52,13 @@
             <div class="card-content">
               <div class="card-text-info">
 
-                <h2 [routerLink]="['/demo/', post.data?.slug?.iv]">
+                <h2 [routerLink]="['/portfolio/', post.data?.slug?.iv]">
                   {{ post.data?.title?.iv }}
                 </h2>
                 <!-- <p>{{post.data?.description?.iv}}</p> -->
               </div>
 
-              <button aria-label="play button" [routerLink]="['/demo/', post.data?.slug?.iv]" class="clear-btn">
+              <button aria-label="play button" [routerLink]="['/portfolio/', post.data?.slug?.iv]" class="clear-btn">
                 <img src="assets/icons/play-icon.svg" alt="play icon" />
               </button>
             </div>

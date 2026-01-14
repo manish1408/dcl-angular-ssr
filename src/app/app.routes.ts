@@ -1,11 +1,16 @@
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AIAgencyComponent } from './ai-agency/ai-agency.component';
-import { SolutionComponent } from './solutions/solution/solution.component';
+import { AiPoweredMvpDevelopmentComponent } from './solutions/ai-powered-mvp-development/ai-powered-mvp-development.component';
+import { AiPoweredProductDevelopmentComponent } from './solutions/ai-powered-product-development/ai-powered-product-development.component';
+import { AiAgentsDevelopmentComponent } from './solutions/ai-agents-development/ai-agents-development.component';
+import { HireAiEngineersComponent } from './solutions/hire-ai-engineers/hire-ai-engineers.component';
+import { HireFractionalCtoComponent } from './solutions/hire-fractional-cto/hire-fractional-cto.component';
+import { N8nMakeAutomationComponent } from './solutions/n8n-make-automation/n8n-make-automation.component';
+import { EnterpriseAiAutomationComponent } from './solutions/enterprise-ai-automation/enterprise-ai-automation.component';
 import { CaseStudiesComponent } from './case-studies/case-studies.component';
 import { CaseDetailsComponent } from './case-details/case-details.component';
 import { ContactComponent } from './contact/contact.component';
-import { ScheduleComponent } from './schedule-call/schedule/schedule.component';
 import { BasicDetailsComponent } from './schedule-call/basic-details/basic-details.component';
 import { BudgetComponent } from './schedule-call/budget/budget.component';
 import { ContactInformationComponent } from './schedule-call/contact-information/contact-information.component';
@@ -26,8 +31,11 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { PortfolioDetailsComponent } from './portfolio-details/portfolio-details.component';
 import { AiDevelopmentComponent } from './ai-development/ai-development.component';
 import { ServicePageComponent } from './service-page/service-page.component';
-import { ProductComponent } from './product/product.component';
-import { ProductPageComponent } from './product-page/product-page.component';
+import { RagAsAServiceComponent } from './products/rag-as-a-service/rag-as-a-service.component';
+import { AiVoiceCallingAgentsComponent } from './products/ai-voice-calling-agents/ai-voice-calling-agents.component';
+import { AiSearchImplementationComponent } from './products/ai-search-implementation/ai-search-implementation.component';
+import { AiCustomerSupportComponent } from './products/ai-customer-support/ai-customer-support.component';
+import { WhatsappBusinessAiAgentComponent } from './products/whatsapp-business-ai-agent/whatsapp-business-ai-agent.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -42,12 +50,18 @@ export const routes: Routes = [
   },
   { path: 'n8n-agency', component: AIAgencyComponent },
   { path: 'dcl-sprint', component: DclSprintComponent },
-  { path: 'solutions/:type', component: SolutionComponent },
+  { path: 'solutions/ai-powered-product-development', component: AiPoweredProductDevelopmentComponent },
+  { path: 'solutions/ai-agents-development', component: AiAgentsDevelopmentComponent },
+  { path: 'solutions/hire-ai-engineers', component: HireAiEngineersComponent },
+  { path: 'solutions/hire-fractional-cto', component: HireFractionalCtoComponent },
+  { path: 'solutions/n8n-make-automation', component: N8nMakeAutomationComponent },
+  { path: 'solutions/enterprise-ai-automation', component: EnterpriseAiAutomationComponent }, 
+  { path: 'solutions/:type', component: AiPoweredMvpDevelopmentComponent },
   { path: 'expertise/:type', component: ExperiseComponent },
   { path: 'case-studies', component: CaseStudiesComponent },
   { path: 'case-study/:type', component: CaseDetailsComponent },
   { path: 'portfolios', component: PortfolioComponent },
-  { path: 'demo/:type', component: PortfolioDetailsComponent },
+  { path: 'portfolio/:type', component: PortfolioDetailsComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'blog', component: BlogsComponent },
   { path: 'blog/:type', component: BlogDetailsComponent },
@@ -63,7 +77,6 @@ export const routes: Routes = [
     path: 'schedule-call/it-professionals/:id',
     component: ItProfessionalsComponent,
   },
-  { path: 'schedule-call/schedule', component: ScheduleComponent },
   { path: 'schedule-call/start-date/:id', component: StartDateComponent },
   { path: 'schedule-call/technologies/:id', component: TechnologiesComponent },
   { path: 'thank-you', component: ThankYouComponent },
@@ -78,8 +91,11 @@ export const routes: Routes = [
   },
   { path: 'ai-development', component: AiDevelopmentComponent },
   { path: 'services/:slug', component: ServicePageComponent },
-  { path: 'product/:slug', component: ProductComponent },
-  { path: 'product-page', component: ProductPageComponent },
+  { path: 'product/rag-as-a-service', component: RagAsAServiceComponent },
+  { path: 'product/ai-voice-calling-agents', component: AiVoiceCallingAgentsComponent },
+  { path: 'product/ai-search-implementation', component: AiSearchImplementationComponent },
+  { path: 'product/ai-customer-support', component: AiCustomerSupportComponent },
+  { path: 'product/whatsapp-business-ai-agent', component: WhatsappBusinessAiAgentComponent },
   {
     path: '**',
     redirectTo: 'page-not-found',
@@ -92,7 +108,13 @@ export const routes: Routes = [
 ];
 
 export const ssrTracking: Routes = [
-  { path: 'solutions/:type', component: SolutionComponent },
+  { path: 'solutions/ai-powered-product-development', component: AiPoweredProductDevelopmentComponent },
+  { path: 'solutions/ai-agents-development', component: AiAgentsDevelopmentComponent },
+  { path: 'solutions/hire-ai-engineers', component: HireAiEngineersComponent },
+  { path: 'solutions/hire-fractional-cto', component: HireFractionalCtoComponent },
+  { path: 'solutions/n8n-make-automation', component: N8nMakeAutomationComponent },
+  { path: 'solutions/enterprise-ai-automation', component: EnterpriseAiAutomationComponent },
+  { path: 'solutions/:type', component: AiPoweredMvpDevelopmentComponent },
   { path: 'expertise/:type', component: ExperiseComponent },
   { path: 'case-studies', component: CaseStudiesComponent },
   { path: 'case-study/:type', component: CaseDetailsComponent },
@@ -100,7 +122,7 @@ export const ssrTracking: Routes = [
   { path: 'blog', component: BlogsComponent },
   { path: 'blog/:type', component: BlogDetailsComponent },
   { path: 'portfolios', component: PortfolioComponent },
-  { path: 'demo/:type', component: PortfolioDetailsComponent },
+  { path: 'portfolio/:type', component: PortfolioDetailsComponent },
   { path: 'assessment/basic-details', component: BasicDetailsComponent },
   { path: 'assessment/basic-details/:id', component: BasicDetailsComponent },
   { path: 'schedule-call/budget/:id', component: BudgetComponent },
@@ -113,13 +135,10 @@ export const ssrTracking: Routes = [
     path: 'schedule-call/it-professionals/:id',
     component: ItProfessionalsComponent,
   },
-  { path: 'schedule-call/schedule', component: ScheduleComponent },
   { path: 'schedule-call/start-date/:id', component: StartDateComponent },
   { path: 'schedule-call/technologies/:id', component: TechnologiesComponent },
   { path: 'thank-you', component: ThankYouComponent },
   { path: 'dcl-sprint', component: DclSprintComponent },
   { path: 'ai-development', component: AiDevelopmentComponent },
   { path: 'services/:slug', component: ServicePageComponent },
-  { path: 'product/:slug', component: ProductComponent },
-  { path: 'product-page', component: ProductPageComponent },
 ];

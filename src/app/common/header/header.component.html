@@ -27,86 +27,413 @@
   <div class="container">
     <div class="row g-lg-4 gy-5">
       <div class="col-lg-8">
-        <div class="sidebar-menu-wrap">
+        <div class="sidebar-menu-wrap"> 
           <ul class="main-menu align-items-center">
-            <!-- <li>
-              <a>Expertise </a>
-              <span class="dropdown-icon2"><i class="bi bi-plus"></i></span>
-              <ul class="submenu-list">
-                <li>
-                  <a class="fs-6" [routerLink]="['solutions/front-end']">AI in Commerce</a>
-                  <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
-                </li>
-                <li>
-                  <a class="fs-6" [routerLink]="['solutions/front-end']">AI in Customer Support</a>
-                  <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
-                </li>
-                <li>
-                  <a class="fs-6" [routerLink]="['solutions/front-end']">AI in Data Analytics</a>
-                  <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
-                </li>
-                <li>
-                  <a class="fs-6">Custom AI Development</a>
-                  <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
-                </li>
-              </ul>
-            </li> -->
-           
-            @if(serviceNav.length > 0){
-              <li>
-                <div class="d-flex align-items-center justify-content-between" (click)="toggleServices()">
-                  <div>Services</div>
-                  <span class="dropdown-icon2">
-                    <i class="bi" [ngClass]="{'bi-dash': isServiceExpanded, 'bi-plus': !isServiceExpanded}"></i>
-                  </span>
-                </div>
-                <ul class="submenu-list" [ngClass]="{'show': isServiceExpanded}">
-                  @for(sNav of serviceNav;track sNav){
-                  <li>
-                    <a class="fs-6" [routerLink]="['/services/',sNav.slug]" (click)="hideSidebar()">{{sNav?.title}}</a>
-                    <!-- <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span> -->
-                  </li>
+            <li class="fs-6">
+              <a [routerLink]="['/home']" (click)="hideSidebar()">Home</a>
+            </li>
+
+            <!-- Services Mobile Menu -->
+            <li>
+              <div class="d-flex align-items-center justify-content-between" (click)="toggleMobileMenu('services')">
+                <div>Services</div>
+                <span class="dropdown-icon2">
+                  <i class="bi" [ngClass]="{'bi-dash': isMobileMenuExpanded('services'), 'bi-plus': !isMobileMenuExpanded('services')}"></i>
+                </span>
+              </div>
+              @if(isMobileMenuExpanded('services')) {
+                <ul class="submenu-list show">
+                  @for (menuItem of getMobileMenuItems('services'); track $index) {
+                    @for (column of menuItem.children; track $index) {
+                      @if (column.sections && column.sections.length > 0) {
+                        @for (section of column.sections; track $index) {
+                          <li class="mb-3">
+                            <h6 class="text-uppercase fw-bold mb-2" style="font-size: 11px; letter-spacing: 0.5px; color: #6b7280;">
+                              {{ section.title }}
+                            </h6>
+                            <ul class="list-unstyled ps-3">
+                              @for (link of section.items; track $index) {
+                                <li class="mb-3 d-flex align-items-start">
+                                  @if (link.icon) {
+                                    <div class="flex-shrink-0 me-3" style="width: 24px; height: 24px;">
+                                      <i [class]="link.icon" [style.color]="link.iconColor || '#3b82f6'" style="font-size: 20px;"></i>
+                                    </div>
+                                  }
+                                  <div class="flex-grow-1">
+                                    @if (link.routerLink) {
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none" 
+                                         [routerLink]="link.routerLink" 
+                                         (click)="hideSidebar()"
+                                         style="color: #111827;">
+                                        {{ link.title }}
+                                      </a>
+                                    } @else if (link.link) {
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none" 
+                                         [href]="link.link" 
+                                         (click)="hideSidebar()"
+                                         style="color: #111827;">
+                                        {{ link.title }}
+                                      </a>
+                                    } @else {
+                                      <span class="fs-6 d-block fw-semibold" style="color: #111827;">
+                                        {{ link.title }}
+                                      </span>
+                                    }
+                                    @if (link.description) {
+                                      @if (link.routerLink) {
+                                        <a [routerLink]="link.routerLink" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else if (link.link) {
+                                        <a [href]="link.link" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else {
+                                        <p class="mb-0 small" style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </p>
+                                      }
+                                    }
+                                  </div>
+                                </li>
+                              }
+                            </ul>
+                          </li>
+                        }
+                      }
+                      @if (column.guide) {
+                        <li class="mt-3 pt-3 border-top">
+                          <p class="mb-2 fw-semibold small" style="color: #111827;">
+                            {{ column.guide.question }}
+                          </p>
+                          @if (column.guide.routerLink) {
+                            <a [routerLink]="column.guide.routerLink" 
+                               (click)="hideSidebar()"
+                               class="text-decoration-none d-inline-flex align-items-center fw-semibold small"
+                               style="color: #3b82f6;">
+                              {{ column.guide.linkText }}
+                              <i class="bi bi-arrow-right ms-2" style="font-size: 12px;"></i>
+                            </a>
+                          } @else if (column.guide.link) {
+                            <a [href]="column.guide.link" 
+                               (click)="hideSidebar()"
+                               class="text-decoration-none d-inline-flex align-items-center fw-semibold small"
+                               style="color: #3b82f6;">
+                              {{ column.guide.linkText }}
+                              <i class="bi bi-arrow-right ms-2" style="font-size: 12px;"></i>
+                            </a>
+                          }
+                        </li>
+                      }
+                    }
                   }
                 </ul>
-              </li>
               }
-  
-              @if(productNav.length > 0){
+            </li>
+
+            <!-- Products Mobile Menu -->
+            @if(productNav.length > 0) {
               <li>
-                <div class="d-flex align-items-center justify-content-between" (click)="toggleProducts()">
+                <div class="d-flex align-items-center justify-content-between" (click)="toggleMobileMenu('products')">
                   <div>Products</div>
                   <span class="dropdown-icon2">
-                    <i class="bi" [ngClass]="{'bi-dash': isProductExpanded, 'bi-plus': !isProductExpanded}"></i>
+                    <i class="bi" [ngClass]="{'bi-dash': isMobileMenuExpanded('products'), 'bi-plus': !isMobileMenuExpanded('products')}"></i>
                   </span>
                 </div>
-                <ul class="submenu-list" [ngClass]="{'show': isProductExpanded}">
-                  @for(pNav of productNav;track pNav){
-                  <li>
-                    <a class="fs-6" [routerLink]="['/product/',pNav.slug]" (click)="hideSidebar()">{{pNav?.title}}</a>
-  
-                  </li>
+                @if(isMobileMenuExpanded('products')) {
+                  <ul class="submenu-list show">
+                    @for (menuItem of getMobileMenuItems('products'); track $index) {
+                      @for (column of menuItem.children; track $index) {
+                        @if (column.sections && column.sections.length > 0) {
+                          @for (section of column.sections; track $index) {
+                            <li class="mb-3">
+                              <h6 class="text-uppercase fw-bold mb-2" style="font-size: 11px; letter-spacing: 0.5px; color: #6b7280;">
+                                {{ section.title }}
+                              </h6>
+                              <ul class="list-unstyled ps-3">
+                                @for (link of section.items; track $index) {
+                                  <li class="mb-3 d-flex align-items-start">
+                                    @if (link.icon) {
+                                      <div class="flex-shrink-0 me-3" style="width: 24px; height: 24px;">
+                                        <i [class]="link.icon" [style.color]="link.iconColor || '#3b82f6'" style="font-size: 20px;"></i>
+                                      </div>
+                                    }
+                                    <div class="flex-grow-1">
+                                      @if (link.routerLink) {
+                                        <a class="fs-6 d-block fw-semibold text-decoration-none" 
+                                           [routerLink]="link.routerLink" 
+                                           (click)="hideSidebar()"
+                                           style="color: #111827;">
+                                          {{ link.title }}
+                                        </a>
+                                      } @else if (link.link) {
+                                        <a class="fs-6 d-block fw-semibold text-decoration-none" 
+                                           [href]="link.link" 
+                                           (click)="hideSidebar()"
+                                           style="color: #111827;">
+                                          {{ link.title }}
+                                        </a>
+                                      } @else {
+                                        <span class="fs-6 d-block fw-semibold" style="color: #111827;">
+                                          {{ link.title }}
+                                        </span>
+                                      }
+                                      @if (link.description) {
+                                        <p class="mb-0 small" style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </p>
+                                      }
+                                    </div>
+                                  </li>
+                                }
+                              </ul>
+                            </li>
+                          }
+                        }
+                        @if (column.guide) {
+                          <li class="mt-3 pt-3 border-top">
+                            <p class="mb-2 fw-semibold small" style="color: #111827;">
+                              {{ column.guide.question }}
+                            </p>
+                            @if (column.guide.routerLink) {
+                              <a [routerLink]="column.guide.routerLink" 
+                                 (click)="hideSidebar()"
+                                 class="text-decoration-none d-inline-flex align-items-center fw-semibold small"
+                                 style="color: #3b82f6;">
+                                {{ column.guide.linkText }}
+                                <i class="bi bi-arrow-right ms-2" style="font-size: 12px;"></i>
+                              </a>
+                            } @else if (column.guide.link) {
+                              <a [href]="column.guide.link" 
+                                 (click)="hideSidebar()"
+                                 class="text-decoration-none d-inline-flex align-items-center fw-semibold small"
+                                 style="color: #3b82f6;">
+                                {{ column.guide.linkText }}
+                                <i class="bi bi-arrow-right ms-2" style="font-size: 12px;"></i>
+                              </a>
+                            }
+                          </li>
+                        }
+                      }
+                    }
+                  </ul>
+                }
+              </li>
+            }
+
+            <!-- Case Studies Mobile Menu -->
+            <li>
+              <div class="d-flex align-items-center justify-content-between" (click)="toggleMobileMenu('case-studies')">
+                <div>Case studies</div>
+                <span class="dropdown-icon2">
+                  <i class="bi" [ngClass]="{'bi-dash': isMobileMenuExpanded('case-studies'), 'bi-plus': !isMobileMenuExpanded('case-studies')}"></i>
+                </span>
+              </div>
+              @if(isMobileMenuExpanded('case-studies')) {
+                <ul class="submenu-list show">
+                  @for (menuItem of getMobileMenuItems('case-studies'); track $index) {
+                    @for (column of menuItem.children; track $index) {
+                      @if (column.sections && column.sections.length > 0) {
+                        @for (section of column.sections; track $index) {
+                          <li class="mb-3">
+                            <h6 class="text-uppercase fw-bold mb-2" style="font-size: 11px; letter-spacing: 0.5px; color: #6b7280;">
+                              {{ section.title }}
+                            </h6>
+                            <ul class="list-unstyled ps-3">
+                              @for (link of section.items; track $index) {
+                                <li class="mb-3 d-flex align-items-start">
+                                  @if (link.icon) {
+                                    <div class="flex-shrink-0 me-3" style="width: 24px; height: 24px;">
+                                      <i [class]="link.icon" [style.color]="link.iconColor || '#3b82f6'" style="font-size: 20px;"></i>
+                                    </div>
+                                  }
+                                  <div class="flex-grow-1">
+                                    @if (link.routerLink) {
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none" 
+                                         [routerLink]="link.routerLink" 
+                                         (click)="hideSidebar()"
+                                         style="color: #111827;">
+                                        {{ link.title }}
+                                      </a>
+                                    } @else if (link.link) {
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none" 
+                                         [href]="link.link" 
+                                         (click)="hideSidebar()"
+                                         style="color: #111827;">
+                                        {{ link.title }}
+                                      </a>
+                                    } @else {
+                                      <span class="fs-6 d-block fw-semibold" style="color: #111827;">
+                                        {{ link.title }}
+                                      </span>
+                                    }
+                                    @if (link.description) {
+                                      @if (link.routerLink) {
+                                        <a [routerLink]="link.routerLink" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else if (link.link) {
+                                        <a [href]="link.link" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else {
+                                        <p class="mb-0 small" style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </p>
+                                      }
+                                    }
+                                  </div>
+                                </li>
+                              }
+                            </ul>
+                          </li>
+                        }
+                      }
+                      @if (column.guide) {
+                        <li class="mt-3 pt-3 border-top">
+                          <p class="mb-2 fw-semibold small" style="color: #111827;">
+                            {{ column.guide.question }}
+                          </p>
+                          @if (column.guide.routerLink) {
+                            <a [routerLink]="column.guide.routerLink" 
+                               (click)="hideSidebar()"
+                               class="text-decoration-none d-inline-flex align-items-center fw-semibold small"
+                               style="color: #3b82f6;">
+                              {{ column.guide.linkText }}
+                              <i class="bi bi-arrow-right ms-2" style="font-size: 12px;"></i>
+                            </a>
+                          } @else if (column.guide.link) {
+                            <a [href]="column.guide.link" 
+                               (click)="hideSidebar()"
+                               class="text-decoration-none d-inline-flex align-items-center fw-semibold small"
+                               style="color: #3b82f6;">
+                              {{ column.guide.linkText }}
+                              <i class="bi bi-arrow-right ms-2" style="font-size: 12px;"></i>
+                            </a>
+                          }
+                        </li>
+                      }
+                    }
                   }
                 </ul>
-              </li>
               }
-
-            <li class="fs-6">
-              <a [routerLink]="['case-studies']" (click)="hideSidebar()">Case Study</a>
             </li>
 
-            <li class="fs-6">
-              <a [routerLink]="['portfolios']" (click)="hideSidebar()">Demos</a>
+            <!-- Blog Mobile Menu -->
+            <li>
+              <div class="d-flex align-items-center justify-content-between" (click)="toggleMobileMenu('blog')">
+                <div>Blog</div>
+                <span class="dropdown-icon2">
+                  <i class="bi" [ngClass]="{'bi-dash': isMobileMenuExpanded('blog'), 'bi-plus': !isMobileMenuExpanded('blog')}"></i>
+                </span>
+              </div>
+              @if(isMobileMenuExpanded('blog')) {
+                <ul class="submenu-list show">
+                  @for (menuItem of getMobileMenuItems('blog'); track $index) {
+                    @for (column of menuItem.children; track $index) {
+                      @if (column.sections && column.sections.length > 0) {
+                        @for (section of column.sections; track $index) {
+                          <li class="mb-3">
+                            <h6 class="text-uppercase fw-bold mb-2" style="font-size: 11px; letter-spacing: 0.5px; color: #6b7280;">
+                              {{ section.title }}
+                            </h6>
+                            <ul class="list-unstyled ps-3">
+                              @for (link of section.items; track $index) {
+                                <li class="mb-3 d-flex align-items-start">
+                                  @if (link.icon) {
+                                    <div class="flex-shrink-0 me-3" style="width: 24px; height: 24px;">
+                                      <i [class]="link.icon" [style.color]="link.iconColor || '#3b82f6'" style="font-size: 20px;"></i>
+                                    </div>
+                                  }
+                                  <div class="flex-grow-1">
+                                    @if (link.routerLink) {
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none"
+                                         [routerLink]="link.routerLink" 
+                                         (click)="hideSidebar()"
+                                         style="color: #111827;">
+                                        {{ link.title }}
+                                      </a>
+                                    } @else if (link.link) {
+                                      <a class="fs-6 d-block fw-semibold text-decoration-none"
+                                         [href]="link.link" 
+                                         (click)="hideSidebar()"
+                                         style="color: #111827;">
+                                        {{ link.title }}
+                                      </a>
+                                    } @else {
+                                      <span class="fs-6 d-block fw-semibold" style="color: #111827;">
+                                        {{ link.title }}
+                                      </span>
+                                    }
+                                    @if (link.description) {
+                                      @if (link.routerLink) {
+                                        <a [routerLink]="link.routerLink" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else if (link.link) {
+                                        <a [href]="link.link" 
+                                           (click)="hideSidebar()"
+                                           class="mb-0 small text-decoration-none d-block" 
+                                           style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </a>
+                                      } @else {
+                                        <p class="mb-0 small" style="color: #6b7280; font-size: 12px; line-height: 1.5;">
+                                          {{ link.description }}
+                                        </p>
+                                      }
+                                    }
+                                  </div>
+                                </li>
+                              }
+                            </ul>
+                          </li>
+                        }
+                      }
+                      @if (column.guide) {
+                        <li class="mt-3 pt-3 border-top">
+                          <p class="mb-2 fw-semibold small" style="color: #111827;">
+                            {{ column.guide.question }}
+                          </p>
+                          @if (column.guide.routerLink) {
+                            <a [routerLink]="column.guide.routerLink" 
+                               (click)="hideSidebar()"
+                               class="text-decoration-none d-inline-flex align-items-center fw-semibold small"
+                               style="color: #3b82f6;">
+                              {{ column.guide.linkText }}
+                              <i class="bi bi-arrow-right ms-2" style="font-size: 12px;"></i>
+                            </a>
+                          } @else if (column.guide.link) {
+                            <a [href]="column.guide.link" 
+                               (click)="hideSidebar()"
+                               class="text-decoration-none d-inline-flex align-items-center fw-semibold small"
+                               style="color: #3b82f6;">
+                              {{ column.guide.linkText }}
+                              <i class="bi bi-arrow-right ms-2" style="font-size: 12px;"></i>
+                            </a>
+                          }
+                        </li>
+                      }
+                    }
+                  }
+                </ul>
+              }
             </li>
-
-            <li class="fs-6">
-              <a [routerLink]="['contact']" (click)="hideSidebar()">Contact</a>
-            </li>
-            <!-- <li class="fs-6">
-              <a [routerLink]="['services']" (click)="hideSidebar()">Services</a>
-            </li> -->
-
-           
-
           </ul>
          
         
@@ -117,7 +444,7 @@
 </div>
 <!-- End Sidebar section -->
 <!-- Start header section -->
-<header class="header-area style-2">
+<header class="header-area style-2" [class.header-black-bg]="isProductPage">
   <div class="container d-flex flex-nowrap align-items-center justify-content-between">
     <div class="company-logo">
       <a class="logo-dark" [routerLink]="['/home']"><img alt="image" class="img-fluid"
@@ -127,58 +454,39 @@
     </div>
     <div class="main-menu d-lg-flex d-none">
       <ul class="menu-list">
-       
-        <!-- <li>
-          <a [routerLink]="['blog']">Blog</a>
+        <li>
+          <a [routerLink]="['/home']">Home</a>
         </li>
-        <li class="drop-down">
-          <a [routerLink]="['contact']">Contact</a>
-        </li> -->
-        <!-- <li class="drop-down">
-          <a [routerLink]="['services']">Services</a>
-        </li> -->
-        @if(serviceNav.length > 0){
-        <li class="menu-item-has-children">
-          <div class="drop-down">Services </div><i class="bi bi-plus dropdown-icon"></i>
-
-
-          <ul class="sub-menu">
-            @for(sNav of serviceNav;track sNav){
-
-            <li>
-              <a class="fs-6" [routerLink]="['/services/',sNav.slug]">{{sNav?.title}}</a>
-              <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
-            </li>
-            }
-          </ul>
-
+        <li class="menu-item-has-children"
+            (mouseenter)="showMegamenu('services')"
+            (mouseleave)="hideMegamenu()"
+            (click)="handleMenuClick('services', $event)">
+          <div class="drop-down">Services</div>
+          <i class="bi bi-plus dropdown-icon"></i>
         </li>
-        }
         @if(productNav.length > 0){
-        <li class="menu-item-has-children">
-          <div class="drop-down">Products </div><i class="bi bi-plus dropdown-icon"></i>
-
-
-          <ul class="sub-menu">
-            @for(pNav of productNav;track pNav){
-
-            <li>
-              <a class="fs-6" [routerLink]="['/product/',pNav.slug]">{{pNav?.title}}</a>
-              <span class="dropdown-icon2 two"><i class="bi bi-plus"></i></span>
-            </li>
-            }
-          </ul>
-
+        <li class="menu-item-has-children"
+            (mouseenter)="showMegamenu('products')"
+            (mouseleave)="hideMegamenu()"
+            (click)="handleMenuClick('products', $event)">
+          <div class="drop-down">Products</div>
+          <i class="bi bi-plus dropdown-icon"></i>
         </li>
         }
-
-        <li>
-          <a [routerLink]="['case-studies']">Case Studies</a>
+        <li class="menu-item-has-children"
+            (mouseenter)="showMegamenu('case-studies')"
+            (mouseleave)="hideMegamenu()"
+            (click)="handleMenuClick('case-studies', $event)">
+          <div class="drop-down">Case studies</div>
+          <i class="bi bi-plus dropdown-icon"></i>
         </li>
-        <li>
-          <a [routerLink]="['portfolios']">Demos</a>
+        <li class="menu-item-has-children"
+            (mouseenter)="showMegamenu('blog')"
+            (mouseleave)="hideMegamenu()"
+            (click)="handleMenuClick('blog', $event)">
+          <div class="drop-down">Blog</div>
+          <i class="bi bi-plus dropdown-icon"></i>
         </li>
-        
       </ul>
     </div>
     <div class="nav-right d-flex jsutify-content-end align-items-center">
@@ -198,3 +506,13 @@
     </div>
   </div>
 </header>
+
+<!-- Megamenu Component -->
+<app-megamenu 
+  [menuItems]="menuItems"
+  [isOpen]="isMegamenuOpen"
+  (closeMenu)="hideMegamenu()"
+  (mouseEnter)="keepMegamenuOpen()"
+  (mouseLeave)="hideMegamenu()"
+  (linkClick)="closeMegamenuImmediately()">
+</app-megamenu>

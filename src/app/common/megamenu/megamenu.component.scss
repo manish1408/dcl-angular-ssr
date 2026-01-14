@@ -1,0 +1,195 @@
+.megamenu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 998;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  // Improve touch handling
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+  }
+}
+
+.megamenu-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+  z-index: -1;
+}
+
+.megamenu-content {
+  background-color: var(--dark-white-color, #ffffff);
+  box-shadow: 0px 30px 80px rgba(8, 0, 42, 0.08);
+  padding: 0;
+  margin-top: 75px;
+  animation: slideDown 0.3s ease-out;
+  border-bottom: 1px solid var(--border-color, #eee);
+  max-height: calc(100vh - 75px);
+  overflow-y: auto;
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+}
+
+// Dark theme support
+body.dark {
+  .megamenu-content {
+    background-color: var(--dark-white-color, #0B0C0C);
+    border-bottom-color: var(--border-color, #5e5a5a6e);
+  }
+}
+
+.megamenu-image-base {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+  z-index: 1;
+  
+  &.megamenu-image-fade {
+    opacity: 0;
+  }
+}
+
+.megamenu-image-hover {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+  z-index: 2;
+}
+
+.megamenu-scrollable {
+  max-height: calc(100vh - 150px);
+  overflow-y: auto;
+  padding-right: 10px;
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 3px;
+    
+    &:hover {
+      background: #555;
+    }
+  }
+  
+  // Remove circular elements from list items
+  ul {
+    list-style: none;
+    padding-left: 0;
+    
+    li {
+      &::before,
+      &::after {
+        display: none !important;
+        content: none !important;
+      }
+    }
+  }
+  
+  // Icon wrapper - no circular background
+  .megamenu-icon-wrapper {
+    width: auto;
+    height: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    
+    &::before,
+    &::after {
+      display: none !important;
+      content: none !important;
+    }
+    
+    i {
+      font-size: 20px;
+      display: inline-block;
+      border-radius: 0 !important;
+      background: none !important;
+      
+      &::before {
+        border-radius: 0 !important;
+        background: none !important;
+      }
+    }
+  }
+  
+  // Remove any circular pseudo-elements
+  li {
+    &::before {
+      display: none !important;
+      content: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+  }
+}
+
+.guide-link {
+  // Improve touch handling for links
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+  
+  &:hover {
+    background-color: #3b82f6;
+    color: #ffffff !important;
+    
+    i {
+      transform: translateX(3px);
+    }
+  }
+  
+  i {
+    transition: transform 0.3s ease;
+  }
+}
+
+// Ensure all links in megamenu are properly touchable
+.megamenu-content a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+  cursor: pointer;
+  line-height: 15px;
+}
+
+// Responsive design
+@media (max-width: 991px) {
+  .megamenu-content {
+    margin-top: 60px;
+  }
+}
+
+@media (max-width: 767px) {
+  .megamenu-content {
+    margin-top: 50px;
+  }
+}
+

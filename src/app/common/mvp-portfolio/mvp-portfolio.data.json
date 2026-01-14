@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "slug": "finance-consulting",
+    "title": "Finance Consulting",
+    "category": "Finance",
+    "image": "assets/img/home1/portfolio-img-04.jpg",
+    "alt": "Finance Consulting Portfolio"
+  },
+  {
+    "id": 2,
+    "slug": "human-resources",
+    "title": "Human Resources",
+    "category": "Consulting",
+    "image": "assets/img/home1/portfolio-img-05.jpg",
+    "alt": "Human Resources Portfolio"
+  },
+  {
+    "id": 3,
+    "slug": "health-care-consult",
+    "title": "Health Care Consult",
+    "category": "Health Care",
+    "image": "assets/img/home1/portfolio-img-06.jpg",
+    "alt": "Health Care Consult Portfolio"
+  },
+  {
+    "id": 4,
+    "slug": "management-consulting",
+    "title": "Management Consulting",
+    "category": "Marketing",
+    "image": "assets/img/home1/portfolio-img-01.jpg",
+    "alt": "Management Consulting Portfolio"
+  },
+  {
+    "id": 5,
+    "slug": "human-resources-consulting",
+    "title": "Human Resources Consulting",
+    "category": "Resources",
+    "image": "assets/img/home1/portfolio-img-02.jpg",
+    "alt": "Human Resources Consulting Portfolio"
+  },
+  {
+    "id": 6,
+    "slug": "it-consulting",
+    "title": "IT Consulting",
+    "category": "Technology",
+    "image": "assets/img/home1/portfolio-img-03.jpg",
+    "alt": "IT Consulting Portfolio"
+  }
+]
+
