@@ -220,7 +220,7 @@ export class RagAsAServiceComponent implements AfterViewInit {
         // Initialize Typed.js animation with the specific element
         const TypedClass = (window as any).Typed || Typed;
         const typing = new TypedClass(textTypeElement, {
-          strings: ['for Your Business', 'Solutions', 'Automation'],
+          strings: ['Apps', 'Agents', 'Knowledge Bases'],
           typeSpeed: 120,
           backSpeed: 70,
           loop: true,

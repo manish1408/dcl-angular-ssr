@@ -6748,7 +6748,6 @@ header.style-3 .main-menu > ul li.menu-item-has-children > i {
   margin-bottom: 40px;
 }
 .home2-banner-section .banner-content h1 span {
-  text-decoration: underline;
   color: var(--text-color);
 }
 @media (min-width: 992px) and (max-width: 1199px) {
