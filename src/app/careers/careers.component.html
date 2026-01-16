@@ -1,0 +1,68 @@
+<div class="breadcrumb-section" style="
+    background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
+      linear-gradient(180deg, #121212 0%, #121212 100%);
+  ">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="banner-wrapper">
+          <div class="banner-content">
+            <ul class="breadcrumb-list">
+              <li><a [routerLink]="['/home']">Home</a></li>
+              <li>Careers</li>
+            </ul>
+            <h1>Join Our Team</h1>
+          </div>
+          <div class="scroll-down-btn">
+            <a (click)="scrollToSection()" role="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="29" viewBox="0 0 19 29">
+                <path d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <span *ngIf="isLoading" class="spinner-border spinner-border-sm mt-5" role="status"></span>
+</div>
+
+<div class="blog-grid-section scroll-margin pt-120 mb-120" id="careers-grid">
+  <div class="container">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Position</th>
+            <th scope="col">Description</th>
+            <th scope="col" class="text-end">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (job of jobs; track job) {
+          <tr>
+            <td>
+              <h4 style="color: #232323; font-size: 20px; font-weight: 600; margin-bottom: 8px;">
+                {{ job.data?.title?.iv }}
+              </h4>
+            </td>
+            <td>
+              <p style="color: #666; margin: 0;">
+                {{ job.data?.description?.iv }}
+              </p>
+            </td>
+            <td class="text-end">
+              <a [routerLink]="['/career/', job.data?.slug?.iv]" class="btn btn-success">
+                View Details
+                <img src="assets/icons/sm-arrow-upright.svg" style="width: 20px; height: 20px; margin-left: 8px;" />
+              </a>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

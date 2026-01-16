@@ -1,0 +1,310 @@
+<!-- Start Breadcrumb section -->
+<div class="breadcrumb-section" style="
+    background-image: url(assets/img/innerpage/breadcrumb-bg1.png),
+      linear-gradient(180deg, #121212 0%, #121212 100%);
+  ">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="banner-wrapper">
+          <div class="banner-content">
+            <ul class="breadcrumb-list">
+              <li><a [routerLink]="['/home']">Home</a></li>
+              <li><a [routerLink]="['/careers']">Careers</a></li>
+              <li>Job Details</li>
+            </ul>
+            <h1>{{ job?.title?.iv }}</h1>
+            <p class="text-white">{{ job?.description?.iv }}</p>
+            <a (click)="openApplyModal()" role="button" class="btn btn-success btn-lg">
+              Apply Now
+            </a>
+          </div>
+          <div class="scroll-down-btn">
+            <a (click)="scrollToSection()" role="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="19" height="29" viewBox="0 0 19 29">
+                <path d="M9.5 0V28M9.5 28C10 24.3333 12.4 17.1 18 17.5M9.5 28C8.5 24.1667 5.4 16.7 1 17.5" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Breadcrumb section -->
+
+<div class="d-flex justify-content-center">
+  <span *ngIf="isLoading" class="spinner-border spinner-border-sm mt-5" role="status"></span>
+</div>
+
+<!-- Start Job Details Section -->
+<div class="case-study-details-page mt-60" id="job-details-section">
+  <div class="container">
+    <div class="row g-lg-4 gy-5 mb-60">
+      <div class="col-lg-8">
+        <div class="mt-4">
+          <div class="section-title5 two">
+            <span class="sub-title5 two">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                <path
+                  d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z">
+                </path>
+              </svg>
+              About the Job
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                <path
+                  d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z">
+                </path>
+              </svg>
+            </span>
+          </div>
+          <div [innerHTML]="job?.description?.iv"></div>
+        </div>
+
+        <div class="mt-4" *ngIf="job?.requirements?.iv && job.requirements.iv.length > 0">
+          <div class="section-title5 two">
+            <span class="sub-title5 two">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                <path
+                  d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z">
+                </path>
+              </svg>
+              Requirements
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                <path
+                  d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z">
+                </path>
+              </svg>
+            </span>
+          </div>
+          <ul class="case-info">
+            <li *ngFor="let requirement of job.requirements.iv">
+              <div class="icon">
+                <img src="assets/icons/arrow-right.svg" />
+              </div>
+              <div class="content">
+                <h5>{{ requirement }}</h5>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-4" *ngIf="job?.techStack?.iv && job.techStack.iv.length > 0">
+          <div class="section-title5 two">
+            <span class="sub-title5 two">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                <path
+                  d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z">
+                </path>
+              </svg>
+              Tech Stack
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                <path
+                  d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z">
+                </path>
+              </svg>
+            </span>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <span *ngFor="let tech of job.techStack.iv" class="badge bg-success" style="font-size: 14px; padding: 8px 16px;">
+              {{ tech }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="case-sidebar">
+          <div class="case-info-wrap">
+            <h4>Job Information</h4>
+            <ul class="case-info">
+              <li *ngIf="job?.location?.iv">
+                <div class="icon">
+                  <img src="assets/icons/arrow-right.svg" />
+                </div>
+                <div class="content">
+                  <span>Location:</span>
+                  <h5>{{ job.location.iv }}</h5>
+                </div>
+              </li>
+              <li *ngIf="job?.type?.iv">
+                <div class="icon">
+                  <img src="assets/icons/arrow-right.svg" />
+                </div>
+                <div class="content">
+                  <span>Type:</span>
+                  <h5>{{ job.type.iv }}</h5>
+                </div>
+              </li>
+              <li *ngIf="job?.salary?.iv">
+                <div class="icon">
+                  <img src="assets/icons/arrow-right.svg" />
+                </div>
+                <div class="content">
+                  <span>Salary:</span>
+                  <h5>{{ job.salary.iv }}</h5>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="case-sidebar mt-4" *ngIf="job?.whatWeOffer?.iv && job.whatWeOffer.iv.length > 0">
+          <div class="case-info-wrap">
+            <h4>What We Offer</h4>
+            <ul class="case-info">
+              <li *ngFor="let offer of job.whatWeOffer.iv">
+                <div class="icon">
+                  <img src="assets/icons/arrow-right.svg" />
+                </div>
+                <div class="content">
+                  <h5>{{ offer }}</h5>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="case-sidebar mt-4">
+          <div class="case-info-wrap">
+            <a (click)="openApplyModal()" role="button" class="btn btn-success w-100 btn-lg">
+              Apply Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Start Related Jobs Section -->
+<div class="relatate-case-study-section mb-120" *ngIf="jobs.length > 0">
+  <div class="container">
+    <div class="row mb-60">
+      <div class="col-lg-12">
+        <div class="section-title5">
+          <span class="sub-title5 two">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+              <path
+                d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z">
+              </path>
+            </svg>
+            Careers
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+              <path
+                d="M3.7081 12.9544C3.41861 13.1128 3.09011 12.8352 3.14861 12.4808L3.7711 8.69694L1.12886 6.01223C0.882112 5.76104 1.01036 5.30186 1.34111 5.25226L5.0146 4.69548L6.6526 1.23399C6.80035 0.922003 7.2001 0.922003 7.34785 1.23399L8.98584 4.69548L12.6593 5.25226C12.9901 5.30186 13.1183 5.76104 12.8708 6.01223L10.2293 8.69694L10.8518 12.4808C10.9103 12.8352 10.5818 13.1128 10.2923 12.9544L6.9991 11.1497L3.7081 12.9544Z">
+              </path>
+            </svg>
+          </span>
+          <h2>See More <span>Open Positions.</span></h2>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4 mb-60">
+      @for (jobItem of jobs; track jobItem) {
+      <div class="col-xl-4 col-md-6">
+        <div class="case-study-card2">
+          <div class="card-content">
+            <h4>
+              <a [routerLink]="['/career/', jobItem.data?.slug?.iv]">
+                {{ jobItem.data?.title?.iv }}</a>
+            </h4>
+            <p style="min-height: 85px;">
+              {{ jobItem.data?.description?.iv }}
+            </p>
+
+            <a [routerLink]="['/career/', jobItem.data?.slug?.iv]" class="clear-btn">View Details
+              <div class="btn-icon-wrapper">
+                <img src="assets/icons/sm-arrow-upright.svg" />
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>
+<!-- End Related Jobs Section -->
+
+<!-- Application Modal -->
+<div class="modal fade" id="applyModal" tabindex="-1" aria-labelledby="applyModalLabel" aria-hidden="true"
+  [class.show]="showApplyModal" [style.display]="showApplyModal ? 'block' : 'none'">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="applyModalLabel">Apply for {{ job?.title?.iv }}</h5>
+        <button type="button" class="btn-close" (click)="closeApplyModal()" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="applicationForm" (ngSubmit)="onSubmitApplication()">
+          <div class="row">
+            <div class="col-lg-6 mb-20">
+              <div class="form-inner">
+                <label for="applicantName">Full Name *</label>
+                <input type="text" formControlName="name" id="applicantName" class="form-control"
+                  [ngClass]="{ 'is-invalid': hasError('name') }" />
+                <div *ngIf="hasError('name')" class="invalid-feedback">Full name is required</div>
+              </div>
+            </div>
+            <div class="col-lg-6 mb-20">
+              <div class="form-inner">
+                <label for="applicantEmail">Email *</label>
+                <input type="email" formControlName="email" id="applicantEmail" class="form-control"
+                  [ngClass]="{ 'is-invalid': hasError('email') || hasEmailFormatError() }" />
+                <div *ngIf="hasEmailFormatError()" class="invalid-feedback">Invalid email format</div>
+                <div *ngIf="hasError('email') && !hasEmailFormatError()" class="invalid-feedback">Email is required</div>
+              </div>
+            </div>
+            <div class="col-lg-6 mb-20">
+              <div class="form-inner">
+                <label for="applicantPhone">Phone *</label>
+                <div class="d-flex align-items-start gap-0">
+                  <app-phone-dropdown (countrySelected)="onCountrySelected($event)"></app-phone-dropdown>
+                  <div class="w-100">
+                    <input id="applicantPhone" type="text" formControlName="phone" maxlength="10" inputmode="numeric"
+                      pattern="[0-9]*" class="form-control phone-input"
+                      [ngClass]="{ 'is-invalid': hasError('phone') }" (keypress)="allowOnlyNumbers($event)"
+                      placeholder="Enter 10-digit number" />
+                  </div>
+                </div>
+                <div *ngIf="hasError('phone')" class="invalid-feedback d-block">Phone number is required</div>
+              </div>
+            </div>
+            <div class="col-lg-6 mb-20">
+              <div class="form-inner">
+                <label for="resumeFile">Resume/CV *</label>
+                <input type="file" id="resumeFile" class="form-control" accept=".pdf,.doc,.docx"
+                  (change)="onResumeSelected($event)" />
+                <small class="form-text text-muted">PDF or Word document (Max 5MB)</small>
+                <div *ngIf="resumeFile" class="mt-2">
+                  <span class="badge bg-success">{{ resumeFile.name }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 mb-20">
+              <div class="form-inner">
+                <label for="coverLetter">Cover Letter (Optional)</label>
+                <textarea formControlName="coverLetter" id="coverLetter" class="form-control" rows="5"
+                  placeholder="Tell us why you're interested in this position..."></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-end gap-3 mt-4">
+            <button type="button" class="btn btn-secondary" (click)="closeApplyModal()" [disabled]="isSubmitting">
+              Cancel
+            </button>
+            <button type="submit" class="btn btn-success" [disabled]="isSubmitting">
+              <span *ngIf="!isSubmitting">Submit Application</span>
+              <span *ngIf="isSubmitting" class="d-flex align-items-center">
+                <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                Submitting...
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="showApplyModal" class="modal-backdrop fade show"></div>

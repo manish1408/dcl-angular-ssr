@@ -1,0 +1,136 @@
+.card-wrapper {
+  border-radius: 16px;
+  background: #101112;
+  padding: 34px;
+  position: relative;
+  overflow: hidden;
+}
+.dcl-logo {
+  width: 100px;
+  height: 29px;
+  flex-shrink: 0;
+}
+.diamond-icon {
+  position: absolute;
+  top: -36px;
+  right: 0;
+  width: 60px;
+  height: 117.366px;
+  flex-shrink: 0;
+}
+.blog-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 34px;
+}
+.blog-card.style-2 .blog-card-img-wrap {
+  border-radius: 8px;
+  overflow: hidden; 
+  aspect-ratio: 4 / 3; 
+}
+.blog-card .card-top-img {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover; 
+
+}
+
+.blog-card {
+  .card-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    gap: 34px;
+  }
+}
+.blog-card .card-content .card-text-info {
+  h4 {
+    color: #fff;
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    min-height: 140px;
+    margin: 0;
+    cursor: pointer;
+  }
+}
+.btn {
+  flex-shrink: 0;
+  img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.table {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+
+  thead {
+    background-color: #f9faff;
+    
+    th {
+      padding: 20px 24px;
+      border-bottom: 2px solid #e0e0e0;
+      color: #232323;
+      font-family: Inter;
+      font-size: 16px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid #e0e0e0;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #f9faff;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      td {
+        padding: 24px;
+        vertical-align: middle;
+
+        h4 {
+          color: #232323;
+          font-size: 20px;
+          font-weight: 600;
+          margin-bottom: 8px;
+        }
+
+        p {
+          color: #666;
+          margin: 0;
+          line-height: 1.6;
+        }
+
+        .btn {
+          padding: 10px 20px;
+          display: inline-flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+}
+
+.table-responsive {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}

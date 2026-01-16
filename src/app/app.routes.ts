@@ -36,6 +36,8 @@ import { AiVoiceCallingAgentsComponent } from './products/ai-voice-calling-agent
 import { AiSearchImplementationComponent } from './products/ai-search-implementation/ai-search-implementation.component';
 import { AiCustomerSupportComponent } from './products/ai-customer-support/ai-customer-support.component';
 import { WhatsappBusinessAiAgentComponent } from './products/whatsapp-business-ai-agent/whatsapp-business-ai-agent.component';
+import { CareersComponent } from './careers/careers.component';
+import { JobDetailsComponent } from './job-details/job-details.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -65,6 +67,8 @@ export const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'blog', component: BlogsComponent },
   { path: 'blog/:type', component: BlogDetailsComponent },
+  { path: 'careers', component: CareersComponent },
+  { path: 'career/:type', component: JobDetailsComponent },
   { path: 'assessment/basic-details', component: BasicDetailsComponent },
   { path: 'assessment/basic-details/:id', component: BasicDetailsComponent },
   { path: 'schedule-call/budget/:id', component: BudgetComponent },
@@ -121,6 +125,8 @@ export const ssrTracking: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'blog', component: BlogsComponent },
   { path: 'blog/:type', component: BlogDetailsComponent },
+  { path: 'careers', component: CareersComponent },
+  { path: 'career/:type', component: JobDetailsComponent },
   { path: 'portfolios', component: PortfolioComponent },
   { path: 'portfolio/:type', component: PortfolioDetailsComponent },
   { path: 'assessment/basic-details', component: BasicDetailsComponent },

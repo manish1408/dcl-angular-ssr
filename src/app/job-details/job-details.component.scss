@@ -1,0 +1,86 @@
+.text-overflow {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.case-study-details-page .case-sidebar .case-info-wrap .case-info li .content span {
+  color: #c9cace;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.icon {
+  flex-shrink: 0;
+  img {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+.case-study-details-page
+  .case-sidebar
+  .case-info-wrap
+  .case-info
+  li
+  .content
+  h5 {
+  color: #000;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.case-study-details-page .case-sidebar .case-info-wrap h4 {
+  color: #232323;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.case-study-details-page .case-sidebar .case-info-wrap {
+  padding: 16px;
+  background: #f9faff;
+}
+
+.case-info {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .content {
+      flex: 1;
+      line-height: 1.5;
+
+      h5 {
+        margin: 0;
+        line-height: 1.5;
+      }
+    }
+  }
+}
