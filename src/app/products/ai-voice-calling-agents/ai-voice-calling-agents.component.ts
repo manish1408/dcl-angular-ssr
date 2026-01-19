@@ -217,7 +217,7 @@ export class AiVoiceCallingAgentsComponent implements AfterViewInit {
         // Initialize Typed.js animation with the specific element
         const TypedClass = (window as any).Typed || Typed;
         const typing = new TypedClass(textTypeElement, {
-          strings: ['for Your CRM', 'Voice AI', 'Call Automation'],
+          strings: ['your CRM', 'outbound calls', 'inbound calls', 'call automation'],
           typeSpeed: 120,
           backSpeed: 70,
           loop: true,
