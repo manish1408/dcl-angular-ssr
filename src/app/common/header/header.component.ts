@@ -386,14 +386,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
                   routerLink: ['/product/ai-customer-support'],
                   imageUrl: 'assets/img/chatbot.webp'
                 },
-                {
-                  title: 'Whatsapp Business AI Agent',
-                  description: 'Grow your business on WhatsApp',
-                  icon: 'bi bi-whatsapp',
-                  iconColor: '#25d366',
-                  routerLink: ['/product/whatsapp-business-ai-agent'],
-                  imageUrl: 'assets/img/chatbot.webp'
-                }
+                // {
+                //   title: 'Whatsapp Business AI Agent',
+                //   description: 'Grow your business on WhatsApp',
+                //   icon: 'bi bi-whatsapp',
+                //   iconColor: '#25d366',
+                //   routerLink: ['/product/whatsapp-business-ai-agent'],
+                //   imageUrl: 'assets/img/chatbot.webp'
+                // }
               ]
             }
           ]
