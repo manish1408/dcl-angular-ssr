@@ -1,4 +1,10 @@
 User-agent: *
-Disallow: /private/
 Allow: /
+Disallow: /assessment/
+Disallow: /schedule-call/
+Disallow: /thank-you
+Disallow: /all-leads
+Disallow: /page-not-found
+Disallow: /private/
+
 Sitemap: https://www.distinctcloud.io/sitemap.xml

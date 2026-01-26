@@ -42,14 +42,6 @@ import { JobDetailsComponent } from './job-details/job-details.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { 
-    path: 'ai-development-services', 
-    component: AIAgencyComponent,
-  },
-  { 
-    path: 'ai-development-services/', 
-    component: AIAgencyComponent,
-  },
   { path: 'n8n-agency', component: AIAgencyComponent },
   { path: 'dcl-sprint', component: DclSprintComponent },
   { path: 'solutions/ai-powered-product-development', component: AiPoweredProductDevelopmentComponent },

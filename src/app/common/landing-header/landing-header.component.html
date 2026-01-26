@@ -9,7 +9,7 @@
   <div class="sidebar-menu-top-area">
     <div class="container d-flex align-items-center justify-content-between">
       <div class="sidebar-menu-logo">
-        <a class="logo-dark" [routerLink]="['/ai-development-services']"><img width="152" height="45" alt="image" class="img-fluid"
+        <a class="logo-dark" [routerLink]="['/']"><img width="152" height="45" alt="image" class="img-fluid"
             src="assets/img/logo_dark.svg" /></a>
       </div>
       <div class="sidebar-menu-close" (click)="hideSidebar()">
@@ -28,16 +28,16 @@
         <div class="sidebar-menu-wrap">
           <ul class="main-menu align-items-center">
             <li>
-              <a (click)="hideSidebar()" href="/ai-development-services#ai-integration">AI Integration</a>
+              <a (click)="hideSidebar()" [routerLink]="['/']" fragment="ai-integration">AI Integration</a>
             </li>
             <li>
-              <a (click)="hideSidebar()" href="/ai-development-services#case-studies">Case Studies</a>
+              <a (click)="hideSidebar()" [routerLink]="['/case-studies']">Case Studies</a>
             </li>
             <li>
-              <a (click)="hideSidebar()" href="/ai-development-services#testimonials">Testimonials</a>
+              <a (click)="hideSidebar()" [routerLink]="['/']" fragment="testimonials">Testimonials</a>
             </li>
             <li>
-              <a (click)="hideSidebar()" href="/ai-development-services#faq">FAQs</a>
+              <a (click)="hideSidebar()" [routerLink]="['/']" fragment="faq">FAQs</a>
             </li>
           </ul>
         </div>
@@ -50,22 +50,22 @@
 <header class="header-area style-2">
   <div class="container d-flex flex-nowrap align-items-center justify-content-between">
     <div class="company-logo">
-      <a class="logo-dark" [routerLink]="['/ai-development-services']"><img alt="image" class="img-fluid"
+      <a class="logo-dark" [routerLink]="['/']"><img alt="image" class="img-fluid"
           src="assets/img/logo_light.svg" width="152" height="45"/></a>
     </div>
     <div class="main-menu d-lg-flex d-none">
       <ul class="menu-list">
         <li>
-          <a href="/ai-development-services#ai-integration">AI Integration</a>
+          <a [routerLink]="['/']" fragment="ai-integration">AI Integration</a>
         </li>
         <li>
-          <a href="/ai-development-services#case-studies">Case Studies</a>
+          <a [routerLink]="['/case-studies']">Case Studies</a>
         </li>
         <li>
-          <a href="/ai-development-services#testimonials">Testimonials</a>
+          <a [routerLink]="['/']" fragment="testimonials">Testimonials</a>
         </li>
         <li>
-          <a href="/ai-development-services#faq">FAQs</a>
+          <a [routerLink]="['/']" fragment="faq">FAQs</a>
         </li>
       </ul>
     </div>

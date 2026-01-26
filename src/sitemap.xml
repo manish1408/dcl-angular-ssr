@@ -4,204 +4,324 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>https://www.distinctcloud.io/</loc>
-  <lastmod>2024-12-13T20:07:11+00:00</lastmod>
+  <lastmod>2024-12-16T06:14:55+00:00</lastmod>
   <priority>1.00</priority>
+  <changefreq>daily</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/home</loc>
   <lastmod>2024-12-16T06:14:55+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.90</priority>
+  <changefreq>daily</changefreq>
 </url>
 <url>
-  <loc>https://www.distinctcloud.io/case-studies</loc>
-  <lastmod>2024-12-15T13:23:04+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.distinctcloud.io/ai-development</loc>
+  <lastmod>2024-12-16T06:14:55+00:00</lastmod>
+  <priority>0.90</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>https://www.distinctcloud.io/blog</loc>
+  <loc>https://www.distinctcloud.io/dcl-sprint</loc>
   <lastmod>2024-12-16T06:14:55+00:00</lastmod>
   <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>https://www.distinctcloud.io/contact</loc>
-  <lastmod>2024-12-15T15:20:29+00:00</lastmod>
+  <loc>https://www.distinctcloud.io/n8n-agency</loc>
+  <lastmod>2024-12-16T06:14:55+00:00</lastmod>
   <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/services</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.90</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/services/llm-integration</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/services/ai-app-development</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/services/machine-learning</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/services/agentic-ai</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/services/generative-ai</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/solutions/ai-powered-product-development</loc>
+  <lastmod>2024-12-16T06:14:55+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/solutions/ai-agents-development</loc>
+  <lastmod>2024-12-16T06:14:55+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/solutions/hire-ai-engineers</loc>
+  <lastmod>2024-12-16T06:14:55+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/solutions/hire-fractional-cto</loc>
+  <lastmod>2024-12-16T06:14:55+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/solutions/n8n-make-automation</loc>
+  <lastmod>2024-12-16T06:14:55+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/solutions/enterprise-ai-automation</loc>
+  <lastmod>2024-12-16T06:14:55+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/product/milo</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>https://www.distinctcloud.io/portfolios</loc>
-  <lastmod>2024-12-16T06:15:11+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.distinctcloud.io/product/rag-as-a-service</loc>
+  <lastmod>2024-12-16T06:16:03+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>https://www.distinctcloud.io/assessment/basic-details</loc>
-  <lastmod>2024-12-14T01:57:01+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.distinctcloud.io/product/ai-voice-calling-agents</loc>
+  <lastmod>2024-12-16T06:16:03+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>https://www.distinctcloud.io/ai-development-services</loc>
-  <lastmod>2024-12-16T06:15:11+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.distinctcloud.io/product/ai-search-implementation</loc>
+  <lastmod>2024-12-16T06:16:03+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>https://www.distinctcloud.io/privacy-policy</loc>
-  <lastmod>2024-12-14T09:01:33+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.distinctcloud.io/product/ai-customer-support</loc>
+  <lastmod>2024-12-16T06:16:03+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
-  <loc>https://www.distinctcloud.io/terms-and-conditions</loc>
-  <lastmod>2024-12-16T06:15:12+00:00</lastmod>
-  <priority>0.80</priority>
+  <loc>https://www.distinctcloud.io/product/whatsapp-business-ai-agent</loc>
+  <lastmod>2024-12-16T06:16:03+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/case-studies</loc>
+  <lastmod>2024-12-15T13:23:04+00:00</lastmod>
+  <priority>0.90</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/case-study/bookstore-knowledge-and-memories-assistant</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/case-study/virtual-girlfriend</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/case-study/customer-behavior-analysis-to-increase-online-purchase-rates</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/case-study/virtual-wine-advisor-for-a-wine-focused-company</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/case-study/personalized-recipes</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/case-study/travel-assistant-chatbot</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/case-study/candidate-scoring-model-for-a-job-search-platform</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/case-study/ai-based-learning-platform-for-indian-school-curriculum</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/case-study/ai-powered-customer-support-chatbot-for-e-commerce</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/blog</loc>
+  <lastmod>2024-12-16T06:14:55+00:00</lastmod>
+  <priority>0.90</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/blog/how-can-ai-chat-agents-help-your-business</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/blog/how-to-estimate-the-cost-of-llm-usage</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/blog/empowering-your-ai-assistant-with-your-own-data</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/blog/mastercard-uses-ai-to-shut-down-compromised-cards-in-real-time</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/blog/unleash-the-power-of-ai-an-actionable-guide-to-leveraging-artificial-intelligence</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/blog/paving-the-way-for-ai-innovation-the-power-of-inclusive-teams</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/blog/ai-vs-ml</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/blog/how-is-ai-transforming-the-bpo-industry-and-contact-centers</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/portfolios</loc>
+  <lastmod>2024-12-16T06:15:11+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>weekly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/portfolio/linkedin-scraper-demo</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/portfolio/finance-assistant-demo</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/portfolio/voice-assistant-demo</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/portfolio/ratebeer-scrapper</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
 <url>
   <loc>https://www.distinctcloud.io/portfolio/talking-assistant</loc>
   <lastmod>2024-12-16T06:16:03+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
+  <changefreq>monthly</changefreq>
 </url>
-
+<url>
+  <loc>https://www.distinctcloud.io/careers</loc>
+  <lastmod>2024-12-16T06:14:55+00:00</lastmod>
+  <priority>0.80</priority>
+  <changefreq>weekly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/contact</loc>
+  <lastmod>2024-12-15T15:20:29+00:00</lastmod>
+  <priority>0.85</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/assessment/basic-details</loc>
+  <lastmod>2024-12-14T01:57:01+00:00</lastmod>
+  <priority>0.60</priority>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/privacy-policy</loc>
+  <lastmod>2024-12-14T09:01:33+00:00</lastmod>
+  <priority>0.30</priority>
+  <changefreq>yearly</changefreq>
+</url>
+<url>
+  <loc>https://www.distinctcloud.io/terms-and-conditions</loc>
+  <lastmod>2024-12-16T06:15:12+00:00</lastmod>
+  <priority>0.30</priority>
+  <changefreq>yearly</changefreq>
+</url>
 
 </urlset>
