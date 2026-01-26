@@ -68,6 +68,41 @@ export class WhatsappBusinessAiAgentComponent implements AfterViewInit {
   // FAQ accordion state
   activeFaqId: string | null = 'faqcollapseOne';
 
+  // Pricing state
+  isYearlyBilling: boolean = false;
+
+  // Pricing plans
+  pricingPlans = {
+    growth: {
+      monthly: 148,
+      yearly: 89
+    },
+    scale: {
+      monthly: 328,
+      yearly: 197
+    },
+    pro: {
+      monthly: 628,
+      yearly: 377
+    }
+  };
+
+  getGrowthPrice(): number {
+    return this.isYearlyBilling ? this.pricingPlans.growth.yearly : this.pricingPlans.growth.monthly;
+  }
+
+  getScalePrice(): number {
+    return this.isYearlyBilling ? this.pricingPlans.scale.yearly : this.pricingPlans.scale.monthly;
+  }
+
+  getProPrice(): number {
+    return this.isYearlyBilling ? this.pricingPlans.pro.yearly : this.pricingPlans.pro.monthly;
+  }
+
+  toggleBillingPeriod(): void {
+    this.isYearlyBilling = !this.isYearlyBilling;
+  }
+
   toggleFaq(faqId: string): void {
     this.activeFaqId = this.activeFaqId === faqId ? null : faqId;
   }
@@ -220,7 +255,7 @@ export class WhatsappBusinessAiAgentComponent implements AfterViewInit {
         // Initialize Typed.js animation with the specific element
         const TypedClass = (window as any).Typed || Typed;
         const typing = new TypedClass(textTypeElement, {
-          strings: ['for WhatsApp', 'Customer Support', 'Automation'],
+          strings: ['ecommerce', 'healthcare', 'education', 'finance', 'insurance', 'travel'],
           typeSpeed: 120,
           backSpeed: 70,
           loop: true,
