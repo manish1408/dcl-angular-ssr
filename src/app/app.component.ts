@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { NavigationStart, Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
-import { WhatsappButtonComponent } from './common/whatsapp-button/whatsapp-button.component';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonService } from './services/common.service';
 
@@ -15,7 +14,6 @@ import { CommonService } from './services/common.service';
     RouterOutlet,
     HeaderComponent,
     FooterComponent,
-    WhatsappButtonComponent,
     ToastrModule,
   ],
 
@@ -32,6 +30,7 @@ export class AppComponent {
           event['url'].startsWith('/dcl-sprint') ||
           event['url'].startsWith('/assessment') ||
           event['url'] === '/thank-you' ||
+          event['url'] === '/solutions/ai-powered-product-development' ||
           event['url'] === '/page-not-found' 
         ) {
           this.showHead = false;
