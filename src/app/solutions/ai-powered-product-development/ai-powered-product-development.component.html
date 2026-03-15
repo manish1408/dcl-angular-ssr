@@ -45,14 +45,32 @@
             </p>
 
             <div class="banner-cta">
-                <a [routerLink]="['/assessment/basic-details']" class="primary-btn1"
-                    data-text="Start Your Project"><span>Start Your Project</span></a>
+                <div class="btn-border-wrap">
+                    <a [routerLink]="['/assessment/basic-details']" class="primary-btn1 btn-animated-border"
+                        data-text="Start Your Project"><span>Start Your Project</span></a>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-
+<section class="how-it-works-section">
+    <div class="container">
+        <div class="how-it-works-header">
+            <span class="how-it-works-label">HOW IT WORKS</span>
+        </div>
+        <h2 class="how-it-works-heading">
+            Using <span class="ai-highlight">AI</span>, our team of ex-Amazon, and ex-Microsoft engineers build your application:
+        </h2>
+        <ul class="how-it-works-list">
+            <li><i class="bi bi-check-circle-fill"></i>In weeks.</li>
+            <li><i class="bi bi-check-circle-fill"></i>With the price tag of a junior developer.</li>
+            <li><i class="bi bi-check-circle-fill"></i>With the quality of the best engineers in the planet.</li>
+            <li><i class="bi bi-check-circle-fill"></i>And you only pay if you're happy with the results.</li>
+            <li><i class="bi bi-check-circle-fill"></i>No deposits, no startup fees. Really!</li>
+        </ul>
+    </div>
+</section>
 
 <div class="home1-process-section mb-110">
     <div class="container">
@@ -653,7 +671,7 @@
                             </g>
                         </svg>
                     </span>
-                    <h2>Common questions about AI-Powered Product Development</h2>
+                    <h2>Common questions about shipping with AI</h2>
                 </div>
             </div>
         </div>
@@ -666,19 +684,19 @@
                                 <h2 class="accordion-header" id="faqheadingOne">
                                     <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseOne')"
                                         type="button" (click)="toggleFaq('faqcollapseOne')">
-                                        What is AI-Powered Product Development and how does it work?
+                                        How can you ship enterprise software applications in weeks?
                                     </button>
                                 </h2>
                                 <div id="faqcollapseOne" class="accordion-collapse"
                                     [class.show]="isFaqOpen('faqcollapseOne')"
                                     [class.collapse]="!isFaqOpen('faqcollapseOne')" aria-labelledby="faqheadingOne">
                                     <div class="accordion-body">
-                                        AI-Powered Product Development leverages artificial intelligence tools and
-                                        automation to accelerate the creation of comprehensive, enterprise-ready
-                                        products. Our process uses AI for code generation, automated testing,
-                                        intelligent design suggestions, and advanced development practices. This
-                                        approach allows us to deliver a fully functional product in 3-4 months within a
-                                        budget of $10K-$50K, with enterprise-grade quality and scalability.
+                                        Using AI, our team of ex-Amazon and ex-Microsoft engineers accelerates development
+                                        through intelligent automation, proven enterprise frameworks, and streamlined
+                                        processes. AI handles code generation, automated testing, and repetitive tasks while
+                                        our senior engineers focus on architecture and quality. This combination delivers
+                                        enterprise-grade products in weeks instead of months, faster and more affordably
+                                        than hiring a full team.
                                     </div>
                                 </div>
                             </div>
@@ -686,41 +704,36 @@
                                 <h2 class="accordion-header" id="faqheadingTwo">
                                     <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseTwo')"
                                         type="button" (click)="toggleFaq('faqcollapseTwo')">
-                                        How can you deliver a product in 3-4 months?
+                                        What does "price tag of a junior developer" mean?
                                     </button>
                                 </h2>
                                 <div id="faqcollapseTwo" class="accordion-collapse"
                                     [class.show]="isFaqOpen('faqcollapseTwo')"
                                     [class.collapse]="!isFaqOpen('faqcollapseTwo')" aria-labelledby="faqheadingTwo">
                                     <div class="accordion-body">
-                                        Our efficient timeline is achieved through AI-powered development tools,
-                                        scalable architecture patterns, and streamlined processes. We use intelligent
-                                        automation for repetitive tasks, leverage proven enterprise frameworks, and
-                                        focus on building comprehensive features that deliver value. With AI-assisted
-                                        coding, automated testing, and efficient project management, we can build and
-                                        deploy your product efficiently while maintaining enterprise-grade quality and
-                                        scalability.
+                                        You get the quality of the best engineers on the planet at a fraction of the cost.
+                                        Traditional development requires hiring senior engineers at premium rates. Our
+                                        AI-powered approach with ex-Amazon and ex-Microsoft engineers delivers
+                                        enterprise-grade results at a cost comparable to a junior developer. You get
+                                        senior expertise and AI efficiency without the senior price tag.
                                     </div>
                                 </div>
                             </div>
-
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="faqheadingFour">
                                     <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseFour')"
                                         type="button" (click)="toggleFaq('faqcollapseFour')">
-                                        What's included in the $10K-$50K budget?
+                                        How does "you only pay if you're happy with the results" work?
                                     </button>
                                 </h2>
                                 <div id="faqcollapseFour" class="accordion-collapse"
                                     [class.show]="isFaqOpen('faqcollapseFour')"
                                     [class.collapse]="!isFaqOpen('faqcollapseFour')" aria-labelledby="faqheadingFour">
                                     <div class="accordion-body">
-                                        Our budget includes complete product development with comprehensive features, AI
-                                        integration, responsive design, extensive testing, and deployment. This covers
-                                        project planning, development, quality assurance, enterprise architecture,
-                                        scalability considerations, and launch support. Additional features, advanced AI
-                                        capabilities, or extended support can be discussed based on your specific needs.
-                                        We ensure transparency with no hidden costs.
+                                        We align our success with yours. Payment is tied to deliverables and your
+                                        satisfaction. No deposits, no startup fees. We discuss the scope, build your
+                                        application, and you pay when you are happy with what we deliver. This
+                                        results-based model ensures we are fully invested in your success.
                                     </div>
                                 </div>
                             </div>
@@ -730,20 +743,17 @@
                                 <h2 class="accordion-header" id="faqheadingFive">
                                     <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseFive')"
                                         type="button" (click)="toggleFaq('faqcollapseFive')">
-                                        What technologies and AI tools do you use for product development?
+                                        Who builds my application?
                                     </button>
                                 </h2>
                                 <div id="faqcollapseFive" class="accordion-collapse"
                                     [class.show]="isFaqOpen('faqcollapseFive')"
                                     [class.collapse]="!isFaqOpen('faqcollapseFive')" aria-labelledby="faqheadingFive">
                                     <div class="accordion-body">
-                                        We utilize modern enterprise frameworks like React, Angular, or Vue for
-                                        frontend, Node.js or Python for backend, and AI tools including GPT models,
-                                        automated code generators, and intelligent testing frameworks. Our stack also
-                                        includes cloud services for deployment, AI-powered design tools, automated CI/CD
-                                        pipelines, and enterprise-grade infrastructure. The specific technologies are
-                                        chosen based on your project requirements to ensure optimal performance,
-                                        scalability, and enterprise readiness.
+                                        Your application is built by our team of ex-Amazon and ex-Microsoft engineers
+                                        using AI. We combine human expertise from top tech companies with AI tools for
+                                        code generation, testing, and design. You get the quality of the best engineers on
+                                        the planet, accelerated by AI, to ship enterprise software in weeks.
                                     </div>
                                 </div>
                             </div>
@@ -751,19 +761,17 @@
                                 <h2 class="accordion-header" id="faqheadingSix">
                                     <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseSix')"
                                         type="button" (click)="toggleFaq('faqcollapseSix')">
-                                        Can I add more features after the product is launched?
+                                        Is it really no deposits, no startup fees?
                                     </button>
                                 </h2>
                                 <div id="faqcollapseSix" class="accordion-collapse"
                                     [class.show]="isFaqOpen('faqcollapseSix')"
                                     [class.collapse]="!isFaqOpen('faqcollapseSix')" aria-labelledby="faqheadingSix">
                                     <div class="accordion-body">
-                                        Absolutely! Our product is built with scalability and extensibility in mind.
-                                        After launch, you can add features, enhance AI capabilities, or expand
-                                        functionality based on user feedback and market demands. We offer flexible
-                                        post-launch support packages and can help you iterate and grow your product. The
-                                        product serves as a solid, enterprise-ready foundation that can evolve and scale
-                                        to meet your business needs.
+                                        Yes. We do not require deposits or startup fees. You start your project without
+                                        upfront costs. We build, you review, and payment is based on results and your
+                                        satisfaction. This keeps the risk low for you and keeps us focused on delivering
+                                        what you need.
                                     </div>
                                 </div>
                             </div>
@@ -771,21 +779,18 @@
                                 <h2 class="accordion-header" id="faqheadingThree">
                                     <button class="accordion-button" [class.collapsed]="!isFaqOpen('faqcollapseThree')"
                                         type="button" (click)="toggleFaq('faqcollapseThree')">
-                                        What makes your AI-Powered Product Development different from traditional
-                                        development?
+                                        How is this different from hiring a development team?
                                     </button>
                                 </h2>
                                 <div id="faqcollapseThree" class="accordion-collapse"
                                     [class.show]="isFaqOpen('faqcollapseThree')"
                                     [class.collapse]="!isFaqOpen('faqcollapseThree')" aria-labelledby="faqheadingThree">
                                     <div class="accordion-body">
-                                        Our AI-Powered approach significantly reduces development time and costs while
-                                        maintaining enterprise-grade quality. We use AI for intelligent code generation,
-                                        automated testing, smart design suggestions, and efficient iteration. This means
-                                        faster time-to-market, optimized costs, and the ability to build comprehensive
-                                        products efficiently. Traditional development typically takes 6-12 months and
-                                        costs $50K-$200K+, while we deliver in 3-4 months for $10K-$50K with
-                                        enterprise-ready features.
+                                        Hiring a team means months of recruiting, high salaries, and management overhead.
+                                        We deliver enterprise-grade AI products faster and more affordably. You get
+                                        ex-Amazon and ex-Microsoft engineers powered by AI, shipping in weeks at the
+                                        price of a junior developer, with quality of the best engineers, and you only pay
+                                        when you are happy with the results.
                                     </div>
                                 </div>
                             </div>
