@@ -7,8 +7,8 @@
 
         <div class="nav-right d-flex justify-content-end align-items-center">
             <div class="sidebar-and-btn">
-                <a [routerLink]="['assessment/basic-details']" class="primary-btn2 d-lg-flex d-none"
-                    data-text="Free Consultation"><span>Start Your Project</span>
+                <a href="#cta-div" class="primary-btn2 d-lg-flex d-none"
+                    data-text="Contact Us" (click)="scrollToCta($event)"><span>Contact Us</span>
                 </a>
             </div>
         </div>
@@ -649,7 +649,9 @@
     </div>
 </div>
 
-<app-schedule-call-cta [services]="ctaDetails"></app-schedule-call-cta>
+<div id="cta-div">
+    <app-schedule-call-cta [services]="ctaDetails"></app-schedule-call-cta>
+</div>
 
 <!-- Start Home3 Faq section -->
 <div class="home3-faq-section">

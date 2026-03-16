@@ -74,6 +74,14 @@ export class AiPoweredProductDevelopmentComponent implements AfterViewInit {
     return this.activeFaqId === faqId;
   }
 
+  scrollToCta(event: Event): void {
+    event.preventDefault();
+    if (this.common.isBrowser()) {
+      const el = document.getElementById('cta-div');
+      el?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   ngOnInit(): void {
     this.meta.updateTag({
       name: 'title',
